@@ -1,7 +1,7 @@
 name: Update Site
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
   schedule:
   - cron: 30 1 * * *
 
