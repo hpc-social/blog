@@ -1,0 +1,90 @@
+title: hpc.social - Community Syndicated Blog
+description: Shared community experiences and stories
+author: vsoch
+baseurl: "/blog"
+url: "https://hpc.social"
+keywords: hpc, community
+lang: en-US
+timezone:  America/Denver
+repo: https://github.com/hpc-social/blog
+
+# Social Profiles
+twitter_username:  hpc_social
+github_username:   hpc-social
+
+author:
+  name: hpc.social
+  bio: High Performance Computing <br> Practitioners <br> and friends /#hpc
+  picture: assets/images/hpc-social-blue.png 
+  github: hpc-social
+  twitter: hpc_social
+  email: info@hpc.social
+
+collections:
+  pages:
+    output: true
+    permalink: /:name
+  posts:
+    output: true
+
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+
+# Navigation
+navbar-links:
+  Home: "https://hpc.social/"
+  Community:
+    - About: "about"
+  Posts:
+    - All Posts: "posts"
+    - Archive: "archive"
+
+# Build settings
+permalink   : /:year/:categories/:title/
+exclude: ["_site", "vendor", ".github"]
+
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+comments: true
+paginate: 20
+paginate_path: "/page/:num"
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-relative-links
+    
+exclude:
+  - .jekyll-cache
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor
+
+relative_links:
+  enabled:     true
+  collections: false

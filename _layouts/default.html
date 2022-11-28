@@ -1,0 +1,41 @@
+{% include header.html %}
+<div class="container">
+	<div class="profile">
+		<a href="{{ site.url }}{{ site.baseurl }}/"><img src="{{ site.baseurl }}/{{site.author.picture}}" class="profile-image"></a>
+		<div class="profile-about">
+			<h2 style="margin-bottom: 0; font-weight: 700;">{{site.author.name}}</h2>
+			{% if site.author.facebook %}
+				<a href="https://facebook.com/{{site.author.facebook}}" target="_blank"><img src="{{ site.baseurl }}/assets/images/icon/facebook.svg" class="social-icon"></a>
+			{% endif %}
+			{% if site.author.twitter %}
+				<a href="https://twitter.com/{{site.author.twitter}}" target="_blank"><img src="{{ site.baseurl }}/assets/images/icon/twitter.svg" class="social-icon"></a>
+			{% endif %}
+			{% if site.author.instagram %}
+				<a href="https://instagram.com/{{site.author.instagram}}" target="_blank"><img src="{{ site.baseurl }}/assets/images/icon/instagram.svg" class="social-icon"></a>
+			{% endif %}
+			{% if site.author.youtube %}
+				<a href="{{site.author.youtube}}" target="_blank"><img src="{{ site.baseurl }}/assets/images/icon/youtube.svg" class="social-icon"></a>
+			{% endif %}
+			{% if site.author.github %}
+				<a href="https://github.com/{{site.author.github}}" target="_blank"><img src="{{ site.baseurl }}/assets/images/icon/github.svg" class="social-icon"></a>
+			{% endif %}
+			{% if site.author.linkedin %}
+				<a href="https://linkedin.com/in/{{site.author.linkedin}}" target="_blank"><img src="{{ site.baseurl }}/assets/images/icon/linkedin.svg" class="social-icon"></a>
+			{% endif %}
+			<a href="{{ site.baseurl }}/about/"><img src="{{ site.baseurl }}/assets/images/icon/me.svg" class="social-icon"></a>
+			<br>
+			{{ site.author.bio }}
+			<br>
+			<div class="mode" id="mode-switcher" onclick="toggleNightMode();">
+				<span></span>
+			</div>
+		</div>
+	</div>
+	{{ content }}
+	<div class="footer">
+		<span style="float:left; padding-right:10px"><font color="red">©️</font><a href="https://hpc.social"><b>hpc.social</b> community</a></span> 
+		| <a style="float:right; padding-left:10px; padding-right:10px" href="{{ site.baseurl }}/archive/">Archive</a>
+		| <a style="float:right; padding-left:10px" href="{{ site.baseurl }}/">Posts</a>
+	</div>
+</div>
+{% include footer.html %}

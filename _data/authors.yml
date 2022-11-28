@@ -1,0 +1,10 @@
+- name: "hpc.social"
+  tag: "hpc-social"
+  url: http://us-rse.org/
+  feed: http://us-rse.org/feed.xml
+  image: https://hpc.social/assets/img/hpc-social-blue.png
+- name: "Vanessasaurus"
+  tag: "vsoch"
+  feed: https://vsoch.github.io/hpc-feed.xml
+  url: https://vsoch.github.io/
+  image: https://vsoch.github.io/assets/images/avatar.png
