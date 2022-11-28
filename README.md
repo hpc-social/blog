@@ -1,5 +1,7 @@
 # hpc.social Community Syndicated Blog
 
+![assets/images/blog.png](assets/images/blog.png)
+
 This is a syndicated blog to provide content for the hpc.social community!
 Here you can add an rss/xml feed to share stories and experiences. This
 repository is based on the [US-RSE community blog](https://github.com/USRSE/blog), 
