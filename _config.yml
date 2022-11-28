@@ -11,6 +11,7 @@ repo: https://github.com/hpc-social/blog
 # Social Profiles
 twitter_username:  hpc_social
 github_username:   hpc-social
+logo: assets/images/hpc-social-blue.png 
 
 author:
   name: hpc.social

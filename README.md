@@ -104,3 +104,8 @@ This is how the posts are generated in the continuous integration setup:
 ```bash
 python generate_posts.py ../_data/authors.yml --output ../_posts/
 ```
+
+## 🎨️ Thank You! 🎨️
+
+This is a modified version of [Ephesus](https://github.com/onepase/Ephesus). We
+maintain the original [LICENSE](.github/LICENSE-Ephesus) and preserve it [here](LICENSE).

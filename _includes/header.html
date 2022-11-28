@@ -17,11 +17,13 @@
         <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{page.url}}"/>
         <meta property="og:title" content="{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}" />
         <meta property="og:description" content="{% if page.description %}{{page.description}} {% else %}{{site.description}}{% endif %}" />
-        <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{% if page.image %}{{page.image}}{% else %}assets/images/favicon.png{% endif %}"/>
+        <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{% if page.image %}{{page.image}}{% else %}{{ site.logo }}{% endif %}"/>
+        {% if site.twitter_username %}<meta name="twitter:site" content="@{{ site.twitter_username }}" />
+        <meta name="twitter:creator" content="@{{ site.twitter_username }}" />{% endif %} 
         <meta name="twitter:card" content="summary"/>
         <meta property="twitter:title" content="{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}" />
         <meta property="twitter:description" content="{% if page.description %}{{page.description}} {% else %}{{site.description}}{% endif %}" />
-        <meta property="twitter:image" content="{{ site.url }}{{ site.baseurl }}/{% if page.image %}{{page.image}}{% else %}assets/images/favicon.png{% endif %}" />
+        <meta property="twitter:image" content="{{ site.url }}{{ site.baseurl }}/{% if page.image %}{{page.image}}{% else %}{{ site.logo }}{% endif %}" />
         <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/highlight.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +31,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap" rel="stylesheet"> 
 
         <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
-        <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favicon.png" />
+        <link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.logo }}" />
         <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.url }}{{ site.baseurl }}/atom.xml">
         <link rel="alternate" type="application/json" title="{{ site.title }}" href="{{ site.url }}{{ site.baseurl }}/feed.json" />
         <link rel="sitemap" type="application/xml" title="sitemap" href="{{ site.url }}{{ site.baseurl }}/sitemap.xml" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"{{ site.author.name }}"},"description":"{{ site.description }}","headline":"{{ site.title }}","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"{{ site.url }}{{ site.baseurl }}/{{ site.logo }}"},"name":"{{ site.author.name }}"},"sameAs":["https://twitter.com/{{ site.twitter.username }}","https://github.com/{{ site.social.github }}"],"url":"{{ site.url }}{{ site.baseurl }}"}</script>
     </head>
 <body>
