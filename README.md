@@ -5,6 +5,13 @@ Here you can add an rss/xml feed to share stories and experiences. This
 repository is based on the [US-RSE community blog](https://github.com/USRSE/blog), 
 which was also imagined, designed, and implemented by author [@vsoch](https://github.com/vsoch).
 
+## How do I contribute my blog?
+
+1. Fork the repository, clone to your machine, and checkout a new branch.
+1. Add your entry to the [_data/authors.yml](_data/authors.yml) file
+1. Generate your set of posts (instructions below)
+1. Open a pull request to the main repository!
+
 ## How does it work?
 
 ### 1. Add Metadata
@@ -53,14 +60,17 @@ First install python dependencies:
 $ pip install -r .github/requirements.txt
 ```
 
+And then generate posts:
+
 ```bash
 $ python scripts/generate_posts.py _data/authors.yml --output _posts/ --test
 ```
 
 It will show you any new folders and files generated without actually doing it.
+Here is how to do it "for realsies":
 
 ```bash
-$ python scripts/generate_posts.py _data/authors.yml --output _posts/ --test
+$ python scripts/generate_posts.py _data/authors.yml --output _posts/
 ```
 
 ## Development
@@ -74,7 +84,7 @@ $ bundle exec jekyll serve
 You can also run the script to generate posts locally, if you choose.
 
 ```bash
-cd script
+cd scripts
 
 python generate_posts.py
 usage: generate_posts.py [-o OUTPUT] authors
@@ -94,9 +104,3 @@ This is how the posts are generated in the continuous integration setup:
 ```bash
 python generate_posts.py ../_data/authors.yml --output ../_posts/
 ```
-
-### Important Notes
-
-The "posts" page under the [posts](posts) folder is intentionally separate from
-the other pages in [pages](pages) because the pagination plugin needs to find an
-index.html to parse. Please don't rename or change the location of this file.
