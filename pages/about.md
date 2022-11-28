@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 The hp.social community blog aims to share ideas, news, and stories from diverse people, centers and groups across the High Performance Computing (HPC) community.
-Whether you are an advanced practitioner, a developer that touches HPC, or a novice, your voice is welcome here. This community blog reflects exactly that - a syndicated feed of our community voices. It's one places that you can subscribe to via a variety of channels (below) and also [follow instructions to contribute your own feed](https://github.com/hpc-social/blog).
+Whether you are an advanced practitioner, a developer that touches HPC, or a novice, your voice is welcome here. This community blog reflects exactly that - a syndicated feed of our community voices. It's one places that you can subscribe to via a variety of channels (below) and also <a href="https://github.com/hpc-social/blog" target="_blank">follow instructions to contribute your own feed</a>.
 
 <a href="{{ site.baseurl }}/feed.xml" target="_blank"><button class="btn">rss</button></a>
 <a href="{{ site.baseurl }}/atom.xml" target="_blank"><button class="btn">atom</button></a>

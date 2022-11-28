@@ -1,6 +1,9 @@
     <script src="{{ site.baseurl }}/assets/scripts.js"></script>
     <script type="text/javascript">
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.getElementById('mode-switcher').classList.add('active');
+        } else if (localStorage.theme === 'dark' || localStorage.theme === '' || (!('theme' in localStorage))) {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('mode-switcher').classList.add('active');
         }

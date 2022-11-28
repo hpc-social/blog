@@ -172,6 +172,7 @@
 }
 .highlight {
   color: #ffffff;
+  padding: 5px;
   background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {

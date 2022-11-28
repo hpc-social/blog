@@ -15,8 +15,7 @@ layout: default
 </div>
 
 <div class="tags-container" style="padding:10px; font-size:18px; font-style:italic">
-        This is a crosspost from &nbsp; <a href="{{ page.blog_url }}">{{ page.blog_title }}</a>{% if page.blog_subtitle %} {{ page.blog_subtitle }}{% endif %}. 
-        See the original post&nbsp;<a target="_blank" href="{{ page.original_url }}">here</a>.</div>
+        This is a crosspost from &nbsp; <a target="_blank" href="{{ page.blog_url }}">{{ page.blog_title }}</a>{% if page.blog_subtitle %}&nbsp;{{ page.blog_subtitle }}{% endif %}.&nbsp;See the original post&nbsp;<a target="_blank" href="{{ page.original_url }}">here</a>.</div>
 
 <div class="blog-post-content">
 	<h1>{{page.title}}</h1>

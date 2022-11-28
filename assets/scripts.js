@@ -10,5 +10,3 @@ function toggleNightMode(){
 		localStorage.setItem("theme","");
 	}
 }
-// Default is dark
-toggleNightMode()

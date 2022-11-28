@@ -1,8 +1,18 @@
 :root {
+  --bg-color: #161f29;
+  --bg-hover-color:#36404c;
+  --body-bg: #10171e;
+  --primary-font-color: #bfbfbf;
+  --primary-link-color: aqua; 
+  --border-color: #6a6a6a;
+}
+
+[data-theme="light"] {
     --bg-color: #fafafa;
     --bg-hover-color: #ececec;
     --body-bg: #fff;
     --primary-font-color: #000;
+    --primary-link-color: darkred;
     --border-color: #dadada;
 }
 
@@ -164,7 +174,8 @@ body{
 .w-100{width: 100%!important;}
 
 a:hover{text-decoration: none;}
-a{color: var(--primary-font-color); text-decoration: none;}
+a{color: var(--primary-link-color); text-decoration: none;}
+.footer  a{color: var(--primary-font-color); text-decoration: none;}
 img{max-width: 100%;}
 figure{margin:0; padding: 15px;}
 pre{font-size: 14px; max-width: 90vw; overflow: auto;}
