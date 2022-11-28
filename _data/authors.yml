@@ -8,6 +8,11 @@
   feed: https://vsoch.github.io/hpc-feed.xml
   url: https://vsoch.github.io/
   image: https://vsoch.github.io/assets/images/avatar.png
+- name: "Research Computing Teams Newsletter"
+  tag: "rct-newsletter"
+  feed: https://www.researchcomputingteams.org/newsletter_issues.rss
+  url: https://www.researchcomputingteams.org/
+  image: https://www.researchcomputingteams.org/assets/images/logo_full.png
 - name: "Jonathan Dursi's Blog"
   tag: "dursi"
   feed: https://www.dursi.ca/feed.xml
