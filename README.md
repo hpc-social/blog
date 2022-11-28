@@ -2,9 +2,10 @@
 
 ![assets/images/blog.png](assets/images/blog.png)
 
-This is a syndicated blog to provide content for the hpc.social community!
-Here you can add an rss/xml feed to share stories and experiences. This
-repository is based on the [US-RSE community blog](https://github.com/USRSE/blog), 
+This is the repository for the [syndicated blog](https://hpc.social/projects/blog/) for the hpc.social community!
+Here you can add an rss/xml feed to share stories and experiences to be presented in the 
+[aggregated blogs feed](https://hpc.social/blog/). 
+This repository is based on the [US-RSE community blog](https://github.com/USRSE/blog), 
 which was also imagined, designed, and implemented by author [@vsoch](https://github.com/vsoch).
 
 ## How do I contribute my blog?
