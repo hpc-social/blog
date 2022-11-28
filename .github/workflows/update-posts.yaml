@@ -20,6 +20,7 @@ jobs:
         echo "Looking for new posts..."
         export PATH="/usr/share/miniconda/bin:$PATH"
         source activate hpc
+        pip install -r .github/requirements.txt
         python scripts/generate_posts.py ./_data/authors.yml --output ./_posts/
 
     - uses: ruby/setup-ruby@v1

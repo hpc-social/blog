@@ -1,4 +1,5 @@
 env
+.jekyll-cache
 __pycache__
 _site
 Gemfile.lock
