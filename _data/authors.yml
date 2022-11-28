@@ -13,3 +13,8 @@
   feed: https://www.researchcomputingteams.org/newsletter_issues.rss
   url: https://www.researchcomputingteams.org/
   image: https://www.researchcomputingteams.org/assets/images/logo_full.png
+- name: "Jonathan Dursi's Blog"
+  tag: "dursi"
+  feed: https://www.dursi.ca/feed.xml
+  url: https://www.dursi.ca
+  image: https://www.dursi.ca/assets/imgs/avatar-medium.jpg
