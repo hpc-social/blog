@@ -99,12 +99,17 @@ def clean_post(post):
     soup = BeautifulSoup(post.content, "html.parser")
 
     # These will not embed. We would need to get and save locally
+    changed = False
     for image in soup.find_all("img"):
         if image.get("src") and "https://blogger.googleusercontent.com" in image.get(
             "src"
         ):
+            changed = True
             image.parent.decompose()
-    post.content = soup.renderContents
+
+    # Try to be conservative
+    if changed:
+        post.content = str(soup)
     return post
 
 
@@ -160,11 +165,27 @@ def parse_feeds(authors, output_dir, test=False):
                         filey.write(frontmatter.dumps(post))
 
 
+def get_entry_summary(entry):
+    """
+    Try to handle custom feed formats
+    """
+    summary = entry["summary"]
+
+    if "content" in entry:
+        summary = entry["content"]
+    if isinstance(summary, list):
+        summary = summary[0]
+        if "value" in summary:
+            summary = summary["value"]
+    return summary
+
+
 def generate_post(entry, author, feed):
     """
     Generate a post, including content and front end matter, from an entry.
     """
-    post = frontmatter.Post(entry["summary"])
+    summary = get_entry_summary(entry)
+    post = frontmatter.Post(summary)
     post.metadata["original_url"] = entry.get("link", "")
     post.metadata["title"] = entry.get("title", "")
     post.metadata["author_tag"] = author["tag"]

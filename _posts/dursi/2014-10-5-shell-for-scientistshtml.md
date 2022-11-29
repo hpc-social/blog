@@ -8,6 +8,7 @@ category: dursi
 date: '2014-10-05 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/shell-for-scientists.html
+slug: the-shell-for-scientists
 title: The Shell For Scientists
 ---
 
@@ -18,12 +19,15 @@ provided by Greg Wilson for a two-day set of of tutorials at the
 University of Toronto, was cleaning up a bunch of auditory lab data
 on people’s cochlear implants.</p>
 
+
 <p>The focus is on productivity and automation; PDF slides are available
 <a href="https://github.com/ljdursi/shell-for-scientists/raw/master/presentation/presentation.pdf">here</a>
 (although I really should translate them into a markdown-based format to
 make them more re-usable).</p>
 
+
 <p>Covered are a number of basic shell commands</p>
+
 
 <ul>
   <li>echo</li>

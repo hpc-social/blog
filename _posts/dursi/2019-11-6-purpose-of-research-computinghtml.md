@@ -8,12 +8,14 @@ category: dursi
 date: '2019-11-06 00:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/purpose-of-research-computing.html
+slug: the-purpose-of-research-computing-is-the-research-not-the-computing
 title: The Purpose of Research Computing is the Research, not the Computing
 ---
 
 <p>Absolutely everyone in research computing will agree that supporting
 research is their centre’s highest goal.  And they’re not lying,
 but at many centres I’ve visited, they aren’t really correct, either.</p>
+
 
 <p>The day-to-day work in such a centre, naturally enough, is all about
 technical operations - keeping the computers running, updating
@@ -23,6 +25,7 @@ actively and continually turning the focus back to the <em>purpose</em>
 of those activities - the research outcomes that those activities
 are meant to support - the internal, technical, activities <em>become</em>
 the purpose of the centre.</p>
+
 
 <p>Pretty quickly, you end up with centres that are ranking their
 performance quarter to quarter with cluster utilization numbers,
@@ -40,7 +43,9 @@ decided to grow current capability, no one is getting an uncomfortable
 call from the boss at these centres.  Ticket closure rates going
 down 5% though… maybe you’re getting a call.</p>
 
+
 <p><img alt="Organizations that care about their clients make their offerings very clear." src="https://www.dursi.ca/assets/purpose_research_computing/pexels_inside-a-store-2199190_crop.jpg" style="float: left; width: 33%; padding: 15px 15px 15px 0px;" /></p>
+
 
 <p>It doesn’t take very long to spot centres like this, even from the
 outside.  On their websites, most prominently of all, are the
@@ -58,6 +63,7 @@ for resources/for software installation”, the researcher is out of
 luck - they’re just directed to a “contact us” email address (which,
 of course, feeds into a ticket tracker).</p>
 
+
 <p>(Have you ever visited a restaurant webpage and needed like 4 or 5
 clicks to get to the menu and their hours?  If the restaurant took
 the menu off the website entirely and you instead had to file a
@@ -65,6 +71,7 @@ ticket so you could ask specifically if they made spaghetti carbonara,
 that’s what most research computing centre websites are like for
 researchers.  Organizations that care about their customers make
 their offerings very clear.)</p>
+
 
 <p>The thing is, using metrics like utilization, tickets, storage and
 the like to measure how much research support is happening is
@@ -79,6 +86,7 @@ stream of tickets coming in that are easily closed; or by irrelevantly
 dicing what could be a long, productive discussion with a researcher
 into a series of shorter “tickets”.</p>
 
+
 <p>It’s madness because neither utilization, nor ticket closure rates,
 nor storage use, nor even training course enrolment are valuable
 to research <em>in and of themselves</em>.  They are <em>inputs</em> to the process
@@ -88,6 +96,7 @@ hoping that as long as those numbers stay good the best possible
 science outcomes will just happen of their own accord is an abdication
 of responsibility, and a squandering of scarce research-support
 resources.</p>
+
 
 <p>And it’s worse than that, of course.  Even a focus on inputs, if
 it was being honest, would focus on <em>all</em> the inputs, and certainly
@@ -101,7 +110,9 @@ Is that up this quarter, or down; and if it’s down, why?  What
 fraction of the expertise of the support staff is being used?  What
 is the meaningful contribution rate?</p>
 
+
 <p><img alt="Inputs produce outpus which produce outcoms which produce impact.  The inputs are not what you should measure." src="https://www.dursi.ca/assets/purpose_research_computing/shutterstock_input_outcome.jpg" style="float: right; width: 50%; padding: 15px 0px 15px 15px;" /></p>
+
 
 <p>The reason that those staff input metrics aren’t being measured and
 others are is simple, and clarifying.  The hardware inputs aren’t
@@ -112,12 +123,14 @@ the desired research outcomes.  They’re used because they’re easy
 to gather.  And they’re comfortable to use because they don’t really
 require centre managers to make any hard choices.</p>
 
+
 <p>Focussing on the inputs instead of the outputs - or even better,
 outcomes - isn’t only a research computing thing, of course.  It’s
 an absolutely classic mistake in a lot of sectors; a google search
 for <a href="https://www.google.com/search?q=focus+on+outcomes%2C+not+inputs&amp;oq=focus+on+outcomes%2C+not+inputs">focus on outcomes, not
 inputs</a>
 returns 139 million results.</p>
+
 
 <p>There are two prototypical reasons why it happens.  If I were feeling
 in a twitter-ranty mood again, I might be tempted to draw the analogy
@@ -139,12 +152,14 @@ Those few companies in this situation that <em>do</em> manage to maintain
 a focus on client outcomes are doing so by constantly expending
 almost heroic levels of unseen effort inside the organization.</p>
 
+
 <p>But I don’t actually think that’s what driving some research computing
 centres inputs focus when it comes to operations and technical
 decision making.  I think it comes almost from the other direction,
 the other classic case; that of small nonprofits, typically enormously
 concerned with their clients, who focus first on a very basic need
 and then don’t know how to generalize beyond that as they grow.</p>
+
 
 <p>Imagine a small nonprofit, passionately committed to helping people,
 that gets its start meeting a very basic need - let’s say they’re
@@ -156,6 +171,7 @@ more breakfasts, maybe expand to different schools or supplying a
 wider range of breakfasts to be inclusive of students with particular
 dietary needs.  They are <em>super</em> committed to their clients.</p>
 
+
 <p>But as that nonprofit starts expanding, it becomes clear their
 client base needs a wider range of services.  It starts partnering
 with food banks, to help fight student hunger at home; its staff
@@ -165,6 +181,7 @@ nonprofit?  Is it a help-underprivledged-students-succeed-at-school
 nonprofit?  If they could double the tutoring efforts at the cost
 of slowing the growth of the breakfast program next year, is that
 the right thing to do, or not?  How would they know?</p>
+
 
 <p>This is a terrifying transition for a nonprofit to go through.
 Before, it knew exactly what it was doing, and had very clear metrics
@@ -181,11 +198,13 @@ but limits their impact; many stay in limbo in that uncomfortable
 intermediate state until they are overtaken by events or other
 organizations.</p>
 
+
 <p>At most research computing centres, I think the story is more like
 that of the nonprofit.  Except let’s be honest, while providing
 breakfasts is inherently meaningful and has very few organizations
 willing to do it, providing cycles and storage isn’t, and has many
 alternate providers.</p>
+
 
 <p>But going beyond meeting the basic needs of providing research
 computing cycles and storage, which was a much greater need in the
@@ -201,9 +220,11 @@ based on numbers on a dashboard that are largely under your control,
 to unfamiliar qualitative evaluations and doing the hard work of
 trying to measure research outcomes.</p>
 
+
 <p>But there’s a relatively straightforward approach to get there
 starting from where you are.  It takes some work, but just going
 through the process is clarifying.</p>
+
 
 <ol>
   <li><strong>What do you do now?</strong>  You know, broadly, what services you offer to
@@ -271,6 +292,7 @@ the strengths of the centre and knowing where those strengths are
 needed in the research community it serves — and not all research
 needs are the same!  But <em>those</em> are questions that team leaders
 need to be wrestling with.</p>
+
 
 <p>The alternative, just running a set of computers for the same
 friendly user group of people year after year, isn’t research

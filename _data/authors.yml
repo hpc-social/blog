@@ -18,3 +18,7 @@
   url: https://glennklockwood.blogspot.com
   feed: https://glennklockwood.blogspot.com/feeds/posts/default/-/hpc?alt=rss
   image: https://glennklockwood.com/me2.jpg
+- name: "Mark Nelson's Blog"
+  tag: "markhpc"
+  url: https://markhpc.github.io/
+  feed: https://markhpc.github.io/feed.xml

@@ -8,12 +8,15 @@ category: dursi
 date: '2014-01-16 00:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/scalable-data-analysis-in-r.html
+slug: scalable-data-analysis-in-r
 title: Scalable Data Analysis in R
 ---
 
 <p>R is a great environment for interactive analysis on your desktop, but when your data needs outgrow your personal computer, it’s not clear what to do next.</p>
 
+
 <p>I’ve put together material for a day-long tutorial on scalable data analysis in R.  It covers:</p>
+
 
 <ul>
   <li>A brief introduction to R for those coming from a Python background;</li>
@@ -26,8 +29,11 @@ title: Scalable Data Analysis in R
 
 <p>The presentation for the material, in R markdown (so including the sourcecode) is in the presentation directory; you can read the resulting presentation <a href="https://github.com/ljdursi/scalable-analysis-R/blob/master/presentation/ScalableDataAnalysis-R.md">as markdown there</a>, or <a href="https://github.com/ljdursi/scalable-analysis-R/blob/master/presentation/ScalableDataAnalysisInR.pdf?raw=true">as a PDF</a>.</p>
 
+
 <p>The R code from the slides can be found in the R directory.</p>
 
+
 <p>Some data can be found in the data directory; but as you might expect in a workshop on scalable data analysis, the files are quite large!  Mostly you can just find scripts for downloading the data; running make in the main directory will pull almost everything down, but a little more work needs go to into automating some of the production of the data products used.</p>
+
 
 <p>Suggestions, as always, greatly welcomed.</p>
