@@ -24,6 +24,14 @@
   --border-color: #6a6a6a;
 }
 
+.author-badge {
+  background-color: #e50039;
+  margin-right: 5px; 
+  color: black;
+  padding:0px 5px;
+  border-radius:2px;
+}
+
 .btn {
   cursor: pointer;
 }

@@ -27,6 +27,7 @@ collections:
     permalink: /:name
   posts:
     output: true
+    permalink: /:year/:title/
 
 
 defaults:
@@ -59,7 +60,6 @@ navbar-links:
     - Archive: "archive"
 
 # Build settings
-permalink   : /:year/:categories/:title/
 exclude: ["_site", "vendor", ".github"]
 
 

@@ -1,5 +1,6 @@
 ---
 author: Vanessasaurus
+author_tag: vsoch
 blog_subtitle: dinosaurs, programming, and parsnips
 blog_title: VanessaSaurus
 blog_url: https://vsoch.github.io/

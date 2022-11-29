@@ -5,15 +5,17 @@
 # the author tag and date from the feed, as to not generate repeated
 # posts.
 
+import argparse
+import os
+import re
+import sys
 from datetime import datetime
 from time import mktime
 
 import feedparser
 import frontmatter
-import argparse
-import sys
-import os
 import yaml
+from bs4 import BeautifulSoup
 
 
 def get_parser():
@@ -73,6 +75,39 @@ def validate_authors(authors):
     return valid
 
 
+def slugify(text):
+    """
+    slugify text!
+    """
+    return re.sub(r"[\W_]+", "-", text.lower())
+
+
+def clean_post(post):
+    """
+    Clean post content:
+
+    1. links that are known to not embed
+    2. add extra spacing for sanity and rendering!
+    """
+    # Add some extra white space for formatting
+    for div in ["</div>", "</p>"]:
+        post.content = post.content.replace(div, f"{div}\n")
+
+    post.content = post.content.replace('<a name="more"></a>', "")
+
+    # Blogger google images don't embed - thanks Google!
+    soup = BeautifulSoup(post.content, "html.parser")
+
+    # These will not embed. We would need to get and save locally
+    for image in soup.find_all("img"):
+        if image.get("src") and "https://blogger.googleusercontent.com" in image.get(
+            "src"
+        ):
+            image.parent.decompose()
+    post.content = soup.renderContents
+    return post
+
+
 def parse_feeds(authors, output_dir, test=False):
     """read in the list of authors, parse feeds and save results to a
     specified output directory.
@@ -115,6 +150,9 @@ def parse_feeds(authors, output_dir, test=False):
                 print("Preparing new post: %s" % markdown)
                 post = generate_post(entry, author, feed)
 
+                # Custom parsing for blogger
+                post = clean_post(post)
+
                 if test is False:
 
                     # Write to file
@@ -123,16 +161,23 @@ def parse_feeds(authors, output_dir, test=False):
 
 
 def generate_post(entry, author, feed):
-    """generate a post, including content and front end matter, from an entry."""
+    """
+    Generate a post, including content and front end matter, from an entry.
+    """
     post = frontmatter.Post(entry["summary"])
     post.metadata["original_url"] = entry.get("link", "")
     post.metadata["title"] = entry.get("title", "")
+    post.metadata["author_tag"] = author["tag"]
     post.metadata["layout"] = "post"
     post.metadata["author"] = author.get("name", author["tag"])
     post.metadata["blog_title"] = feed["feed"].get("title", "")
     post.metadata["blog_subtitle"] = feed["feed"].get("subtitle", "")
     post.metadata["blog_url"] = feed["feed"].get("link", "")
     post.metadata["category"] = author["tag"]
+
+    # If we have a title, slugify
+    if post.metadata["title"]:
+        post.metadata["slug"] = slugify(post.metadata["title"])
 
     # Remove :
     for key in ["title", "blog_subtitle", "author"]:
@@ -164,8 +209,9 @@ def get_markdown_file(author_folder, entry):
     # The id is the last part of the url, lowercase
     title = [x for x in entry["id"].split("/") if x][-1].lower()
 
-    # Replace any variable names (? in wordpress) with -
-    title = title.replace("?", "")
+    # Replace any variable names (blogger, wordpress) with -
+    for char in ["?", ":", ",", "."]:
+        title = title.replace(char, "")
     filename = "%s-%s-%s-%s.md" % (year, month, day, title)
 
     # The output markdown name is consistent
@@ -173,7 +219,8 @@ def get_markdown_file(author_folder, entry):
 
 
 def read_authors(authors_file):
-    """read the authors.yml file, exit with retval 1 on error
+    """
+    Read the authors.yml file, exit with retval 1 on error
 
     Parameters
     ==========

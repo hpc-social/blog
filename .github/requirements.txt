@@ -3,3 +3,4 @@ feedparser>=5.2.1
 pyaml>=17.12.1
 # sgmllib not in python 3; workaround solution for feedparser relative link resolution
 sgmllib3k
+beautifulsoup4
