@@ -6,7 +6,7 @@ title: Posts
 <div class="post-container">
 	{% for post in paginator.posts %}
         <div class="post-list">
-            <a class="post-title" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"><span class="author-badge">{{post.author_tag }}</span> {{ post.title }}</a>
+            <a class="post-title" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"><span class="author-badge">{{ post.author_tag }}</span> {{ post.title | truncate:80 }}</a>
             <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date: "%d.%m.%Y" }}</time>
         </div>
     {% endfor %}

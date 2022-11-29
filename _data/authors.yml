@@ -22,3 +22,8 @@
   tag: "markhpc"
   url: https://markhpc.github.io/
   feed: https://markhpc.github.io/feed.xml
+- name: "Thinking Out Loud"
+  tag: ajdecon
+  feed: https://thinking.ajdecon.org/category/computing/feed/
+  url: https://thinking.ajdecon.org/
+  image: https://www.ajdecon.org/pubfiles/ajdecon-covatar.jpg
