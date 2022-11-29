@@ -45,6 +45,21 @@ Once you've added your feed, it's recommended to test generate posts to ensure
 that it's parsed correctly. This is done during the continuous integration,
 but you can also do it locally (see below).
 
+#### Blogger
+
+Blogger is Google's blogging platform and also provides a main feed at 
+`https://<yourblog>.blogspot.com/feeds/posts/default`.
+Like Wordpress, you can also create a feed for a specific [label or
+tag](https://support.google.com/blogger/answer/97933) which can be accessed via
+`https://<yourblog>.blogspot.com/feeds/posts/default/-/<label>`.  The page
+linked above also describes options if you want to publish only the first part
+of each post to your feed.
+
+A known limitation with Blogger is that images embedded in blog posts won't
+appear in the Community Syndicated Blog version.  This happens because
+[Blogger disallows directly linking blog images from external
+sources](https://support.google.com/blogger/thread/133238986/image-url-from-blogger-googleusercontent-com-is-not-accepted-by-other-websites-if-i-want-to-insert-m?hl=en).
+
 ### 2. Generate Posts
 
 The posts are generated automatically - we do this by way of a cron job (scheduled
