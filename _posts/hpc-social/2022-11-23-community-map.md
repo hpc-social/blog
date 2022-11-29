@@ -1,5 +1,6 @@
 ---
 author: hpc.social
+author_tag: hpc-social
 blog_subtitle: A community of high performance computing practitioners and friends.
 blog_title: HPC.social
 blog_url: https://hpc-social.github.io/
