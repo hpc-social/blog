@@ -18,3 +18,8 @@
   feed: https://www.dursi.ca/feed.xml
   url: https://www.dursi.ca
   image: https://www.dursi.ca/assets/imgs/avatar-medium.jpg
+- name: "Thinking Out Loud"
+  tag: "thinking-ajdecon-org"
+  feed: https://thinking.ajdecon.org/category/computing/feed/
+  url: https://thinking.ajdecon.org/
+  image: https://www.ajdecon.org/pubfiles/ajdecon-covatar.jpg
