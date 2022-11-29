@@ -8,6 +8,7 @@ category: dursi
 date: '2015-05-01 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/understanding-poa.html
+slug: understanding-partial-order-alignment-for-multiple-sequence-alignment
 title: Understanding Partial Order Alignment for Multiple Sequence Alignment
 ---
 

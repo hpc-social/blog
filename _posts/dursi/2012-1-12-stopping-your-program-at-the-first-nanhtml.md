@@ -8,14 +8,18 @@ category: dursi
 date: '2012-01-12 00:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/stopping-your-program-at-the-first-nan.html
+slug: stopping-your-program-at-the-first-nan
 title: Stopping your program at the first NaN
 ---
 
 <p>If you know that somewhere in your program, there lurks a catastrophic numerical bug that puts NaNs or Infs into your results and you want to know where it first happens, the search can be a little frustrating.   However, as before, the IEEE standard can help you; these illegal events (divide by zero, underflow or overflow, or invalid operations which cause NaNs) can be made to trigger exceptions, which will stop your code right at the point where it happens; then if you run your code through a debugger, you can find the very line where it happens.</p>
 
+
 <p>We’ll discuss using the gnu compilers here; other compiler suites have similar options.</p>
 
+
 <p>Let’s take a look at the following Fortran code:</p>
+
 
 <pre><code>program nantest
     real :: a, b, c
@@ -42,6 +46,7 @@ end program nantest
 
 <p>If we compile this code with <code>-ffpe-trap=invalid</code> (I usually add <code>,zero,overflow</code> , and even <code>underflow</code> if I think that’s causing me a problem in intermediate results), then the debugger can tell us the line where it all goes wrong:</p>
 
+
 <pre><code class="language-bash">$ gfortran -o nantest nantest.f90 -ffpe-trap=invalid,zero,overflow -g -static
 $ gdb nantest
 [...]
@@ -57,7 +62,9 @@ Current language:  auto; currently fortran
 
 <p>With the intel fortran compiler (ifort), using the option <code>-fpe0</code> will do the same thing.</p>
 
+
 <p>It’s a little tricker with C code; we have to actually insert a call to <code>feenableexcept()</code>, which enables floating point exceptions, and is defined in fenv.h;</p>
+
 
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;fenv.h&gt;
@@ -88,6 +95,7 @@ int main(int argc, char **argv) {
 }
 </code></pre>
 <p>but the effect is the same:</p>
+
 
 <pre><code class="language-bash">$ gcc -o nantest nantest.c -lm -g
 $ gdb ./nantest

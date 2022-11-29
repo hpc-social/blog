@@ -8,11 +8,13 @@ category: dursi
 date: '2016-09-09 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/jupyter-for-bioinformatics.html
+slug: jupyter-notebooks-for-performing-and-sharing-bioinformatics-analyses
 title: Jupyter Notebooks for Performing and Sharing Bioinformatics Analyses
 ---
 
 <p>I was asked to do a half-day tutorial at the <a href="https://www.iscb.org/glbioccbc2016-program/workshops">Great Lakes Bioinformatics conference Workshop session</a>.
 The focus was mainly on R, with some python as well.  We covered:</p>
+
 
 <ul>
   <li>The basics of Jupyter notebooks - what they are and how they work</li>

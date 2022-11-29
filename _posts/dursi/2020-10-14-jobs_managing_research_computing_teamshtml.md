@@ -8,6 +8,7 @@ category: dursi
 date: '2020-10-14 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/jobs_managing_research_computing_teams.html
+slug: things-i-learned-from-looking-at-500-research-computing-manager-jobs-over-10-months
 title: Things I Learned from Looking at 500 Research Computing Manager Jobs over 10
   Months
 ---
@@ -19,6 +20,7 @@ newsletter is that managing research computing teams is a profession
 in and of itself, and worth doing well.  Part of that is emphasizing
 the existence of career opportunities.</p>
 
+
 <p>So since the beginning I’ve included job listings and  maintained
 a <a href="https://www.researchcomputingteams.org/jobs">job board</a>,
 posting about 500 such jobs over the past 10 months and removing
@@ -27,14 +29,17 @@ criteria for such jobs are whether or not I would describe the work
 as principally about managing or leading a research computing team - 
 admittedly a fuzzy definition.</p>
 
+
 <p>Over the course of examining those 500 jobs - and looking through
 many many more that never made it to the board - I’ve learned some
 things:</p>
+
 
 <p><strong>There are a lot of jobs out there for people managing research
 computing teams</strong>.  I’ve <em>never</em> had any trouble finding some weekly
 to put in the job board or with highlights interesting enough to
 list at the end of the newsletter.</p>
+
 
 <p><strong>There are certainly many more I’m missing</strong>.  As the field matures
 there are starting to be <a href="https://us-rse.org/jobs/">job</a>
@@ -48,6 +53,7 @@ the managers of those important roles. So I have a go-to list of
 google and other searches for jobs which I go through a couple of
 times a week.</p>
 
+
 <p>In research, when you’re doing a literature search and you start
 hitting the same papers again and again, you’re pretty sure you’ve
 got a mostly complete list of references as a starting point.  I’m
@@ -56,6 +62,7 @@ list, largely because the names we use for these roles vary so
 widely.  So I’m confident that I only see a fraction of these jobs.
 (You can help out by <a href="https://airtable.com/shrL6QGic3Mv9JFrs">submitting any
 jobs</a> you know about).</p>
+
 
 <p><strong>Research computing teams are broadening, and so is the need for
 managers</strong>.  Where this is most obvious is in data science or data
@@ -70,6 +77,7 @@ efforts, to say nothing of ML/AI jobs.  And there are countless
 management/team lead jobs for specialist research computing in
 health, biology, and biomedicine.</p>
 
+
 <p><strong>Research data management is increasingly employable</strong>.  As the
 initial data science and data engineering work in organizations
 mature, many institutions are realizing that they now need principled
@@ -80,6 +88,7 @@ Those who have maintained and curated data resources for research,
 or who have supported those that do, will be surprised at the number
 of jobs in the private sector for doing similar work.</p>
 
+
 <p><strong>“Traditional” research computing team management jobs remain, and
 they take forever to fill</strong>: There are definitely still routinely
 “Director of Research Computing, University of Somethingorother”
@@ -89,6 +98,7 @@ such jobs are taking forever to fill this year.  I routinely see
 them open for months, and then reposted one or more times.  I see
 this in both for managers of teams running on-premises hardware and
 for teams mainly doing software development.</p>
+
 
 <p><strong>Despite the talk of RSE units, most research computing jobs within
 academic institutions are lone outposts</strong>:  While in companies

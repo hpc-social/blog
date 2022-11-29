@@ -8,6 +8,7 @@ category: dursi
 date: '2015-12-18 00:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/approximate-squiggle-mapping.html
+slug: approximate-mapping-of-nanopore-squiggle-data-with-spatial-indexing
 title: Approximate Mapping of Nanopore Squiggle Data with Spatial Indexing
 ---
 

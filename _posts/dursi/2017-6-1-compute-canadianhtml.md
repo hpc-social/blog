@@ -8,6 +8,7 @@ category: dursi
 date: '2017-06-01 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/compute-canadian.html
+slug: compute-canadian-building-a-successful-and-federated-computational-research-enterprise-together
 title: Compute Canadian- Building a successful and federated computational research
   enterprise, together
 ---
@@ -20,10 +21,12 @@ we must recognize that reality, and rely on the successful examples
 of many organizations in Canada and around the world that embrace
 such a federated approach.</p>
 
+
 <p>In <a href="https://www.dursi.ca/assets/pdfs/ComputeCanadianDiscussionPaper.pdf">this discussion paper</a>,
 my colleague Jill Kowalchuck and I lay out what we hope to be the beginnings
 of a discussion of what a renewed federation for supporting Canadian 
 science with advanced research computing and data could look like.</p>
+
 
 <h3 id="executive-summary">Executive Summary</h3>
 
@@ -37,6 +40,7 @@ working the way we want it to? What should a Canadian computation and
 data platform for supporting research look like in the coming years?
 This document aims to begin that discussion within the community.</p>
 
+
 <p>Here we propose seven principles to guide us in this discussion — that
 our project should serve Canadian research in a researcher-centred,
 service-oriented, and truly national way; and that it should operate as
@@ -46,6 +50,7 @@ that our national platform is adaptive and responsive to researchers,
 making choices driven by research needs and not technical choices, and
 should make full use of the diversity and specialization that a Canadian
 federation and its partners offer.</p>
+
 
 <p>From those principles, we make evidence-based proposals for a renewed
 Canadian organization. Comparisons with successful examples of federated
@@ -67,6 +72,7 @@ and other organizations that provide digital infrastructure for research
 in Canada. This document focusses on Compute Canada in particular, but
 the principles and proposals apply to any digital research
 infrastructure providers, or the system as a whole.</p>
+
 
 <p>Success for this document will mean starting conversations, inspiring
 other documents and differing points of view, and the emerging of a

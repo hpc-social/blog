@@ -8,6 +8,7 @@ category: dursi
 date: '2019-09-29 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/science-makes-great-managers-but-not-necessarily-good-ones.html
+slug: computational-science-collaborations-train-great-managers-but-trainees-might-need-help-to-become-good-managers-first
 title: Computational Science Collaborations Train Great Managers - But Trainees Might
   Need Help To Become Good Managers First
 ---
@@ -20,6 +21,7 @@ significantly different, as are those people who spent a large
 amount of time working in a single group in a well-defined large
 project.  I’d certainly like to hear from colleagues from those
 areas; are there similarities, or are things quite different?</em></p>
+
 </blockquote>
 
 <p>We don’t like to talk about it much, but the natural career path 
@@ -32,7 +34,9 @@ advocating for scientific projects; or, in other words, management
 open disdain for anything that smacks of management, marketing,
 or other suspiciously real-world activities).</p>
 
+
 <p>But computational-science academic environments are pretty particular places, with different approaches to working in a team than, say, in much of business.</p>
+
 
 <p>First, academic work is largely performed by trainees like students, who
 have a very different relationship to their academic supervisor than an
@@ -42,10 +46,12 @@ is put into developing those trainees, giving them increasing
 responsibilities, and looking for opportunities for them to apply
 those emerging skills to new problems.</p>
 
+
 <p>Second, since much of the work is on open research problems, it’s
 very difficult to judge how long something “should” take, so deadlines
 in assigning tasks is relatively uncommon; updates tend to sound like
 “here’s what I managed to get done this week,” and it is what it is.</p>
+
 
 <p>Third, due to the open-endedness, the trainee/mentor relationship,
 and modelling the extreme independence of senior academics, there
@@ -54,14 +60,17 @@ comes across as very heavy handed; the final work output can be
 ruthlessly assessed, but path to get there, the work process, is
 somewhat off-limits.</p>
 
+
 <p>Fourth, it’s common - maybe even the norm - for projects to be
 tackled with others outside of not only the team, but in different
 institutions entirely.</p>
+
 
 <p>Finally, the independence of researchers, the dynamic nature of
 research, and the fact that so many coworkers are elsewhere mean
 many working relationships are comparatively
 short-lived.</p>
+
 
 <p>So imagine that you are a postdoc - the most senior trainee - in a
 computational lab, routinely working in multi-institutional
@@ -74,6 +83,7 @@ you’ll be on the job market next year and you learned at a
 conference that a competitor’s lab is looking at some of the same
 questions.</p>
 
+
 <p>But your “project team” are peers or even academics
 more senior than you, and many are outside your institution entirely;
 getting them to do anything is a matter of persuasion.  Your local,
@@ -84,7 +94,9 @@ You want everyone to be invested, contributing, and growing their
 skills, and you don’t have time to direct people in how to do
 their work even if you were so inclined. And the clock is ticking.</p>
 
+
 <p>What kind of skills are you developing as you’re thrust into this situation?</p>
+
 
 <hr />
 
@@ -98,7 +110,9 @@ identified <a href="https://www.inc.com/marcel-schwantes/the-8-biggest-things-th
 teams</a>,
 and 3 pitfalls that managers in less successful teams fell into.</p>
 
+
 <p>Those characteristics of good managers, in decreasing order of importance:</p>
+
 
 <ol>
   <li>They’re good coaches.</li>
@@ -113,6 +127,7 @@ and 3 pitfalls that managers in less successful teams fell into.</p>
 
 <p>How will our postdoc rate against those criteria?  Well:</p>
 
+
 <ol>
   <li>They are going to be very concerned with skills development in their direct reports, encouraging them on to bigger and better things — so the postdoc learns to be a good coach;</li>
   <li>They certainly won’t micromanage — they’ll let team members decide how to approach their work;</li>
@@ -126,9 +141,11 @@ and 3 pitfalls that managers in less successful teams fell into.</p>
 
 <p>That’s just about a clean sweep!</p>
 
+
 <p>So I claim that the sort of training that I’ve seen people get on projects in
 computational (or observational or theoretical) science collaborations equips
 people with the advanced skills to become great managers.</p>
+
 
 <p>But there’s a downside.  The very hands-off approach to management
 (indeed, the refusal to countenance that “management” is even an
@@ -136,6 +153,7 @@ appropriate thing for scientists to stoop to) means that some of
 the more basic, fundamental, skills are lacking.  The same early
 work at Google pointed out key shortcomings of their less successful
 managers:</p>
+
 
 <ol>
   <li>Have trouble making a transition to the team.</li>
@@ -149,6 +167,7 @@ management position, but scientists are more or less taught that
 management <em>shouldn’t</em> be done; “we’re not that sort of people”.
 So:</p>
 
+
 <ol>
   <li>Making the transition to being the manager of the team is going to be doubly difficult for our postdoc — both in internalizing their role as a manager, and in putting the time in to develop really solid working relationships with the team members.</li>
   <li>Performance communications - giving people feedback (positive and negative) on their work often and regularly, rather than waiting weeks or months for some big sub-project to be done and then assessing the finished project — is going to be completely foreign, if not anathema, to them.</li>
@@ -160,14 +179,17 @@ place for scientist trainees to excel at management outside of the
 academy, the basic skills — or even models of what the basic skills
 would look like — are often going to be lacking.</p>
 
+
 <p>But those basic skills are the easiest to address!  Anyone can learn
 them, and someone who’s spent a good chunk of their career in the
 sciences <em>certainly</em> can.</p>
+
 
 <p>So many computational scientists do end up becoming good —
 and so quickly become great — managers successfully on their
 own, but it can take a lot of trial and error, and be stressful for
 all involved.  (My own transition towards becoming good has been….  uneven.)</p>
+
 
 <p>I don’t think that transition <em>has</em> to be so difficult; today there are 
 some fantastic resources out
@@ -187,6 +209,7 @@ resulting training materials at
 <a href="https://rework.withgoogle.com">rework.withgoogle.com</a> are well
 worth reading.</p>
 
+
 <p>Scientists learn a lot of transferrable skills in their training,
 and the world needs more of their input in teams and projects
 across all sectors.  There’s a stereotype about scientists being
@@ -198,13 +221,16 @@ projects or teams outside of academia, there are resources out there now to
 help them succeed.  If there are some that have especially helped
 you, please do share them with me and I’ll list them here.</p>
 
+
 <div class="footnotes">
   <ol>
     <li id="fn:1">
       <p>Which, more visibly now than ever before, cannot be taken as a given. <a class="reversefootnote" href="https://www.dursi.ca/feed.xml#fnref:1">&#8617;</a></p>
+
     </li>
     <li id="fn:2">
       <p>Note that at Google, technical skills are <em>dead last</em> as a skill for managers; but that largely results from Google having such a high technical bar for hiring. <a class="reversefootnote" href="https://www.dursi.ca/feed.xml#fnref:2">&#8617;</a></p>
+
     </li>
   </ol>
 </div>

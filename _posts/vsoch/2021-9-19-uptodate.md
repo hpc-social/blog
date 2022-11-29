@@ -8,6 +8,7 @@ category: vsoch
 date: '2021-09-19 09:30:00'
 layout: post
 original_url: https://vsoch.github.io/2021/uptodate/
+slug: uptodate
 title: Uptodate
 ---
 
@@ -20,15 +21,19 @@ library that can also perform specific kinds of updates, but I wanted more of a 
 Docker, and to have total control so I could go wild and crazy with writing Go code
 without worrying about forcing it on the owner, <a href="https://github.com/alecbcs" target="_blank">alecbcs</a>, to merge my wild ideas.</p>
 
+
 <p><br /></p>
+
 
 <div class="padding:20px">
 <img src="https://vsoch.github.io/uptodate/assets/img/uptodate.png" />
 </div>
 
+
 <h2 id="uptodate">Uptodate</h2>
 
 <p>Uptodate is a command line tool in Go and GitHub action that makes it easy to:</p>
+
 
 <ol class="custom-counter">
   <li> Update FROM statements in Dockerfile to have the latest shas</li>
@@ -49,6 +54,7 @@ a yaml configuration file with our preferences for versions to be added, and
 other metadata. You should check out the <a href="https://vsoch.github.io/uptodate/docs/#/user-guide/user-guide" target="_blank">user guide</a>
 for detailed usage, or read about <a href="https://vsoch.github.io/uptodate/docs/#/user-guide/github-action" target="_blank">the GitHub action</a></p>
 
+
 <h2 id="how-does-it-work">How does it work?</h2>
 
 <p>I’ll give a brief overview of a few of the commands and then a quick example GitHub workflow,
@@ -56,36 +62,50 @@ and I’ll recommend that you read the documentation for the latest updates on u
 The examples below assumed that you’ve <a href="https://vsoch.github.io/uptodate/docs/#/user-guide/user-guide?id=install" target="_blank">installed</a> uptodate 
 and have the binary “uptodate” in your path.</p>
 
+
 <h3 id="dockerfile">Dockerfile</h3>
 
 <p>If you have one or more Dockerfile in your repository you can run uptodate to update digests.
 For example:</p>
 
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ uptodate dockerfile .
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>will find Dockerfile in the present working directory and subfolders and update.
 For digests, you might see that:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ubuntu:20.04</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>is updated to</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ubuntu:18.04@sha256:9bc830af2bef73276515a29aa896eedfa7bdf4bdbc5c1063b4c457a4bbb8cd79</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>Note in the above we still have the digest and the tag, so subsequent updates can
 further update the sha by looking up the container based on the tag.
 And we can also update build arguments that match a particular format! This one,
 specifically:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_&lt;build-arg-type&gt;_&lt;build-arg-value&gt;=&lt;default&gt;</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>The above flags the build argument for uptodate to look at using the prefix of the library
 name, and then the next string after the underscore is the kind of update, followed by
 specific metadata for that updater, and of course the value! A few examples are provided below.</p>
+
 
 <h4 id="spack-build-arguments">Spack Build Arguments</h4>
 
@@ -94,55 +114,81 @@ huge at the lab where I work. So naturally, it made sense for uptodate to be abl
 look up the latest spack versions for some package.
 To create an argument that matched to a spack package (and its version) you might see:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_spack_ace=6.5.6</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>After the updater runs, if it finds a new version 6.5.12, the line will read:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_spack_ace=6.5.12</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>This works by using the static API that is deployed alongside the <a href="https://spack.github.io/packages/" target="_blank">Spack Packages</a>
 repository that I designed earlier this year. So the updater will get the latest versions
 as known within the last 24 hours.</p>
+
 
 <h4 id="github-release-build-argument">GitHub Release Build Argument</h4>
 
 <p>If we want an updated version from a GitHub release (let’s say the spack software itself)
 we might see this:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_github_release_spack__spack=v0.16.1</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>The above will look for new releases from spack on GitHub and update as follows:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_github_release_spack__spack=v0.16.2</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <h4 id="github-commit-build-argument">GitHub Commit Build Argument</h4>
 
 <p>Similarity, if we want more “bleeding edge” changes we can ask for a commit
 from a specific branch, following this pattern:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_github_commit_&lt;org&gt;__&lt;name&gt;__&lt;branch&gt;=&lt;release-tag&gt;</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>Here is an example of asking for updates for the develop branch.</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_github_commit_spack__spack__develop=NA</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>which wouldn’t care about the first “commit” NA as it would update to:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ARG</span><span class="s"> uptodate_github_commit_spack__spack__develop=be8e52fbbec8106150680fc628dc72e69e5a20be</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>And then to use it in your Dockerfile, you might pop into an environment variable:</p>
 
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ENV</span><span class="s"> spack_commit=${uptodate_github_commit_spack__spack__develop}</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>See the <a href="https://vsoch.github.io/uptodate/docs/#/user-guide/user-guide?id=dockerfile" target="_blank">docs</a> for more detailed usage and an example for the Dockerfile updater.</p>
+
 
 <h3 id="docker-build">Docker Build</h3>
 
@@ -150,6 +196,7 @@ from a specific branch, following this pattern:</p>
 This updated will read a config file, an uptodate.yaml, and then follow instructions
 for version regular expressoins and different kinds of builds args to generate a matrix of
 builds (intended for GitHub actions). For example, let’s say that we start with this configuration file:</p>
+
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="na">dockerbuild</span><span class="pi">:</span>
@@ -184,7 +231,9 @@ builds (intended for GitHub actions). For example, let’s say that we start wit
       <span class="na">skips</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s2">"</span><span class="s">17.04"</span>
       <span class="pi">-</span> <span class="s2">"</span><span class="s">19.04"</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>You’ll see the primary section of interest is under “dockerbuild” and under this
 we have three build args for a manually defined set of versions, a version from
@@ -192,26 +241,36 @@ a spack package, and a container. You could run this in a repository root
 to look for these config files (and a Dockerfile that they render with in
 the same directory or below it) to generate a build matrix.</p>
 
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uptodate dockerbuild 
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>Or to only include changed uptodate.yaml files:</p>
 
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uptodate dockerbuild <span class="nt">--changes</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>If you provide a registry URI that the containers build to, we can actually check
 these containers to look at current build args (that are saved as labels and then
 viewable in the image config by uptodate) to determine if an update is needed.</p>
 
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uptodate dockerbuild <span class="nt">--registry</span> ghcr.io/rse-radiuss
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>the container. I think this is one of the neatest features - it was just added
 in evenings this last week! Check out an
 <a href="https://crane.ggcr.dev/config/ghcr.io/rse-radiuss/ubuntu:20.04" target="_blank">example image config</a> that has these labels!
 This registry URI will also be included in the output to make it easy to build
 In a GitHub action, it might be used like this:</p>
+
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
   <span class="na">generate</span><span class="pi">:</span>
@@ -275,11 +334,14 @@ In a GitHub action, it might be used like this:</p>
         <span class="s">basedir=$(dirname $filename)</span>
         <span class="s">cd $basedir</span>
         <span class="s">${prefix} -t ${container} .</span>
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>Of course you’d want to login to a registry, and then also possibly calculate metrics for
 the container, so consider this a very simple example.
 The build matrix that is being passed between those steps has entries like this:</p>
+
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -296,12 +358,15 @@ The build matrix that is being passed between those steps has entries like this:
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div></div>
+</span></code></pre></div>
+</div>
+
 
 <h3 id="git-updater">Git Updater</h3>
 
 <p>I also like this updater because it easily generates for you a matrix of files
 that are changed, according to git. Running locally it looks like this:</p>
+
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./uptodate git /path/to/repo
               _            _       _       
@@ -314,9 +379,12 @@ that are changed, according to git. Running locally it looks like this:</p>
 
   ⭐️ Changed Files ⭐️
     .github/workflows/build-matrices.yaml: Modify
-</span></code></pre></div></div>
+</span></code></pre></div>
+</div>
+
 
 <p>And would generate a matrix for a GitHub action too:</p>
+
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -344,12 +412,17 @@ that are changed, according to git. Running locally it looks like this:</p>
     </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tests/ubuntu/clang/Dockerfile"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div></div>
+</span></code></pre></div>
+</div>
+
 
 <p>And of course you can change the default “main” to another branch:</p>
 
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./uptodate git /path/to/repo <span class="nt">--branch</span> master
-</code></pre></div></div>
+</code></pre></div>
+</div>
+
 
 <p>and that also pipes into a GitHub action. I don’t want to redundantly reproduce the docs,
 so if you are interested you can read more
@@ -357,6 +430,7 @@ at the <a href="https://vsoch.github.io/uptodate/docs/#/user-guide/user-guide" t
 or <a href="https://vsoch.github.io/uptodate/docs/#/user-guide/github-action" target="_blank">GitHub action pages</a>.
 Mind you that the library is heavily under develop, so if you have a request for a new updater or want to report
 a a bug, please <a href="https://github.com/vsoch/uptodate/issues" target="_blank">let me know!</a>.</p>
+
 
 <h2 id="overview">Overview</h2>
 

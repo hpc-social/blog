@@ -8,6 +8,7 @@ category: dursi
 date: '2015-05-19 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/io-performance.html
+slug: on-random-vs-streaming-i-o-performance-or-seek-and-you-shall-find-eventually-
 title: On Random vs. Streaming I/O Performance; Or seek(), and You Shall Find ---
   Eventually.
 ---

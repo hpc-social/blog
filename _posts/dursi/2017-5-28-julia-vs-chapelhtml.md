@@ -8,6 +8,7 @@ category: dursi
 date: '2017-05-28 01:00:00'
 layout: post
 original_url: http://www.dursi.ca/post/julia-vs-chapel.html
+slug: should-i-use-chapel-or-julia-for-my-next-project-
 title: Should I use Chapel or Julia for my next project?
 ---
 
@@ -19,6 +20,7 @@ the two.  If you are starting a new scientific computing project
 and are willing to try something new, which should you choose?  What
 are their strengths and weaknesses, and how do they compare?</p>
 
+
 <p>Here we walk through a comparison, focusing on distributed-memory
 parallelism of the sort one would want for HPC-style simulation.
 Both have strengths in largely disjoint areas.  If you want matlib-like
@@ -29,10 +31,12 @@ handily.  Both languages and environments have clear untapped
 potential and room to grow; we’ll talk about future prospects of
 the two languages at the end.</p>
 
+
 <p><strong>Update</strong>: I’ve updated the timings - I hadn’t been using <code>@inbounds</code>
 in the Julia code, and I had misconfigured my Chapel install so
 that the compiles weren’t optimized; this makes a huge difference on
 the 2d advection problem.  All timings now are on an AWS c4.8x instance.</p>
+
 
 <ul id="markdown-toc">
   <li><a href="https://www.dursi.ca/feed.xml#a-quick-overview-of-the-two-languages" id="markdown-toc-a-quick-overview-of-the-two-languages">A quick overview of the two languages</a>    <ul>
@@ -89,11 +93,13 @@ interactive, “scripting language”-type high level numerical programming
 language that gives performance less than but competitive with
 C or Fortran.</p>
 
+
 <p>The project sees the language as more or less a matlab-killer, and
 so focusses on that sort of interface; interactive, through a REPL
 or Jupyter notebook (both available to try <a href="https://juliabox.com">online</a>),
 with integrated plotting; also, indexing begins at one, as God
 intended.<sup id="fnref:1"><a class="footnote" href="https://www.dursi.ca/feed.xml#fn:1" rel="footnote">1</a></sup></p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -148,6 +154,7 @@ combined with the fact that much of Julia itself is written in Julia,
 puts user-written code on an equal footing with much “official”
 julia code.</p>
 
+
 <p>The second way Julia blurs the line between user and developer is
 the <a href="https://docs.julialang.org/en/stable/manual/packages/">package system</a>
 which uses git and GitHub; this means that once you’ve installed
@@ -157,10 +164,12 @@ it to your own needs; and it’s similarly very easy to
 contribute a package if you’re already using GitHub to develop the
 package.</p>
 
+
 <p>Julia has support for remote function execution (“out of the box”
 using SSH + TCP/IP, but other transports are available through
 packages), and distributed rectangular arrays; thread support
 is still experimental, as is shared-memory on-node arrays.</p>
+
 
 <h3 id="chapel">Chapel</h3>
 
@@ -173,6 +182,7 @@ two steps further however than languages like <a href="https://www.dursi.ca/post
 Fortran</a>,
 <a href="http://upc.lbl.gov">UPC</a>, or <a href="http://x10-lang.org">X10</a>.</p>
 
+
 <p>The first extension is to define all large data structures (arrays,
 associative arrays, graphs) as being defined over <em>domains</em>, and
 then definining a library of <em>domain maps</em> for distributing these
@@ -184,6 +194,7 @@ sparse) rectangular arrays, as below, although there support for
 associative arrays (dictionaries) and unstructured meshes/graphs
 as well.</p>
 
+
 <p>The second is to couple those domain maps with parallel iterators
 over the domains, meaning that one can loop over the data in parallel
 in one loop (think OpenMP) with a “global view” rather than expressing
@@ -194,8 +205,10 @@ computing; it means that tweaking the layouts (or the dimensionality of
 the program, or…) doesn’t require rewriting the internals of the
 computation.</p>
 
+
 <p>The distributions and layouts are written in Chapel, so that users can
 contribute new domain maps to the project.</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -243,6 +256,7 @@ such as remote function execution, fork/join task parallelism — so
 that one can write a MPI-like SIMD program by explicity launching 
 a function on each core:</p>
 
+
 <figure class="highlight"><pre><code class="language-chapel">coforall loc in Locales do 
     on loc do
         coforall tid in 0..#here.maxTaskPar do
@@ -262,11 +276,13 @@ is reflected in the smaller number of contributed packages, although
 an upcoming package manager will likely lower the bar to future
 contributions.</p>
 
+
 <p>Chapel also lacks a REPL, which makes experimentation and testing
 somewhat harder — there’s no equivalent of <a href="https://juliabox.com">JuliaBox</a>
 where one can play with the language at a console or in a notebook.
 There is an effort in that direction now which may be made easier
 by ongoing work on the underlying compiler architecture.</p>
+
 
 <h2 id="similarities-and-differences">Similarities and differences</h2>
 
@@ -275,6 +291,7 @@ by ongoing work on the underlying compiler architecture.</p>
 <p>Both <a href="https://docs.julialang.org/en/stable">Julia</a> and <a href="http://chapel.cray.com/docs/latest/">Chapel</a>
 have good documentation, and the basic modules or capabilities one would expect from languages 
 aimed at technical computing:</p>
+
 
 <ul>
   <li>Complex numbers</li>
@@ -298,10 +315,12 @@ linear solves, say, a sensible method is chosen automatically; the
 consise syntax and “do the right thing” approach are particularly
 helpful for interactive use<sup id="fnref:2"><a class="footnote" href="https://www.dursi.ca/feed.xml#fn:2" rel="footnote">2</a></sup>, which is a primary use-case of Julia.</p>
 
+
 <p>On profiling, the Julia support is primariy for serial profiling
 and text based; Chapel has a very nice tool called
 <a href="http://chapel.cray.com/docs/1.14/tools/chplvis/chplvis.html">chplvis</a> 
 for visualizing parallel performance.</p>
+
 
 <h3 id="other-packages">Other packages</h3>
 
@@ -323,11 +342,13 @@ having a more curated view of the package listings easily available
 so that these high-quality tools were more readily visible to
 new users.</p>
 
+
 <p>On the other hand, there are almost no packages available for Chapel
 outside of the main project.  There are efforts to develop a package
 manager inspired by cargo (Rust) and glide (Go); this would be an
 important and needed development, almost certainly necessary
 to grow the Chapel community.</p>
+
 
 <h3 id="language-features">Language features</h3>
 
@@ -342,6 +363,7 @@ On the other hand, Chapel’s compile time, which is still quite long
 even compared to other compilers, makes the development cycle much
 slower than it would be with Julia or Python.</p>
 
+
 <p>Beyond that, Julia and Chapel are both quite new and have functionality
 one might expect in a modern language: first class functions, lambda
 functions, comprehensions, keyword/optional parameters, type
@@ -349,6 +371,7 @@ inference, generics, reflection, iterators, ranges, coroutines and
 green threads, futures, and JuliaDoc/chpldoc python packages for
 generating online documentation from source code and embedded
 comments.</p>
+
 
 <p>More minor but something that quickly comes up: there’s difference
 in command-line argument handling which reflects the use
@@ -361,6 +384,7 @@ one can define a constant (<code>const n = 10;</code>) and make it settable
 on the command line by prefixing the <code>const</code> with <code>config</code> and running
 the program with <code>--n 20</code>.</p>
 
+
 <h2 id="simple-computational-tasks">Simple computational tasks</h2>
 
 <p>Here we take a look at a couple common single-node scientific
@@ -368,10 +392,12 @@ computation primitives in each framework (with Python for comparison)
 to compare the language features.  Full code for the examples are
 available <a href="http://www.github.com/ljdursi/julia_v_chapel">on GitHub</a>.</p>
 
+
 <h3 id="linear-algebra">Linear algebra</h3>
 
 <p>For linear algebra operations, Julia’s matlab lineage and
 interactive really shine:</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -463,10 +489,12 @@ compiled program that will be used repeatedly, the clarity of
 specifying a specific solver (which Julia also allows) is probably
 advantageous.</p>
 
+
 <h3 id="stencil-calculation">Stencil calculation</h3>
 
 <p>Below we take a look at a simple 1-d explicit heat diffusion equation,
 requiring a small stencil, and see how it compares across the languges.</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -558,6 +586,7 @@ Compile times are included for the Julia and Python JITs (naively
 calculated as total run time minus the final time spent running the
 calculation)</p>
 
+
 <table style="border: 1px solid black; margin: 0 auto; border-collapse: collapse;">
 <thead>
 <th>time</th> <th>Julia</th> <th>Chapel</th> <th>Python + Numpy + Numba</th><th>Python + Numpy</th>
@@ -570,6 +599,7 @@ calculation)</p>
 
 <p>Julia wins this test, edging out Chapel by 16%; Python with numba is 
 surprisingly (to me) fast, coming within a factor of two.</p>
+
 
 <h3 id="kmer-counting">Kmer counting</h3>
 
@@ -585,6 +615,7 @@ two neighbouring kmers overlap in k-1 characters – but
 but here we’re just interested in the dictionary/associative array
 handling and simple string slicing.  Here we’re using pure Python for
 the Python implementation:</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -652,6 +683,7 @@ of keys.  All perform quite well, particularly Julia; on a 4.5Mb
 FASTA file for the reference genome of a strain of E. coli,
 we get timings as below</p>
 
+
 <table style="border: 1px solid black; margin: 0 auto; border-collapse: collapse;">
 <thead>
 <th>time</th> <th>Julia</th> <th>Chapel</th> <th>Python</th>
@@ -666,11 +698,13 @@ we get timings as below</p>
 actually a given, even for a compiled language, as those features
 are heavily optimized in Python implementations.</p>
 
+
 <p>(One caveat about the timings; pairwise string concatenation in Julia is <em>slow</em>; 
 in reading in the file, concatenating the sequence data in Julia
 as it was done in the other languages resulted in a runtime of 54 seconds!
 Instead, all sequence fragments were read in and the result put together
 at once with <code>join()</code>.)</p>
+
 
 <h2 id="parallel-primitives">Parallel primitives</h2>
 
@@ -678,10 +712,12 @@ at once with <code>join()</code>.)</p>
 particular interest to us; here we walk through the parallel primitives 
 available to the languages and compare them.</p>
 
+
 <h3 id="remote-function-execution">Remote function execution</h3>
 
 <p>Both Julia and Chapel make it easy to explicitly launch tasks on other 
 processors:</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -729,11 +765,13 @@ Within each locale, Chapel will by default run across as many threads as
 sensible (as determined by the extremely useful
 <a href="https://www.open-mpi.org/projects/hwloc/">hwloc</a> library).</p>
 
+
 <p>As seen above, Chapel distinuishes between starting up local and 
 remote tasks; this is intrinsic to its “multiresolution” approach
 to parallelism, so that it can take advantage of within-NUMA-node,
 across-NUMA-node, and across-the-network parallism in different
 ways.</p>
+
 
 <h3 id="futures-atomics-and-synchronization">Futures, atomics and synchronization</h3>
 
@@ -744,11 +782,14 @@ tested on, waited on or fetched from, with a fetch generally
 blocking until the future has been “filled”.  Futures can only
 be filled once.</p>
 
+
 <p>In fact, in the above, Julia’s <code>remotecall_fetch</code> performs
 the remote call and then fetches, mimicing a blocking call; the
 <code>begin</code> blocks in Chapel do not block.</p>
 
+
 <p>Futures work the following way in Julia and Chapel:</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -778,10 +819,12 @@ the remote call and then fetches, mimicing a blocking call; the
 variables, and <code>sync</code> blocks for joining tasks launched
 within them before proceeding.</p>
 
+
 <h3 id="parallel-loops-reductions-and-maps">Parallel loops, reductions, and maps</h3>
 
 <p>Both languages make parallel looping, and reduction
 over those parallel loops straightforward:</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -828,6 +871,7 @@ used on-node if multiple cores are available.  Threading is an
 <a href="https://docs.julialang.org/en/stable/manual/parallel-computing/#multi-threading-experimental">experimental feature</a> 
 in Julia, not quite ready to use for production work yet.</p>
 
+
 <h3 id="distributed-data">Distributed data</h3>
 
 <p>Julia has a
@@ -836,12 +880,14 @@ package which are sort of half-PGAS arrays: they can be read from
 at any index, but only the local part can be written to.  Chapel
 is built around its PGAS distributions and iterators atop them.</p>
 
+
 <p>Julia’s DistributedArrays are known not to perform particularly well,
 and have been taken out of the base language since 0.4.  They have
 been worked on since in preparation for the 0.6 release; however,
 the main branch does not appear to be working with 0.6-rc2, or
 at least I couldn’t get it working.  This section then mostly covers the
 previous version of DistributedArrays.</p>
+
 
 <p>Accessing remote values over DistributedArrays is quite slow.  As
 such, DistributedArrays performs quite badly for the sort of thing
@@ -860,9 +906,11 @@ that is handy, it’s not clear what one would use the distributed
 array for rather than just having each task have its own local
 array.</p>
 
+
 <p>However, for largely local computation (such as coordinator-worker type
 operations), the distributed arrays work well.  Here
 we have a STREAM calculation:</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -924,6 +972,7 @@ we have a STREAM calculation:</p>
 channels, like <code>go</code>, which are something like a cross between queues and futures; they can keep being written to from multiple
 tasks:</p>
 
+
 <figure class="highlight"><pre><code class="language-julia"><span class="nd">@everywhere</span> <span class="k">function</span><span class="nf"> putmsg</span><span class="x">(</span><span class="n">pid</span><span class="x">)</span>
     <span class="n">mypid</span> <span class="o">=</span> <span class="n">myid</span><span class="x">()</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="s">"Hi from </span><span class="si">$</span><span class="s">mypid"</span>
@@ -945,6 +994,7 @@ tasks:</p>
 is done implicitly through remote data access or remote code
 invocation.</p>
 
+
 <h2 id="a-2d-advection-problem">A 2d advection problem</h2>
 
 <p>Having seen the parallel computing tools available in each language,
@@ -955,10 +1005,13 @@ upwinded advection.  A Gaussian blob is advected by a constant
 velocity field; shown below is the initial condition, the blob moved
 slightly after a few timesteps, and the difference.</p>
 
+
 <p><img alt="2D Advection Plot" src="https://www.dursi.ca/assets/julia_v_chapel/twod_advection.png" /></p>
+
 
 <p>We do this in Julia using DistributedArrays, in Chapel using Stencil-distributed
 arrays, and in Python using Dask arrays.  The relevant code snippets follow below.</p>
+
 
 <table style="border: 1px solid black;">
 <tbody>
@@ -1093,6 +1146,7 @@ arrays, and in Python using Dask arrays.  The relevant code snippets follow belo
 require a lot of bookkeeping to use; both Chapel and Dask are much
 more straightforward.</p>
 
+
 <p>The one-node timings here aren’t even close.  By forcing Chapel to run
 on each core separately, the performance isn’t that different than Julia.
 But when informed that there is one “locale” and letting
@@ -1100,6 +1154,7 @@ it sort out the details, Chapel benefits dramatically from being
 able to use multiple levels of parallelism, and with no extra work;
 on a single 8-processor node, running a 1000x1000 grid with all cores
 takes the following amount of time:</p>
+
 
 <table style="border: 1px solid black; margin: 0 auto; border-collapse: collapse;">
 <thead>
@@ -1121,10 +1176,12 @@ grid to distribute over 8 processes, so communications
 overhead dominates; Julia seems to suffer that overhead even
 with just one process.</p>
 
+
 <p>Another interesting thing here is that Python+Numpy+Dask (numba didn’t
 help here) is competitive even with Chapel <em>if</em> you force Chapel
 to not use threading on-node, and either made it much easier to
 write the program than Julia.</p>
+
 
 <h2 id="strengths-weaknesses-and-future-prospects">Strengths, Weaknesses, and Future Prospects</h2>
 
@@ -1133,6 +1190,7 @@ fall within their current bailiwicks, at least for advanced users.
 They are strong projects and interesting technologies.  In addition,
 both have significant potential and “room to grow” beyond their
 current capabilities; but both face challenges as well.</p>
+
 
 <h3 id="julia-1">Julia</h3>
 
@@ -1151,6 +1209,7 @@ experiments and looking at the results.  While large-scale computing
 Julia’s right now, the basic pieces are there and it certainly could
 be in the future.</p>
 
+
 <p>Many of Julia’s disadvantages are inevitable flip sides of some of
 those advantages.  Because of the dynamic nature of
 the language and its reliance on JIT and type inference, it is
@@ -1164,6 +1223,7 @@ unexpected memory pressure throughout execution.  Similarly, the
 fact that it’s so easy to contribute a package to the Julia package
 ecosystem means that the package listing is littered with abandoned
 and broken packages.</p>
+
 
 <p>But some of the disadvantages seem more self-inflicted.  While the
 language has been public and actively developed for <a href="https://julialang.org/blog/2012/02/why-we-created-julia">over five
@@ -1190,8 +1250,10 @@ see how it worked on the advection problem above, for instance, but Julia 0.6
 breaks the ParallelAccelerator, and Julia 0.6 is needed for the <code>@simd</code>
 feature with DistributedArrays.</p>
 
+
 <p>So Julia living up to its potential is not a given.  If I were on
 Julia’s project team, things that would concern me would include:</p>
+
 
 <dl>
   <dt><strong>Peak Julia?</strong></dt>
@@ -1273,9 +1335,11 @@ to have no more significant breaking changes until v2.0 would help
 developers and users, and onboarding more people into core internals
 development would help the underlying technology.</p>
 
+
 <h3 id="chapel-1">Chapel</h3>
 
 <p>If I were on the Chapel team, my concerns would be different:</p>
+
 
 <dl>
   <dt><strong>Adoption</strong></dt>
@@ -1334,10 +1398,12 @@ easy to write and can perform quite well; the goal then is to expand
 the space of those programs by leveraging early adopters into writing
 packages.</p>
 
+
 <h2 id="my-conclusions">My conclusions</h2>
 
 <p>This is entitled “<em>My</em> conclusions” because my takeaways might reasonably be
 different than yours.  Here’s my take.</p>
+
 
 <h3 id="both-projects-are-strong-and-useable-right-now-at-different-things">Both projects are strong and useable, right now, at different things</h3>
 
@@ -1349,12 +1415,14 @@ coordinator-worker computations (or patterns that were more about
 concurrency than parallelism).  Julia also seems like a good choice for
 prototyping a DSL for specific scientific problems.</p>
 
+
 <p>Neither project is really a competitor for the other; for Julia the
 nearest competitor is likely the Python ecosystem, and for Chapel
 it would be status quo (X + MPI + OpenMP/OpenACC) or that people
 might try investigating a research project or start playing with
 Spark (which is good at a lot of things, but not really scientific
 simulation work.)</p>
+
 
 <p>Scientific computing communities are very wary of new technologies
 (it took 10+ years for Python to start getting any traction), with
@@ -1372,6 +1440,7 @@ effort to catch your code up with the current version.  In either
 case, there are clear paths to follow (porting or upgrading) to
 keep your code working.</p>
 
+
 <h3 id="both-projects-have-as-yet-untapped-potential">Both projects have as-yet untapped potential</h3>
 
 <p>What’s exciting about both of these projects is how far they could
@@ -1383,6 +1452,7 @@ well-supported domain maps) and as performance continues to improve,
 it could make large-scale scientific computation accessible to a
 much broader community of scientists (and thus science).</p>
 
+
 <p>Julia has the same potential to broaden computational science on
 the desktop, and (at least in the near term) for computations
 requiring only minimal communication like coordinator-worker computations.
@@ -1390,14 +1460,17 @@ But Python is already doing this, and making suprising inroads on
 the distributed-memory computing front, and there will be something of a
 race to see which gets there first.</p>
 
+
 <hr />
 <div class="footnotes">
   <ol>
     <li id="fn:1">
       <p>Yes, I said it.  Offsets into buffers can begin at 0, sure, but indices into mathematical objects begin at 1; anything else is madness.  Also: oxford comma, two spaces after a period, and vi are all the correct answers to their respective questions. <a class="reversefootnote" href="https://www.dursi.ca/feed.xml#fnref:1">&#8617;</a></p>
+
     </li>
     <li id="fn:2">
       <p>“Do the right thing” isn’t free, however; as with matlab or numpy, when combining objects of different shapes or sizes, the “right thing” can be a bit suprising unless one is very familiar with the tool’s <a href="https://docs.julialang.org/en/stable/manual/arrays/?highlight=broadcasting#broadcasting">broadcasting rules</a> <a class="reversefootnote" href="https://www.dursi.ca/feed.xml#fnref:2">&#8617;</a></p>
+
     </li>
   </ol>
 </div>
