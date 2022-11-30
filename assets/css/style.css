@@ -22,7 +22,7 @@
   --body-bg: #10171e;
   --primary-font-color: #bfbfbf;
   --border-color: #6a6a6a;
-}
+}, default: "dark"
 
 .author-badge {
   background-color: #e50039;
