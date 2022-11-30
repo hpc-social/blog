@@ -27,3 +27,8 @@
   feed: https://thinking.ajdecon.org/category/computing/feed/
   url: https://thinking.ajdecon.org/
   image: https://www.ajdecon.org/pubfiles/ajdecon-covatar.jpg
+- name: "Campus Research Computing Consortium (CaRCC)"
+  tag: carcc
+  url: https://carcc.org/
+  feed: https://carcc.org/feed/
+  image: https://carcc.org/wp-content/uploads/2019/09/logo-png-3.png
