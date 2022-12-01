@@ -30,5 +30,5 @@
 - name: "Campus Research Computing Consortium (CaRCC)"
   tag: carcc
   url: https://carcc.org/
-  feed: https://carcc.org/feed/
+  feed: https://carcc.org/tag/hpc-social/feed/
   image: https://carcc.org/wp-content/uploads/2019/09/logo-png-3.png
