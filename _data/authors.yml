@@ -32,3 +32,8 @@
   url: https://carcc.org/
   feed: https://carcc.org/tag/hpc-social/feed/
   image: https://carcc.org/wp-content/uploads/2019/09/logo-png-3.png
+- name: "oneAPI Community Blog"
+  tag: oneapi
+  url: https://dev.to/oneapi/
+  feed: https://dev.to/feed/oneapi/
+  image: https://simplecore.intel.com/oneapi-io/wp-content/uploads/sites/98/oneAPI-rgb-3000@2x.png
