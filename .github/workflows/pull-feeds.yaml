@@ -3,7 +3,7 @@ name: Update Site
 on:
   workflow_dispatch:
   schedule:
-  - cron: 30 1 * * *
+  - cron: 30 2 * * *
 
 jobs:
   auto-scan:
@@ -12,16 +12,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Create conda environment
-      run: conda create --quiet -c conda-forge --name hpc requests
-
-    - name: Update posts
+    - name: Pull Feeds
       run: |
-        echo "Looking for new posts..."
-        export PATH="/usr/share/miniconda/bin:$PATH"
-        source activate hpc
-        pip install -r .github/requirements.txt
-        python scripts/generate_posts.py ./_data/authors.yml --output ./_posts/
+        cd _includes
+        wget https://hpc.social/personal-blog/feed.xml
+        wget https://hpc.social/personal-blog/atom.xml
+        wget https://hpc.social/personal-blog/feed.json        
 
     - uses: ruby/setup-ruby@v1
       with:

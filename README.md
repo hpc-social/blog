@@ -1,21 +1,39 @@
-# hpc.social Community Syndicated Blog
+# hpc.social Blogs
 
-![assets/images/blog.png](assets/images/blog.png)
+Welcome to the hpc.social blogs! This is a portal for our family of blogs:
 
-This is the repository for the [syndicated blog](https://hpc.social/projects/blog/) for the hpc.social community!
-Here you can add an rss/xml feed to share stories and experiences to be presented in the 
-[aggregated blogs feed](https://hpc.social/blog/). 
-This repository is based on the [US-RSE community blog](https://github.com/USRSE/blog), 
-which was also imagined, designed, and implemented by author [@vsoch](https://github.com/vsoch).
+ - [Community Blog](https://hpc.social/community-blog/) served from [this repository](https://github.com/hpc-social/community-blog)
+ - [Personal Blog](https://hpc.social/personal-blog/) served from [this repository](https://github.com/hpc-social/personal-blog)
+ 
+This central point serves to provide shared instructions for contributing to each, along with 
+how to decide which blog your feed is scoped to. 
+
+## Which blog should I add my feed to?
+
+This comes down to a simple question - are you writing from a personal blog about your work and ideas, or do you represent some kind of entity or project?
+In more detailed terms:
+
+- **The Personal blogs aggregator** is the "soul" of the HPC community - HPCers who are personally invested in the minutiae of the work they are doing, the projects they are working on with some content about their culture, life, and thoughts. 
+
+- **The Community content aggregator**: is content from people who represent projects, ecosystems, or governance boards that talk about specific community interested content around the work they represent. The content range from release notes, tricks and tips, discussion around tooling and infrastructure, and other things that are neutrally branded. Discussion of branded topics like CUDA, SYCL, and oneAPI are ok - discussions about hardware are ok. Product announcements are not ok especially.
+
+We generally try to be inclusive, and thus have created these two spaces to support different kinds of feeds!
+However, if moderators of the hpc.social community receive a complaint or themselves feel that a piece of content crosses the line between "Here's a cool thing we're doing" and "Here is a product we want to sell you" that feels like a breach of trust, you will be contacted first to have discussion about how to mediate the situation, and in the worst of cases that remediation is not possible, the blog or individual post may be removed.
+
+Once you choose a blog, move on to the next steps in the instructions below!
 
 ## How do I contribute my blog?
+
+Each blog mentioned above serves it's own set of feeds (e.g., if people only are interested in a subset
+of content) and a master aggregated feed (that hits both syndicated blogs) is served from here.
+Thus, you can add an rss/xml feed to share stories and experiences to be presented in either feed,
+and it will show up in the feed for the respective repository and the [aggregated blogs feed](https://hpc.social/blog/)
+here. Here is how to get started, for either of the above!
 
 1. Fork the repository, clone to your machine, and checkout a new branch.
 1. Add your entry to the [_data/authors.yml](_data/authors.yml) file
 1. Generate your set of posts (instructions below)
 1. Open a pull request to the main repository!
-
-## How does it work?
 
 ### 1. Add Metadata
 
@@ -91,7 +109,7 @@ Here is how to do it "for realsies":
 $ python scripts/generate_posts.py _data/authors.yml --output _posts/
 ```
 
-## Development
+## Blog Site Development
 
 To develop the site, clone the repository and then build with jekyll:
 
@@ -122,6 +140,14 @@ This is how the posts are generated in the continuous integration setup:
 ```bash
 python generate_posts.py ../_data/authors.yml --output ../_posts/
 ```
+
+## How is the feed generated here?
+
+We have plans to aggregate the feeds, and for now we are pulling the 
+personal blog feed (to ensure the current functionality with the previous
+blog site is consistent). If you would like to contribute automation
+to merge the two feeds, please open a pull request!
+
 
 ## 🎨️ Thank You! 🎨️
 
