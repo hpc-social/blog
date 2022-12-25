@@ -15,6 +15,7 @@ jobs:
     - name: Pull Feeds
       run: |
         cd _includes
+        rm -rf feed.xml atom.xml feed.json
         wget https://hpc.social/personal-blog/feed.xml
         wget https://hpc.social/personal-blog/atom.xml
         wget https://hpc.social/personal-blog/feed.json        
@@ -41,7 +42,7 @@ jobs:
         git status
         rm -rf _site
         rm -rf .jekyll-cache
-        git add ./_posts/*       
+        git add ./_includes/* 
         git status
         if git diff-index --quiet HEAD --; then
             printf "No changes\n"
