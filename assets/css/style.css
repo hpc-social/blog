@@ -244,8 +244,8 @@ pre{font-size: 14px; max-width: 90vw; overflow: auto;}
   background-color: var(--card-color);
   border-radius: 8px;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-  min-width: 430px;
-  max-width: 430px;
+  min-width: 400px;
+  max-width: 400px;
   flex: 1;
   min-height: 320px;  
 }
