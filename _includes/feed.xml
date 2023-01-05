@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2023-01-03T18:24:14-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Adam’s weekly (-ish) update, 2022-12-20</title><link href="https://hpc.social/personal-blog/2022/adam-s-weekly-ish-update-2022-12-20/" rel="alternate" type="text/html" title="Adam’s weekly (-ish) update, 2022-12-20" /><published>2022-12-20T18:14:52-07:00</published><updated>2022-12-20T18:14:52-07:00</updated><id>https://hpc.social/personal-blog/2022/adam-s-weekly-ish-update-2022-12-20</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/adam-s-weekly-ish-update-2022-12-20/">&lt;h2&gt;What&amp;#8217;s new&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2023-01-04T15:28:18-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Adam’s weekly (-ish) update, 2022-12-20</title><link href="https://hpc.social/personal-blog/2022/adam-s-weekly-ish-update-2022-12-20/" rel="alternate" type="text/html" title="Adam’s weekly (-ish) update, 2022-12-20" /><published>2022-12-20T18:14:52-07:00</published><updated>2022-12-20T18:14:52-07:00</updated><id>https://hpc.social/personal-blog/2022/adam-s-weekly-ish-update-2022-12-20</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/adam-s-weekly-ish-update-2022-12-20/">&lt;h2&gt;What&amp;#8217;s new&lt;/h2&gt;
 
 &lt;p&gt;The past few weeks have been on the intense side at work, so I completely lost track of the blog and haven&amp;#8217;t had a chance to write much in that time. However, I&amp;#8217;m now on a holiday break, and finally have time to sit down at a keyboard to write more than code and Slack messages.&lt;/p&gt;
 
@@ -50,7 +50,142 @@
 
 &lt;figure class=&quot;wp-block-image size-large is-resized&quot;&gt;&lt;img alt=&quot;A white calico cat and a gray tabby cat lounging on a large brown pet bed in front of a gas fireplace.&quot; class=&quot;wp-image-295&quot; height=&quot;512&quot; src=&quot;https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_7207-768x1024.jpeg&quot; width=&quot;384&quot; /&gt;&lt;figcaption class=&quot;wp-element-caption&quot;&gt;I&amp;#8217;m pretty sure these two want me to turn the fireplace on.&lt;/figcaption&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;wp-block-image size-large is-resized&quot;&gt;&lt;img alt=&quot;A gray tabby cat lounges on a dog bed, while a golden doodle lays on the floor nearby and looks forlornly at the bed.&quot; class=&quot;wp-image-294&quot; height=&quot;512&quot; src=&quot;https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_1725-1024x1024.jpeg&quot; width=&quot;512&quot; /&gt;&lt;figcaption class=&quot;wp-element-caption&quot;&gt;Just Percy bullying the dog by stealing his bed.&lt;/figcaption&gt;&lt;/figure&gt;</content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html">What&amp;#8217;s new</summary></entry><entry><title type="html">Adam’s weekly update, 2022-12-04</title><link href="https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04/" rel="alternate" type="text/html" title="Adam’s weekly update, 2022-12-04" /><published>2022-12-05T05:49:35-07:00</published><updated>2022-12-05T05:49:35-07:00</updated><id>https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04/">&lt;h2&gt;What&amp;#8217;s new&lt;/h2&gt;
+&lt;figure class=&quot;wp-block-image size-large is-resized&quot;&gt;&lt;img alt=&quot;A gray tabby cat lounges on a dog bed, while a golden doodle lays on the floor nearby and looks forlornly at the bed.&quot; class=&quot;wp-image-294&quot; height=&quot;512&quot; src=&quot;https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_1725-1024x1024.jpeg&quot; width=&quot;512&quot; /&gt;&lt;figcaption class=&quot;wp-element-caption&quot;&gt;Just Percy bullying the dog by stealing his bed.&lt;/figcaption&gt;&lt;/figure&gt;</content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html">What&amp;#8217;s new</summary></entry><entry><title type="html">Visualizing Spectrum LSF data with Grafana</title><link href="https://hpc.social/personal-blog/2022/visualizing-spectrum-lsf-data-with-grafana/" rel="alternate" type="text/html" title="Visualizing Spectrum LSF data with Grafana" /><published>2022-12-13T00:06:51-07:00</published><updated>2022-12-13T00:06:51-07:00</updated><id>https://hpc.social/personal-blog/2022/visualizing-spectrum-lsf-data-with-grafana</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/visualizing-spectrum-lsf-data-with-grafana/">&lt;p&gt;&lt;strong&gt;Overview&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;System monitoring is a fundamental part of IT best practices. High performance computing (HPC) environments are no exception to this. At the high-end, HPC clusters can consist of
+thousands of servers, processing millions of jobs per day. HPC admins need ways to monitor the overall cluster to determine system status and availability through to the efficiency
+of workloads. Servers today produce a wide array of metrics which can be monitored for example to check for various conditions. Additionally, workload schedulers also produce a wealth
+of data about jobs. Having a single dashboard to show this type of detail can be of great benefit.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.ibm.com/products/hpc-workload-management&quot;&gt;IBM Spectrum LSF Suites&lt;/a&gt; provide a complete solution for HPC workload management. This includes reporting capabilities out of the box. Spectrum LSF Suite features an integrated web
+interface for job management and reporting. The reporting capabilities include a number of reports out of the box, with the ability to customize and add new reports. The reporting
+capability in Spectrum LSF Suite and IBM Spectrum LSF Explorer is underpinned by Elasticsearch, which is used to store, index and query data. With LSF data in Elasticsearch, it’s
+also possible to configure LSF command-line interface (CLI) tools to query information from Elasticsearch rather than flat files – for greater performance. This is controlled via
+the &lt;strong&gt;LSF_QUERY_ES_FUNCTIONS&lt;/strong&gt; parameter of Spectrum LSF. More details about the &lt;strong&gt;LSF_QUERY_ES_FUNCTIONS&lt;/strong&gt; can be found in the LSF documentation &lt;a href=&quot;https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=lsfconf-lsf-query-es-functions&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;(1) Here is a look at the indices that are created by LSF in Elasticsearch. Note that the status shows as yellow because I only have a single Elasticsearch node.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;# curl -XGET localhost:9200/_cat/indices
+yellow open lsf_events-202205             tejh7jsMSwSeQUJzYM7cww 5 1    1137     0 808.1kb 808.1kb
+yellow open lsf_jobs_pendingreason-202204 4wi7Ta8uQPSXlFBqPh4kOQ 5 1   90531     0   8.6mb   8.6mb
+yellow open lsf_events-202204             tWYvW_w8TVyU1deRFOEoZg 5 1  116957 32691  59.1mb  59.1mb
+yellow open lsf_jobs_active-202212        Q0pStQxvTgaeL7R-f02XWA 5 1  210052     0  50.6mb  50.6mb
+yellow open lsf_jobs_pendingreason-202206 ENWIwfGrSqCHvi53aUQXJQ 5 1   44991     0   4.5mb   4.5mb
+yellow open host_booleanres_latest        RE8thZCgTGeMBGodeMfXEQ 5 1       5     0  23.3kb  23.3kb
+yellow open lsf_jobs_pendingreason-202205 yo0iZH_4TvOqq6kQgBluvA 5 1     111     0 181.4kb 181.4kb
+yellow open lsf_jobs_pend-202212          9ViIS3nDRFewrqtILEbKTQ 5 1     707     0 446.9kb 446.9kb
+yellow open lsf_hostconf_latest           9N1Y8ML4TiyaamCPEDRQog 5 1       2     0  10.6kb  10.6kb
+yellow open lsf_events-202209             rtKQ8F4bSleHl8EbAQez8A 5 1    8200   955   4.4mb   4.4mb
+yellow open lsf_events-202206             UUKPWfN7SZ-dzVs5NAkjUg 5 1   79503 23452  36.8mb  36.8mb
+yellow open lsf_hostmetrics-202209        7FUNFCWPQtuGyx5jTJLb1A 5 1    4701     0   2.2mb   2.2mb
+yellow open lsf_hostmetrics-202208        52xef_3hQWK-jVuJqyUpHA 5 1    3823     0   1.9mb   1.9mb
+yellow open lsf_hostmetrics-202207        IqZYhU0RQNGIFWSRH-Ym8Q 5 1    6316     0   2.9mb   2.9mb
+yellow open lsf_job_acct-202209           h1ZgCSB8RwCBxwIUUzDHEQ 5 1    2050   438   1.9mb   1.9mb
+yellow open lsf_jobs_active-202209        iBfnf07CTcS7Gb6TxwomRA 5 1    2658     0     1mb     1mb
+yellow open lsf_hostmetrics-202206        0PXSYBOgTA2Qa_zzaafUPg 5 1    4301     0   2.1mb   2.1mb
+yellow open model                         xSqB_T_VSByOzYavEcEVyQ 1 1      55     0   257kb   257kb
+yellow open lsf_job_acct-202206           C639GnzBSjCEVczfh5u23g 5 1   16719   353   8.9mb   8.9mb
+yellow open lsf_jobs_active-202204        8gN_ENkQRTSfnmxrtMcOlA 5 1   33286     0   9.8mb   9.8mb
+yellow open lsf_job_acct-202205           LOxmhm_8RxaCuTd7YWYbLw 5 1     274     0 439.4kb 439.4kb
+yellow open lsf_jobs_active-202205        61u2RlXgR_SXagmZfrmttQ 5 1    1880     0   1.1mb   1.1mb
+yellow open lsf_jobs_pend-202209          eTgqPp9nQOScNiwyUWXmHA 5 1       9     0 106.2kb 106.2kb
+yellow open lsf_job_acct-202204           dDDegS6RQSWtWN99eklexg 5 1   28902  2177  17.4mb  17.4mb
+yellow open lsf_jobs_active-202206        8ivkjWSNR1Sh_BxWACP0ZA 5 1   16921     0   4.6mb   4.6mb
+yellow open lsf_current_status            92KE3V4YSJ-RtRp_kepxYg 5 1  115450     0     9mb     9mb
+yellow open lsf_hostmetrics-202210        vbuK2wW3RRmXuY07tDPUNQ 5 1     785     0 942.1kb 942.1kb
+yellow open lsf_jobs_pend-202206          OhSwn-b0SiSj8mCW5tcNIA 5 1      22     0 244.6kb 244.6kb
+yellow open lsf_jobs_pend-202205          OfBtWklETYK9cRx000aNPw 5 1       1     0  12.7kb  12.7kb
+yellow open lsf_events-202212             WUC5KJWmS-2WIN8XCQpSuw 5 1  712399 74728   337mb   337mb
+yellow open lsf_jobs_pend-202204          OhUsXqohSciZTPZlTryMyA 5 1      50     0 275.3kb 275.3kb
+yellow open resource_attributes_latest    R9bk_WIPTU62dVg3O1LDBA 5 1       5     0  24.4kb  24.4kb
+yellow open lsf_jobs_pendingreason-202212 55iwDC5mRI-eRbzQLwWP6Q 5 1 3314828     0 288.7mb 288.7mb
+yellow open pa-lite-log                   o8-jaNoGTsSVcjJW5Ufs0w 5 1    1549     0 547.2kb 547.2kb
+yellow open lsf_job_acct-202212           4HXvAD02Sxq0tgp2fS2cfQ 5 1  161502     0  73.6mb  73.6mb
+yellow open lsf_hostmetrics-202212        Tki6OJ41R363u9Tx02N4zw 5 1    2548     0   1.7mb   1.7mb
+yellow open lsf_jobs_pendingreason-202209 D3TOZY2ORiK9PppGVt10Fg 5 1    2511     0 381.4kb 381.4kb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;(2) With the LSF data stored in Elasticsearch, the next step is to connect to the Grafana server. Here we point our browser to the Grafana server on the default port: &lt;em&gt;http://lsf_manager:3000&lt;/em&gt; and login to Grafana. This step assumes an account has already been setup on Grafana. Here we are using the default admin account.&lt;/p&gt;
+
+&lt;p&gt;(3) In Grafana, navigate to &lt;strong&gt;Configuration&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Data sources&lt;/strong&gt;. It’s here that it will be possible to add an Elasticsearch data source&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_3.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(4) Next, click the &lt;strong&gt;Add data source&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_4.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(5 In the list of data sources, filter by name for &lt;em&gt;Elasticsearch&lt;/em&gt; and click the Select button on the Elasticsearch entry.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_5.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(6) When configuring the data source, it’s necessary to specify an index name. This is where the list of indices in Elasticsearch that we generated earlier will come in handy. For this example, we wish to display the total number of pending jobs in the Spectrum LSF cluster over time. This data is stored in the &lt;em&gt;lsf_jobs_pend*&lt;/em&gt; indices in Elasticsearch. To configure the data source appropriately, we specify the following values:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Name:	“LSF pending jobs”&lt;/li&gt;
+&lt;li&gt;URL: http://localhost:9200&lt;/li&gt;
+&lt;li&gt;Index name: “lsf_jobs_pend*”&lt;/li&gt;
+&lt;li&gt;Time field name: “time_stamp”&lt;/li&gt;
+&lt;li&gt;Version: 7.0+
+Note that the URL needs to point to the Elasticsearch server. In this case, both the Elasticsearch server and Grafana server are running on the same host.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next click on the &lt;strong&gt;Save &amp;amp; Test button&lt;/strong&gt;. It should return the message &lt;em&gt;Index OK. Time field name OK.&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Assuming that no errors were found, click on the &lt;strong&gt;Back&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_6.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(7) Now you should see &lt;em&gt;LSF pending jobs&lt;/em&gt; listed as a Data Source.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_7.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(8) With the data source configured, we’re now ready to configure a dashboard to display the LSF pending job information. Navigate to &lt;strong&gt;Create&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Dashboard&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_8.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(9) Click on &lt;strong&gt;Add an empty panel&lt;/strong&gt;. This is used to create a new panel where the LSF pending job information will be plotted.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_9.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(10) In the panel editor, specify the following options:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Panel title: “LSF pending jobs”&lt;/li&gt;
+&lt;li&gt;Specify the data source “LSF pending jobs” which was created previously&lt;/li&gt;
+&lt;li&gt;Specify a suitable time range (2 days)&lt;/li&gt;
+&lt;li&gt;Line width (5 points)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You should immediately see in the panel editor the plot of the hourly pending jobs.  Click on the &lt;strong&gt;Apply&lt;/strong&gt; button to save the changes.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_10.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(11) After clicking Apply, you will be returned to the Dashboard screen. The Dashboard should now display the new LSF pending jobs panel that was created above. This Dashboard could also include panels for system metrics collected by Prometheus for example.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_11.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;(12) Next, click on the diskette icon in the upper right to save the Dashboard with the LSF pending jobs panel.  We’ll name it &lt;em&gt;Spectrum LSF cluster status&lt;/em&gt;.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/grafana_12.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Additional panels can be added to the &lt;em&gt;Spectrum LSF cluster status&lt;/em&gt; based on the data logged by Spectrum LSF to Elasticsearch.&lt;/p&gt;
+
+&lt;p&gt;That concludes the simple example of plotting Spectrum LSF cluster data from Elasticsearch in Grafana.  As mentioned, the IBM Spectrum LSF Suites integrated web interface also provides reporting capabilities, with several built-in reports provided out of the box. Below, we’ve included a screenshot of the &lt;em&gt;pending job analysis&lt;/em&gt; report included with Spectrum LSF Suites.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/lsf_pending.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Spectrum LSF provides many hooks and integration points enabling administrators to change things ranging from scheduling behavior and the output of query commands through to job information being logged to Elasticsearch. Spectrum LSF is highly customizable by organizations to suit specific needs and requirements. We’ve demonstrated this using Grafana to visualize data from the LSF scheduler in a simple example. Following the above example, administrators can combine existing HPC cluster system level reporting in Grafana with job information from Spectrum LSF for a better overall view and understanding of the infrastructure.&lt;/p&gt;</content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html">Overview</summary></entry><entry><title type="html">Adam’s weekly update, 2022-12-04</title><link href="https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04/" rel="alternate" type="text/html" title="Adam’s weekly update, 2022-12-04" /><published>2022-12-05T05:49:35-07:00</published><updated>2022-12-05T05:49:35-07:00</updated><id>https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04/">&lt;h2&gt;What&amp;#8217;s new&lt;/h2&gt;
 
 &lt;p&gt;This week was really intense from a work perspective. Not &amp;#8220;bad intense&amp;#8221;, but the kind of week where every day was spent with such a level of focus, that at 5 PM or so I found myself staring off into space and forgetting words. I think I got some good things accomplished, but my brain also felt like mush by the time the weekend came.&lt;/p&gt;
 
@@ -778,32 +913,4 @@ and excited energy! I mean, there is just no alternative when it comes to techno
 
 &lt;p&gt;And these days, at NVIDIA, I’m enjoying being even closer to the metal. (At least conceptually; I still work remote…) I spend my days thinking about datacenter requirements, cable lengths, firmware upgrades, hardware health checks, and application performance tests on large clusters. And I love getting to play with these shiny toys.&lt;/p&gt;
 
-&lt;p&gt;Anyway, this is just a ramble. But a useful one. While I’d be the first to admit that cloud has its place, and I use it for some personal projects, I really enjoy understanding the hardware I run on. I have trouble thinking of computers as remote abstractions with no underlying detail. They are pleasingly physical in my mind, even if they’re thousands of miles away.&lt;/p&gt;</content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html">For various reasons, I’ve been doing a little bit of career introspection lately. One of the interesting realizations to come out of this is that, despite in practice doing mostly software work, I’ve been happiest when my work involved a strong awareness of the hardware I was running on.</summary></entry><entry><title type="html">The web services I self-host</title><link href="https://hpc.social/personal-blog/2022/the-web-services-i-self-host/" rel="alternate" type="text/html" title="The web services I self-host" /><published>2022-10-30T21:59:55-06:00</published><updated>2022-10-30T21:59:55-06:00</updated><id>https://hpc.social/personal-blog/2022/the-web-services-i-self-host</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/the-web-services-i-self-host/">&lt;h2&gt;Why self-host anything?&lt;/h2&gt;
-
-&lt;p&gt;In a lot of ways, self-hosting web services is signing up for extra pain. Most useful web services are available in SaaS format these days, and most people don&amp;#8217;t want to be a sysadmin just to use chat, email, or read the news.&lt;/p&gt;
-
-&lt;p&gt;In general, I decide to self-host a service if one of two things is true:&lt;/p&gt;
-
-&lt;p&gt;&lt;span id=&quot;more-235&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-
-&lt;ul&gt;&lt;li&gt;Self-hosting is going to add a capability that&amp;#8217;s difficult to find in a SaaS alternative. That might be privacy, or extra compute, or just an extra degree of customization that I want.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;I find it interesting or amusing to self-host it! I &lt;em&gt;have been&lt;/em&gt; a professional sysadmin, and ran production web services for over a decade. So I enjoy messing around with servers, and can have a fair amount of fun with this.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;h2&gt;Infrastructure and general tooling&lt;/h2&gt;
-
-&lt;p&gt;Right now my self-hosted services are hosted on &lt;a href=&quot;https://www.oracle.com/cloud/&quot;&gt;Oracle Cloud Infrastructure&lt;/a&gt;, for a very simple reason: OCI includes a &lt;em&gt;very&lt;/em&gt; generous &lt;a href=&quot;https://www.oracle.com/cloud/free/&quot;&gt;Always Free tier&lt;/a&gt;, which doesn&amp;#8217;t even ask for a credit card! So I&amp;#8217;m confident I&amp;#8217;m not going to accidentally spend any money. I use ARM Ampere A1 Compute instances for service hosting.&lt;/p&gt;
-
-&lt;p&gt;The individual services are mostly managed using &lt;a href=&quot;https://docs.docker.com/compose/&quot;&gt;Docker Compose files&lt;/a&gt;, though a few are just running bare-metal. I have so far managed to resist the urge to put everything in Kubernetes.&lt;/p&gt;
-
-&lt;p&gt;Everything is backed up on a regular basis using &lt;a href=&quot;https://www.tarsnap.com/&quot;&gt;Tarsnap&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I also use &lt;a href=&quot;https://tailscale.com/&quot;&gt;Tailscale&lt;/a&gt; to provide a VPN between my cloud servers and my various client devices (phone, laptop, tablet). If a service needs to be exposed to the public Internet to function, I do that&amp;#8230; but otherwise, everything is only exposed within the Tailscale VPN, so that only my own devices can access them. This is both a lovely convenience (not having to manage as many DNS records), and provides an extra degree of security by hiding services that no one else needs to access.&lt;/p&gt;
-
-&lt;h2&gt;Services that I self-host&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;&lt;strong&gt;RSS reader: &lt;/strong&gt;Despite the demise of Google Reader back in the mists of time, I&amp;#8217;ve been a consistently heavy user of RSS feed since at least 2008. At times I&amp;#8217;ve used commercial products such as &lt;a href=&quot;https://feedly.com/&quot;&gt;Feedly&lt;/a&gt;, but these days I self-host the aggregator using &lt;a href=&quot;https://freshrss.org/&quot;&gt;FreshRSS&lt;/a&gt;. I use FreshRSS partly because it&amp;#8217;s pretty easy to spin up and administer, and partly because it&amp;#8217;s compatible with &lt;a href=&quot;https://reederapp.com/&quot;&gt;Reeder&lt;/a&gt;, a Mac and iOS app that I generally use to actually read my feeds.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Fediverse instance: &lt;/strong&gt;I run a &lt;a href=&quot;https://calico.social/&quot;&gt;self-hosted instance&lt;/a&gt; on the &lt;a href=&quot;https://en.wikipedia.org/wiki/Fediverse&quot;&gt;Fediverse&lt;/a&gt; ensemble of social networking sites. The best-known tool for this is &lt;a href=&quot;https://joinmastodon.org/&quot;&gt;Mastodon&lt;/a&gt;, but I currently use the &lt;a href=&quot;https://pleroma.social/&quot;&gt;Pleroma server&lt;/a&gt;, mostly because it seemed less painful to set up and configure. I run my own instance partly out of curiosity, and partly because I didn&amp;#8217;t strongly resonate with any particular topic-specific server that&amp;#8217;s already out there.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;IRC bouncer: &lt;/strong&gt;I&amp;#8217;m not on IRC very much these days, but I do like to avoid losing messages, and sometimes want to be logged into the same channels on different physical clients. So I run a &lt;a href=&quot;https://wiki.znc.in/ZNC&quot;&gt;ZNC&lt;/a&gt; server to maintain persistence.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Matrix server: &lt;/strong&gt;&lt;a href=&quot;https://matrix.org/&quot;&gt;Matrix&lt;/a&gt; is a decentralized messaging platform that supports end-to-end encryption. Think of it as being a little like the Fediverse, but for chat rather than microblogging. This falls pretty squarely in the category of &amp;#8220;I find this amusing to run&amp;#8221;, because I mostly chat with less-nerdy folks on other, commercial platforms.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Git server: &lt;/strong&gt;I run a &lt;a href=&quot;https://gitea.io/en-us/&quot;&gt;Gitea&lt;/a&gt; server which I use to mirror my own repos, as well as a variety of other open source repos. This is mostly to ensure that I have an up-to-date backup of repos I care about, independent of Github or whatever provider.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Jupyter notebooks: &lt;/strong&gt;I keep a persistent &lt;a href=&quot;https://jupyter.org/&quot;&gt;Jupyter&lt;/a&gt; notebook instance running for random code experiments and as a tiny development playground. This runs on its own VM where I also do other random software development, and it&amp;#8217;s separate from the other services mostly so I don&amp;#8217;t take down all my personal infra with an accidental OOM from a big build.&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Software package repository: &lt;/strong&gt;I run an instance of &lt;a href=&quot;https://www.sonatype.com/products/repository-oss-download&quot;&gt;Nexus Repository OSS&lt;/a&gt;, mostly to cache Docker images and other content that run the rest of the services above!&lt;/li&gt;&lt;/ul&gt;
-
-&lt;h2&gt;Services where I use managed hosting but don&amp;#8217;t own the server&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;&lt;strong&gt;This website!&lt;/strong&gt; My &lt;a href=&quot;https://www.ajdecon.org&quot;&gt;regular website&lt;/a&gt; and this blog run on a shared hosting provider, mostly through inertia. (I&amp;#8217;ve used the same hosting provider for web hosting since around 2008.)&lt;br /&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Email: &lt;/strong&gt;In theory it&amp;#8217;s an open, federated system similar to the Fediverse. In practice, the combination of spam and the growth of large providers makes it increasingly painful to run a server yourself. This &lt;a href=&quot;https://cfenollosa.com/blog/after-self-hosting-my-email-for-twenty-three-years-i-have-thrown-in-the-towel-the-oligopoly-has-won.html&quot;&gt;post from Carlos Fenollosa&lt;/a&gt; does a good job of describing the difficulties.&lt;br /&gt;&lt;br /&gt;I do, however, run all my email through my own domain, though it&amp;#8217;s hosted via &lt;s&gt;Google Apps&lt;/s&gt; &lt;s&gt;GSuite&lt;/s&gt; Google Workspace. I also back up my inbox locally on a regular basis. That means that if Google ever decides to remove my account, charge obnoxious costs, or otherwise misbehave, my email address is at least portable to other providers.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html">Why self-host anything?</summary></entry></feed>
+&lt;p&gt;Anyway, this is just a ramble. But a useful one. While I’d be the first to admit that cloud has its place, and I use it for some personal projects, I really enjoy understanding the hardware I run on. I have trouble thinking of computers as remote abstractions with no underlying detail. They are pleasingly physical in my mind, even if they’re thousands of miles away.&lt;/p&gt;</content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html">For various reasons, I’ve been doing a little bit of career introspection lately. One of the interesting realizations to come out of this is that, despite in practice doing mostly software work, I’ve been happiest when my work involved a strong awareness of the hardware I was running on.</summary></entry></feed>
