@@ -4,6 +4,7 @@ Welcome to the hpc.social blogs! This is a portal for our family of blogs:
 
  - [Community Blog](https://hpc.social/community-blog/) served from [this repository](https://github.com/hpc-social/community-blog)
  - [Personal Blog](https://hpc.social/personal-blog/) served from [this repository](https://github.com/hpc-social/personal-blog)
+ - [Commercial Blog](https://hpc.social/commercial-blog/) served from [this repository](https://github.com/hpc-social/commercial-blog)
  
 This central point serves to provide shared instructions for contributing to each, along with 
 how to decide which blog your feed is scoped to. 
@@ -16,6 +17,8 @@ In more detailed terms:
 - **The Personal blogs aggregator** is the "soul" of the HPC community - HPCers who are personally invested in the minutiae of the work they are doing, the projects they are working on with some content about their culture, life, and thoughts. 
 
 - **The Community content aggregator**: is content from people who represent projects, ecosystems, or governance boards that talk about specific community interested content around the work they represent. The content range from release notes, tricks and tips, discussion around tooling and infrastructure, and other things that are neutrally branded. Discussion of branded topics like CUDA, SYCL, and oneAPI are ok - discussions about hardware are ok. Product announcements are not ok especially.
+
+- **The Commercial blogs aggregator** includes content for vendor and company voices that don't fit in the personal or community spaces. We advocate for learning resources, tutorials, and related content,  and discourage advertising or similar.
 
 We generally try to be inclusive, and thus have created these two spaces to support different kinds of feeds!
 However, if moderators of the hpc.social community receive a complaint or themselves feel that a piece of content crosses the line between "Here's a cool thing we're doing" and "Here is a product we want to sell you" that feels like a breach of trust, you will be contacted first to have discussion about how to mediate the situation, and in the worst of cases that remediation is not possible, the blog or individual post may be removed.
