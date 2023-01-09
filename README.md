@@ -23,7 +23,9 @@ In more detailed terms:
 We generally try to be inclusive, and thus have created these two spaces to support different kinds of feeds!
 However, if moderators of the hpc.social community receive a complaint or themselves feel that a piece of content crosses the line between "Here's a cool thing we're doing" and "Here is a product we want to sell you" that feels like a breach of trust, you will be contacted first to have discussion about how to mediate the situation, and in the worst of cases that remediation is not possible, the blog or individual post may be removed.
 
-Once you choose a blog, move on to the next steps in the instructions below!
+Once you choose a blog, move on to the next steps in the instructions below! 
+
+> ⚠️ **important** The blog you chose from the links above should be the one that you clone, and not the central portal repository where you are reading the instructions now.
 
 ## How do I contribute my blog?
 
@@ -33,10 +35,12 @@ Thus, you can add an rss/xml feed to share stories and experiences to be present
 and it will show up in the feed for the respective repository and the [aggregated blogs feed](https://hpc.social/blog/)
 here. Here is how to get started, for either of the above!
 
-1. Fork the repository, clone to your machine, and checkout a new branch.
+1. Fork the repository that you've chosen in the step above (**you should not be forking this repository where you are reading!**), clone it to your machine, and checkout a new branch.
 1. Add your entry to the [_data/authors.yml](_data/authors.yml) file
 1. Generate your set of posts (instructions below)
 1. Open a pull request to the main repository!
+
+> ⚠️ **important** The blog you chose from the links above should be the one that you clone, and not the central portal repository where you are reading the instructions now.
 
 ### 1. Add Metadata
 
