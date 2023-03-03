@@ -1,4 +1,252 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2023-02-28T20:10:58-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Monitoring .-.. … ..-. (IBM Spectrum LSF) with the TIG stack</title><link href="https://hpc.social/personal-blog/2023/monitoring-ibm-spectrum-lsf-with-the-tig-stack/" rel="alternate" type="text/html" title="Monitoring .-.. … ..-. (IBM Spectrum LSF) with the TIG stack" /><published>2023-01-24T19:48:44-07:00</published><updated>2023-01-24T19:48:44-07:00</updated><id>https://hpc.social/personal-blog/2023/monitoring-ibm-spectrum-lsf-with-the-tig-stack</id><content type="html" xml:base="https://hpc.social/personal-blog/2023/monitoring-ibm-spectrum-lsf-with-the-tig-stack/">&lt;p&gt;Much like dashboards in automobiles, dashboards in the context of HPC infrastructure are crucial to get an understanding of what&amp;rsquo;s happening under the hood of your HPC cluster - at
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2023-03-01T20:06:26-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">LSF client on macOS - submitting from your laptop</title><link href="https://hpc.social/personal-blog/2023/lsf-client-on-macos-submitting-from-your-laptop/" rel="alternate" type="text/html" title="LSF client on macOS - submitting from your laptop" /><published>2023-03-01T19:10:58-07:00</published><updated>2023-03-01T19:10:58-07:00</updated><id>https://hpc.social/personal-blog/2023/lsf-client-on-macos-submitting-from-your-laptop</id><content type="html" xml:base="https://hpc.social/personal-blog/2023/lsf-client-on-macos-submitting-from-your-laptop/">&lt;p&gt;In traditional HPC environments, login nodes are typically used as an access point for users to submit
+and manage jobs. Although login nodes are still used today, HPC environments are
+increasingly being used by a broad class of users with domain expertise and not necessarily IT experts.
+In other words, such users may be more comfortable using their native desktop
+environment rather than the CLI. Given the factors, in the commercial HPC space, organizations are always looking
+for ways to lower the barto access and interact with HPC environments.&lt;/p&gt;
+
+&lt;p&gt;Spectrum LSF provides many ways to submit and manage jobs in an HPC cluster. For power users, the rich
+CLI functionality exists. There is also an available web-based interface for job
+submission and management which provides customizable application templates to greatly simplify job sub
+mission, while hiding complexity of the underlying infrastructure. A RESTful API
+is also available to users of IBM Spectrum LSF Application Center or IBM Spectrum LSF Suites, which ena
+bles organizations to access the HPC environment via web services.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve written previously in detail about the the LSF web-based interface in the blog
+&lt;a href=&quot;https://www.gaborsamu.com/blog/easy_hpc/&quot;&gt;The Easy HPC Button&lt;/a&gt;. Here, we&amp;rsquo;ll take a closer look at the
+available LSF client for macOS that uses the RESTful API. First, a bit about LSF clients. LSF clients
+can access resources on LSF server hosts without running the LSF daemons. LSF clients don&amp;rsquo;t require a software
+license and from clients, users can run all of the familiar LSF commands. Additionally, LSF clients are
+submit only, and don&amp;rsquo;t execute jobs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The macOS LSF client uses the LSF RESTful API. This means that it will function in environments
+running LSF Standard Edition with LSF Application Center or LSF Suites.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Configuration&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The configuration used for the example below is as follows:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;Hostname&lt;/th&gt;
+&lt;th&gt;OS&lt;/th&gt;
+&lt;th&gt;Detail&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;em&gt;kilenc&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;CentOS Stream 8.4&lt;/td&gt;
+&lt;td&gt;LSF Suite for HPC v10.2.0.13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;em&gt;My-Macbook-Air&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;macOS Ventura 13.2.1 (Apple M1)&lt;/td&gt;
+&lt;td&gt;LSF client&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Spectrum LSF Suite for HPC management host (&lt;em&gt;kilenc&lt;/em&gt;), add the following variables to the Parameter
+section in the file lsf.cluster.&lt;em&gt;name&lt;/em&gt;. The FLOAT_CLIENTS variable determines how many floating clients can
+join the LSF cluster, The FLOAT_CLIENTS_ADDR_RANGE specifies the allowable IP addresses. In this case, the
+client system is on a 192.168.x.x network.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;Begin Parameters
+FLOAT_CLIENTS=2
+FLOAT_CLIENTS_ADDR_RANGE=192.*
+End Parameters&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;To make the changes take effect, issue the following commands as the LSF administrator:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsadmin reconfig
+badmin reconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Obtain the tarball &lt;em&gt;pacdesktop_client10.2.0.13_macos-x86_64.tar&lt;/em&gt;. For users with an LSF entitlement this package is available on
+&lt;a href=&quot;https://www.ibm.com/support/fixcentral/&quot;&gt;IBM Fix Central&lt;/a&gt;. Note that this package will work on systems with Apple M1 silicon through emulation.&lt;/p&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open a Terminal on the macOS client system, copy the tarball to the $HOME/Desktop directory of user lsfuser and uncompress the tarball.&lt;/p&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air Desktop % pwd
+/Users/lsfuser/Desktop
+lsfuser@My-MacBook-Air Desktop % ls -la pacdesktop_client10.2.0.13_macos-x86_64.tar
+-rw-r--r--@ 1 lsfuser  staff  18452480 27 Feb 17:12 pacdesktop_client10.2.0.13_macos-x86_64.tar
+lsfuser@My-MacBook-Air Desktop % tar -xvf pacdesktop_client10.2.0.13_macos-x86_64.tar
+x LSF_Desktop_Client/
+x LSF_Desktop_Client/bapp
+x LSF_Desktop_Client/btop
+x LSF_Desktop_Client/bwait
+x LSF_Desktop_Client/lseligible
+x LSF_Desktop_Client/bsla
+x LSF_Desktop_Client/blparams
+x LSF_Desktop_Client/bhpart
+x LSF_Desktop_Client/bclusters
+x LSF_Desktop_Client/blstartup
+x LSF_Desktop_Client/lsacct
+x LSF_Desktop_Client/bsub
+x LSF_Desktop_Client/bugroup
+x LSF_Desktop_Client/bpeek
+x LSF_Desktop_Client/bacct
+x LSF_Desktop_Client/brequeue
+x LSF_Desktop_Client/bjgroup
+x LSF_Desktop_Client/bslots
+x LSF_Desktop_Client/lsrun
+x LSF_Desktop_Client/bjobs
+x LSF_Desktop_Client/lshosts
+x LSF_Desktop_Client/lsload
+x LSF_Desktop_Client/brlainfo
+x LSF_Desktop_Client/bresources
+x LSF_Desktop_Client/bladmin
+x LSF_Desktop_Client/bstatus
+x LSF_Desktop_Client/bmod
+x LSF_Desktop_Client/bpost
+x LSF_Desktop_Client/lsid
+x LSF_Desktop_Client/bentags
+x LSF_Desktop_Client/ch
+x LSF_Desktop_Client/bchkpnt
+x LSF_Desktop_Client/bparams
+x LSF_Desktop_Client/bjdepinfo
+x LSF_Desktop_Client/bgmod
+x LSF_Desktop_Client/brestart
+x LSF_Desktop_Client/lsltasks
+x LSF_Desktop_Client/blusers
+x LSF_Desktop_Client/paclogon
+x LSF_Desktop_Client/regnotify
+x LSF_Desktop_Client/cacert.pem
+x LSF_Desktop_Client/bresume
+x LSF_Desktop_Client/blstat
+x LSF_Desktop_Client/bhist
+x LSF_Desktop_Client/bqueues
+x LSF_Desktop_Client/bltasks
+x LSF_Desktop_Client/bresize
+x LSF_Desktop_Client/blcollect
+x LSF_Desktop_Client/lsacctmrg
+x LSF_Desktop_Client/bgadd
+x LSF_Desktop_Client/bmig
+x LSF_Desktop_Client/bstop
+x LSF_Desktop_Client/bswitch
+x LSF_Desktop_Client/blhosts
+x LSF_Desktop_Client/blcstat
+x LSF_Desktop_Client/brsvs
+x LSF_Desktop_Client/brun
+x LSF_Desktop_Client/blinfo
+x LSF_Desktop_Client/lsgrun
+x LSF_Desktop_Client/busers
+x LSF_Desktop_Client/lsloadadj
+x LSF_Desktop_Client/blkill
+x LSF_Desktop_Client/bbot
+x LSF_Desktop_Client/lsclusters
+x LSF_Desktop_Client/bconf
+x LSF_Desktop_Client/lsinfo
+x LSF_Desktop_Client/lsmake
+x LSF_Desktop_Client/blimits
+x LSF_Desktop_Client/bmgroup
+x LSF_Desktop_Client/bread
+x LSF_Desktop_Client/bkill
+x LSF_Desktop_Client/lstcsh
+x LSF_Desktop_Client/lsrtasks
+x LSF_Desktop_Client/README.TXT
+x LSF_Desktop_Client/lsplace
+x LSF_Desktop_Client/bhosts
+x LSF_Desktop_Client/paclogout
+x LSF_Desktop_Client/bgdel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Following the directions in the file README.TXT, set the environment variable LSF_DESKTOP_CLIENT=yes, and set the PATH variable accordingly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % export LSF_DESKTOP_CLIENT=yes
+lsfuser@My-MacBook-Air LSF_Desktop_Client % export PATH=`pwd`:$PATH&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;Next, it&amp;rsquo;s necessary to run the &lt;em&gt;paclogon&lt;/em&gt; command to connect to the LSF Application Center (or LSF Suite installation). Here we point to the LSF server kilenc on port 8080.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % paclogon
+Log on to IBM Spectrum LSF Application Center
+User account: lsfuser
+Enter password: 
+Specify the URL to connect to IBM Spectrum LSF Application Center. Format: 
+http://host_name:port_number/platform or https://host_name:port_number/platform
+URL: http://kilenc:8080/platform
+You have successfully logged on to IBM Spectrum LSF Application Center.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;After successfully logging in using the paclogon command, it should be possible to run LSF &amp;ldquo;base&amp;rdquo; commands from the macOS terminal including &lt;em&gt;lsid&lt;/em&gt;, &lt;em&gt;lsload&lt;/em&gt;, &lt;em&gt;lshosts&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % lsid
+IBM Spectrum LSF 10.1.0.13, Apr 15 2022
+Suite Edition: IBM Spectrum LSF Suite for HPC 10.2.0.13
+Copyright International Business Machines Corp. 1992, 2016.
+US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+My cluster name is Klaszter
+My master name is kilenc
+lsfuser@My-MacBook-Air LSF_Desktop_Client % lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+kilenc                    LINUXPPC64LE      POWER9  25.0    32  30.7G  15.8G    Yes (mg docker)
+lsfuser@My-MacBook-Air LSF_Desktop_Client % lsload -w
+HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
+kilenc                      ok   0.8   2.1   2.4   7%   0.0   0  1156  551M 15.6G   10G&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;8&quot;&gt;
+&lt;li&gt;Next, run the LSF batch commands &lt;em&gt;bqueues&lt;/em&gt; and &lt;em&gt;bhosts&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % bqueues
+QUEUE_NAME      PRIO STATUS          MAX JL/U JL/P JL/H NJOBS  PEND   RUN  SUSP 
+admin            50  Open:Active       -    -    -    -     0     0     0     0
+owners           43  Open:Active       -    -    -    -     0     0     0     0
+priority         43  Open:Active       -    -    -    - 75835 75803    32     0
+night            40  Open:Inact        -    -    -    -     0     0     0     0
+short            35  Open:Active       -    -    -    -     0     0     0     0
+dataq            33  Open:Active       -    -    -    -     0     0     0     0
+normal           30  Open:Active       -    -    -    -     0     0     0     0
+interactive      30  Open:Active       -    -    -    -     0     0     0     0
+sendq            30  Open:Active       -    -    -    -     0     0     0     0
+idle             20  Open:Active       -    -    -    -     0     0     0     0
+lsfuser@My-MacBook-Air LSF_Desktop_Client % bhosts
+HOST_NAME          STATUS       JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV 
+kilenc             ok              -     32     19     19      0      0      0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;9&quot;&gt;
+&lt;li&gt;Running the bjobs will result in a warning message appearing on macOS stating: &lt;em&gt;&amp;ldquo;bjobs&amp;rdquo; cannot be opened because the developer cannot be verified.&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_unverified.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol start=&quot;10&quot;&gt;
+&lt;li&gt;To remedy the issue observed in step 9, click cancel on the warning message and browse to &lt;strong&gt;System Settings -&amp;gt; Privacy &amp;amp; Security -&amp;gt; Security Settings&lt;/strong&gt;. In the Security Settings view,
+you&amp;rsquo;ll see the message: &lt;em&gt;&amp;ldquo;bjobs&amp;rdquo; was blocked from use because it is not from an identified developer.&lt;/em&gt; To allow the bjobs command to execute, click on the &lt;strong&gt;Allow Anyway&lt;/strong&gt; button. You will
+then be promped to authenticate to make the change take effect.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_allow.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_authenticate.png&quot; /&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;ol start=&quot;11&quot;&gt;
+&lt;li&gt;Run the LSF &lt;em&gt;bjobs&lt;/em&gt; command again. You will now receive a new warning error popup indicating: &lt;em&gt;macOS cannot verify the developer of &amp;ldquo;bjobs&amp;rdquo;. Are you sure you want to open it?&lt;/em&gt;. To
+proceed, click on the Open button.The bjobs command will then run to completion as expected.  Subsequent executions of bjobs will run without any system warnings. Finally, to submit
+a job, run the bsub command. Here we try to submit a simple sleep job (i.e. bsub -q normal sleep 3600). As was the case with the bjobs command, the bsub command is also blocked. Here,
+repeat the steps 10, 11 as described above but for the bsub command. Once the steps have been completed, repeat the bsub job submission command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_open.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol start=&quot;12&quot;&gt;
+&lt;li&gt;Finally, to submit a job, run the &lt;em&gt;bsub&lt;/em&gt; command. Here we try to submit a simple sleep job (i.e. &lt;em&gt;bsub -q normal sleep 3600&lt;/em&gt;). As was the case with the &lt;em&gt;bjobs&lt;/em&gt; command, the &lt;em&gt;bsub&lt;/em&gt;
+command is also blocked. Here, repeat the steps 10, 11 as described above but for the &lt;em&gt;bsub&lt;/em&gt; command. Once the steps have been completed, repeat the &lt;em&gt;bsub&lt;/em&gt; job submission command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % bsub -q normal sleep 3600
+Job &amp;lt;617551&amp;gt; is submitted to queue &amp;lt;normal&amp;gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html">In traditional HPC environments, login nodes are typically used as an access point for users to submit and manage jobs. Although login nodes are still used today, HPC environments are increasingly being used by a broad class of users with domain expertise and not necessarily IT experts. In other words, such users may be more comfortable using their native desktop environment rather than the CLI. Given the factors, in the commercial HPC space, organizations are always looking for ways to lower the barto access and interact with HPC environments.</summary></entry><entry><title type="html">Monitoring .-.. … ..-. (IBM Spectrum LSF) with the TIG stack</title><link href="https://hpc.social/personal-blog/2023/monitoring-ibm-spectrum-lsf-with-the-tig-stack/" rel="alternate" type="text/html" title="Monitoring .-.. … ..-. (IBM Spectrum LSF) with the TIG stack" /><published>2023-01-24T19:48:44-07:00</published><updated>2023-01-24T19:48:44-07:00</updated><id>https://hpc.social/personal-blog/2023/monitoring-ibm-spectrum-lsf-with-the-tig-stack</id><content type="html" xml:base="https://hpc.social/personal-blog/2023/monitoring-ibm-spectrum-lsf-with-the-tig-stack/">&lt;p&gt;Much like dashboards in automobiles, dashboards in the context of HPC infrastructure are crucial to get an understanding of what&amp;rsquo;s happening under the hood of your HPC cluster - at
 a glance. During my IT career, I&amp;rsquo;ve used a myriad of monitoring solutions ranging from SNMP and Ganglia, to the ELK (Elasticsearch, Logstash, Kibana) stack. For example, I&amp;rsquo;ve recently
 written an overview on how it is possible to visualize &lt;a href=&quot;https://www.ibm.com/products/hpc-workload-management&quot;&gt;IBM Spectrum LSF&lt;/a&gt; (LSF) data in Grafana. LSF is an HPC job scheduler which brings to the table three decades of experience in
 workload and resource management.&lt;/p&gt;
@@ -6585,17 +6833,4 @@ running using Flux alongside this Mini Cluster, but on Kubernetes! I’ve starte
 &lt;h3 id=&quot;stay-tuned&quot;&gt;Stay Tuned!&lt;/h3&gt;
 
 &lt;p&gt;Stay tuned for more work in this space! I’ve been doing a ton of programming in Go, Python, and working
-on a wide range of technologies, and fairly quickly, and I am very much in my happy place. Please come and join us! ❤️&lt;/p&gt;</content><author><name>Vanessasaurus</name></author><category term="vsoch" /><summary type="html">For many years, there has been a battle between cloud and HPC. The cloud side of the equation says “micro services, cloud native!” and the HPC side says “too expensive!” Conversations often don’t progress because both sides are up-in-arms and focused on why they cannot work together. At best, we might get access to cloud from an HPC center, or an company might present a product as branded for “HPC.” But it’s not truly collaborative in the way that I’d like.</summary></entry><entry><title type="html">Ceph OSD CPU Scaling - Part 1</title><link href="https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1/" rel="alternate" type="text/html" title="Ceph OSD CPU Scaling - Part 1" /><published>2022-11-08T00:00:00-07:00</published><updated>2022-11-08T00:00:00-07:00</updated><id>https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1/">&lt;p&gt;Last summer we had a user that hit some performance issues based on a recommendation to use 2 cores per OSD in their systems.  I wanted to provide some data for the community and wrote up a blog &lt;a href=&quot;https://ceph.io/en/news/blog/2022/ceph-osd-cpu-scaling/&quot;&gt;post&lt;/a&gt; on the ceph.io website.  Please take a look!&lt;/p&gt;</content><author><name>Mark Nelson's Blog</name></author><category term="markhpc" /><summary type="html">Last summer we had a user that hit some performance issues based on a recommendation to use 2 cores per OSD in their systems. I wanted to provide some data for the community and wrote up a blog post on the ceph.io website. Please take a look!</summary></entry><entry><title type="html">Containerize It, Baby!</title><link href="https://hpc.social/personal-blog/2022/containerize-it-baby/" rel="alternate" type="text/html" title="Containerize It, Baby!" /><published>2022-11-03T09:30:00-06:00</published><updated>2022-11-03T09:30:00-06:00</updated><id>https://hpc.social/personal-blog/2022/containerize-it-baby-</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/containerize-it-baby/">&lt;p&gt;I’ve just submit my &lt;a href=&quot;https://twitter.com/vsoch/status/1588215058009464832&quot; target=&quot;_blank&quot;&gt;entry&lt;/a&gt; to the HPC Guru Elevator Pitch Contest for the Supercomputing 2022 conference!&lt;/p&gt;
-
-&lt;p&gt;I’m fairly sure (like many of these contests) it will be a politically correct winner - someone that is best appealing
-to the conference, but I’ll take a stand right now that I think my submission is tops in terms of creativity
-and excited energy! I mean, there is just no alternative when it comes to technologies I’m excited about.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Containerize it, baby!&lt;/p&gt;
-
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Mic Drop!&lt;/em&gt; 🎙️&lt;/p&gt;
-
-&lt;p&gt;Regardless of the outcome of this contest, I feel like I’ve already won - I’ve had so much fun making this and sharing with the community! 🎉️&lt;/p&gt;</content><author><name>Vanessasaurus</name></author><category term="vsoch" /><summary type="html">I’ve just submit my entry to the HPC Guru Elevator Pitch Contest for the Supercomputing 2022 conference!</summary></entry></feed>
+on a wide range of technologies, and fairly quickly, and I am very much in my happy place. Please come and join us! ❤️&lt;/p&gt;</content><author><name>Vanessasaurus</name></author><category term="vsoch" /><summary type="html">For many years, there has been a battle between cloud and HPC. The cloud side of the equation says “micro services, cloud native!” and the HPC side says “too expensive!” Conversations often don’t progress because both sides are up-in-arms and focused on why they cannot work together. At best, we might get access to cloud from an HPC center, or an company might present a product as branded for “HPC.” But it’s not truly collaborative in the way that I’d like.</summary></entry><entry><title type="html">Ceph OSD CPU Scaling - Part 1</title><link href="https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1/" rel="alternate" type="text/html" title="Ceph OSD CPU Scaling - Part 1" /><published>2022-11-08T00:00:00-07:00</published><updated>2022-11-08T00:00:00-07:00</updated><id>https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1/">&lt;p&gt;Last summer we had a user that hit some performance issues based on a recommendation to use 2 cores per OSD in their systems.  I wanted to provide some data for the community and wrote up a blog &lt;a href=&quot;https://ceph.io/en/news/blog/2022/ceph-osd-cpu-scaling/&quot;&gt;post&lt;/a&gt; on the ceph.io website.  Please take a look!&lt;/p&gt;</content><author><name>Mark Nelson's Blog</name></author><category term="markhpc" /><summary type="html">Last summer we had a user that hit some performance issues based on a recommendation to use 2 cores per OSD in their systems. I wanted to provide some data for the community and wrote up a blog post on the ceph.io website. Please take a look!</summary></entry></feed>

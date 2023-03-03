@@ -4,13 +4,270 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2023-02-28T20:10:58-07:00</updated>
+ <updated>2023-03-01T20:06:26-07:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>LSF client on macOS - submitting from your laptop</title>
+   <link href="https://hpc.social/2023/lsf-client-on-macos-submitting-from-your-laptop/"/>
+   <updated>2023-03-01T19:10:58-07:00</updated>
+   <id>https://hpc.social/2023/lsf-client-on-macos-submitting-from-your-laptop</id>
+   <content type="html">&lt;p&gt;In traditional HPC environments, login nodes are typically used as an access point for users to submit
+and manage jobs. Although login nodes are still used today, HPC environments are
+increasingly being used by a broad class of users with domain expertise and not necessarily IT experts.
+In other words, such users may be more comfortable using their native desktop
+environment rather than the CLI. Given the factors, in the commercial HPC space, organizations are always looking
+for ways to lower the barto access and interact with HPC environments.&lt;/p&gt;
+
+&lt;p&gt;Spectrum LSF provides many ways to submit and manage jobs in an HPC cluster. For power users, the rich
+CLI functionality exists. There is also an available web-based interface for job
+submission and management which provides customizable application templates to greatly simplify job sub
+mission, while hiding complexity of the underlying infrastructure. A RESTful API
+is also available to users of IBM Spectrum LSF Application Center or IBM Spectrum LSF Suites, which ena
+bles organizations to access the HPC environment via web services.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve written previously in detail about the the LSF web-based interface in the blog
+&lt;a href=&quot;https://www.gaborsamu.com/blog/easy_hpc/&quot;&gt;The Easy HPC Button&lt;/a&gt;. Here, we&amp;rsquo;ll take a closer look at the
+available LSF client for macOS that uses the RESTful API. First, a bit about LSF clients. LSF clients
+can access resources on LSF server hosts without running the LSF daemons. LSF clients don&amp;rsquo;t require a software
+license and from clients, users can run all of the familiar LSF commands. Additionally, LSF clients are
+submit only, and don&amp;rsquo;t execute jobs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The macOS LSF client uses the LSF RESTful API. This means that it will function in environments
+running LSF Standard Edition with LSF Application Center or LSF Suites.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Configuration&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The configuration used for the example below is as follows:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;Hostname&lt;/th&gt;
+&lt;th&gt;OS&lt;/th&gt;
+&lt;th&gt;Detail&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;em&gt;kilenc&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;CentOS Stream 8.4&lt;/td&gt;
+&lt;td&gt;LSF Suite for HPC v10.2.0.13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;em&gt;My-Macbook-Air&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;macOS Ventura 13.2.1 (Apple M1)&lt;/td&gt;
+&lt;td&gt;LSF client&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Spectrum LSF Suite for HPC management host (&lt;em&gt;kilenc&lt;/em&gt;), add the following variables to the Parameter
+section in the file lsf.cluster.&lt;em&gt;name&lt;/em&gt;. The FLOAT_CLIENTS variable determines how many floating clients can
+join the LSF cluster, The FLOAT_CLIENTS_ADDR_RANGE specifies the allowable IP addresses. In this case, the
+client system is on a 192.168.x.x network.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;Begin Parameters
+FLOAT_CLIENTS=2
+FLOAT_CLIENTS_ADDR_RANGE=192.*
+End Parameters&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;To make the changes take effect, issue the following commands as the LSF administrator:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsadmin reconfig
+badmin reconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Obtain the tarball &lt;em&gt;pacdesktop_client10.2.0.13_macos-x86_64.tar&lt;/em&gt;. For users with an LSF entitlement this package is available on
+&lt;a href=&quot;https://www.ibm.com/support/fixcentral/&quot;&gt;IBM Fix Central&lt;/a&gt;. Note that this package will work on systems with Apple M1 silicon through emulation.&lt;/p&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open a Terminal on the macOS client system, copy the tarball to the $HOME/Desktop directory of user lsfuser and uncompress the tarball.&lt;/p&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air Desktop % pwd
+/Users/lsfuser/Desktop
+lsfuser@My-MacBook-Air Desktop % ls -la pacdesktop_client10.2.0.13_macos-x86_64.tar
+-rw-r--r--@ 1 lsfuser  staff  18452480 27 Feb 17:12 pacdesktop_client10.2.0.13_macos-x86_64.tar
+lsfuser@My-MacBook-Air Desktop % tar -xvf pacdesktop_client10.2.0.13_macos-x86_64.tar
+x LSF_Desktop_Client/
+x LSF_Desktop_Client/bapp
+x LSF_Desktop_Client/btop
+x LSF_Desktop_Client/bwait
+x LSF_Desktop_Client/lseligible
+x LSF_Desktop_Client/bsla
+x LSF_Desktop_Client/blparams
+x LSF_Desktop_Client/bhpart
+x LSF_Desktop_Client/bclusters
+x LSF_Desktop_Client/blstartup
+x LSF_Desktop_Client/lsacct
+x LSF_Desktop_Client/bsub
+x LSF_Desktop_Client/bugroup
+x LSF_Desktop_Client/bpeek
+x LSF_Desktop_Client/bacct
+x LSF_Desktop_Client/brequeue
+x LSF_Desktop_Client/bjgroup
+x LSF_Desktop_Client/bslots
+x LSF_Desktop_Client/lsrun
+x LSF_Desktop_Client/bjobs
+x LSF_Desktop_Client/lshosts
+x LSF_Desktop_Client/lsload
+x LSF_Desktop_Client/brlainfo
+x LSF_Desktop_Client/bresources
+x LSF_Desktop_Client/bladmin
+x LSF_Desktop_Client/bstatus
+x LSF_Desktop_Client/bmod
+x LSF_Desktop_Client/bpost
+x LSF_Desktop_Client/lsid
+x LSF_Desktop_Client/bentags
+x LSF_Desktop_Client/ch
+x LSF_Desktop_Client/bchkpnt
+x LSF_Desktop_Client/bparams
+x LSF_Desktop_Client/bjdepinfo
+x LSF_Desktop_Client/bgmod
+x LSF_Desktop_Client/brestart
+x LSF_Desktop_Client/lsltasks
+x LSF_Desktop_Client/blusers
+x LSF_Desktop_Client/paclogon
+x LSF_Desktop_Client/regnotify
+x LSF_Desktop_Client/cacert.pem
+x LSF_Desktop_Client/bresume
+x LSF_Desktop_Client/blstat
+x LSF_Desktop_Client/bhist
+x LSF_Desktop_Client/bqueues
+x LSF_Desktop_Client/bltasks
+x LSF_Desktop_Client/bresize
+x LSF_Desktop_Client/blcollect
+x LSF_Desktop_Client/lsacctmrg
+x LSF_Desktop_Client/bgadd
+x LSF_Desktop_Client/bmig
+x LSF_Desktop_Client/bstop
+x LSF_Desktop_Client/bswitch
+x LSF_Desktop_Client/blhosts
+x LSF_Desktop_Client/blcstat
+x LSF_Desktop_Client/brsvs
+x LSF_Desktop_Client/brun
+x LSF_Desktop_Client/blinfo
+x LSF_Desktop_Client/lsgrun
+x LSF_Desktop_Client/busers
+x LSF_Desktop_Client/lsloadadj
+x LSF_Desktop_Client/blkill
+x LSF_Desktop_Client/bbot
+x LSF_Desktop_Client/lsclusters
+x LSF_Desktop_Client/bconf
+x LSF_Desktop_Client/lsinfo
+x LSF_Desktop_Client/lsmake
+x LSF_Desktop_Client/blimits
+x LSF_Desktop_Client/bmgroup
+x LSF_Desktop_Client/bread
+x LSF_Desktop_Client/bkill
+x LSF_Desktop_Client/lstcsh
+x LSF_Desktop_Client/lsrtasks
+x LSF_Desktop_Client/README.TXT
+x LSF_Desktop_Client/lsplace
+x LSF_Desktop_Client/bhosts
+x LSF_Desktop_Client/paclogout
+x LSF_Desktop_Client/bgdel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Following the directions in the file README.TXT, set the environment variable LSF_DESKTOP_CLIENT=yes, and set the PATH variable accordingly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % export LSF_DESKTOP_CLIENT=yes
+lsfuser@My-MacBook-Air LSF_Desktop_Client % export PATH=`pwd`:$PATH&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;Next, it&amp;rsquo;s necessary to run the &lt;em&gt;paclogon&lt;/em&gt; command to connect to the LSF Application Center (or LSF Suite installation). Here we point to the LSF server kilenc on port 8080.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % paclogon
+Log on to IBM Spectrum LSF Application Center
+User account: lsfuser
+Enter password: 
+Specify the URL to connect to IBM Spectrum LSF Application Center. Format: 
+http://host_name:port_number/platform or https://host_name:port_number/platform
+URL: http://kilenc:8080/platform
+You have successfully logged on to IBM Spectrum LSF Application Center.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;After successfully logging in using the paclogon command, it should be possible to run LSF &amp;ldquo;base&amp;rdquo; commands from the macOS terminal including &lt;em&gt;lsid&lt;/em&gt;, &lt;em&gt;lsload&lt;/em&gt;, &lt;em&gt;lshosts&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % lsid
+IBM Spectrum LSF 10.1.0.13, Apr 15 2022
+Suite Edition: IBM Spectrum LSF Suite for HPC 10.2.0.13
+Copyright International Business Machines Corp. 1992, 2016.
+US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+My cluster name is Klaszter
+My master name is kilenc
+lsfuser@My-MacBook-Air LSF_Desktop_Client % lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+kilenc                    LINUXPPC64LE      POWER9  25.0    32  30.7G  15.8G    Yes (mg docker)
+lsfuser@My-MacBook-Air LSF_Desktop_Client % lsload -w
+HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
+kilenc                      ok   0.8   2.1   2.4   7%   0.0   0  1156  551M 15.6G   10G&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;8&quot;&gt;
+&lt;li&gt;Next, run the LSF batch commands &lt;em&gt;bqueues&lt;/em&gt; and &lt;em&gt;bhosts&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % bqueues
+QUEUE_NAME      PRIO STATUS          MAX JL/U JL/P JL/H NJOBS  PEND   RUN  SUSP 
+admin            50  Open:Active       -    -    -    -     0     0     0     0
+owners           43  Open:Active       -    -    -    -     0     0     0     0
+priority         43  Open:Active       -    -    -    - 75835 75803    32     0
+night            40  Open:Inact        -    -    -    -     0     0     0     0
+short            35  Open:Active       -    -    -    -     0     0     0     0
+dataq            33  Open:Active       -    -    -    -     0     0     0     0
+normal           30  Open:Active       -    -    -    -     0     0     0     0
+interactive      30  Open:Active       -    -    -    -     0     0     0     0
+sendq            30  Open:Active       -    -    -    -     0     0     0     0
+idle             20  Open:Active       -    -    -    -     0     0     0     0
+lsfuser@My-MacBook-Air LSF_Desktop_Client % bhosts
+HOST_NAME          STATUS       JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV 
+kilenc             ok              -     32     19     19      0      0      0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol start=&quot;9&quot;&gt;
+&lt;li&gt;Running the bjobs will result in a warning message appearing on macOS stating: &lt;em&gt;&amp;ldquo;bjobs&amp;rdquo; cannot be opened because the developer cannot be verified.&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_unverified.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol start=&quot;10&quot;&gt;
+&lt;li&gt;To remedy the issue observed in step 9, click cancel on the warning message and browse to &lt;strong&gt;System Settings -&amp;gt; Privacy &amp;amp; Security -&amp;gt; Security Settings&lt;/strong&gt;. In the Security Settings view,
+you&amp;rsquo;ll see the message: &lt;em&gt;&amp;ldquo;bjobs&amp;rdquo; was blocked from use because it is not from an identified developer.&lt;/em&gt; To allow the bjobs command to execute, click on the &lt;strong&gt;Allow Anyway&lt;/strong&gt; button. You will
+then be promped to authenticate to make the change take effect.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_allow.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_authenticate.png&quot; /&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;ol start=&quot;11&quot;&gt;
+&lt;li&gt;Run the LSF &lt;em&gt;bjobs&lt;/em&gt; command again. You will now receive a new warning error popup indicating: &lt;em&gt;macOS cannot verify the developer of &amp;ldquo;bjobs&amp;rdquo;. Are you sure you want to open it?&lt;/em&gt;. To
+proceed, click on the Open button.The bjobs command will then run to completion as expected.  Subsequent executions of bjobs will run without any system warnings. Finally, to submit
+a job, run the bsub command. Here we try to submit a simple sleep job (i.e. bsub -q normal sleep 3600). As was the case with the bjobs command, the bsub command is also blocked. Here,
+repeat the steps 10, 11 as described above but for the bsub command. Once the steps have been completed, repeat the bsub job submission command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/bjobs_open.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;ol start=&quot;12&quot;&gt;
+&lt;li&gt;Finally, to submit a job, run the &lt;em&gt;bsub&lt;/em&gt; command. Here we try to submit a simple sleep job (i.e. &lt;em&gt;bsub -q normal sleep 3600&lt;/em&gt;). As was the case with the &lt;em&gt;bjobs&lt;/em&gt; command, the &lt;em&gt;bsub&lt;/em&gt;
+command is also blocked. Here, repeat the steps 10, 11 as described above but for the &lt;em&gt;bsub&lt;/em&gt; command. Once the steps have been completed, repeat the &lt;em&gt;bsub&lt;/em&gt; job submission command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;lsfuser@My-MacBook-Air LSF_Desktop_Client % bsub -q normal sleep 3600
+Job &amp;lt;617551&amp;gt; is submitted to queue &amp;lt;normal&amp;gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Monitoring .-.. ... ..-. (IBM Spectrum LSF) with the TIG stack</title>
