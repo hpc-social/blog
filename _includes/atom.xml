@@ -4,13 +4,278 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2023-11-07T19:36:50-07:00</updated>
+ <updated>2023-11-08T19:36:43-07:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>Advanced LSF resource connector configuration on IBM Cloud - part I</title>
+   <link href="https://hpc.social/2023/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-i/"/>
+   <updated>2023-11-08T02:21:04-07:00</updated>
+   <id>https://hpc.social/2023/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-i</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Overview&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the first in a series of blogs that discusses some advanced
+configuration of the IBM LSF resource connector. LSF resource connector enables
+LSF clusters to borrow resources from supported resource providers in the
+cloud. LSF includes resource connectors for the following resource providers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IBM Cloud&lt;/li&gt;
+&lt;li&gt;AWS&lt;/li&gt;
+&lt;li&gt;Google Cloud Platform&lt;/li&gt;
+&lt;li&gt;Microsoft Azure&lt;/li&gt;
+&lt;li&gt;Microsoft Azure CycleCloud&lt;/li&gt;
+&lt;li&gt;Red Hat OpenShift&lt;/li&gt;
+&lt;li&gt;OpenStack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The resource connector plug-ins for LSF are available under an open source
+license (the Apache License 2.0) on the public IBM Spectrum Computing github
+&lt;a href=&quot;https://github.com/IBMSpectrumComputing/cloud-provider-plugins&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;LSF resource connector works in conjunction with the LSF multicluster
+capability to create a flexible and dynamic hybrid HPC cloud. LSF multicluster
+enables organizations to have multiple LSF clusters connect with one another
+and to define queues which can forward to remote clusters and receive jobs
+from remote clusters. Historically LSF multicluster was used by clients who
+have multiple, geographically dispersed compute centres and it allowed them to
+connect these environments and have work forwarded between them. Naturally
+this can also be used to setup an LSF cluster in the cloud and tie it in to
+your existing on-premises LSF cluster. According to a recent Hyperion Research
+whitepaper, the most widely adopted framework for leveraging HPC resources in
+the cloud is in a hybrid environment where a user runs their HPC workloads
+both on-premises and in the cloud.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a class=&quot;footnote-ref&quot; href=&quot;https://www.gaborsamu.com/blog/index.xml#fn:1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cloud templates&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As part of the configuration of the LSF resource connector, it’s necessary to
+define templates which are used to specify a specific cloud instance type. In
+other words, the template is used to define a set of hosts with common
+attributes including memory and number of cores and operating system image.
+These templates are used by LSF when requesting instances from a particular
+cloud to satisfy the workload demands.&lt;/p&gt;
+
+&lt;p&gt;In this post, we’ll take a closer look at configuring multiple LSF resource
+connector templates for IBM Cloud as the resource provider. By default, when
+multiple templates are configured, LSF will sort the candidate template
+servers alphabetically by template name. However, administrators may wish to
+sort the templates according to a specific priority. For example, an
+organization may want to assign a high priority to a template corresponding to
+a less costly instance type. When priorities are specified for templates, LSF
+will use high priority templates first.&lt;/p&gt;
+
+&lt;p&gt;The environment used in this example was deployed using the IBM Cloud
+automation for LSF. Using Terraform/IBM Cloud Schematics, it’s possible to
+automatically deploy a fully functioning LSF cluster in about 10 minutes time.
+This includes a login node, NFS storage node, LSF manager node(s) and
+LSF Application Center. The automation also configures the LSF resource
+connector for the instance type specified at deployment time. More detailed
+information can be found about deploying LSF on IBM Cloud &lt;a href=&quot;https://cloud.ibm.com/docs/ibm-spectrum-lsf?topic=ibm-spectrum-lsf-getting-started-tutorial&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The following steps assume that LSF has been deployed on IBM Cloud. Note that
+this is a single LSF cluster and not a hybrid cloud that has been configured.
+Now, we’ll look at the following configuration examples:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Specifying multiple templates for different cloud instance types with different priorities&lt;/li&gt;
+&lt;li&gt;Update LSF resource connector user script to load required OS packages on compute nodes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Multiple templates&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The LSF deployment automation on IBM Cloud configures a single template for
+the compute VSI type specified at deployment time. In the example below, we
+see a single template configured for VSI profile type &lt;em&gt;bx2-4x16&lt;/em&gt;. A complete
+list of available IBM Cloud VPC VSI types can be found &lt;a href=&quot;https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;amp;interface=ui&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ibmcloudgen2_templates.json (obfuscated)&lt;/strong&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;{
+    &quot;templates&quot;: [
+        {
+            &quot;templateId&quot;: &quot;Template-1&quot;,
+            &quot;maxNumber&quot;: 2,
+            &quot;attributes&quot;: {
+                &quot;type&quot;: [&quot;String&quot;, &quot;X86_64&quot;],
+                &quot;ncores&quot;: [&quot;Numeric&quot;, &quot;2&quot;],
+                &quot;ncpus&quot;: [&quot;Numeric&quot;, &quot;4&quot;],
+                &quot;mem&quot;: [&quot;Numeric&quot;, &quot;16384&quot;],
+                &quot;icgen2host&quot;: [&quot;Boolean&quot;, &quot;1&quot;]
+            },
+            &quot;imageId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;subnetId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vpcId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vmType&quot;: &quot;bx2-4x16&quot;,
+            &quot;securityGroupIds&quot;: [&quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;],
+            &quot;resourceGroupId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,
+            &quot;sshkey_id&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;region&quot;: &quot;us-east&quot;,
+            &quot;zone&quot;: &quot;us-east-1&quot;
+        }
+    ]
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Defining priorities&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll note that there is no priority specified for the template. When no
+priority is defined, LSF sorts the templates according to template name. Next,
+we’ll define a second template in the configuration for the VSI instance type
+&lt;em&gt;mx2-16x128&lt;/em&gt;. At the same time, we’ll introduce the priority parameter and
+specify a priority of 10 (higher) for &lt;em&gt;bx2-4x16&lt;/em&gt;, and 5 (lower) for
+&lt;em&gt;mx2-16x128&lt;/em&gt;. More details regarding the parameters can be found &lt;a href=&quot;https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=reference-ibmcloudgen2-templatesjson&quot;&gt;here&lt;/a&gt;. With this configuration, LSF will favour and use the higher priority
+template first, which in this case will be for VSI instance type &lt;em&gt;bx2-4x16&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ibmcloudgen2_templates.json (obfuscated, with priorities configured)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;{
+    &quot;templates&quot;: [
+        {
+            &quot;templateId&quot;: &quot;Template-1&quot;,
+            &quot;maxNumber&quot;: 2,
+            &quot;attributes&quot;: {
+                &quot;type&quot;: [&quot;String&quot;, &quot;X86_64&quot;],
+                &quot;ncores&quot;: [&quot;Numeric&quot;, &quot;2&quot;],
+                &quot;ncpus&quot;: [&quot;Numeric&quot;, &quot;4&quot;],
+                &quot;mem&quot;: [&quot;Numeric&quot;, &quot;16384&quot;],
+                &quot;icgen2host&quot;: [&quot;Boolean&quot;, &quot;1&quot;] 
+            },
+            &quot;imageId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;subnetId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vpcId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vmType&quot;: &quot;bx2-4x16&quot;,
+            &quot;securityGroupIds&quot;: [&quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;],
+            &quot;resourceGroupId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,
+            &quot;sshkey_id&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            **&quot;priority&quot;: &quot;10&quot;,** 
+            &quot;region&quot;: &quot;us-east&quot;,
+            &quot;zone&quot;: &quot;us-east-1&quot; 
+        },
+
+       {
+            &quot;templateId&quot;: &quot;Template-2&quot;,
+            &quot;maxNumber&quot;: 2,
+            &quot;attributes&quot;: {
+                &quot;type&quot;: [&quot;String&quot;, &quot;X86_64&quot;],
+                &quot;ncores&quot;: [&quot;Numeric&quot;, &quot;8&quot;],
+                &quot;ncpus&quot;: [&quot;Numeric&quot;, &quot;16&quot;],
+                &quot;mem&quot;: [&quot;Numeric&quot;, &quot;131072&quot;],
+                &quot;icgen2host&quot;: [&quot;Boolean&quot;, &quot;1&quot;]
+            },
+            &quot;imageId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;subnetId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vpcId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vmType&quot;: &quot;mx2-16x128&quot;,
+            &quot;userData&quot;:&quot;profile=mx2_16x128&quot;,
+            &quot;&quot;securityGroupIds&quot;: [&quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;],
+            &quot;resourceGroupId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,
+            &quot;sshkey_id&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            **&quot;priority&quot;: &quot;5&quot;,**
+            &quot;region&quot;: &quot;us-east&quot;,
+            &quot;zone&quot;: &quot;us-east-1&quot;
+        }
+
+    ]
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Modifying compute server options&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we’ll submit some example jobs to the LSF cluster and observe how the
+LSF resource connector template priority influences the startup of resources
+by the LSF resource connector. The example job we wish to run is the OS
+supplied &lt;em&gt;stress&lt;/em&gt; command. &lt;em&gt;stress&lt;/em&gt; is not installed in the default compute
+images and can be added as part of the startup of the compute servers via the
+LSF resource connector user_data.sh script. This script is used to set
+environment variables, and control the startup of LSF on the compute servers.
+It can also be used to perform customization of the environment, and pass LSF
+resources to the compute servers. The user_data.sh script is located in:
+&lt;em&gt;/opt/ibm/lsf/conf/resource_connector/ibmcloudgen2&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Modifying the &lt;em&gt;user_data.sh&lt;/em&gt; script, I’ve inserted the line to install the OS
+&lt;em&gt;stress&lt;/em&gt; package before the LSF daemons startup.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;user_data.sh&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;...
+...
+**# Install stress utility**
+**dnf install stress -y**
+
+cat $LSF_CONF_FILE  &amp;gt;&amp;gt; $logfile
+
+sleep 5
+lsf_daemons start &amp;amp;
+sleep 5
+lsf_daemons status &amp;gt;&amp;gt; $logfile
+echo END `date '+%Y-%m-%d %H:%M:%S'` &amp;gt;&amp;gt; $logfile
+# Allow login as lsfadmin
+nfs_mount_dir=&quot;data&quot;
+mkdir -p /home/lsfadmin/.ssh
+cp /mnt/data/ssh/authorized_keys /home/lsfadmin/.ssh/authorized_keys
+cat /mnt/data/ssh/id_rsa.pub &amp;gt;&amp;gt; /root/.ssh/authorized_keys
+chmod 600 /home/lsfadmin/.ssh/authorized_keys
+chmod 700 /home/lsfadmin/.ssh
+chown -R lsfadmin:lsfadmin /home/lsfadmin/.ssh
+echo &quot;MTU=9000&quot; &amp;gt;&amp;gt; &quot;/etc/sysconfig/network-scripts/ifcfg-eth0&quot;
+systemctl restart NetworkManager
+...
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With the updates made to the user_data.sh script, we’re now ready to submit
+jobs to LSF. We submit two &lt;em&gt;stress&lt;/em&gt; jobs as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;[lsfadmin@icgen2host-10-241-0-37 ~]$ bsub -q normal /usr/bin/stress --cpu 1 --vm-bytes 8192MB --timeout 60s
+Job &amp;lt;2836&amp;gt; is submitted to queue &amp;lt;normal&amp;gt;.
+[lsfadmin@icgen2host-10-241-0-37 ~]$ bsub -q normal /usr/bin/stress --cpu 1 --vm-bytes 8192MB --timeout 60s
+Job &amp;lt;2837&amp;gt; is submitted to queue &amp;lt;normal&amp;gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;After a few moments, the LSF resource connector automatically starts up a
+single compute server on the IBM Cloud with hostname &lt;em&gt;icgen2host-10-241-0-42&lt;/em&gt;
+to satisfy the pending workload requirements. Note that the hostname prefix
+icgen2host stands for IBM Cloud Generation 2 VPC. The numeric portion of the
+hostname represents the IP address of the server that was automatically
+started by the LSF resource connector. Therefore, this hostname may differ
+in your environment. Compute server &lt;em&gt;icgen2host-10-241-0-42&lt;/em&gt; is equipped with
+4 cores and 16 GB RAM, matching the higher priority template &lt;em&gt;bx2-4x16&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;[lsfadmin@icgen2host-10-241-0-37 ~]$ lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+icgen2host-10-241-0-37        X86_64    Intel_E5  12.5     4  15.4G      -    Yes (mg)
+icgen2host-10-241-0-42        X86_64    Intel_E5  12.5     4  15.5G      -    Dyn (icgen2host)
+
+
+[lsfadmin@icgen2host-10-241-0-37 ~]$ bhosts -rc -w
+HOST_NAME          STATUS          JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV RC_STATUS             PROV_STATUS           UPDATED_AT             INSTANCE_ID               
+icgen2host-10-241-0-37 closed_Full     -      0      0      0      0      0      0           -                     -                     -                      -               
+icgen2host-10-241-0-42 ok              -      4      2      2      0      0      0 Allocated             running               2023-11-06T23:02:26UTC 0757_4f5295bd-a265-4fda-840c-6f89e326ca1f &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As there is no other work that has been submitted to the LSF cluster, once the
+&lt;em&gt;stress&lt;/em&gt; jobs have completed, the LSF resource connector will automatically
+shut down the compute servers according to the &lt;strong&gt;LSB_RC_EXTERNAL_HOST_IDLE_TIME&lt;/strong&gt;
+parameter in &lt;em&gt;lsf.conf&lt;/em&gt;. This defines the time interval after which the LSF
+resource connector will relinquish the cloud instances if no jobs are running.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We’ve just scratched the surface in terms of the configuration possibilities
+with LSF resource connector. In the next article we’ll look at how LSF
+resources can be assigned to servers which are dynamically started by the LSF
+resource connector, as well as configuring Docker to point to a local
+repository.&lt;/p&gt;
+
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn:1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ibm.com/downloads/cas/RGKYOOKB&quot;&gt;The Evolution of HPC Includes Strong Use of Hybrid Cloud&lt;/a&gt;&amp;#160;&lt;a class=&quot;footnote-backref&quot; href=&quot;https://www.gaborsamu.com/blog/index.xml#fnref:1&quot;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+ </entry>
  
  <entry>
    <title>LSF client on macOS - submitting from your laptop</title>
