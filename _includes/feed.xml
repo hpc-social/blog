@@ -1,4 +1,323 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2024-03-19T20:34:34-06:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Pi in the sky? A compute cluster in mini ITX form factor</title><link href="https://hpc.social/personal-blog/2024/pi-in-the-sky-a-compute-cluster-in-mini-itx-form-factor/" rel="alternate" type="text/html" title="Pi in the sky? A compute cluster in mini ITX form factor" /><published>2024-03-04T17:07:46-07:00</published><updated>2024-03-04T17:07:46-07:00</updated><id>https://hpc.social/personal-blog/2024/pi-in-the-sky-a-compute-cluster-in-mini-itx-form-factor</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/pi-in-the-sky-a-compute-cluster-in-mini-itx-form-factor/"><![CDATA[<p><strong>Overview</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2024-03-21T20:34:04-06:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">4 turning and 7 chilling</title><link href="https://hpc.social/personal-blog/2024/4-turning-and-7-chilling/" rel="alternate" type="text/html" title="4 turning and 7 chilling" /><published>2024-03-21T18:09:30-06:00</published><updated>2024-03-21T18:09:30-06:00</updated><id>https://hpc.social/personal-blog/2024/4-turning-and-7-chilling</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/4-turning-and-7-chilling/"><![CDATA[<p><strong>How to keep your cool</strong></p>
+
+<p>I&rsquo;m back again and revisiting the Turing Pi V1 board. This time the focus isn&rsquo;t on software, but rather cooling. In my previous write-up <a href="https://www.gaborsamu.com/blog/turingpi_hpl/">Pi in the sky? A compute cluster in mini ITX form factor</a>, I used a USB fan I had at hand to keep the temperature of the compute modules in check during the Linpack runs. Although the fan was a seriously sketchy one, it did the job, and prevented throttling of the compute modules under high load, albeit with much noise. Clearly not content with this mediocre setup I pondered what other solutions I could quickly come up with.</p>
+
+<p>Looking in my electronics spare parts bin, I came across 2 spare Noctua 40x40x20mm fans, part number <em>NF-A4x20 PWM</em>. I found that these fans fit well on the Turing Pi board perpendicular to the compute modules. I measured that for full cooling coverage of the compute modules I&rsquo;d need 4 such fans, side by side. However before investing in two more fans, I needed to confirm that they had enough oomph (yes that&rsquo;s a technical term) to keep things cool.</p>
+
+<p>So my plan was to first test two fans cooling half of the modules. However, to test these fans out, I first needed to get a hold of some USB to 3/4-pin fan power adapter cables. Once I had these adapters, I used a thick elastic band to bind the 2 fans together, and connected them to the USB for power using the adapters and give them a whirl - pun intended. Of course I fell back on Linpack to get the compute modules busy.</p>
+
+<p>The results were promising enough that I immediately ordered two more fans and adapters to complete the setup which is shown in the photo below. A thick elastic band was used again to fasten the remaining 2 fans together. Of course, the setup will be made more robust to ensure that fans will stay in place. And I&rsquo;ll do a bit of work on cable management.</p>
+
+<figure><img src="https://www.gaborsamu.com/images/turingpi_noctua.jpg" />
+</figure>
+
+<p><strong>Totally chill</strong></p>
+
+<p>The view of the dashboard (see below) speaks for itself. Under heavy load running Linpack, the compute modules don&rsquo;t exceed 50C. This is about 10 degrees cooler than what I saw with that USB desk fan. So I&rsquo;d consider that a result. Plus the Noctua fans are so much quieter and will be much more durable in the long run.</p>
+
+<figure><img src="https://www.gaborsamu.com/images/turingpi_dashboard_noctua.png" />
+</figure>
+
+<p><strong>Conclusion</strong></p>
+
+<p>So where does the title of my blog come from? It&rsquo;s inspired by the slogan &ldquo;6 turning and 4 burning&rdquo; of the B-36 Peacemaker strategic bomber! You can see the B-36 in all it&rsquo;s glory in this short <a href="https://youtu.be/9kQ2X84PRvY?si=q9FZmWFavXHbPcE8">excerpt</a> from the 1955 film <em>Strategic Air Command</em> starring Jimmy Stewart. You could say I have eclectic taste in films. Plus the B-36 has always fascinated me with it&rsquo;s combination of jet and piston engines. As for this blog, 4 turning obviously refers to the 4 Noctua fans turning. And 7 chilling refers to the 7 CM3 modules that now keep their cool under pressure. With a more suitable cooling solution in place, especially as the warmer days arrive, I can now refocus my attention to the software side of things. And as always, stay cool!</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[How to keep your cool]]></summary></entry><entry><title type="html">Advanced LSF resource connector configuration on IBM Cloud - part II</title><link href="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-ii/" rel="alternate" type="text/html" title="Advanced LSF resource connector configuration on IBM Cloud - part II" /><published>2024-03-19T20:40:52-06:00</published><updated>2024-03-19T20:40:52-06:00</updated><id>https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-ii</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-ii/"><![CDATA[<p><strong>Overview</strong></p>
+
+<p>Back in November 2023 I authored a blog titled <a href="https://www.gaborsamu.com/blog/lsf_rc_ibmcloud_part1/">Advanced LSF resource connector configuration on IBM Cloud - part I</a>. As I signed off in that post, I mentioned that there would be a follow-on post to cover some more advanced configuration topics on LSF resource connector.  And that’s the topic of this article today.</p>
+
+<p>To recap, the <a href="https://www.ibm.com/products/hpc-workload-management">IBM LSF</a> resource connector functionality enables LSF clusters to dynamically spin-up cloud instances from supported resource providers in the cloud based on workload demand, and to destroy those instances when no longer required.</p>
+
+<p>The LSF resource connector intelligently choses the most appropriate cloud instance type for a given job from the templates that have been defined by the administrator. This is done automatically and is transparent from the end user perspective. What if the job requires to run on a very specific instance type? In this post we’ll show you how this is feasible by defining an LSF string resource, along with the necessary configuration of LSF resource connector and a supporting script. This will allow users to submit jobs to LSF with a resource requirement string specifying the cloud instance type desired.</p>
+
+<p>For the example below, we’ll be using an IBM LSF environment which has been deployed on IBM Cloud using the extensive deployment automation that is available via the IBM Cloud catalog for <a href="https://cloud.ibm.com/catalog/content/terraform-1623200063-71606cab-c6e1-4f95-a47a-2ce541dcbed8-global">IBM LSF</a>. Using this automation, you can deploy an LSF cluster in about 10 minutes time including the creation of the virtual private cloud (VPC), networking, security, bastion node, NFS server node, LSF management nodes and optionally LSF Application Center.</p>
+
+<p><strong>What is user_data.sh?</strong></p>
+
+<p>We’ll start with a brief description of the LSF resource connector <em>user_data.sh</em> script. This script will play an important part in the configuration of the compute servers as we’ll see. The <em>user_data.sh</em> script is used to start-up the LSF daemons on the compute instances launched by LSF resource connector. It also crucially enables admins to configure settings, including LSF settings, which is what we’ll be using the in example below.</p>
+
+<p><strong>Specifying the cloud instance type</strong></p>
+
+<p>By default, the LSF resource connector intelligently chooses the cloud instance profile type based upon the job submission parameters. For example, it considers things like the number of processor requested, the memory requested just to name of few. And it will startup the compute instance or instances from the available configured templates which most closely matches the job requirement.</p>
+
+<p>What if you need to request a very specific compute instance type for the work that you’ve submitted based upon other, site-specific needs?  Here we will show exactly how you can achieve this.</p>
+
+<p><strong>Let the configuration begin!</strong></p>
+
+<p>We begin with updating the LSF configuration to create a new string resource called profile. In the configuration file <em>$LSF_ENVDIR/lsf.shared</em>, define the new string resource profile in the <em>Resource</em> section.</p>
+
+<div class="highlight"><pre><code class="language-plaintext">….
+….
+Begin Resource
+RESOURCENAME	TYPE	    INTERVAL	INCREASING	DESCRIPTION        # Keywords
+profile 	  String   ()       ()             (IBM Cloud Gen2 profile type)
+End Resource
+….
+….</code></pre></div>
+
+<p>To make the change take effect, reconfigure the LSF cluster with the LSF command <em>lsadmin reconfig</em>.</p>
+
+<div class="highlight"><pre><code class="language-plaintext"># lsadmin reconfig -v
+
+Checking configuration files ...
+
+
+EGO 3.4.0 build 1599999, Jan 04 2023
+Copyright International Business Machines Corp. 1992, 2016.
+US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+  binary type: linux3.10-glibc2.17-x86_64
+Reading configuration from /opt/ibm/lsf/conf/lsf.conf
+Mar 13 16:57:25 2024 1478621 6 3.4.0 Lim starting...
+Mar 13 16:57:25 2024 1478621 6 3.4.0 LIM is running in advanced workload execution mode.
+Mar 13 16:57:25 2024 1478621 6 3.4.0 Master LIM is not running in EGO_DISABLE_UNRESOLVABLE_HOST mode.
+Mar 13 16:57:25 2024 1478621 5 3.4.0 /opt/ibm/lsf/10.1/linux3.10-glibc2.17-x86_64/etc/lim -C
+Mar 13 16:57:26 2024 1478621 6 3.4.0 LIM is running as IBM Spectrum LSF Standard Edition.
+Mar 13 16:57:26 2024 1478621 6 3.4.0 reCheckClass: numhosts 1 so reset exchIntvl to 15.00
+Mar 13 16:57:26 2024 1478621 6 3.4.0 Checking Done.
+---------------------------------------------------------
+No errors found.
+
+Restart only the master candidate hosts? [y/n] n
+Do you really want to restart LIMs on all hosts? [y/n] y
+Restart LIM on &lt;icgen2host-AAA-BBB-CCC-DDD&gt; ...... done</code></pre></div>
+
+<p>Now, check that the profile variable has been setup properly. This can be done using the LSF <em>lsinfo</em> command.</p>
+
+<div class="highlight"><pre><code class="language-plaintext"># lsinfo |grep profile
+profile        String   N/A   IBM Cloud Gen2 profile type</code></pre></div>
+
+<p>Now we’re ready to update the LSF resource connector templates to add the <em>profile</em> string variable. For this example, there are two templates defined for IBM Cloud profile types <em>bx2-4x16</em> and <em>mx2-16x128</em> in the configuration file <em>$LSF_ENVDIR/resource_connector/ibmcloudgen2/conf</em>. Within the template definition, the <em>profile</em> string variable is defined, and a value is set for each respective profile type. Note that the “-“ character cannot be used in the LSF string variables, and in place of that the “_” character is used. The specified profile string for each respective template is defined and used as the selection criteria by LSF resource connector. Then the <em>userData</em> field is used to ensure that this value gets passed and set in the compute instance that is started by the LSF resource connector when the <em>user_data.sh</em> script is run.</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Instance type</th>
+<th>LSF <em>profile</em> variable string value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">bx2-4x16</td>
+<td>bx2_4x16</td>
+</tr>
+<tr>
+<td style="text-align: left;">mx2-16x128</td>
+<td>mx2_16x128</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+<p><strong><em>ibmcloudgen2_templates.json</em>, with <em>profile</em> configured (obfuscated)</strong></p>
+
+<div class="highlight"><pre><code class="language-plaintext">{
+    "templates": [
+        {
+            "templateId": "Template-1",
+            "maxNumber": 2,
+            "attributes": {
+                "type": ["String", "X86_64"],
+                "ncores": ["Numeric", "2"],
+                "ncpus": ["Numeric", "4"],
+                "mem": ["Numeric", "16384"],
+                "icgen2host": ["Boolean", "1"], 
+                "profile":["String","bx2_4x16"]
+            },
+            "imageId": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "subnetId": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "vpcId": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "vmType": "bx2-4x16",
+            "userData":"profile=bx2_4x16",
+            "securityGroupIds": ["aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff"],
+            "resourceGroupId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "sshkey_id": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "priority": "10", 
+            "region": "us-east",
+            "zone": "us-east-1" 
+        },
+
+       {
+            "templateId": "Template-2",
+            "maxNumber": 2,
+            "attributes": {
+                "type": ["String", "X86_64"],
+                "ncores": ["Numeric", "8"],
+                "ncpus": ["Numeric", "16"],
+                "mem": ["Numeric", "131072"],
+                "icgen2host": ["Boolean", "1"],
+		       "profile":["String","mx2_16x128"]
+            },
+            "imageId": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "subnetId": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "vpcId": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "vmType": "mx2-16x128",
+            "userData":"profile=mx2_16x128",
+            "securityGroupIds": ["aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff"],
+            "resourceGroupId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "sshkey_id": "aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            "priority": "5",
+            "region": "us-east",
+            "zone": "us-east-1"
+        }
+
+    ]
+}</code></pre></div>
+
+<p>Now the <em>user_data.sh</em> script is required to be updated in order to set the value of the <em>profile</em> variable in the LSF resourcemap based upon what was requested by the user. This will be added to the LSF configuration during the bootup of the dynamic cloud instances. For more information about the LSF resourcemap read <a href="https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=resources-configure-lsfclustercluster-name-resourcemap-section">here</a>.</p>
+
+<p><strong>user_data.sh script portion</strong></p>
+
+<div class="highlight"><pre><code class="language-plaintext">….
+….
+# Set value of profile variable in the LSF resourcemap. This is based
+# on the profile value requested at job submission time. 
+if [ -n "$profile" ]; then
+sed -i "s/\(LSF_LOCAL_RESOURCES=.*\)\"/\1 [resourcemap $profile*profile]\"/" $LSF_CONF_FILE
+echo "update LSF_LOCAL_RESOURCES in $LSF_CONF_FILE successfully, add [resourcemap ${profile}*profile]" &gt;&gt; $logfile
+else
+echo "profile doesn't exist in environment variable" &gt;&gt; $logfile
+fi
+….
+….</code></pre></div>
+
+<p>With all of the configuration in place, it’s now time to test things out. Initially, a stress job is submitted requesting 4 cores is submitted without requesting a specific compute profile. In this case, the LSF resource connector will chose the most appropriate instance type from the configured templates. In our configuration the templates for instance types <em>bx2-4x16</em> and <em>mx2-16x128</em> are configured. Given this, we expect the LSF resource connector to startup a <em>bx2-4x16</em> instance to satisfy the requirements for this example job.</p>
+
+<div class="highlight"><pre><code class="language-plaintext">$ bsub -n 4 -q normal -o /mnt/data/%J.out /usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeout 60s 
+Job &lt;3811&gt; is submitted to queue &lt;normal&gt;.</code></pre></div>
+
+<p>After a few moments, we see that a new host, <em>icgen2host-XXX-YYY-ZZZ-44</em> joins the LSF cluster and the job enters run state. We note that this is a host with the characteristics of 4 cores, and 16GB RAM, which matches the type <em>bx2-4x16</em>.</p>
+
+<div class="highlight"><pre><code class="language-plaintext">$ lsload -w
+HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
+icgen2host-XXX-YYY-ZZZ-37      ok   0.4   0.1   0.1   2%   0.0   1    16   40G    0
+icgen2host-XXX-YYY-ZZZ-44      ok   0.9   0.2   0.1  19%   0.0   0     0   88G    0M 14.9G
+
+$ lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+icgen2host-XXX-YYY-ZZZ-37        X86_64    Intel_E5  12.5     4  15.4G      -    Yes (mg docker ParaView)
+icgen2host-XXX-YYY-ZZZ-44		 X86_64    Intel_E5  12.5     4  15.5G      -    Dyn (icgen2host docker)
+
+$ bjobs -l -r
+
+Job &lt;3811&gt;, User &lt;lsfadmin&gt;, Project &lt;default&gt;, Status &lt;RUN&gt;, Queue &lt;normal&gt;, C
+                     ommand &lt;/usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeou
+                     t 60s&gt;, Share group charged &lt;/lsfadmin&gt;
+Mon Mar 18 19:42:22: Submitted from host &lt;icgen2host-XXX-YYY-ZZZ-37&gt;, CWD &lt;$HOME&gt;,
+                      Output File &lt;/mnt/data/3811.out&gt;, 4 Task(s);
+Mon Mar 18 19:45:11: Started 4 Task(s) on Host(s) &lt;icgen2host-XXX-YYY-ZZZ-44&gt; &lt;icg
+                     en2host-XXX-YYY-ZZZ-44&gt; &lt;icgen2host-XXX-YYY-ZZZ-44&gt; &lt;icgen2host-
+                     XXX-YYY-ZZZ-44&gt;, Allocated 4 Slot(s) on Host(s) &lt;icgen2host-X
+                     XX-YYY-ZZZ-44&gt; &lt;icgen2host-XXX-YYY-ZZZ-44&gt; &lt;icgen2host-XXX-YYY-ZZZ-
+                     44&gt; &lt;icgen2host-XXX-YYY-ZZZ-44&gt;, Execution Home &lt;/home/lsfadm
+                     in&gt;, Execution CWD &lt;/home/lsfadmin&gt;;
+Mon Mar 18 19:45:47: Resource usage collected.
+                     The CPU time used is 142 seconds.
+                     MEM: 3 Mbytes;  SWAP: 0 Mbytes;  NTHREAD: 8
+                     PGID: 2169;  PIDs: 2169 2170 2172 2173 2174 2175 2176 
+
+
+ MEMORY USAGE:
+ MAX MEM: 3 Mbytes;  AVG MEM: 3 Mbytes; MEM Efficiency: 0.00%
+
+ CPU USAGE:
+ CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)
+ CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Combined: select[type == local] order[r15s:pg]
+ Effective: select[type == local] order[r15s:pg] 
+
+$ bhist -l 3811
+
+Job &lt;3811&gt;, User &lt;lsfadmin&gt;, Project &lt;default&gt;, Command &lt;/usr/bin/stress --cpu 
+                     4 --vm-bytes 8192MB --timeout 60s&gt;
+Mon Mar 18 19:42:22: Submitted from host &lt;icgen2host-XXX-YYY-ZZZ-37&gt;, to Queue &lt;no
+                     rmal&gt;, CWD &lt;$HOME&gt;, Output File &lt;/mnt/data/%J.out&gt;, 4 Task
+                     (s);
+Mon Mar 18 19:45:11: Dispatched 4 Task(s) on Host(s) &lt;icgen2host-XXX-YYY-ZZZ-44&gt; &lt;
+                     icgen2host-XXX-YYY-ZZZ-44&gt; &lt;icgen2host-XXX-YYY-ZZZ-44&gt; &lt;icgen2ho
+                     st-XXX-YYY-ZZZ-44&gt;, Allocated 4 Slot(s) on Host(s) &lt;icgen2hos
+                     t-XXX-YYY-ZZZ-44&gt; &lt;icgen2host-XXX-YYY-ZZZ-44&gt; &lt;icgen2host-XXX-YYY
+                     -ZZZ-44&gt; &lt;icgen2host-XXX-YYY-ZZZ-44&gt;, Effective RES_REQ &lt;select
+                     [type == local] order[r15s:pg] &gt;;
+Mon Mar 18 19:45:11: Starting (Pid 2169);
+Mon Mar 18 19:45:11: Running with execution home &lt;/home/lsfadmin&gt;, Execution CW
+                     D &lt;/home/lsfadmin&gt;, Execution Pid &lt;2169&gt;;
+Mon Mar 18 19:46:11: Done successfully. The CPU time used is 239.3 seconds;
+Mon Mar 18 19:46:12: Post job process done successfully;
+
+
+MEMORY USAGE:
+MAX MEM: 3 Mbytes;  AVG MEM: 2 Mbytes; MEM Efficiency: 0.00%
+
+CPU USAGE:
+CPU PEAK: 3.98 ;  CPU PEAK DURATION: 60 second(s)
+CPU AVERAGE EFFICIENCY: 99.58% ;  CPU PEAK EFFICIENCY: 99.58%
+
+Summary of time in seconds spent in various states by  Mon Mar 18 19:46:12
+  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL
+  169      0        60       0        0        0        229         </code></pre></div>
+
+<p>Next, let’s submit the same job, but explicitly requesting the profile type <em>mx2-16x128</em>. To do this, we add the resource requirement requesting profile to be equal to <em>mx2_16x128</em> as follows:</p>
+
+<div class="highlight"><pre><code class="language-plaintext">$ bsub -q normal -R "profile==mx2_16x128" -n 4 -o /mnt/data/%J.out /usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeout 60s 
+Job &lt;3813&gt; is submitted to queue &lt;normal&gt;.</code></pre></div>
+
+<p>After a few moments, a dynamic host with 16 CPUs and 128 GB RAM joins the cluster, which corresponds to instance type <em>mx2-16x128</em>.</p>
+
+<div class="highlight"><pre><code class="language-plaintext">$ lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+icgen2host-XXX-YYY-ZZZ-37        X86_64    Intel_E5  12.5     4  15.4G      -    Yes (mg docker ParaView)
+icgen2host-XXX-YYY-ZZZ-46        X86_64    Intel_E5  12.5    16 125.7G      -    Dyn (icgen2host docker)
+
+$ lsload -w
+HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
+icgen2host-XXX-YYY-ZZZ-37      ok   0.0   0.1   0.1   3%   0.0   1     2   40G    0M 12.2G
+icgen2host-XXX-YYY-ZZZ-46      ok   1.6   0.4   0.1  17%   0.0   0     0   88G    0M 123.8G
+
+$ bjobs -l -r
+
+Job &lt;3813&gt;, User &lt;lsfadmin&gt;, Project &lt;default&gt;, Status &lt;RUN&gt;, Queue &lt;normal&gt;, C
+                     ommand &lt;/usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeou
+                     t 60s&gt;, Share group charged &lt;/lsfadmin&gt;
+Mon Mar 18 20:27:52: Submitted from host &lt;icgen2host-XXX-YYY-ZZZ-37&gt;, CWD &lt;$HOME&gt;,
+                      Output File &lt;/mnt/data/3813.out&gt;, 4 Task(s), Requested Re
+                     sources &lt;profile==mx2_16x128&gt;;
+Mon Mar 18 20:30:01: Started 4 Task(s) on Host(s) &lt;icgen2host-XXX-YYY-ZZZ-46&gt; &lt;icg
+                     en2host-XXX-YYY-ZZZ-46&gt; &lt;icgen2host-XXX-YYY-ZZZ-46&gt; &lt;icgen2host-
+                     XXX-YYY-ZZZ-46&gt;, Allocated 4 Slot(s) on Host(s) &lt;icgen2host                     -XXX-YYY-ZZZ-46&gt; &lt;icgen2host-XXX-YYY-ZZZ-46&gt; &lt;icgen2host-XXX-Y                     YY-ZZZ-46&gt; &lt;icgen2host-XXX-YYY-ZZZ-46&gt;, Execution Home &lt;/home/lsfadm
+                     in&gt;, Execution CWD &lt;/home/lsfadmin&gt;;
+
+ MEMORY USAGE:
+ MEM Efficiency: 0.00%
+
+ CPU USAGE:
+ CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)
+ CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Combined: select[(profile == mx2_16x128 ) &amp;&amp; (type == any)] order[r15s:pg]
+ Effective: select[(profile == mx2_16x128 ) &amp;&amp; (type == any)] order[r15s:pg] </code></pre></div>
+
+<p>Additionally, using the LSF lshosts command with the -s option, we can view information about the resources in the environment. We see in particular the profile resource is set to the value <em>mx2_16x128</em> for the dynamic host <em>icgen2host-XXX-YYY-ZZZ-46</em>.</p>
+
+<div class="highlight"><pre><code class="language-plaintext">$ lshosts -s
+RESOURCE                                VALUE       LOCATION
+rc_account                            default       icgen2host-XXX-YYY-ZZZ-46 
+profile                            mx2_16x128       icgen2host-XXX-YYY-ZZZ-46 
+instanceID               0757_95e39240-22e7-4734-8fd5-9988ab247801  
+                                                    icgen2host-XXX-YYY-ZZZ-46 </code></pre></div>
+
+<p>We have shown the great flexibility that LSF provides for configuring the resource connector capability. Generally speaking, LSF provides many open interfaces which allow site specific configuration or customization to be realized. In the next blog in this series, we’ll take a closer look at running Docker jobs under LSF on dynamic cloud resources.</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry><entry><title type="html">Pi in the sky? A compute cluster in mini ITX form factor</title><link href="https://hpc.social/personal-blog/2024/pi-in-the-sky-a-compute-cluster-in-mini-itx-form-factor/" rel="alternate" type="text/html" title="Pi in the sky? A compute cluster in mini ITX form factor" /><published>2024-03-04T17:07:46-07:00</published><updated>2024-03-04T17:07:46-07:00</updated><id>https://hpc.social/personal-blog/2024/pi-in-the-sky-a-compute-cluster-in-mini-itx-form-factor</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/pi-in-the-sky-a-compute-cluster-in-mini-itx-form-factor/"><![CDATA[<p><strong>Overview</strong></p>
 
 <p>It&rsquo;s taken me a while to get the wheels off the ground in 2024 in terms of blogging. This blog idea has been in the works actually for some time. Back in 2021, I wrote a blog titled <a href="https://www.gaborsamu.com/blog/new_novena/">Late to the party and a few bits short</a>. This was a tongue in cheek title for a blog on the Novena Desktop System, which is based on a 32-bit processor, hence a few bits short. And late to the party referring to the fact that I was very late to purchase a second-hand Novena system.</p>
 
@@ -7110,416 +7429,4 @@ Note that the URL needs to point to the Elasticsearch server. In this case, both
 
 <p><strong>Summary</strong></p>
 
-<p>Spectrum LSF provides many hooks and integration points enabling administrators to change things ranging from scheduling behavior and the output of query commands through to job information being logged to Elasticsearch. Spectrum LSF is highly customizable by organizations to suit specific needs and requirements. We’ve demonstrated this using Grafana to visualize data from the LSF scheduler in a simple example. Following the above example, administrators can combine existing HPC cluster system level reporting in Grafana with job information from Spectrum LSF for a better overall view and understanding of the infrastructure.</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry><entry><title type="html">Adam’s weekly update, 2022-12-04</title><link href="https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04/" rel="alternate" type="text/html" title="Adam’s weekly update, 2022-12-04" /><published>2022-12-05T05:49:35-07:00</published><updated>2022-12-05T05:49:35-07:00</updated><id>https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/adam-s-weekly-update-2022-12-04/"><![CDATA[<h2>What&#8217;s new</h2>
-
-<p>This week was really intense from a work perspective. Not &#8220;bad intense&#8221;, but the kind of week where every day was spent with such a level of focus, that at 5 PM or so I found myself staring off into space and forgetting words. I think I got some good things accomplished, but my brain also felt like mush by the time the weekend came.</p>
-
-<p><span id="more-268"></span></p>
-
-<p>This week I&#8217;m traveling to San Jose for work (I just checked into my hotel a little while ago!), so I fully expect this week to also be eaten by work. So I don&#8217;t promise anything terribly interesting for next week&#8217;s post&#8230;</p>
-
-<p>However, I did take advantage of a Sunday in San Jose to visit the <a href="https://computerhistory.org/">Computer History Museum</a> in Mountain View! I try to visit the museum every few years, and while a lot of the exhibits are the same, enough things change that I always get something new from the visit. Also, I&#8217;ve been doing a lot of reading about hardware development and the history thereof lately, so it was interesting to examine the museum through that new lens.</p>
-
-<p>I may write more about my visit later this week &#8212; it definitely sparked some thoughts &#8212; but in the mean time, here are a few photos I took while wandering around the museum.</p>
-
-<figure class="wp-block-image size-large is-resized"><img alt="A mechanical computer built mostly of brass, with various numerical dials. A small placard labels this as a replica of the Babbage Difference Engine No. 1 Demonstration Piece." class="wp-image-282" height="800" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_6894-768x1024.jpg" width="600" /><figcaption class="wp-element-caption">The Babbage Difference Engine, and other mechanical computers, have always fascinated me.</figcaption></figure>
-
-<figure class="wp-block-image size-large is-resized"><img alt="The Cray-1, a round computer with its own built-in seating attached." class="wp-image-283" height="446" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_6965-1024x768.jpg" width="595" /><figcaption class="wp-element-caption">Can&#8217;t visit the museum without visiting the Cray-1.</figcaption></figure>
-
-<figure class="wp-block-image size-large is-resized"><img alt="The Connection Machine 1, a large black cube divided in eight sections." class="wp-image-284" height="768" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_6973-768x1024.jpg" width="576" /><figcaption class="wp-element-caption">I would have loved to have seen a CM-1 in operation, with its red LEDs showing the operation of its many single-bit CPUs.</figcaption></figure>
-
-<figure class="wp-block-image size-large is-resized"><img alt="The front panel of an Altair 8800 computer, with an array of LEDs and switches controlling the state of individual bits." class="wp-image-285" height="449" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_7037-1024x768.jpg" width="598" /><figcaption class="wp-element-caption">Having recently read Charles Petzold&#8217;s &#8220;Code&#8221;, I was struck by how closely the front panel of the Altair 8800 resembles the fictional front panel of the computer that Petzold constructs from logic gates up.</figcaption></figure>
-
-<figure class="wp-block-image size-large is-resized"><img alt="A Dell PowerEdge R710 lays on a white plastic table, top cover off, surrounded by instructions on how to disassemble it." class="wp-image-286" height="467" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_7073-1024x768.jpg" width="623" /><figcaption class="wp-element-caption">The CHM Learning Lab now includes a back room with a couple of Dell PowerEdge R710 servers, complete with instructions for how to disassemble and reassemble them. Anyone who wants can wander in and take them apart. It was great fun watching a 5-year-old kid pulling components out of one of these&#8230; As well as feeling a little weird, as I think I&#8217;ve run these in production!</figcaption></figure>
-
-<h2>What I&#8217;m reading</h2>
-
-<p>I don&#8217;t have a ton to share this week &#8212; honestly, the whole week feels like a blur &#8212; but here are two books that I recommend.</p>
-
-<ul>
-<li><a href="https://www.aliettedebodard.com/bibliography/novels/the-universe-of-xuya/the-red-scholars-wake/">The Red Scholar&#8217;s Wake, by Aliette de Bodard</a>: As the blurb says, &#8220;Lesbian space pirates!&#8221; Also, a really wonderful novella about building a new relationship amidst grief, power differentials, politics, and space battles. I think I basically recommend everything that de Bodard writes, but especially this. And it basically stands alone! So you can read this first, without going back to the other stories in the same world.</li>
-
-
-
-<li><a href="https://www.harpercollins.com/products/dealers-of-lightning-michael-a-hiltzik?variant=40824247779362">Dealers of Lightning: XEROX PARC and the Dawn of the Computer Age, by Michael Hiltzik</a>: I&#8217;ve just started this, but it&#8217;s already a really interesting snapshot of a key period in the development of the personal computer.</li>
-</ul>
-
-<h2>Recent recipes</h2>
-
-<ul>
-<li><a href="https://smittenkitchen.com/2019/12/unfussy-sugar-cookies/">Smitten Kitchen&#8217;s Unfussy Sugar Cookies</a>: These cookies did, indeed, prove to be both tasty and easy to make. If you just want some easy cookies to snack on, I absolutely recommend this recipe.</li>
-</ul>
-
-<h2>Pet photos</h2>
-
-<figure class="wp-block-image size-large is-resized"><img alt="Phyrne the calico cat stares down into the camera from a stairway" class="wp-image-279" height="414" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_6881-768x1024.jpg" width="310" /></figure>
-
-<figure class="wp-block-image size-large is-resized"><img alt="Close-up on the face of Percy the gray tabby cat" class="wp-image-280" height="420" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_6879-768x1024.jpg" width="314" /></figure>
-
-<figure class="wp-block-image size-large is-resized"><img alt="Benny the golden doodle curled up on a dog bed" class="wp-image-281" height="238" src="https://thinking.ajdecon.org/wp-content/uploads/2022/12/IMG_6876-1024x768.jpg" width="317" /></figure>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[What&#8217;s new]]></summary></entry><entry><title type="html">An Initial Look at Deep Learning IO Performance</title><link href="https://hpc.social/personal-blog/2022/an-initial-look-at-deep-learning-io-performance/" rel="alternate" type="text/html" title="An Initial Look at Deep Learning IO Performance" /><published>2022-11-28T00:00:00-07:00</published><updated>2022-11-28T00:00:00-07:00</updated><id>https://hpc.social/personal-blog/2022/an-initial-look-at-deep-learning-io-performance</id><content type="html" xml:base="https://hpc.social/personal-blog/2022/an-initial-look-at-deep-learning-io-performance/"><![CDATA[<h2 id="abstract">Abstract</h2>
-
-<p>This blog post describes an investigation of IO behavior of TensorFlow and PyTorch during resnet50 training running on Lambda Lab’s 8x V100 GPU instances.  Both ephemeral local NVMe storage and network attached persistent storage was tested.  The local NVMe storage was fast enough to achieve a throughput rate required to hit synthetic test targets.  The network attached persistent storage may not be able to fully saturate 8 V100 GPUs during training, though can achieve nearly the same level of performance as the local storage so long as TFRecords are utilized.  Further, there are specific behaviors and bottlenecks in TensorFlow and PyTorch that can reduce training performance when using real data from ImageNet.</p>
-
-<h2 id="acknowledgements">Acknowledgements</h2>
-
-<p>Thank you to Michael Balaban at Lambda Labs for providing access to their GPU cloud for this testing.  Thank you to Chuan Li for the creation of his TensorFlow benchmarking tools.  Thank you also to Andrej Karpathy, Toby Boyd, Yanan Cao, Sanjoy Das, Thomas Joerg, and Justin Lebar for their excellent blog posts on deep learning and XLA performance that helped inform this article.  I hope that this post will be useful for others as your work and writing was useful for me.</p>
-
-<h2 id="introduction">Introduction</h2>
-
-<blockquote>
-  <p><em>…just because you can formulate your problem as RL doesn’t mean you should. If you insist on using the technology without understanding how it works you are likely to fail.</em></p>
-
-
-  <p>        Andrej Karpathy, <a href="https://karpathy.github.io/2019/04/25/recipe/">A Recipe for Training Neural Networks</a>, 2019</p>
-
-</blockquote>
-
-<p>That was the phrase that stuck in my head when I first started this project.   What project you may ask?  I want to understand how deep learning experiments utilize fast storage devices.  Not just any experiments either: <em>real</em> ones, preferably big.  That’s how I happened upon Andrej Karpathy’s blog.  He is the former Sr. Director of AI at Tesla and knows a thing or two about training big neural networks.  I’ve spent the last decade working on Ceph and have worked on distributed systems and distributed storage for nearly 2 decades at this point.  But training neural nets?  The closest I’ve come was back in the early 2000s when I tried to build a tool to predict video game framerates.  I scraped benchmark numbers from review websites and built M5 decision trees based on hardware and video card settings.  It sort of worked, but was terribly overtrained on a small (~4000 sample) dataset.  Training with petabytes of data to teach an AI how to responsibly drive a car?  I can already feel a bit of imposter syndrome setting in.</p>
-
-<p>Thankfully my goal is comparatively modest.  I don’t need to build a cutting edge classifier or explore the intricacies of manually implementing back-propagation.  I simply want to understand the IO patterns that are involved when training big datasets with fast GPUs so I can help researchers speed up their work.  Up until now, my ability to do this was fairly limited.  At the day job I’ve had access to a small group of nodes with extremely modest GPUs.  I set up runs with MLPerf but the datasets (WMT G-E and CoCo) easily fit into memory. Other than a short burst of read traffic at the very beginning of training there was very little IO.  Recently I had the opportunity to meet Michael Balaban, Co-Founder of <a href="https://lambdalabs.com/">Lambda Labs</a>.  I told him what I wanted to do and he gave me access to Lambda’s GPU cloud and beta persistent storage to give it a try.  I was able to grab one of Lambda’s 8x Tesla V100 instances (These things are incredibly popular so it’s best to grab one early in the morning!).  Not all of Lambda’s instance types currently have access to the persistent storage but the V100 instances in the Texas zone do.  Once secured, I got to work.</p>
-
-<h2 id="tensorflow---synthetic">TensorFlow - Synthetic</h2>
-
-<p>Before even attempting to run tests with real data, I realized I needed a baseline to start with.  Luckily, Chuan Li, Lambda’s Chief Scientific Officer, wrote a tool for running TensorFlow benchmarks and made it available on github <a href="https://github.com/lambdal/lambda-tensorflow-benchmark">here</a>. One of the advantages of Lambda’s cloud is that they’ve already bundled up many popular tools for running deep-learning workloads into one package called <a href="https://lambdalabs.com/lambda-stack-deep-learning-software">Lambda Stack</a> which comes pre-installed when you start an instance.  This made it fast to get started, though I did run into one issue.  Lambda Stack comes standard with TensorFlow 2, but Chuan Li’s tool relies on a TensorFlow benchmark submodule that is designed to work with TensorFlow 1.  Luckily, the parent repository was unofficially updated to work with Tensorflow 2 (with a warning that it is no longer being maintained).  A quick “git checkout master” in the “benchmarks” submodule directory got everything working.  Chuan Li’s tool makes it simple to run tests with several preconfigured templates already included.  I chose the fp16 resnet50 configuration as it should be fast at processing images and is fairly standard.</p>
-
-<pre><code>TF_XLA_FLAGS=--tf_xla_auto_jit=2 ./batch_benchmark.sh X X 1 100 2 config/config_resnet50_replicated_fp16_train_syn
-</code></pre>
-
-<p>Using the invocation provided in the benchmark README.md file, I was able to quickly run benchmarks with synthetic data on up to 8 V100 GPUs in the node.  At one point I got stuck, hitting what appeared at first to be an unexplainable 25% performance loss. I reran the tests multiple times and even monitored GPU clockspeeds/temperatures in nvidia-smi with no luck.  Ultimately I discovered my error.  In the slow cases, I had inadvertently left out the “TF_XLA_FLAGS=–tf_xla_auto_jit=2” environment variable.  It turns out that setting this allows Tensorflow compile and execute functions with XLA (Accelerated Linear Algebra) support which is a pretty big win for these tests.</p>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Tensorflow_-_ResNet50_Synthetic_Training_fp16.svg" /></p>
-
-<p>At this point I decided that I needed to understand how Chuan Li’s tool works.  It turns out that he is using the same base tf_cnn_benchmarks.py benchmark code that companies like Nvidia and Dell also use for benchmarking their GPU solutions.  I spent some time running it directly with Dell’s settings from their deep learning overview <a href="https://infohub.delltechnologies.com/l/high-speed-object-storage-for-deep-learning/overview-3284">here</a>.  Unfortunately those tests had mixed results, even after various tweaks.  While researching the XLA issues I mentioned earlier however, I made an even better <a href="https://blog.tensorflow.org/2018/11/pushing-limits-of-gpu-performance-with-xla.html">discovery</a> on the TensorFlow website.  I found an excellent blog post with performance data written by some of the core Tensorflow developers.  It’s now 4 years old, but still appears to be quite valid.  The tuning options used were both simpler and resulted in higher performance versus other configurations that I’ve come across.</p>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Tensorflow_-_ResNet50_Synthetic_Training_fp16_blog_compare.svg" /></p>
-
-<p>Training with synthetic data in Lambda’s cloud resulted in similar performance to what the Tensorflow developer’s reported.  In fact, using their own settings yielded slightly faster results when running on Lambda’s 8xV100 instance!  It was incredibly encouraging to me that even in Lambda’s cloud environment with virtual machine instances I could achieve performance that was as fast or faster than what the Tensorflow developers were reporting.</p>
-
-<h1 id="choosing-a-real-data-set">Choosing a Real Data Set</h1>
-
-<blockquote>
-  <p><em>The first step to training a neural net is to not touch any neural net code at all and instead begin by thoroughly inspecting your data.</em></p>
-
-
-  <p>        Andrej Karpathy, <a href="https://karpathy.github.io/2019/04/25/recipe/">A Recipe for Training Neural Networks</a>, 2019</p>
-
-</blockquote>
-
-<p>Having convinced myself that I had Tensorflow operating reasonably efficiently in synthetic tests, it was time to start thinking about what dataset to use for “real” training.  The largest and most obvious choice is ImageNet.  ImageNet is composed of over 1.2 million categorized images that form a roughly 160GB training dataset.  It is also the largest dataset I could find that was publicly accessible. Downloading it isn’t so easy however. The only version that I could access is the ImageNet Object Localization Challenge dataset hosted on <a href="https://www.kaggle.com/c/imagenet-object-localization-challenge">kaggle</a>.</p>
-
-<p>After finally figuring out how to download the data, it was time to follow Andrej’s advice and try to learn something about it.  While ImageNet is curated and annotated, it has many images of different sizes, dimensions, and pixel counts.  Images also come from many sources with different levels of quality.  Through the power of stack-exchange I was able to find a bash one-liner script to generate a histogram of image sizes:</p>
-
-<pre><code>find . -type f -print0 | xargs -0 ls -l | awk '{size[int(log($5)/log(2))]++}END{for (i in size) printf("%10d %3d\n", 2^i, size[i])}' | sort -n
-</code></pre>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/ImageNet_-_Image_Distribution_by_Approximate_Size.svg" /></p>
-
-<p>Roughly 80% of the images are in the 64KB or 128KB size bins. Almost all of the remaining images are smaller.  That gives us a pretty good idea of what kind of IOs to expect during classification.  Or at least…it does for frameworks that read those images directly.  In Tensorflow’s case, there’s an alternative format called TFRecord.  TFRecords are basically collections of image data sequentially laid out in much larger files.  Instead of iterating over thousands or millions of individual image files, TFRecords allow Tensorflow to instead stream fewer, larger files that each house multiple images.  It’s a one time cost to pre-process the data so Tensorflow has less work to do during training.  After I downloaded the ImageNet data I took a shot at converting the ImageNet LOC data into TensorFlow records.  Luckily, the TensorFlow tpu github repository already has a <a href="https://github.com/tensorflow/tpu/blob/master/tools/datasets/README.md">tool</a> that can do this.  I had to manipulate the dataset slightly, but ultimately this process worked (at least for the training data):</p>
-
-<pre><code>pip install gcloud google-cloud-storage
-pip install protobuf==3.20.1
-
-mkdir ~/data/ImageNetFoo
-ln -s ~/data/ImageNet/ILSVRC/Data/CLS-LOC/train ~/data/ImageNetFoo/train
-ln -s ~/data/ImageNet/ILSVRC/Data/CLS-LOC/val ~/data/ImageNetFoo/val
-ln -s ~/data/ImageNet/ILSVRC/Data/CLS-LOC/test ~/data/ImageNetFoo/test
-ln -s ~/data/ImageNet/LOC_synset_mapping.txt ~/data/ImageNetFoo/synset_labels.txt
-python imagenet_to_gcs.py --raw_data_dir=/home/ubuntu/data/ImageNetFoo --local_scratch_dir=/home/ubuntu/ExaltedOrbs/ImageNet/tf_records --nogcs_upload
-</code></pre>
-
-<p>Perhaps I should say that this worked so long as the original dataset was located on the local NVMe drive.  The persistent storage didn’t fare as well.  Attempting to decompress ImageNet on the persistent storage resulted in blowing past the max number of open files allowed with errors like:</p>
-
-<pre><code>OSError: [Errno 24] Too many open files.
-</code></pre>
-
-<p>Unfortunately this couldn’t be fixed on the instance.  It appeared to be passed through from the host and the persistent storage was completely unusable until the instance was rebooted.  Recently I spoke to one of Lambda’s engineers and they are working on a fix. (It may already be implemented by the time you read this!)  I also want to note that the persistent storage is still in beta so issues like this are not entirely unexpected.  Having said that, before hitting the error it was significantly slower extracting ImageNet on the persistent storage vs on the local NVMe storage.  It’s probably best to extract ImageNet locally and then write the large TFRecords to the persistent storage during the conversion process.  Luckily extracting ImageNet to local storage was fine, and storing the original archive and the resulting TFRecords on the persistent storage worked perfectly fine as well.</p>
-
-<h2 id="fio---baseline-io-results">FIO - Baseline IO Results</h2>
-
-<p>Next, I turned my attention to running baseline tests on Lambda’s local and persistent storage using fio.  Fio is a highly configurable and well respected benchmark in the storage community and perfect for generating baseline results.  I decided to use a dataset size that is roughly similar to ImageNet (200GB), the libaio engine in fio with direct IO, and an appropriately high IO depth to let the NVMe drives stretch their legs a bit.</p>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Lambda_Labs_8xv100_Storage.svg" /></p>
-
-<p>Throughput with the local NVMe drive(s) is surprisingly good.  The persistent storage is slower, but still might be fast enough at a little over 1GB/s for large reads.  16K IOPS was somewhat slower in both cases.  I chose 16K so that I could quickly compare to tests I ran in my Ceph QEMU/KVM performance blog post <a href="https://ceph.io/en/news/blog/2022/qemu-kvm-tuning/">here</a>.  Without getting into the details, I suspect there’s still some room for improved IOPS with Lambda’s setup.  Luckily though, converting into TFRecords should make Tensorflow throughput bound instead of latency bound.  What about PyTorch or other tools that want to read images directly though?  Fio gives us the ability to simulate it by using its ‘bssplit’ feature.  We can take the size ranges and percentiles generated when examining ImageNet and give fio a similar distribution:</p>
-
-<pre><code>fio --ioengine=libaio --direct=1 --bssplit=2K/1:4K/2:8K/4:16K/8:32K/13:64K/38:128K/33:256K/1 --iodepth=128 --rw=randread --norandommap --size=200G --numjobs=1 --runtime=300 --time_based --name=foo
-</code></pre>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Lambda_Labs_8xV100_Storage_Reads_Second_Bssplit.svg" /></p>
-
-<p>This isn’t exactly right as we are not reading data spread across millions of files, but it should provide something of an upper bound on what to expect.  It looks like the persistent storage can do approximately 10K reads/second at a throughput rate of around 750MB/s.  The local storage is about 3-4 times faster.  Local storage should be fast enough to support the kind of images/second throughput rates we want to hit in Tensorflow on 8 V100 GPUs, but the jury is still out for the persistent storage.</p>
-
-<h2 id="tensorflow---imagenet">Tensorflow - ImageNet</h2>
-
-<p>Running benchmarks with real data rather than synthetic data is fairly straightforward in Tensorflow.  You simply append data_dir and data_name flags to the CLI invocation to let it know where the TFRecords are located:</p>
-
-<pre><code>sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
-python ./tf_cnn_benchmarks.py --batch_size=256 --num_batches=100 --model=resnet50 --optimizer=momentum --variable_update=replicated --all_reduce_spec=nccl --use_fp16=True --nodistortions --gradient_repacking=2 --compute_lr_on_cpu=True --single_l2_loss_op=True --xla_compile=True --num_gpus=8 --loss_type_to_report=base_loss --data_dir=/home/ubuntu/ImageNet-TF/train --data_name=imagenet
-</code></pre>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Tensorflow_-_ResNet50_Real_Training_First_Attempt_fp16.svg" /></p>
-
-<p>Ouch.  Much lower performance with the ImageNet data vs synthetic!  This is especially unfortunate given that 4 years ago the Tensorflow developers reported much better results.  I spent some time reading and experimenting with different settings.  Ultimately the one setting that made a substantial difference was “datasets_num_private_threads”.  In the Tensorflow benchmark source code, this setting is described as: “[The] number of threads for a private threadpool created for all datasets computation.”  I’ll go into more detail what these threads are doing in a bit. For now, let’s see how increasing the number of threads affects the results:</p>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Tensorflow_-_ResNet50_ImageNet_Training_fp16_private_threads.svg" /></p>
-
-<p>Increasing the number of private threads has a dramatic effect on performance, though I was unable to fully match the performance achieved in the synthetic tests on either the local or persistent storage.  The local storage fared better at high thread counts gradually topping out at around 8600 images/second.  At high private thread counts the persistent storage topped out between 7000-8000 images/second with a higher degree of variability between runs.  I suspect that in this case the persistent storage has likely hit its (per instance) limit.</p>
-
-<p>In addition to having a dramatic effect on performance, changing the private thread count also had a large effect on the CPU consumption of the TensorFlow process.  CPU usage increases almost linearly with additional private threads up to around 30 cores.  What exactly are these private threads doing?  To answer that question, I utilized two tools that I often deploy when diagnosing CPU usage in Ceph.  When testing with a lower number of private threads, I used linux’s perf tool to look at where cycles are being consumed when the private threads are fully saturated.  At higher levels of private threads, I used my wallclock profiler <a href="https://github.com/markhpc/uwpmp">uwpmp</a> to look at how private threads spend their time when increasing the thread count no longer improves performance.</p>
-
-<p>In the first case with perf, we can get a good view of the work that these private threads are doing:</p>
-
-<pre><code>--77.31%--tensorflow::ThreadPoolDevice::Compute
-          |          
-          |--51.19%--0x7f511a00c7d8
-          |          |          
-          |           --51.18%--tensorflow::jpeg::Uncompress
-          |--14.48%--tensorflow::ResizeBilinearOp&lt;Eigen::ThreadPoolDevice, unsigned char&gt;::Compute
-          |--5.47%--tensorflow::CastOpBase::Compute
-          |--2.66%--tensorflow::ReverseV2Op&lt;Eigen::ThreadPoolDevice, unsigned char, int&gt;::Compute
-</code></pre>
-<p>The majority of the cycles consumed is in jpeg decompression and resize operations, along with a smattering of other stuff.  What happens if we look at a case with a higher private thread count but now look at wallclock time instead of cycles?  I ended up having some trouble getting the profiler to work properly and consistently get clean callgraphs, but I was able to get at least one run in that revealed some interesting information.  First, I saw time spent in the same functions that perf told us we were spending cycles in:</p>
-
-<pre><code>+ 100.00% Eigen::ThreadPoolTempl&lt;tensorflow::thread::EigenEnvironment&gt;::WorkerLoop(int)
- + 99.90% ???
- |+ 97.30% ???
- ||+ 92.40% ???
- |||+ 77.10% _PyEval_EvalFrameDefault
- ||||+ 47.20% ???
- |||||+ 38.10% tensorflow::jpeg::Uncompress(void const*, int, tensorflow::jpeg::UncompressFlags const&amp;, long*, std::function&lt;unsigned char* (int, int, int)&gt;)
- ||||+ 12.20% tensorflow::ResizeBilinearOp&lt;Eigen::ThreadPoolDevice, unsigned char&gt;::Compute(tensorflow::OpKernelContext*)
- ||||+ 4.40% tensorflow::CastOpBase::Compute(tensorflow::OpKernelContext*)
- ||||+ 1.70% tensorflow::ReverseV2Op&lt;Eigen::ThreadPoolDevice, unsigned char, int&gt;::Compute(tensorflow::OpKernelContext*)
-</code></pre>
-
-<p>But the wallclock profile also exposed that there may be contention in multiple areas in the private threads around some of the nsync synchronization primitives being used:</p>
-
-<pre><code> |||||||    |  + 4.50% nsync::nsync_mu_semaphore_p(nsync::nsync_semaphore_s_*)
- |||||||    |   + 4.50% syscall
-
-</code></pre>
-
-<p>This almost always appeared nested deep inside:</p>
-
-<pre><code>tensorflow::BFCAllocator::AllocateRaw(unsigned long, unsigned long, tensorflow::AllocationAttributes const&amp;)
-</code></pre>
-
-<p>Sadly I was missing a number of debug symbols and don’t 100% trust the wallclock trace.  For now I’ll just say that the private threads are doing a significant amount of work decompressing and manipulating the image data to keep the GPUs fed.  I suspect that with newer and faster GPUs the image retrieval pipeline could become an even bigger issue when training with real image data.  The mystery for me is how The TensorFlow developers achieved such good results 4 years ago without using dedicated private threads at all.  Perhaps they had a significantly faster jpeg decompression mechanism that I am unaware of?</p>
-
-<h2 id="pytorch---imagenet">PyTorch - ImageNet</h2>
-
-<p>After running Tensorflow, I also ran some benchmarks in PyTorch using Nvidia’s “DeepLearningExamples” github <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Classification/ConvNets/resnet50v1.5">repo</a>.  First, I installed the prereqs and setup the repository:</p>
-
-<pre><code>pip install 'git+https://github.com/NVIDIA/dllogger'
-pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
-git clone https://github.com/NVIDIA/DeepLearningExamples
-</code></pre>
-
-<p>Then, prepared ImageNet for usage in PyTorch:</p>
-
-<pre><code>cd ~/data/ImageNet/ILSVRC/Data/CLS-LOC/val
-wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh | bash
-</code></pre>
-
-<p>And finally ran a test:</p>
-
-<pre><code>cd DeepLearningExamples/PyTorch/Classification/ConvNets
-sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
-python ./multiproc.py --nproc_per_node 1 ./main.py --arch resnet50 --label-smoothing 0.1 --run-epoch 1 --amp --static-loss-scale 256 --workspace /home/ubuntu/data/ImageNet-Scratch /home/ubuntu/data/ImageNet-Orig/ILSVRC/Data/CLS-LOC/
-</code></pre>
-
-<p>There are a couple of differences here versus the TensorFlow tests.  First, I’m using the raw ImageNet archive instead of a preprocessed TFRecord dataset, so the read behavior is different.  Because I was unable to extract or copy the raw ImageNet archive onto the persistent storage, I’m also only testing the local NVMe drive.  Finally, I didn’t see any specific examples for running with fp16 in nVidia’s documentation, so I’m using amp (automatic mixed precision) which may be slightly slower.</p>
-
-<p><img alt="" src="https://markhpc.github.io/images/2022-11-28-Lambda/Pytorch_-_ResNet50v15_ImageNet_Training_AMP.svg" /></p>
-
-<p>Given the number of differences it’s tough to draw direct comparisons with Tensorflow.  Amp is one difference, but it’s quite possible that there are tuning options that could improve performance here that I don’t know about.  I did notice that PyTorch, like Tensorflow, is using quite a bit of CPU to keep the GPUs working.  I suspect that there are ways to tweak the IO pipeline that could improve performance.  For now though, let’s compare the IO patterns on the local NVMe drive during the Tensorflow and PyTorch runs.  I was hoping to be able to use blktrace to do this, but unfortunately was unable to get any data from the virtual devices in the instance.  I was able to collect more general statistics using collectl however.</p>
-
-<h5 id="disk-read-statistics-during-pytorch-8-gpu-run">Disk Read Statistics During PyTorch 8 GPU run:</h5>
-
-<table>
-  <thead>
-    <tr>
-      <th>Time</th>
-      <th>Name</th>
-      <th>KBytes</th>
-      <th>Merged</th>
-      <th>IOs</th>
-      <th>Size</th>
-      <th>Wait</th>
-      <th>QLen</th>
-      <th>SvcTim</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>00:29:18</td>
-      <td>vda</td>
-      <td>761136</td>
-      <td>0</td>
-      <td>6746</td>
-      <td>113</td>
-      <td>58</td>
-      <td>431</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:29:19</td>
-      <td>vda</td>
-      <td>752172</td>
-      <td>0</td>
-      <td>6648</td>
-      <td>113</td>
-      <td>112</td>
-      <td>810</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:29:20</td>
-      <td>vda</td>
-      <td>747824</td>
-      <td>0</td>
-      <td>6595</td>
-      <td>113</td>
-      <td>84</td>
-      <td>604</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:29:21</td>
-      <td>vda</td>
-      <td>735964</td>
-      <td>0</td>
-      <td>6583</td>
-      <td>112</td>
-      <td>73</td>
-      <td>551</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:29:22</td>
-      <td>vda</td>
-      <td>695636</td>
-      <td>0</td>
-      <td>6237</td>
-      <td>112</td>
-      <td>102</td>
-      <td>760</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-
-<h5 id="disk-read-statistics-during-tensorflow-8-gpu-run">Disk Read Statistics During TensorFlow 8 GPU run:</h5>
-
-<table>
-  <thead>
-    <tr>
-      <th>Time</th>
-      <th>Name</th>
-      <th>KBytes</th>
-      <th>Merged</th>
-      <th>IOs</th>
-      <th>Size</th>
-      <th>Wait</th>
-      <th>QLen</th>
-      <th>SvcTim</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>00:38:45</td>
-      <td>vda</td>
-      <td>1081324</td>
-      <td>0</td>
-      <td>8440</td>
-      <td>128</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:38:46</td>
-      <td>vda</td>
-      <td>927512</td>
-      <td>0</td>
-      <td>7241</td>
-      <td>128</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:38:47</td>
-      <td>vda</td>
-      <td>913512</td>
-      <td>0</td>
-      <td>7130</td>
-      <td>128</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:38:48</td>
-      <td>vda</td>
-      <td>1047444</td>
-      <td>0</td>
-      <td>8186</td>
-      <td>128</td>
-      <td>0</td>
-      <td>6</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>00:38:49</td>
-      <td>vda</td>
-      <td>968776</td>
-      <td>0</td>
-      <td>7560</td>
-      <td>128</td>
-      <td>0</td>
-      <td>6</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br />
-When just looking at the IO sizes, both runs appear similar, but that doesn’t tell the whole story.  It is likely that Tensorflow is doing much larger reads that are broken up into contiguous 128KB chunks by the block layer based on the underlying device’s max_sectors_kb setting.  The tells here are the very low queue length and wait times for the TensorFlow run versus the PyTorch run.  In both case the device service times are low (0), but in the TensorFlow case IOs are still backing up in the device queue.</p>
-
-<p>Interestingly, it appears that it may be possible to use nVidia’s DALI (Data Loading Library) package to <a href="https://docs.nvidia.com/deeplearning/dali/archives/dali_170/user-guide/docs/examples/frameworks/pytorch/pytorch-various-readers.html">read TFRecords into PyTorch</a>.  I didn’t have time to attempt it, but potentially that could have a big effect on IO behavior and performance as well.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>As I’ve been writing this post, I realize just how complicated it is to understand the performance characteristics of training of neural networks.  Even as we talk about metrics like images/second, the options that are used (batch size for instance) can also affect convergence.  It’s very difficult to come up with a common methodology that is always better than others.  I wonder if another metric, like reaching a desired level of convergence, would be better in the end.  Having said that, I am glad for having done this exercise as I learned some valuable things:</p>
-
-<ol>
-  <li>
-    <p>Pre-processing data into a format like TFRecords on fast local storage is a big win from an IO perspective.  It lets storage systems that have slow metadata performance succeed so long as they have enough sequential read throughput to keep the machine learning framework busy.  This is a big win for many distributed file systems that may have substandard metadata performance (and even the good ones may still benefit).</p>
-
-  </li>
-  <li>
-    <p>To train on a dataset like ImageNet, you need somewhere around 1-1.3GB/s of raw disk throughput to keep 8 V100 GPUs busy when training in fp16.  For amp or fp32 the requirements are likely lower since the GPUs can’t work quite as fast.  With modern GPUs that are faster than the V100, the disk throughput requirements could be significantly higher.</p>
-
-  </li>
-  <li>
-    <p>Lambda’s local NVMe storage is likely fast enough to saturate 8 GPUs, even newer ones, so long as the rest of the IO path can keep up.  The persistent storage appears to become a bottleneck with sufficient GPUs and TensorFlow private threads, though can still function fairly well so long as TFRecords are used.  A concern going forward is how to ensure that the data pipeline in TensorFlow and PyTorch are fast enough to keep the GPUs fed.  The Tensorflow benchmark required a large number of private threads and showed potential evidence of contention at high thread counts.  PyTorch did not appear to natively support TFRecords, but NVidia DALI or other 3rd party code might help improve the IO path.</p>
-
-  </li>
-  <li>
-    <p>If it’s necessary to train directly with images rather than TFRecords, it may not make sense to host them on shared file systems.  It appears that Tensorflow and possibly PyTorch give users the ability to specify a separate training data and work directory.  If all operations against the training data are reads, it may be better to host datasets on read-only block device snapshots. For instance with Ceph, perhaps you could create a read/write RBD volume where you put a certain dataset, take a snapshot, and then map that snapshot as read only on multiple instances that all need access to the same image set.</p>
-
-  </li>
-  <li>
-    <p>Even with a training set as large as ImageNet, Lambda’s instances have so much memory that eventually the entire dataset becomes cached.  It was necessary to sync and drop caches before each test and keep tests short enough that they didn’t re-read the same data from buffer cache.  I was able to watch as long running tests eventually stopped performing reads and got faster as time went on.  This could make apples-to-apples comparison between different storage vendors difficult if not carefully controlled.</p>
-
-  </li>
-  <li>
-    <p>I’m almost certainly missing additional tweaks that can help speed up both Tensorflow and PyTorch.  This post shouldn’t be seen as the be-all/end-all for how to achieve high performance with these frameworks, but I hope it may at least help showcase some of the areas that are valuable to investigate when trying to train with real data and achieve high performance.</p>
-
-  </li>
-</ol>
-
-<p>This wraps up my initial work looking at Deep Learning IO behavior.  I hope that next time I can come armed with a bit more knowledge about the internals of how PyTorch and Tensorflow work, focus a bit more on the quality of the training, find even larger datasets to work with, and maybe actually accomplish something useful rather than just play with ImageNet.</p>
-
-<p>Thanks for reading!</p>]]></content><author><name>Mark Nelson's Blog</name></author><category term="markhpc" /><summary type="html"><![CDATA[Abstract]]></summary></entry></feed>
+<p>Spectrum LSF provides many hooks and integration points enabling administrators to change things ranging from scheduling behavior and the output of query commands through to job information being logged to Elasticsearch. Spectrum LSF is highly customizable by organizations to suit specific needs and requirements. We’ve demonstrated this using Grafana to visualize data from the LSF scheduler in a simple example. Following the above example, administrators can combine existing HPC cluster system level reporting in Grafana with job information from Spectrum LSF for a better overall view and understanding of the infrastructure.</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry></feed>

@@ -4,13 +4,350 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2024-03-19T20:34:34-06:00</updated>
+ <updated>2024-03-21T20:34:04-06:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>4 turning and 7 chilling</title>
+   <link href="https://hpc.social/2024/4-turning-and-7-chilling/"/>
+   <updated>2024-03-21T18:09:30-06:00</updated>
+   <id>https://hpc.social/2024/4-turning-and-7-chilling</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;How to keep your cool&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m back again and revisiting the Turing Pi V1 board. This time the focus isn&amp;rsquo;t on software, but rather cooling. In my previous write-up &lt;a href=&quot;https://www.gaborsamu.com/blog/turingpi_hpl/&quot;&gt;Pi in the sky? A compute cluster in mini ITX form factor&lt;/a&gt;, I used a USB fan I had at hand to keep the temperature of the compute modules in check during the Linpack runs. Although the fan was a seriously sketchy one, it did the job, and prevented throttling of the compute modules under high load, albeit with much noise. Clearly not content with this mediocre setup I pondered what other solutions I could quickly come up with.&lt;/p&gt;
+
+&lt;p&gt;Looking in my electronics spare parts bin, I came across 2 spare Noctua 40x40x20mm fans, part number &lt;em&gt;NF-A4x20 PWM&lt;/em&gt;. I found that these fans fit well on the Turing Pi board perpendicular to the compute modules. I measured that for full cooling coverage of the compute modules I&amp;rsquo;d need 4 such fans, side by side. However before investing in two more fans, I needed to confirm that they had enough oomph (yes that&amp;rsquo;s a technical term) to keep things cool.&lt;/p&gt;
+
+&lt;p&gt;So my plan was to first test two fans cooling half of the modules. However, to test these fans out, I first needed to get a hold of some USB to 3/4-pin fan power adapter cables. Once I had these adapters, I used a thick elastic band to bind the 2 fans together, and connected them to the USB for power using the adapters and give them a whirl - pun intended. Of course I fell back on Linpack to get the compute modules busy.&lt;/p&gt;
+
+&lt;p&gt;The results were promising enough that I immediately ordered two more fans and adapters to complete the setup which is shown in the photo below. A thick elastic band was used again to fasten the remaining 2 fans together. Of course, the setup will be made more robust to ensure that fans will stay in place. And I&amp;rsquo;ll do a bit of work on cable management.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/turingpi_noctua.jpg&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Totally chill&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The view of the dashboard (see below) speaks for itself. Under heavy load running Linpack, the compute modules don&amp;rsquo;t exceed 50C. This is about 10 degrees cooler than what I saw with that USB desk fan. So I&amp;rsquo;d consider that a result. Plus the Noctua fans are so much quieter and will be much more durable in the long run.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;https://www.gaborsamu.com/images/turingpi_dashboard_noctua.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So where does the title of my blog come from? It&amp;rsquo;s inspired by the slogan &amp;ldquo;6 turning and 4 burning&amp;rdquo; of the B-36 Peacemaker strategic bomber! You can see the B-36 in all it&amp;rsquo;s glory in this short &lt;a href=&quot;https://youtu.be/9kQ2X84PRvY?si=q9FZmWFavXHbPcE8&quot;&gt;excerpt&lt;/a&gt; from the 1955 film &lt;em&gt;Strategic Air Command&lt;/em&gt; starring Jimmy Stewart. You could say I have eclectic taste in films. Plus the B-36 has always fascinated me with it&amp;rsquo;s combination of jet and piston engines. As for this blog, 4 turning obviously refers to the 4 Noctua fans turning. And 7 chilling refers to the 7 CM3 modules that now keep their cool under pressure. With a more suitable cooling solution in place, especially as the warmer days arrive, I can now refocus my attention to the software side of things. And as always, stay cool!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Advanced LSF resource connector configuration on IBM Cloud - part II</title>
+   <link href="https://hpc.social/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-ii/"/>
+   <updated>2024-03-19T20:40:52-06:00</updated>
+   <id>https://hpc.social/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-ii</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Overview&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Back in November 2023 I authored a blog titled &lt;a href=&quot;https://www.gaborsamu.com/blog/lsf_rc_ibmcloud_part1/&quot;&gt;Advanced LSF resource connector configuration on IBM Cloud - part I&lt;/a&gt;. As I signed off in that post, I mentioned that there would be a follow-on post to cover some more advanced configuration topics on LSF resource connector.  And that’s the topic of this article today.&lt;/p&gt;
+
+&lt;p&gt;To recap, the &lt;a href=&quot;https://www.ibm.com/products/hpc-workload-management&quot;&gt;IBM LSF&lt;/a&gt; resource connector functionality enables LSF clusters to dynamically spin-up cloud instances from supported resource providers in the cloud based on workload demand, and to destroy those instances when no longer required.&lt;/p&gt;
+
+&lt;p&gt;The LSF resource connector intelligently choses the most appropriate cloud instance type for a given job from the templates that have been defined by the administrator. This is done automatically and is transparent from the end user perspective. What if the job requires to run on a very specific instance type? In this post we’ll show you how this is feasible by defining an LSF string resource, along with the necessary configuration of LSF resource connector and a supporting script. This will allow users to submit jobs to LSF with a resource requirement string specifying the cloud instance type desired.&lt;/p&gt;
+
+&lt;p&gt;For the example below, we’ll be using an IBM LSF environment which has been deployed on IBM Cloud using the extensive deployment automation that is available via the IBM Cloud catalog for &lt;a href=&quot;https://cloud.ibm.com/catalog/content/terraform-1623200063-71606cab-c6e1-4f95-a47a-2ce541dcbed8-global&quot;&gt;IBM LSF&lt;/a&gt;. Using this automation, you can deploy an LSF cluster in about 10 minutes time including the creation of the virtual private cloud (VPC), networking, security, bastion node, NFS server node, LSF management nodes and optionally LSF Application Center.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What is user_data.sh?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We’ll start with a brief description of the LSF resource connector &lt;em&gt;user_data.sh&lt;/em&gt; script. This script will play an important part in the configuration of the compute servers as we’ll see. The &lt;em&gt;user_data.sh&lt;/em&gt; script is used to start-up the LSF daemons on the compute instances launched by LSF resource connector. It also crucially enables admins to configure settings, including LSF settings, which is what we’ll be using the in example below.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Specifying the cloud instance type&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;By default, the LSF resource connector intelligently chooses the cloud instance profile type based upon the job submission parameters. For example, it considers things like the number of processor requested, the memory requested just to name of few. And it will startup the compute instance or instances from the available configured templates which most closely matches the job requirement.&lt;/p&gt;
+
+&lt;p&gt;What if you need to request a very specific compute instance type for the work that you’ve submitted based upon other, site-specific needs?  Here we will show exactly how you can achieve this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Let the configuration begin!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We begin with updating the LSF configuration to create a new string resource called profile. In the configuration file &lt;em&gt;$LSF_ENVDIR/lsf.shared&lt;/em&gt;, define the new string resource profile in the &lt;em&gt;Resource&lt;/em&gt; section.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;….
+….
+Begin Resource
+RESOURCENAME	TYPE	    INTERVAL	INCREASING	DESCRIPTION        # Keywords
+profile 	  String   ()       ()             (IBM Cloud Gen2 profile type)
+End Resource
+….
+….&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To make the change take effect, reconfigure the LSF cluster with the LSF command &lt;em&gt;lsadmin reconfig&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;# lsadmin reconfig -v
+
+Checking configuration files ...
+
+
+EGO 3.4.0 build 1599999, Jan 04 2023
+Copyright International Business Machines Corp. 1992, 2016.
+US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+  binary type: linux3.10-glibc2.17-x86_64
+Reading configuration from /opt/ibm/lsf/conf/lsf.conf
+Mar 13 16:57:25 2024 1478621 6 3.4.0 Lim starting...
+Mar 13 16:57:25 2024 1478621 6 3.4.0 LIM is running in advanced workload execution mode.
+Mar 13 16:57:25 2024 1478621 6 3.4.0 Master LIM is not running in EGO_DISABLE_UNRESOLVABLE_HOST mode.
+Mar 13 16:57:25 2024 1478621 5 3.4.0 /opt/ibm/lsf/10.1/linux3.10-glibc2.17-x86_64/etc/lim -C
+Mar 13 16:57:26 2024 1478621 6 3.4.0 LIM is running as IBM Spectrum LSF Standard Edition.
+Mar 13 16:57:26 2024 1478621 6 3.4.0 reCheckClass: numhosts 1 so reset exchIntvl to 15.00
+Mar 13 16:57:26 2024 1478621 6 3.4.0 Checking Done.
+---------------------------------------------------------
+No errors found.
+
+Restart only the master candidate hosts? [y/n] n
+Do you really want to restart LIMs on all hosts? [y/n] y
+Restart LIM on &amp;lt;icgen2host-AAA-BBB-CCC-DDD&amp;gt; ...... done&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, check that the profile variable has been setup properly. This can be done using the LSF &lt;em&gt;lsinfo&lt;/em&gt; command.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;# lsinfo |grep profile
+profile        String   N/A   IBM Cloud Gen2 profile type&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we’re ready to update the LSF resource connector templates to add the &lt;em&gt;profile&lt;/em&gt; string variable. For this example, there are two templates defined for IBM Cloud profile types &lt;em&gt;bx2-4x16&lt;/em&gt; and &lt;em&gt;mx2-16x128&lt;/em&gt; in the configuration file &lt;em&gt;$LSF_ENVDIR/resource_connector/ibmcloudgen2/conf&lt;/em&gt;. Within the template definition, the &lt;em&gt;profile&lt;/em&gt; string variable is defined, and a value is set for each respective profile type. Note that the “-“ character cannot be used in the LSF string variables, and in place of that the “_” character is used. The specified profile string for each respective template is defined and used as the selection criteria by LSF resource connector. Then the &lt;em&gt;userData&lt;/em&gt; field is used to ensure that this value gets passed and set in the compute instance that is started by the LSF resource connector when the &lt;em&gt;user_data.sh&lt;/em&gt; script is run.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;Instance type&lt;/th&gt;
+&lt;th&gt;LSF &lt;em&gt;profile&lt;/em&gt; variable string value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;bx2-4x16&lt;/td&gt;
+&lt;td&gt;bx2_4x16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;mx2-16x128&lt;/td&gt;
+&lt;td&gt;mx2_16x128&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;ibmcloudgen2_templates.json&lt;/em&gt;, with &lt;em&gt;profile&lt;/em&gt; configured (obfuscated)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;{
+    &quot;templates&quot;: [
+        {
+            &quot;templateId&quot;: &quot;Template-1&quot;,
+            &quot;maxNumber&quot;: 2,
+            &quot;attributes&quot;: {
+                &quot;type&quot;: [&quot;String&quot;, &quot;X86_64&quot;],
+                &quot;ncores&quot;: [&quot;Numeric&quot;, &quot;2&quot;],
+                &quot;ncpus&quot;: [&quot;Numeric&quot;, &quot;4&quot;],
+                &quot;mem&quot;: [&quot;Numeric&quot;, &quot;16384&quot;],
+                &quot;icgen2host&quot;: [&quot;Boolean&quot;, &quot;1&quot;], 
+                &quot;profile&quot;:[&quot;String&quot;,&quot;bx2_4x16&quot;]
+            },
+            &quot;imageId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;subnetId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vpcId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vmType&quot;: &quot;bx2-4x16&quot;,
+            &quot;userData&quot;:&quot;profile=bx2_4x16&quot;,
+            &quot;securityGroupIds&quot;: [&quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;],
+            &quot;resourceGroupId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,
+            &quot;sshkey_id&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;priority&quot;: &quot;10&quot;, 
+            &quot;region&quot;: &quot;us-east&quot;,
+            &quot;zone&quot;: &quot;us-east-1&quot; 
+        },
+
+       {
+            &quot;templateId&quot;: &quot;Template-2&quot;,
+            &quot;maxNumber&quot;: 2,
+            &quot;attributes&quot;: {
+                &quot;type&quot;: [&quot;String&quot;, &quot;X86_64&quot;],
+                &quot;ncores&quot;: [&quot;Numeric&quot;, &quot;8&quot;],
+                &quot;ncpus&quot;: [&quot;Numeric&quot;, &quot;16&quot;],
+                &quot;mem&quot;: [&quot;Numeric&quot;, &quot;131072&quot;],
+                &quot;icgen2host&quot;: [&quot;Boolean&quot;, &quot;1&quot;],
+		       &quot;profile&quot;:[&quot;String&quot;,&quot;mx2_16x128&quot;]
+            },
+            &quot;imageId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;subnetId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vpcId&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;vmType&quot;: &quot;mx2-16x128&quot;,
+            &quot;userData&quot;:&quot;profile=mx2_16x128&quot;,
+            &quot;securityGroupIds&quot;: [&quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;],
+            &quot;resourceGroupId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,
+            &quot;sshkey_id&quot;: &quot;aaaa-bbbbbbbb-cccc-dddd-eeee-ffffffffffff&quot;,
+            &quot;priority&quot;: &quot;5&quot;,
+            &quot;region&quot;: &quot;us-east&quot;,
+            &quot;zone&quot;: &quot;us-east-1&quot;
+        }
+
+    ]
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now the &lt;em&gt;user_data.sh&lt;/em&gt; script is required to be updated in order to set the value of the &lt;em&gt;profile&lt;/em&gt; variable in the LSF resourcemap based upon what was requested by the user. This will be added to the LSF configuration during the bootup of the dynamic cloud instances. For more information about the LSF resourcemap read &lt;a href=&quot;https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=resources-configure-lsfclustercluster-name-resourcemap-section&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;user_data.sh script portion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;….
+….
+# Set value of profile variable in the LSF resourcemap. This is based
+# on the profile value requested at job submission time. 
+if [ -n &quot;$profile&quot; ]; then
+sed -i &quot;s/\(LSF_LOCAL_RESOURCES=.*\)\&quot;/\1 [resourcemap $profile*profile]\&quot;/&quot; $LSF_CONF_FILE
+echo &quot;update LSF_LOCAL_RESOURCES in $LSF_CONF_FILE successfully, add [resourcemap ${profile}*profile]&quot; &amp;gt;&amp;gt; $logfile
+else
+echo &quot;profile doesn't exist in environment variable&quot; &amp;gt;&amp;gt; $logfile
+fi
+….
+….&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With all of the configuration in place, it’s now time to test things out. Initially, a stress job is submitted requesting 4 cores is submitted without requesting a specific compute profile. In this case, the LSF resource connector will chose the most appropriate instance type from the configured templates. In our configuration the templates for instance types &lt;em&gt;bx2-4x16&lt;/em&gt; and &lt;em&gt;mx2-16x128&lt;/em&gt; are configured. Given this, we expect the LSF resource connector to startup a &lt;em&gt;bx2-4x16&lt;/em&gt; instance to satisfy the requirements for this example job.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;$ bsub -n 4 -q normal -o /mnt/data/%J.out /usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeout 60s 
+Job &amp;lt;3811&amp;gt; is submitted to queue &amp;lt;normal&amp;gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;After a few moments, we see that a new host, &lt;em&gt;icgen2host-XXX-YYY-ZZZ-44&lt;/em&gt; joins the LSF cluster and the job enters run state. We note that this is a host with the characteristics of 4 cores, and 16GB RAM, which matches the type &lt;em&gt;bx2-4x16&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;$ lsload -w
+HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
+icgen2host-XXX-YYY-ZZZ-37      ok   0.4   0.1   0.1   2%   0.0   1    16   40G    0
+icgen2host-XXX-YYY-ZZZ-44      ok   0.9   0.2   0.1  19%   0.0   0     0   88G    0M 14.9G
+
+$ lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+icgen2host-XXX-YYY-ZZZ-37        X86_64    Intel_E5  12.5     4  15.4G      -    Yes (mg docker ParaView)
+icgen2host-XXX-YYY-ZZZ-44		 X86_64    Intel_E5  12.5     4  15.5G      -    Dyn (icgen2host docker)
+
+$ bjobs -l -r
+
+Job &amp;lt;3811&amp;gt;, User &amp;lt;lsfadmin&amp;gt;, Project &amp;lt;default&amp;gt;, Status &amp;lt;RUN&amp;gt;, Queue &amp;lt;normal&amp;gt;, C
+                     ommand &amp;lt;/usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeou
+                     t 60s&amp;gt;, Share group charged &amp;lt;/lsfadmin&amp;gt;
+Mon Mar 18 19:42:22: Submitted from host &amp;lt;icgen2host-XXX-YYY-ZZZ-37&amp;gt;, CWD &amp;lt;$HOME&amp;gt;,
+                      Output File &amp;lt;/mnt/data/3811.out&amp;gt;, 4 Task(s);
+Mon Mar 18 19:45:11: Started 4 Task(s) on Host(s) &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icg
+                     en2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-
+                     XXX-YYY-ZZZ-44&amp;gt;, Allocated 4 Slot(s) on Host(s) &amp;lt;icgen2host-X
+                     XX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-
+                     44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt;, Execution Home &amp;lt;/home/lsfadm
+                     in&amp;gt;, Execution CWD &amp;lt;/home/lsfadmin&amp;gt;;
+Mon Mar 18 19:45:47: Resource usage collected.
+                     The CPU time used is 142 seconds.
+                     MEM: 3 Mbytes;  SWAP: 0 Mbytes;  NTHREAD: 8
+                     PGID: 2169;  PIDs: 2169 2170 2172 2173 2174 2175 2176 
+
+
+ MEMORY USAGE:
+ MAX MEM: 3 Mbytes;  AVG MEM: 3 Mbytes; MEM Efficiency: 0.00%
+
+ CPU USAGE:
+ CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)
+ CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Combined: select[type == local] order[r15s:pg]
+ Effective: select[type == local] order[r15s:pg] 
+
+$ bhist -l 3811
+
+Job &amp;lt;3811&amp;gt;, User &amp;lt;lsfadmin&amp;gt;, Project &amp;lt;default&amp;gt;, Command &amp;lt;/usr/bin/stress --cpu 
+                     4 --vm-bytes 8192MB --timeout 60s&amp;gt;
+Mon Mar 18 19:42:22: Submitted from host &amp;lt;icgen2host-XXX-YYY-ZZZ-37&amp;gt;, to Queue &amp;lt;no
+                     rmal&amp;gt;, CWD &amp;lt;$HOME&amp;gt;, Output File &amp;lt;/mnt/data/%J.out&amp;gt;, 4 Task
+                     (s);
+Mon Mar 18 19:45:11: Dispatched 4 Task(s) on Host(s) &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;
+                     icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2ho
+                     st-XXX-YYY-ZZZ-44&amp;gt;, Allocated 4 Slot(s) on Host(s) &amp;lt;icgen2hos
+                     t-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY
+                     -ZZZ-44&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-44&amp;gt;, Effective RES_REQ &amp;lt;select
+                     [type == local] order[r15s:pg] &amp;gt;;
+Mon Mar 18 19:45:11: Starting (Pid 2169);
+Mon Mar 18 19:45:11: Running with execution home &amp;lt;/home/lsfadmin&amp;gt;, Execution CW
+                     D &amp;lt;/home/lsfadmin&amp;gt;, Execution Pid &amp;lt;2169&amp;gt;;
+Mon Mar 18 19:46:11: Done successfully. The CPU time used is 239.3 seconds;
+Mon Mar 18 19:46:12: Post job process done successfully;
+
+
+MEMORY USAGE:
+MAX MEM: 3 Mbytes;  AVG MEM: 2 Mbytes; MEM Efficiency: 0.00%
+
+CPU USAGE:
+CPU PEAK: 3.98 ;  CPU PEAK DURATION: 60 second(s)
+CPU AVERAGE EFFICIENCY: 99.58% ;  CPU PEAK EFFICIENCY: 99.58%
+
+Summary of time in seconds spent in various states by  Mon Mar 18 19:46:12
+  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL
+  169      0        60       0        0        0        229         &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Next, let’s submit the same job, but explicitly requesting the profile type &lt;em&gt;mx2-16x128&lt;/em&gt;. To do this, we add the resource requirement requesting profile to be equal to &lt;em&gt;mx2_16x128&lt;/em&gt; as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;$ bsub -q normal -R &quot;profile==mx2_16x128&quot; -n 4 -o /mnt/data/%J.out /usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeout 60s 
+Job &amp;lt;3813&amp;gt; is submitted to queue &amp;lt;normal&amp;gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;After a few moments, a dynamic host with 16 CPUs and 128 GB RAM joins the cluster, which corresponds to instance type &lt;em&gt;mx2-16x128&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;$ lshosts -w
+HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
+icgen2host-XXX-YYY-ZZZ-37        X86_64    Intel_E5  12.5     4  15.4G      -    Yes (mg docker ParaView)
+icgen2host-XXX-YYY-ZZZ-46        X86_64    Intel_E5  12.5    16 125.7G      -    Dyn (icgen2host docker)
+
+$ lsload -w
+HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
+icgen2host-XXX-YYY-ZZZ-37      ok   0.0   0.1   0.1   3%   0.0   1     2   40G    0M 12.2G
+icgen2host-XXX-YYY-ZZZ-46      ok   1.6   0.4   0.1  17%   0.0   0     0   88G    0M 123.8G
+
+$ bjobs -l -r
+
+Job &amp;lt;3813&amp;gt;, User &amp;lt;lsfadmin&amp;gt;, Project &amp;lt;default&amp;gt;, Status &amp;lt;RUN&amp;gt;, Queue &amp;lt;normal&amp;gt;, C
+                     ommand &amp;lt;/usr/bin/stress --cpu 4 --vm-bytes 8192MB --timeou
+                     t 60s&amp;gt;, Share group charged &amp;lt;/lsfadmin&amp;gt;
+Mon Mar 18 20:27:52: Submitted from host &amp;lt;icgen2host-XXX-YYY-ZZZ-37&amp;gt;, CWD &amp;lt;$HOME&amp;gt;,
+                      Output File &amp;lt;/mnt/data/3813.out&amp;gt;, 4 Task(s), Requested Re
+                     sources &amp;lt;profile==mx2_16x128&amp;gt;;
+Mon Mar 18 20:30:01: Started 4 Task(s) on Host(s) &amp;lt;icgen2host-XXX-YYY-ZZZ-46&amp;gt; &amp;lt;icg
+                     en2host-XXX-YYY-ZZZ-46&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-46&amp;gt; &amp;lt;icgen2host-
+                     XXX-YYY-ZZZ-46&amp;gt;, Allocated 4 Slot(s) on Host(s) &amp;lt;icgen2host                     -XXX-YYY-ZZZ-46&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-46&amp;gt; &amp;lt;icgen2host-XXX-Y                     YY-ZZZ-46&amp;gt; &amp;lt;icgen2host-XXX-YYY-ZZZ-46&amp;gt;, Execution Home &amp;lt;/home/lsfadm
+                     in&amp;gt;, Execution CWD &amp;lt;/home/lsfadmin&amp;gt;;
+
+ MEMORY USAGE:
+ MEM Efficiency: 0.00%
+
+ CPU USAGE:
+ CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)
+ CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Combined: select[(profile == mx2_16x128 ) &amp;amp;&amp;amp; (type == any)] order[r15s:pg]
+ Effective: select[(profile == mx2_16x128 ) &amp;amp;&amp;amp; (type == any)] order[r15s:pg] &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Additionally, using the LSF lshosts command with the -s option, we can view information about the resources in the environment. We see in particular the profile resource is set to the value &lt;em&gt;mx2_16x128&lt;/em&gt; for the dynamic host &lt;em&gt;icgen2host-XXX-YYY-ZZZ-46&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;$ lshosts -s
+RESOURCE                                VALUE       LOCATION
+rc_account                            default       icgen2host-XXX-YYY-ZZZ-46 
+profile                            mx2_16x128       icgen2host-XXX-YYY-ZZZ-46 
+instanceID               0757_95e39240-22e7-4734-8fd5-9988ab247801  
+                                                    icgen2host-XXX-YYY-ZZZ-46 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We have shown the great flexibility that LSF provides for configuring the resource connector capability. Generally speaking, LSF provides many open interfaces which allow site specific configuration or customization to be realized. In the next blog in this series, we’ll take a closer look at running Docker jobs under LSF on dynamic cloud resources.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Pi in the sky? A compute cluster in mini ITX form factor</title>
