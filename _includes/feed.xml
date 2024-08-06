@@ -1,4 +1,504 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2024-08-03T20:49:32-06:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Advanced LSF resource connector configuration on IBM Cloud - part III</title><link href="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii/" rel="alternate" type="text/html" title="Advanced LSF resource connector configuration on IBM Cloud - part III" /><published>2024-08-01T13:08:20-06:00</published><updated>2024-08-01T13:08:20-06:00</updated><id>https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii/"><![CDATA[<p><strong>Overview</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2024-08-04T20:49:20-06:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">How has life after leaving the Labs been going?</title><link href="https://hpc.social/personal-blog/2024/how-has-life-after-leaving-the-labs-been-going/" rel="alternate" type="text/html" title="How has life after leaving the Labs been going?" /><published>2024-08-04T20:21:00-06:00</published><updated>2024-08-04T20:21:00-06:00</updated><id>https://hpc.social/personal-blog/2024/how-has-life-after-leaving-the-labs-been-going-</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/how-has-life-after-leaving-the-labs-been-going/"><![CDATA[<p>June 2024 marked two years since I <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">left my job at one of the world's most prestigious government HPC centers for a job in one of the world's largest technology corporations</a>. In that time, the world of HPC has changed
+dramatically; just six months after I started, ChatGPT was released and triggered a gold rush in AI that is now overshadowing traditional scientific computing. This shift brought about massive HPC
+deployments led by hyperscalers, challenging the long-held belief that only national governments could
+deploy and operate world-leading supercomputers. <a href="http://blog.glennklockwood.com/2024/05/isc24-recap.html">My experiences at
+ISC'24 this past summer</a> made clear to me that the traditional HPC community is now rethinking their role the industry, and some individuals who built their careers in public HPC are revisiting their
+assumption that world-class HPC systems are limited to the public institutions that have
+historically dominated the <a href="https://www.top500.org/lists/top500/list/2024/06/">top of the Top500 list</a>. I
+had no idea things would unfold this way when I left my job at NERSC back in 2022, and I've been remarkably lucky to
+now be a part of the largest forces driving this huge shift in HPC.</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
+
+<figcaption style="font-size: 14px; margin-top: 5px;">One of my new offices. Nicer than my old government office, and it has free food, but it's a ninety-minute drive each way.</figcaption>
+</figure>
+</div>
+<p>In the spirit of openness and helping others who are facing similar career decisions, I thought I would follow up on my <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">Life and leaving
+NERSC</a> post by sharing how my professional journey from DOE HPC into cloud HPC has been going. I'll first explain the path I've traveled over these past two years, then answer some of the most
+common questions I've been asked about this transition.</p>
+<p>As a forewarning, this is not a typical technology-focused post, and most of this might be obvious to people who already work in Big Tech. Here are the questions on which I reflected:</p>
+<ol>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#first-two-years">What happened during my first two years in Corporate America?</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#what-i-do">So what do I actually do?</a>
+<ol>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#storage-product-management">Storage product management</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#hpc-ai-development">HPC/AI development</a></li>
+</ol>
+</li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#am-i-happy">Am I happy with my decision and the new job?</a>
+<ol>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#am-i-happy-broadly-yes">Broadly, yes</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#long-time-no">But for a long time, no</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#finally-yes">Finally, yes</a></li>
+</ol>
+</li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#industry-does-better">What does industry do better than the Labs?</a>
+<ol>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#accountability">Accountability</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#pace-and-decision-making">Pace and decision making</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#relevance">Relevance</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#technically-security">Technically: security</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#pay-good">But the pay is good, right?</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#work-life-balance">How's work-life balance?</a></li>
+</ol>
+</li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#what-i-miss">Do you miss anything about working at the lab?</a>
+<ol>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#freedom-to-have-an-off-day">Freedom to have an off day</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#travel">Travel</a></li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#openness">Openness</a></li>
+</ol>
+</li>
+<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#regret-decision">Would you still have left NERSC knowing what you know now?</a></li>
+</ol>
+<h2 id="first-two-years">What happened during my first two years in Corporate America?</h2>
+<p>I published my <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">Life and leaving NERSC</a> blog post on a
+Thursday, which was my last day working at NERSC. The following Monday was my first day at the new job, and being
+hired as 100% remote, it didn't feel that different; I was just booting up a Lenovo laptop (yuck) instead of a
+MacBook, using Teams and Outlook instead of Slack, GSuite, and Zoom, and that sort of thing.</p>
+<p>However, the job was undeniably different; whereas I used to be an engineer at NERSC, I was hired to be a "Principal Product
+Manager" within the cloud storage organization which was responsible for all object, disk, and file storage
+services. Although my title was "product manager," I wasn't a people manager, and
+I didn't manage any specific storage products. Rather, my responsibility was to act as an HPC-focused overlay
+across all cloud storage services, and my job was to represent the interests of HPC users to all the people who did manage specific storage products. I didn't define product or feature roadmaps myself, but I could help those responsible for each product or service understand how to shape their roadmaps to benefit HPC workloads.
+</p>
+<p>I struggled in this position for a variety of reasons, so after I gave the new role
+an honest six to nine months, I decided that being a storage product manager just wasn't a good fit for me.
+Unfortunately, I reached this decision after the <a href="https://www.nytimes.com/2022/07/21/business/yield-curve-inversion.html">yield curve inverted</a> and
+<a href="https://www.theverge.com/2023/1/18/23560315/microsoft-job-cuts-layoffs-2023-tech">mass-layoffs and hiring
+freezes</a> were implemented, so there weren't a lot of places to go other than back to a government lab.
+Although I wasn't thriving as a storage product manager, I did have allies that helped me navigate my
+day-to-day struggles, and I decided to wait until more opportunities opened up and learn as much about
+product management as I could in the meantime.</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
+
+<figcaption style="font-size: 14px; margin-top: 5px;">The yield curve inverted a month after I started my new job. Not great timing.</figcaption>
+</figure>
+</div>
+<p>After a little over a year as a storage product manager, a new engineering role opened up within a sister team in our
+HPC/AI infrastructure organization. After discussing the needs and nature of the work with the hiring manager, I applied for the job, went through the
+interview process, and was eventually given a verbal offer to join his team in June 2023. Unfortunately, the global
+economic outlook was still uncertain, and I wound up sitting in a holding pattern (as a storage product
+manager) from June 2023 to November 2023. It wasn't until the week of SC'23 that I finally got the written offer
+letter, and I spent December wrapping up loose ends within the storage organization.</p>
+<p>On January 2, 2024, I began my new (and current) role within the company. The move was completely lateral, but I changed job titles from "Product Manager" to "Software Engineer," and I
+changed organizations from storage to specialized compute.</p>
+<p>I say all this because my experiences in making the professional transition from government HPC to cloud HPC are colored by the fact that I really changed jobs twice. I've had both product management and engineering/development roles, and I've been in both storage and HPC
+organizations.</p>
+<h2 id="what-i-do">So what do I actually do?</h2>
+<p>I've had two very different roles within the same orbit of HPC/AI infrastructure, so I'll
+describe them separately to give you a sense of the breadth of HPC roles possible.</p>
+<h3 id="storage-product-management">Storage product management</h3>
+<p>As a <b>storage product manager</b> (PM), I was an inch deep but a mile wide on every storage service, every commercial HPC workload, and
+all the ways in which those two could touch each other. I'd guess that only 25% of my day-to-day work required deep
+expertise in HPC; the remainder was either business-centric or required only understanding HPC in broad strokes. This
+was quite unlike the things I'd done earlier in my career in the public sector, since there's not an equivalent to
+what a product manager does within the DOE Labs.
+</p>
+<p>For example, I spent a lot of my time as a storage PM explaining the basics of HPC I/O to different teams within the
+company. When most cloud people think "storage," they are really thinking about either enterprise storage (things
+like virtual disks for virtual machines) or content distribution (think serving up content for web apps). The
+concept of hundreds or thousands of VMs all writing to the same place at the same time is standard practice in the
+HPC world, but in the cloud world, this is a <a href="https://www.microsoft.com/en-us/security/business/security-101/what-is-a-ddos-attack?msockid=2008901357a56c4518b3840856e96dad">DDoS
+attack</a>. Since my organization was responsible for all storage, not just HPC storage, there were a lot of
+people who simply never had to think about the challenges that HPC people take for granted, and it could be challenging (as the new guy) to convince seasoned cloud storage PMs that some workloads legitimately need hundreds of gigabytes per second of bandwidth.</p>
+<p>As a PM, I also wound up doing a fair amount of business reporting. For example, object storage is used by all manner of cloud
+customers, so prioritizing features that specifically help HPC customers required understanding how many HPC
+customers actually used it. How do you define whether a workload is really an HPC workloads or not? In
+DOE, we'd waste hours debating stuff like this for no real purpose, but when I became a product manager, I had to
+define this to make the business case that we needed to develop a certain feature that would only be used by HPC workloads.</p>
+<p>Finally, I did a fair amount of actual product and project management work. Get on the phone with a customer,
+write down what they do, and turn those into requirements. Do that a bunch of times, then synthesize a more general
+requirements document. Review it with leadership. Get approval to assign developers to work on the features to meet
+those requirements. Ask other teams to develop features you need for your feature. Negotiate with everyone on
+development priorities in the next six months. Track progress of the development team. Produce demos to show that
+progress is being made. Present progress to leadership. That sort of thing. It's similar to being a PI on a research
+grant, except I had customers, dependencies, and ultimate accountability.</p>
+<p>As far as technical work, a lot of it revolved around meeting customers and internal partner teams where they were in
+terms of their knowledge of HPC. I did a fair amount of technical marketing; I would come up with
+the ways people should think about combining storage services together in their HPC workflows, then figure out
+how to communicate that to audiences with vastly different levels of technical understanding. For example, I didn't
+own our <a href="https://learn.microsoft.com/en-us/azure/azure-managed-lustre/amlfs-overview">Lustre product</a>, <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction">object storage
+product</a>, or <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/high-performance-compute/hb-family">HPC CPU
+node product</a>, but I owned <a href="https://techcommunity.microsoft.com/t5/azure-high-performance-computing/azure-managed-lustre-not-your-grandparents-parallel-file-system/ba-p/3889946">the
+story around how we envisioned all three services worked well together</a>. This meant I would create slides and
+narratives around this, then present them to anyone from our sales teams (who often had limited HPC-specific experience) to
+the world's leading HPC centers.</p>
+<p>I also sometimes helped development teams accurately test their storage systems against HPC workloads. For example,
+when ChatGPT exploded, everyone wanted to know how well their storage service worked for training large language
+models. I would talk to the engineers who trained LLMs, infer what their I/O patterns would be based on
+their description of how they did training, then design a benchmark that our developers could follow to
+emulate that LLM training workflow. Since I understood both the workload and the storage technology, it was often faster for me to translate between AI engineers and storage engineers rather than have them speak directly.</p>
+<h3 id="hpc-ai-development">HPC/AI development</h3>
+<p>As an <b>HPC/AI engineer</b>, my work is a lot more technical and focused. I'm on a "white-glove support team"
+that works directly with large, strategic customers in HPC and AI, so rather than working with dozens of customers and connect them to dozens of storage technologies, I work with one or two customers and the specific technologies on which they build their HPC or AI clusters. Because of this, I'd wager 95% of my day-to-day work is
+technical.</p>
+<p>I don't spend much time in a terminal by virtue of my relative seniority. Instead, I sit in on a lot of internal meetings and represent the perspective of our strategic HPC and AI customers. For example, if we are trying to decide which CPU to
+include in our next HPC-optimized CPU node, I might work with our benchmarking engineers to develop a representative
+benchmark and then interpret the results with the node's product managers. I'm not the person running the benchmark
+myself; instead, I might ask hard questions that the customer might ask, help decide the next experiments to run,
+and backstop our engineers if the customer starts poking too many holes in the work.</p>
+<p>I also function as a system architect at times; if a customer shows up with unusually large or complex
+HPC system requirements, I'll help translate the customer requirement (e.g., "We need 10 TB/s of storage bandwidth)
+for individual product teams (e.g., "they will be using N compute nodes and accessing storage via a network with
+this topology and tapering, likely running an application that has this pattern, ..."). This often requires understanding what the compute, network, <i>and</i> storage product teams are doing and being able to explain it all in
+whatever terms each team understands. I also wind up sitting in on customer meetings and asking critical questions
+so that we can make informed design tradeoffs.</p>
+<p>I do write code, but no more than I did when I was a system architect at NERSC. For example, I might pull PDU
+telemetry from across a data center to help determine if oversubscribing the power for a future cluster would
+impact workloads. The code itself is pretty straightforward statistical analysis, but interpreting it requires an
+understanding of a bunch of things ranging from the workload running on the nodes to how nodes are distributed
+across PDUs, racks, rows, halls, and buildings.</p>
+<p>The remaining 5% of my work is not very technical and involves things I opt into because it's interesting or
+the right thing to do. This might be spending time providing historical context for a business strategy document or showing up at a meeting to help explain the customer perspective to a finance or sales team.</p>
+<h2 id="am-i-happy">Am I happy with my decision and the new job?</h2>
+<p>Yes, no, and yes.</p>
+<h3 id="am-i-happy-broadly-yes">Broadly, yes</h3>
+<p>I am glad I made the decision to leave NERSC and take on a job in Big Tech for a couple of
+high-level reasons.</p>
+<p>As a product manager, I learned a lot about how businesses and corporations work to a
+degree that I never did when I worked at a startup and I never would have if I stayed with the government. Not only
+do I now know what the difference between gross and operating margin is, but I <i>get</i> it because I've had to
+build <a href="https://www.investopedia.com/terms/c/cogs.asp">COGS</a> and pricing models that could sustain and grow a new product. I know exactly how to
+price cloud services (or any product or service, really) and where that money goes. I now pay much more attention to
+quarterly earnings reports, and I have a more confident opinion on what different elements of these reports say
+about a technology company's trajectory. This has equipped me with what feels like a much more complete
+understanding of the HPC industry overall.</p>
+<p>I'm also glad to work at a company that generally tries to do the right things. It
+is investing heavily towards being <a href="https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/">carbon
+negative</a> (rather than just buying carbon offsets) while others are <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/elon-musks-new-worlds-fastest-ai-data-center-is-powered-by-massive-portable-power-generators-to-sidestep-electricity-supply-constraints">burning gas inefficiently</a> in a race to be #1. It also <a href="https://givebutter.com/blog/companies-that-match-donations">matches
+every donation I make to 501(c)3 nonprofits</a> which is a huge benefit that matches up with the ways in
+which I try to share my good fortune with others. And it beats employees over the heads with a strong, positive <a href="https://careers.microsoft.com/v2/global/en/culture">corporate culture</a> which holds managers and leaders
+accountable for the wellness of their employees. These sorts of things don't meaningfully exist in government, and
+there are a lot of big corporations out prioritize short-term profits over the longer-term benefits that come from investing in sustainability and philanthropy.</p>
+<h3 id="long-time-no">But for a long time, no</h3>
+<p>However, I was unhappy for my first eighteen months.</p>
+<p>I took a gamble on storage product management being as interesting and fulfilling as
+engineering when I decided to step into this new job, and I lost that bet. I quickly came to realize that there's a big difference between
+being a <u>storage person in an HPC organization</u> and being an <u>HPC person in a storage organization</u>.</p>
+<p>When I worked in an HPC organization like NERSC, I was used to being the odd man out
+because parallel storage is a complicated topic that most HPC folks don't <i>really</i> understand. Despite that, everyone is still generally like-minded and appreciates the same things; everyone knows what MPI and InfiniBand
+are, and everybody knows what a checkpoint and restart might look like.</p>
+<p>Conversely, when I worked in a storage organization, I was an odd man out because nobody
+really understood HPC. The average engineer only had a vague notion of what MPI or
+InfiniBand accomplished. If you don't understand that MPI is what lets hundreds of servers all work on the same
+distributed problem at once, it's easy to forget that an MPI application will also cause hundreds of servers to
+all write data at once. And if you've never used an MPI barrier, it's hard to internalize the fact that the whole
+application stops until the slowest process finishes writing.</p>
+<p>Instead of worrying about tightly coupled applications, I realized that storage people
+worry about data availability and durability above all else. After all, storage's #1 job is to not lose data. In
+contrast, it's not unusual for an HPC user to have hundreds of terabytes of data vanish because they forgot to copy
+it off of scratch before it got purged. This sharp difference in priorities--data durability versus
+performance--causes friction, because at the end of the day, what's good for HPC (high bandwidth and low latency) is
+usually bad for storage (high durability and availability).</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
+
+<figcaption style="font-size: 14px; margin-top: 5px;">The landscape of storage for HPC and storage for enterprises as I see it. If you care about one but work with people who care about the other, expect friction.</figcaption>
+</figure>
+</div>
+<p>These are technological differences, but they result in a persistent, elevated level of latent stress that never goes away. People tend to worry about the things they understand, and people tend to ask for help
+about the things that worry them. What this meant for me is that I spent a lot of time focusing on things that
+everyone understood (like market trends, revenue, and general indicators of performance) instead of hard problems
+unique to large-scale HPC. And because I was never solving the hard problems, I never got the gratification of feeling like I accomplished something that, as I learned, is an important motivator to me.</p>
+<p>To be clear, I realize that I made the decision to focus on problems that other people brought me
+rather than carve out a space for me to work on the problems I felt were important. I'm sure that someone who was
+more tenacious and unafraid to pursue challenges that nobody else understood would have a very different experience as a PM. But after about a year, I realized that what I value and enjoy doing just isn't
+aligned with what a successful storage PM needs to be successful. I realized I didn't want to keep doing what I was doing
+for another five years, so I decided to stop.</p>
+<h3 id="finally-yes">Finally, yes</h3>
+<p>I quite enjoy my role in HPC/AI engineering and development now, as it's similar to
+what I used to do in the DOE. I have to learn about how different hardware, software,
+and systems work, and I have a lot of room to focus on challenges that play to my strengths and interests.
+For example, I love engaging with the HPC community, and my job still allows me to go out to the big HPC conferences to do that. At the same time, I also like getting into the guts of system behavior, and I still get to spend at least an hour or two a week doing something quantitative.</p>
+<p>My day-to-day is also steeped in that familiar feel of working in an HPC organization.
+Every cluster has a name that gets bandied about in meetings, and they have the same familiar challenges--fabric disruptions, firmware
+upgrades, flaky nodes, and the like. The standard responsibilities are also all there; some teams perform system
+administration, others support users, and some of us focus on future system designs. But the cluster names aren't nearly as creative as those in the public sector (<a href="https://www.top500.org/system/180236/">Eagle's</a> real name sounds like a serial number). And they look pretty boring too; there are no fancy rack graphics.</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
+
+<figcaption style="font-size: 14px; margin-top: 5px;">Five racks of a cloud GPU cluster that runs ND H100 v5-series VMs. <a href="https://www.youtube.com/watch?v=ntKZ5CibuIQ">Source</a></figcaption></figure></div>
+<p>There are also teams that have no analogue in the traditional HPC world, like those who
+are responsible for things ranging from the <a href="https://techcommunity.microsoft.com/t5/azure-infrastructure-blog/announcing-the-general-availability-of-azure-boost/ba-p/3981384">smart NICs</a> and software-defined networks to profits and losses. This is
+what keeps things interesting; I can just as easily spend an hour reviewing benchmark results from the latest GPU
+with my teammates as I can learning how the control systems for <a href="https://news.microsoft.com/source/features/ai/in-house-chips-silicon-to-service-to-meet-ai-demand/">liquid
+heat exchangers</a> affect system reliability or <a href="https://www.osha.gov/noise/standards">data center
+safety</a>. When things are quiet and no fires are burning, going to work can sometimes feel like going to a big
+playground full of HPC and HPC-adjacent technology.</p>
+<p>Don't get me wrong; it's still a job, and there are still unpleasant tasks and
+uncomfortable situations. Working at a cloud provider means a lot of processes are designed to be slow and steady,
+and some teams struggle to understand why anyone would want to reboot every node in a cluster at once--such an event would be a massive outage in general-purpose cloud! But working in an HPC organization means that when these
+situations arise, I'm no longer the <i>odd HPC guy</i>--I'm on the <i>odd HPC team</i>.</p>
+<h2 id="industry-does-better">What does industry do better than the Labs?</h2>
+<h3 id="accountability">Accountability</h3>
+<p>Organizational planning happens <a href="https://devblogs.microsoft.com/azure-sdk/planning-2021/">twice a year</a>,
+and this planning is the time when teams all get on the same page about what
+work to prioritize in the next six months (a <i>semester</i>). Teams coordinate dependent work with each other,
+trades horses on what the priority of each request is, and at the end of planning, have committed agreements about what work
+will be done in the next semester. The progress on that work is tracked throughout the semester, delays and
+interrupts are accounted, and there's an escalation path up through the ranks of management and leadership if
+priorities cannot be agreed upon by individual teams.</p>
+<p>The DOE Labs operate much more loosely in my experience. There, people tend
+to work on whatever pet projects they want until they lose interest. If a project is funded by a research grant, there are loose
+deliverables and timelines (write X papers per year), but at the end of the day, nothing really bad happens if the
+work progresses slowly or its quality is poor. There's no penalty if a research grant results in a piece of software
+that nobody uses or a paper that nobody reads. The value of the work is largely intellectual, and as a result, it's perfectly
+possible to have a long career at a DOE lab, churning out papers and software, that lacks any
+lasting impact.</p>
+<p>Tying money to the value of work can make accountability much more black and white. If you pay a team of engineers a
+million dollars a year to develop a new service that only increases revenue by a million dollars a year, that
+service is going to be scrutinized every time prioritization happens. Is there a way to increase its revenue through
+better features or better positioning? It'll be a product manager's job to go figure that out. If the answer comes
+back as "no," then that service might be put on a shelf and its engineering team reassigned to work on something
+that has a greater impact. Those engineers don't get to decide that they keep wanting to work on the service that
+has limited demonstrable value.</p>
+<p>At the same time, managers are accountable for the wellbeing of their team and the teams underneath them. All
+employees fill out regular, semi-anonymized surveys on different aspects of job satisfaction, and the results of
+these surveys roll up all the way to the top of the company. If employees are disgruntled, their managers know it,
+and those managers' managers know it, and everyone up the chain is accountable for improving those scores. Sometimes that results
+in increased hiring so engineers don't feel overworked. Other times it means reorganizing people and teams to align
+them with the work they are good at performing. And if nothing works and a team's morale keeps declining, maybe it's because of
+the manager--and the manager gets replaced.</p>
+<h3 id="pace-and-decision-making">Pace and decision making</h3>
+<p>Because managers and leaders are accountable, I've also found them to be much more empowered to just do what they
+feel is the right thing to do. Whereas no big decision in the DOE Labs can be made without reviews, panels,
+strategic offsites, more reviews, and presentations to headquarters--all of which could add months or
+years to a project--the direction can move on a dime because all it takes is one executive to sign off and accept
+full responsibility for the consequences of their decision. Getting the approval to staff up and pursue a good idea
+often requires only winning over one or two key people, not an army of feds in Germantown or an anonymous review
+panel who isn't conversant in what you're proposing.</p>
+<p>And again, sometimes money makes decisions much easier to make. For example, a few people at ISC'24 asked me why we
+didn't re-do the <a href="https://www.top500.org/system/180236/">Top500 run for Eagle</a> to beat Aurora since the
+SC'23 scoring was so close. The decision process can be as simple as this:</p>
+<p></p>
+<ul>
+<li>According to the <a href="https://top500.org/lists/top500/2024/06/download/TOP500_202406.xlsx">Top500 list's raw
+data</a>, Eagle achieved 561,200 TFlop/s using an Nmax of 11,796,480.</li>
+<li>Knowing that HPL's walltime is (flop count / Rmax) and HPL's flop count is (2/3 * Nmax^3), you can calculate
+that the HPL walltime for this run was 1,950 seconds or 0.512 hours.</li>
+<li>The <a href="https://azure.microsoft.com/en-us/pricing/calculator/">public list price</a> for an Eagle
+node (ND96isr H100 v5) is something like $60 an hour.</li>
+<li>The HPL run used 1,800 such nodes.</li>
+</ul>
+<p>Give the above, during the half hour it would take to run HPL, those same nodes could be
+running a production workload which would have resulted in $58,000 in revenue. That is, the <i>opportunity cost</i>
+of re-running HPL is at least $58,000 in lost revenue. In reality, it would take time to boot up and configure the
+cluster of virtual machines and do a few scale-up runs which would tie up the nodes for a couple hours, making
+this opportunity cost closer to a couple hundred thousand dollars.</p>
+<p>Is getting a marginally higher Top500 score worth a couple hundred thousand dollars if your
+machine is already listed and had its day in the sun? I don't need an executive to answer that question. But in the
+public HPC space, who's to say what the opportunity cost is? If HPL wasn't running twice a year on Frontier, are the
+dozen or so lattice QCD jobs that would be running instead worth a couple hundred thousand dollars?</p>
+<p></p>
+<h3 id="relevance">Relevance</h3>
+<p>I might be more vain than I thought when I worked for the government, because I really enjoy being able to talk about the work that I do
+with the general public now. When people ask, "What work do you do?" and I respond with, "Have you ever heard of Copilot or
+ChatGPT?" there is almost always a conversation that follows. People may not really understand how artificial intelligence and
+large language models work, but they've played with those technologies and have opinions and questions. Sometimes the conversation is about big-picture stuff like "will AI take over the world?" At other times it's specific like "what do you think about
+AI's effect on global climate change?" Because I am steeped in all aspects of AI in my day-to-day work, I can
+usually speak intelligently about any dimension of the AI industry when my neighbors ask.</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
+
+<figcaption style="font-size: 14px; margin-top: 5px;">Every blog post these days needs at least one AI-generated picture, so here is a picture generated by DALL-E that "captures the essence of explaining AI concepts to neighbors in a friendly, approachable setting." But more poignantly, my team directly supports the supercomputers that trained the model that generates these pictures.</figcaption>
+</figure>
+</div>
+<p>This was a much bigger challenge when I worked in the public sector. When I told people that I worked at Lawrence Berkeley
+National Lab, nobody knew what I was talking about half of the time. The other half of the time, people would think I worked on
+nuclear weapons because Lawrence Livermore National Lab has a confusingly similar name and geography. And if the
+conversation ever got as far as what people did on the supercomputers I supported, it would rapidly tail off once
+all parties (including me) realized that cosmological hydrodynamics and quantum Monte Carlo don't really make for great conversation since they don't touch people's everyday lives.</p>
+<p>This isn't to say that the work done at the Labs isn't important. But the general public doesn't understand it, and
+to a large degree, doesn't really care about it. I realize that being able to impress your neighbors with what you
+do isn't at the top of the list of most people's job requirements, but I get a lot of satisfaction out of it.</p>
+<h3 id="technically-security">Technically: security</h3>
+<p>HPC doesn't really worry about cybersecurity. Every HPC center has a security group and does scans and threat
+modeling, but at the end of the day, the security practices on all the largest supercomputers in the public sector
+are roughly the same as they were twenty years ago. Users ssh into a login node, and once you're inside, you have
+access to everything. You can see everyone else who's logged in, you can see everyone who chmodded their home
+directory to be +777, and the only thing separating you from everyone else is the Linux kernel. Passwordless ssh is
+everywhere, and often times, passwordless ssh for the root user is everywhere.</p>
+<p>This does not fly with paying commercial HPC and AI customers in the cloud who use supercomputing to develop better
+products faster than their competitors. For example, both <a href="https://www.synopsys.com/blogs/chip-design/eda-in-the-cloud-snug-2023.html">Arm and AMD have publicly
+stated that they perform a lot of their silicon design simulations using HPC in the cloud</a>. What would happen
+if both AMD and Arm used the same cluster and one accidentally made their project directory world-readable? Should
+domain scientists' understanding of how POSIX file permissions work really be the last line of defense against a
+next-generation CPU or GPU's specs being leaked to the competition?</p>
+<p>I had to quickly learn about modern security practices when I started doing HPC in the commercial cloud out of
+necessity. I'm still nowhere close to being a security expert, but two years has been long enough for me to now
+cringe when I talk to my colleagues in the traditional HPC community about how they protect against threats. It's
+not really their fault that most of the HPC community hasn't adopted modern practices, because the tools and
+practices required to do it right aren't easy to set up, automate, and maintain from scratch.</p>
+<p>For example, basic LDAP is a short path to allowing users to log into a cluster's nodes, but if those users also need
+to authenticate themselves to REST services that support an HPC workflow across multiple clusters, you have to start building a Rube Goldberg machine of software on top of LDAP. Similarly, sticking every user on their own overlay network is great to limit the blast radius of a
+compromised account. However, automating the configuration of VXLAN tunnel endpoints as nodes get allocated and deallocated to
+jobs requires a lot of fancy orchestration that is either very complicated to build and maintain yourself or very
+expensive to buy and maintain. As a result, HPC just accepts the risk. Cloud has
+figured all this out though, and the price of providing this security infrastructure is included in the cost of
+cloud-based supercomputers.</p>
+<h3 id="pay-good">But the pay is good, right?</h3>
+<p>Like I said before I left the public sector, <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">my base salary is
+comparable to what I got at the lab</a>. It's actually gotten less competitive because <a href="https://www.theregister.com/2023/05/11/microsoft_pay_freeze/">all salaries were frozen</a> when I was first eligible for a raise. So, after considering the effects of inflation, my paycheck is a little lower than what it was in the government two years ago.</p>
+<p>What's different is the bonus structure which simply does not exist in the government or university world. For those
+who aren't familiar with how bonuses work in the tech industry, I'll share how it works for me:</p>
+<p></p>
+<ul>
+<li>In the first year, I was awarded two signing bonuses: one in cash, one in stock. Half of the cash bonus was paid
+out up-front, and the other half was paid out after I had been there a year. The stock grant cannot be touched
+during the first year because it had a one-year "cliff."</li>
+<li>On my one-year anniversary, I got the second half of my cash signing bonus, and my signing stock grant began
+"vesting."</li>
+<li>After a year, I was also eligible for an annual performance-based raise, cash bonus, and stock bonus.</li>
+<ul>
+<li>Because of the economy, my annual raise was zero.</li>
+<li>The cash bonus was paid out in a lump sum, similar to my cash signing bonus.</li>
+<li>The stock bonus was awarded all at once but follows a multi-year "vesting schedule" which means I am only
+actually given fractions of the total award over time. However, these bonuses don't have a "cliff" and begin
+vesting immediately.</li>
+</ul>
+<li>Every year thereafter, I am eligible for an annual raise, cash bonus, and another stock bonus.</li>
+</ul>
+<p>The way stock bonuses work was the least intuitive part to me, but since it's such a significant part of total compensation, it's worth spelling
+out for anyone who's considering an offer that includes this:</p>
+<p></p>
+<ul>
+<li>Stock bonuses are defined in terms of dollar values. For example, let's say I got a signing stock bonus of $1000
+with a one-year cliff that vests quarterly (every three months) over five years.</li>
+<li>On the day that stock bonus is awarded, my employer converts that $1000 value into company stock based on the
+market value that day. If stocks are $50 per share, I am awarded 20 shares. My employer hangs on to those shares
+on my behalf, so I can't actually do anything with them yet.</li>
+<li>Since I have a five-year vesting schedule and the award vests quarterly, my shares will vest twenty times (four
+quarters, five years). Coincidentally, since I have 20 shares, I will get one share per quarter.</li>
+<li>However, because I have a one-year cliff, I get all four quarters of my first year at my one-year anniversary.
+So, four shares should appear in my brokerage account on my one-year anniversary. Once a share is in my
+brokerage account, I can do whatever I want with it (like sell it immediately!)</li>
+<li>Every quarter thereafter, one more share vests and appears in my brokerage account.</li>
+</ul>
+<p>Assuming I get a stock bonus as part of my overall annual bonus, this means that stock
+awards pile up and vest every year. This is tricky for two reasons:</p>
+<p></p>
+<ol>
+<li>Although my initial stock award was $1,000 in the above example, that amount was converted to stock the day it
+was awarded. <i>Assuming I am doing a good job and increasing the value of my employer's stock</i>, the value of
+those shares will increase while they're vesting. This means by the time the first four shares of my award
+vested at my one-year anniversary, they were worth more than the $50 per share they represented when they were
+awarded. More broadly, the value of a stock bonus tends to increase over time, making the true cash value of a
+$1000 stock bonus worth a lot more than $1000 by the time it completely vests.</li>
+<li>Every year's stock award comes with its own multi-year vesting period, which means at any given time, I have
+multiple years' bonuses all vesting at once. This also means that at any given time, I have a bunch of unvested
+stock that's worth a lot of money that I can't yet spend. If I quit my job though, all these unvested shares
+vanish into thin air.</li>
+</ol>
+<p>These two factors make up the golden handcuffs that people often talk about in industry.
+The longer I stick around, the more unvested stock I have hanging over my head, and it usually becomes increasingly
+valuable (yet inaccessible!) over time. The reality is that if you've put in a few years in Big Tech, you might have
+years' worth of base salary tied up in unvested stock that all goes away if you quit.</p>
+<p>The end result is that although base salary is competitive with what you can make in a government HPC facility, there's a significant cash bonus that falls out of the sky once a year, and
+an appreciable amount of stock appears in your brokerage account every couple of months which you can turn around
+and sell for more cash. Depending on seniority and performance, these bonuses can add up to a significant fraction
+of base salary.</p>
+<p>Finally, the above is consistent with what I've seen firsthand at two companies in Big Tech but may be different based on the role and the company. For example, field-facing roles in sales and support may be completely different beasts, and private companies and startups load things differently due to the value of equity.</p>
+<h3 id="work-life-balance">How's work-life balance?</h3>
+<p>It hasn't been different than working in the government. Just like at a lab or university, some people
+work around the clock while others stick pretty close to the standard workday. There may be a higher concentration
+of Type A personalities who put in a lot of time in Big Tech, and this may pressure others to keep up and also put
+in long hours, but there's rarely been an occasion where a manager expects staff to routinely work nights and
+weekends. Doing so would probably result in negative employee satisfaction scores which would roll up and eventually
+have to be addressed.</p>
+<p>Of course, there are cases where working odd hours is required to get the job done. Because
+I work for a global organization, I've had to get up early to meet with teams or customers in Europe. I've also had
+to stay up late to meet with teams or customers in Asia. And in some particularly annoying days, I've had to do both
+and wind up working from 5am to 8pm. But I never felt that I had no choice in the matter; I pulled these hours
+because it was the right thing to do at the time. And I don't see this as being too different from the days when I'd
+work sixteen-hour days, seven days a week, for the entire month of March to put together a paper for SC. Or days
+when I'm at SC and am preparing talks, meeting with partners, and otherwise hustling from 8am to 1am for five days
+straight.</p>
+<p>One big difference is the fact that my employer offers discretionary time off ("unlimited vacation"). This is a divisive topic in industry, but I see it as a positive for work-life balance
+because it underscores an emphasis on <i>outcomes</i> rather than <i>output</i>. I can take an afternoon
+off or enjoy a long weekend with little fanfare, because <i>productivity</i> is infinitely more valuable that <i>presence</i>. As
+long as I do what needs to get done, I don't have to worry about timing vacations to ensure I am banking enough time
+off in between.</p>
+<h2 id="what-i-miss">Do you miss anything about working at the lab?</h2>
+<div>Absolutely. There are a bunch of appealing things about working in a DOE lab (or an NSF center)
+that I've had to give up since coming to industry.</div>
+<h3 id="freedom-to-have-an-off-day">Freedom to have an off day</h3>
+<p>Right before I finished graduate school, I had
+a conversation with <a href="https://engineering.lehigh.edu/faculty/edmund-webb-iii">Professor Edmund Webb</a> soon
+after he became a professor after a decade-long career at Sandia National Labs about life at the Labs. He said that,
+after becoming a professor, he lost the ability to just close the door to his office and focus on
+something he needed to get done for a day. I didn't really grasp what this meant at the time, but I totally get it now. The
+DOE might be one of the few places where you can take a day--maybe even a week--and just close your door to
+everything else that's going on around you to focus on what you want to do. In the case of professorship, there's always students requiring attention; in industry, it's customers and partners.</p>
+<p>I think this difference results from two factors: very few things in public
+HPC are very urgent, and the Labs are stocked full of independent, free-thinking Ph.D. types. There's rarely a
+penalty if something is late by a day (or two years! Remember when <a href="https://insidehpc.com/2020/10/doe-under-secretary-for-science-dabbars-exascale-update-frontier-to-be-first-aurora-to-be-monitored/">Aurora
+was called "A21?"</a>), but there can be huge payoff in prestige if one of your wacky side projects turns out to be
+something useful (this is how <a href="https://docs.nersc.gov/development/containers/shifter/">Shifter</a> came to be). By comparison, working at a giant corporation often means there are a bunch of interdependencies
+on others, and the odds of any one of your 200,000 coworkers sending you a Teams message asking for help is just a lot higher than it is at a 70-person supercomputer center. The culture is much more team-oriented, and being a one-person army isn't incentivized as much.</p>
+<h3 id="travel">Travel</h3>
+<p>Part of my job within the DOE complex was to go around the country (and the world) and be smart, and secondarily,
+show that my lab hired smart people and did smart things. If headquarters wanted to make sure that the supercomputer
+they were about to spend $500M on was technically sound, I'd sometimes get invited to go sit in on a review and try
+to poke holes in the design. If a European HPC project wanted to ensure they were including a global perspective on
+some dimension of future HPC strategy, I'd sometimes get invited to give a talk about how I view the world of data.
+And if these reviews and workshops happened to be in awesome places around the world--oh well!</p>
+<p>I feel a lot more self-conscious about requesting approval to attend these sorts of boondoggles as an engineer now
+because the first question I have to answer is, "Is this trip business critical?" If there's a direct line of sight
+between me giving a talk at a workshop and a specific business strategy, I can say "yes" with a straight face. But it's
+hard to accept an invitation to fly off to Switzerland to give a 30-minute talk when I know that my attendance isn't
+going to move any needles.</p>
+<h3 id="openness">Openness</h3>
+<p>Just like it's no longer my job to travel the world and just be smart, it's not my job to write about the work that I
+(or my team) does. I miss writing papers and giving technical talks, because the process of putting together
+coherent thoughts around a technical topic is one of the ways I really come to understand it. There's also a lot of
+really wild ideas that we're pursuing at scale that the scientific computing
+community has never considered, but there are two factors that work against being open about these things:</p>
+<p></p>
+<ol>
+<li>In terms of prioritization, my time is always better spent solving problems, or at least documenting them for
+internal audiences who fully grasp the context around them, than writing about them in a way that the rest of
+the world can understand. It's hard to justify the time to write a retrospective or a study unless there's a
+strategic advantage behind it.</li>
+<li>The customers I support typically do not want the world knowing what they're doing. There is an AI arms race
+happening right now, and having the technical sophistication to utilize massive-scale supercomputers effectively
+is a competitive advantage. In the traditional HPC community, only national security is comparable to the level
+of secrecy involved, and none of the intelligence agencies are openly contributing to the state of the art in
+HPC either.</li>
+</ol>
+<div>So instead of making conference papers and presentations, these days I make more internal papers and presentations.
+I'm trying to figure out ways to publish interesting technical anecdotes on my website (for example, I maintain <a href="https://www.glennklockwood.com/ai/ai-requirements.html">a collection of LLM training requirements as I am exposed to them</a>), but it's a lot of extra work to disentangle the proprietary bits from my work notes to do this.</div>
+<p></p>
+<p>Related to openness is also freedom to speak my mind in public forums. I had the most latitude to blast my
+opinions out on to the Internet when I was still early in my career and nobody listened to me, but I've had to get
+progressively less opinionated over the years. At this point, I abide by a written corporate social media policy
+which, although very reasonable in what it requests (don't slander competitors, always be transparent about who employs you), it stops me from commenting on news as much as I used to since so many tech
+companies qualify as competitors in some dimension.</p>
+<h2 id="regret-decision">Would you still have left knowing what you know now?</h2>
+<p>Yes. I still stand by just about everything I wrote in my <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">original blog post</a>; at the time, I just needed a change, and I
+found the change that I was looking for. Without immersing myself in the world of cloud, I would have
+never learned about virtualization, physical infrastructure, or modern security to the degree that I have. And the fact that I
+stumbled into what has become one of the leading companies in AI at the dawn of generative AI was an extremely lucky
+coincidence.</p>
+<p>However, this doesn't mean that I now turn my nose up at doing HPC in the public sector.
+There are many unique aspects to working at a DOE lab or NSF center that have no parallel in industry. I also believe that I am
+the sum of the experiences that led me to where I work today, and I would never have gotten the opportunity to write
+this retrospective if I didn't learn everything I did working in the DOE and NSF.</p>
+<p>And perhaps above all else, there is something attractive about public service that I haven't been
+able to shake in the last two years. I still dial in to <a href="https://science.osti.gov/ascr/ascac">ASCAC
+meetings</a> to see what the world of public HPC and scientific computing is thinking and doing, and I still try
+to contribute time and attention to working groups like <a href="https://www.nitrd.gov/coordination-areas/lsn/magic/">NITRD's MAGIC</a>. I write lengthy blog posts in a <a href="http://blog.glennklockwood.com/2024/05/isc24-recap.html">futile attempt to caution the leaders in public-sector HPC</a> against
+rejecting AI workloads in commercial clouds as HPC. And every time I learn some slick way we deal with hard technological or sociological issues at work, I still file it away in the "good ideas for when I go
+back" folder in the back of my mind.</p>
+<p>I don't have any near-term plans on going anywhere though. Like I said before, there are
+still plenty of days when dialing into work is like going to the playground. Amazing things are happening in the
+world of HPC infrastructure at scale now that the world is pouring money into AI, and the rate of scale and
+innovation is no longer constrained to <a href="https://www.llnl.gov/article/48101/powering-llnl-prepares-exascale-massive-energy-water-upgrade">40 MW</a>
+and <a href="https://www.olcf.ornl.gov/wp-content/uploads/OLCF-6-RFP-Cover-Letter-07-19-2024.pdf">$500M</a> per
+supercomputer like it was when public-sector HPC was setting the bar for leadership. There is a whole new exciting world of challenges and possibilities when you start thinking about building supercomputers that consume <a href="https://www.datacenterdynamics.com/en/news/aws-acquires-talens-nuclear-data-center-campus-in-pennsylvania/">hundreds of megawatts of power</a>.</p>
+<p>Like I wrote two years ago, I don't think any government has the appetite to build data centers for scientific computing that are larger than today's 50 MW exascale facilities. This means that government HPC centers will never have a reason to explore the exciting world of 100+ MW supercomputers or work on the wacky problems that arise at that scale. Consequently, the biggest and most challenging problems in HPC--at least in terms of infrastructure and systems design at scale--are becoming unique to industry, not public HPC.</p>
+<p>I got into HPC because I enjoy working on large, complex systems. Considering where I am at this stage of my life, what I want to accomplish in the rest of my career, and what gets me out of bed in the morning, I feel like I wound up in the right place for now. I have no regrets.</p>]]></content><author><name>Glenn K. Lockwood's Blog</name></author><category term="glennklockwood" /><summary type="html"><![CDATA[June 2024 marked two years since I left my job at one of the world's most prestigious government HPC centers for a job in one of the world's largest technology corporations. In that time, the world of HPC has changed dramatically; just six months after I started, ChatGPT was released and triggered a gold rush in AI that is now overshadowing traditional scientific computing. This shift brought about massive HPC deployments led by hyperscalers, challenging the long-held belief that only national governments could deploy and operate world-leading supercomputers. My experiences at ISC'24 this past summer made clear to me that the traditional HPC community is now rethinking their role the industry, and some individuals who built their careers in public HPC are revisiting their assumption that world-class HPC systems are limited to the public institutions that have historically dominated the top of the Top500 list. I had no idea things would unfold this way when I left my job at NERSC back in 2022, and I've been remarkably lucky to now be a part of the largest forces driving this huge shift in HPC.]]></summary></entry><entry><title type="html">Advanced LSF resource connector configuration on IBM Cloud - part III</title><link href="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii/" rel="alternate" type="text/html" title="Advanced LSF resource connector configuration on IBM Cloud - part III" /><published>2024-08-01T13:08:20-06:00</published><updated>2024-08-01T13:08:20-06:00</updated><id>https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii/"><![CDATA[<p><strong>Overview</strong></p>
 
 <p>This is the third instalment in a series of blogs covering advanced configuration topics for LSF resource connector. The earlier parts in the series can be found here: <a href="https://community.ibm.com/community/user/cloud/blogs/gbor-samu/2023/11/09/advanced-resource-connector-configuration-on-ibm-c">part I</a>, <a href="https://community.ibm.com/community/user/cloud/blogs/gbor-samu/2024/03/20/advanced-lsf-resource-connector-configuration-on-i">part II</a>.</p>
 
@@ -3144,252 +3644,4 @@ repository.</p>
 
 </li>
 </ol>
-</section>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry><entry><title type="html">LSF client on macOS - submitting from your laptop</title><link href="https://hpc.social/personal-blog/2023/lsf-client-on-macos-submitting-from-your-laptop/" rel="alternate" type="text/html" title="LSF client on macOS - submitting from your laptop" /><published>2023-03-01T19:10:58-07:00</published><updated>2023-03-01T19:10:58-07:00</updated><id>https://hpc.social/personal-blog/2023/lsf-client-on-macos-submitting-from-your-laptop</id><content type="html" xml:base="https://hpc.social/personal-blog/2023/lsf-client-on-macos-submitting-from-your-laptop/"><![CDATA[<p>In traditional HPC environments, login nodes are typically used as an access point for users to submit
-and manage jobs. Although login nodes are still used today, HPC environments are
-increasingly being used by a broad class of users with domain expertise and not necessarily IT experts.
-In other words, such users may be more comfortable using their native desktop
-environment rather than the CLI. Given the factors, in the commercial HPC space, organizations are always looking
-for ways to lower the barto access and interact with HPC environments.</p>
-
-<p>Spectrum LSF provides many ways to submit and manage jobs in an HPC cluster. For power users, the rich
-CLI functionality exists. There is also an available web-based interface for job
-submission and management which provides customizable application templates to greatly simplify job sub
-mission, while hiding complexity of the underlying infrastructure. A RESTful API
-is also available to users of IBM Spectrum LSF Application Center or IBM Spectrum LSF Suites, which ena
-bles organizations to access the HPC environment via web services.</p>
-
-<p>I&rsquo;ve written previously in detail about the the LSF web-based interface in the blog
-<a href="https://www.gaborsamu.com/blog/easy_hpc/">The Easy HPC Button</a>. Here, we&rsquo;ll take a closer look at the
-available LSF client for macOS that uses the RESTful API. First, a bit about LSF clients. LSF clients
-can access resources on LSF server hosts without running the LSF daemons. LSF clients don&rsquo;t require a software
-license and from clients, users can run all of the familiar LSF commands. Additionally, LSF clients are
-submit only, and don&rsquo;t execute jobs.</p>
-
-<p><strong>Note:</strong> The macOS LSF client uses the LSF RESTful API. This means that it will function in environments
-running LSF Standard Edition with LSF Application Center or LSF Suites.</p>
-
-<p><strong>Configuration</strong></p>
-
-<p>The configuration used for the example below is as follows:</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Hostname</th>
-<th>OS</th>
-<th>Detail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><em>kilenc</em></td>
-<td>CentOS Stream 8.4</td>
-<td>LSF Suite for HPC v10.2.0.13</td>
-</tr>
-<tr>
-<td style="text-align: left;"><em>My-Macbook-Air</em></td>
-<td>macOS Ventura 13.2.1 (Apple M1)</td>
-<td>LSF client</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>On the Spectrum LSF Suite for HPC management host (<em>kilenc</em>), add the following variables to the Parameter
-section in the file lsf.cluster.<em>name</em>. The FLOAT_CLIENTS variable determines how many floating clients can
-join the LSF cluster, The FLOAT_CLIENTS_ADDR_RANGE specifies the allowable IP addresses. In this case, the
-client system is on a 192.168.x.x network.</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">Begin Parameters
-FLOAT_CLIENTS=2
-FLOAT_CLIENTS_ADDR_RANGE=192.*
-End Parameters</code></pre></div>
-
-<ol start="2">
-<li>To make the changes take effect, issue the following commands as the LSF administrator:</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsadmin reconfig
-badmin reconfig</code></pre></div>
-
-<ol start="3">
-<li>
-<p>Obtain the tarball <em>pacdesktop_client10.2.0.13_macos-x86_64.tar</em>. For users with an LSF entitlement this package is available on
-<a href="https://www.ibm.com/support/fixcentral/">IBM Fix Central</a>. Note that this package will work on systems with Apple M1 silicon through emulation.</p>
-
-</li>
-<li>
-<p>Open a Terminal on the macOS client system, copy the tarball to the $HOME/Desktop directory of user lsfuser and uncompress the tarball.</p>
-
-</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsfuser@My-MacBook-Air Desktop % pwd
-/Users/lsfuser/Desktop
-lsfuser@My-MacBook-Air Desktop % ls -la pacdesktop_client10.2.0.13_macos-x86_64.tar
--rw-r--r--@ 1 lsfuser  staff  18452480 27 Feb 17:12 pacdesktop_client10.2.0.13_macos-x86_64.tar
-lsfuser@My-MacBook-Air Desktop % tar -xvf pacdesktop_client10.2.0.13_macos-x86_64.tar
-x LSF_Desktop_Client/
-x LSF_Desktop_Client/bapp
-x LSF_Desktop_Client/btop
-x LSF_Desktop_Client/bwait
-x LSF_Desktop_Client/lseligible
-x LSF_Desktop_Client/bsla
-x LSF_Desktop_Client/blparams
-x LSF_Desktop_Client/bhpart
-x LSF_Desktop_Client/bclusters
-x LSF_Desktop_Client/blstartup
-x LSF_Desktop_Client/lsacct
-x LSF_Desktop_Client/bsub
-x LSF_Desktop_Client/bugroup
-x LSF_Desktop_Client/bpeek
-x LSF_Desktop_Client/bacct
-x LSF_Desktop_Client/brequeue
-x LSF_Desktop_Client/bjgroup
-x LSF_Desktop_Client/bslots
-x LSF_Desktop_Client/lsrun
-x LSF_Desktop_Client/bjobs
-x LSF_Desktop_Client/lshosts
-x LSF_Desktop_Client/lsload
-x LSF_Desktop_Client/brlainfo
-x LSF_Desktop_Client/bresources
-x LSF_Desktop_Client/bladmin
-x LSF_Desktop_Client/bstatus
-x LSF_Desktop_Client/bmod
-x LSF_Desktop_Client/bpost
-x LSF_Desktop_Client/lsid
-x LSF_Desktop_Client/bentags
-x LSF_Desktop_Client/ch
-x LSF_Desktop_Client/bchkpnt
-x LSF_Desktop_Client/bparams
-x LSF_Desktop_Client/bjdepinfo
-x LSF_Desktop_Client/bgmod
-x LSF_Desktop_Client/brestart
-x LSF_Desktop_Client/lsltasks
-x LSF_Desktop_Client/blusers
-x LSF_Desktop_Client/paclogon
-x LSF_Desktop_Client/regnotify
-x LSF_Desktop_Client/cacert.pem
-x LSF_Desktop_Client/bresume
-x LSF_Desktop_Client/blstat
-x LSF_Desktop_Client/bhist
-x LSF_Desktop_Client/bqueues
-x LSF_Desktop_Client/bltasks
-x LSF_Desktop_Client/bresize
-x LSF_Desktop_Client/blcollect
-x LSF_Desktop_Client/lsacctmrg
-x LSF_Desktop_Client/bgadd
-x LSF_Desktop_Client/bmig
-x LSF_Desktop_Client/bstop
-x LSF_Desktop_Client/bswitch
-x LSF_Desktop_Client/blhosts
-x LSF_Desktop_Client/blcstat
-x LSF_Desktop_Client/brsvs
-x LSF_Desktop_Client/brun
-x LSF_Desktop_Client/blinfo
-x LSF_Desktop_Client/lsgrun
-x LSF_Desktop_Client/busers
-x LSF_Desktop_Client/lsloadadj
-x LSF_Desktop_Client/blkill
-x LSF_Desktop_Client/bbot
-x LSF_Desktop_Client/lsclusters
-x LSF_Desktop_Client/bconf
-x LSF_Desktop_Client/lsinfo
-x LSF_Desktop_Client/lsmake
-x LSF_Desktop_Client/blimits
-x LSF_Desktop_Client/bmgroup
-x LSF_Desktop_Client/bread
-x LSF_Desktop_Client/bkill
-x LSF_Desktop_Client/lstcsh
-x LSF_Desktop_Client/lsrtasks
-x LSF_Desktop_Client/README.TXT
-x LSF_Desktop_Client/lsplace
-x LSF_Desktop_Client/bhosts
-x LSF_Desktop_Client/paclogout
-x LSF_Desktop_Client/bgdel</code></pre></div>
-
-<ol start="5">
-<li>Following the directions in the file README.TXT, set the environment variable LSF_DESKTOP_CLIENT=yes, and set the PATH variable accordingly.</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsfuser@My-MacBook-Air LSF_Desktop_Client % export LSF_DESKTOP_CLIENT=yes
-lsfuser@My-MacBook-Air LSF_Desktop_Client % export PATH=`pwd`:$PATH</code></pre></div>
-
-<ol start="6">
-<li>Next, it&rsquo;s necessary to run the <em>paclogon</em> command to connect to the LSF Application Center (or LSF Suite installation). Here we point to the LSF server kilenc on port 8080.</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsfuser@My-MacBook-Air LSF_Desktop_Client % paclogon
-Log on to IBM Spectrum LSF Application Center
-User account: lsfuser
-Enter password: 
-Specify the URL to connect to IBM Spectrum LSF Application Center. Format: 
-http://host_name:port_number/platform or https://host_name:port_number/platform
-URL: http://kilenc:8080/platform
-You have successfully logged on to IBM Spectrum LSF Application Center.</code></pre></div>
-
-<ol start="7">
-<li>After successfully logging in using the paclogon command, it should be possible to run LSF &ldquo;base&rdquo; commands from the macOS terminal including <em>lsid</em>, <em>lsload</em>, <em>lshosts</em>.</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsfuser@My-MacBook-Air LSF_Desktop_Client % lsid
-IBM Spectrum LSF 10.1.0.13, Apr 15 2022
-Suite Edition: IBM Spectrum LSF Suite for HPC 10.2.0.13
-Copyright International Business Machines Corp. 1992, 2016.
-US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
-
-My cluster name is Klaszter
-My master name is kilenc
-lsfuser@My-MacBook-Air LSF_Desktop_Client % lshosts -w
-HOST_NAME                       type       model  cpuf ncpus maxmem maxswp server RESOURCES
-kilenc                    LINUXPPC64LE      POWER9  25.0    32  30.7G  15.8G    Yes (mg docker)
-lsfuser@My-MacBook-Air LSF_Desktop_Client % lsload -w
-HOST_NAME               status  r15s   r1m  r15m   ut    pg  ls    it   tmp   swp   mem
-kilenc                      ok   0.8   2.1   2.4   7%   0.0   0  1156  551M 15.6G   10G</code></pre></div>
-
-<ol start="8">
-<li>Next, run the LSF batch commands <em>bqueues</em> and <em>bhosts</em>.</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsfuser@My-MacBook-Air LSF_Desktop_Client % bqueues
-QUEUE_NAME      PRIO STATUS          MAX JL/U JL/P JL/H NJOBS  PEND   RUN  SUSP 
-admin            50  Open:Active       -    -    -    -     0     0     0     0
-owners           43  Open:Active       -    -    -    -     0     0     0     0
-priority         43  Open:Active       -    -    -    - 75835 75803    32     0
-night            40  Open:Inact        -    -    -    -     0     0     0     0
-short            35  Open:Active       -    -    -    -     0     0     0     0
-dataq            33  Open:Active       -    -    -    -     0     0     0     0
-normal           30  Open:Active       -    -    -    -     0     0     0     0
-interactive      30  Open:Active       -    -    -    -     0     0     0     0
-sendq            30  Open:Active       -    -    -    -     0     0     0     0
-idle             20  Open:Active       -    -    -    -     0     0     0     0
-lsfuser@My-MacBook-Air LSF_Desktop_Client % bhosts
-HOST_NAME          STATUS       JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV 
-kilenc             ok              -     32     19     19      0      0      0</code></pre></div>
-
-<ol start="9">
-<li>Running the bjobs will result in a warning message appearing on macOS stating: <em>&ldquo;bjobs&rdquo; cannot be opened because the developer cannot be verified.</em></li>
-</ol>
-<figure><img src="https://www.gaborsamu.com/images/bjobs_unverified.png" />
-</figure>
-
-<ol start="10">
-<li>To remedy the issue observed in step 9, click cancel on the warning message and browse to <strong>System Settings -&gt; Privacy &amp; Security -&gt; Security Settings</strong>. In the Security Settings view,
-you&rsquo;ll see the message: <em>&ldquo;bjobs&rdquo; was blocked from use because it is not from an identified developer.</em> To allow the bjobs command to execute, click on the <strong>Allow Anyway</strong> button. You will
-then be promped to authenticate to make the change take effect.</li>
-</ol>
-<p><figure><img src="https://www.gaborsamu.com/images/bjobs_allow.png" />
-</figure>
-
-<figure><img src="https://www.gaborsamu.com/images/bjobs_authenticate.png" />
-</figure>
-</p>
-
-<ol start="11">
-<li>Run the LSF <em>bjobs</em> command again. You will now receive a new warning error popup indicating: <em>macOS cannot verify the developer of &ldquo;bjobs&rdquo;. Are you sure you want to open it?</em>. To
-proceed, click on the Open button.The bjobs command will then run to completion as expected.  Subsequent executions of bjobs will run without any system warnings. Finally, to submit
-a job, run the bsub command. Here we try to submit a simple sleep job (i.e. bsub -q normal sleep 3600). As was the case with the bjobs command, the bsub command is also blocked. Here,
-repeat the steps 10, 11 as described above but for the bsub command. Once the steps have been completed, repeat the bsub job submission command.</li>
-</ol>
-<figure><img src="https://www.gaborsamu.com/images/bjobs_open.png" />
-</figure>
-
-<ol start="12">
-<li>Finally, to submit a job, run the <em>bsub</em> command. Here we try to submit a simple sleep job (i.e. <em>bsub -q normal sleep 3600</em>). As was the case with the <em>bjobs</em> command, the <em>bsub</em>
-command is also blocked. Here, repeat the steps 10, 11 as described above but for the <em>bsub</em> command. Once the steps have been completed, repeat the <em>bsub</em> job submission command.</li>
-</ol>
-<div class="highlight"><pre><code class="language-plaintext">lsfuser@My-MacBook-Air LSF_Desktop_Client % bsub -q normal sleep 3600
-Job &lt;617551&gt; is submitted to queue &lt;normal&gt;.</code></pre></div>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[In traditional HPC environments, login nodes are typically used as an access point for users to submit and manage jobs. Although login nodes are still used today, HPC environments are increasingly being used by a broad class of users with domain expertise and not necessarily IT experts. In other words, such users may be more comfortable using their native desktop environment rather than the CLI. Given the factors, in the commercial HPC space, organizations are always looking for ways to lower the barto access and interact with HPC environments.]]></summary></entry></feed>
+</section>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry></feed>
