@@ -1,4 +1,672 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2025-01-05T20:05:18-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Surfing the Singularity - “Please hold for the next available agent”</title><link href="https://hpc.social/personal-blog/2025/surfing-the-singularity-please-hold-for-the-next-available-agent/" rel="alternate" type="text/html" title="Surfing the Singularity - “Please hold for the next available agent”" /><published>2025-01-03T17:00:00-07:00</published><updated>2025-01-03T17:00:00-07:00</updated><id>https://hpc.social/personal-blog/2025/surfing-the-singularity-please-hold-for-the-next-available-agent-</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/surfing-the-singularity-please-hold-for-the-next-available-agent/"><![CDATA[<div class="separator" style="clear: both; text-align: center;"></div>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2025-01-06T20:03:15-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Fine tuning AI models with InstructLab under IBM LSF</title><link href="https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf/" rel="alternate" type="text/html" title="Fine tuning AI models with InstructLab under IBM LSF" /><published>2025-01-06T19:36:24-07:00</published><updated>2025-01-06T19:36:24-07:00</updated><id>https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf/"><![CDATA[<p><strong>Overview</strong></p>
+
+<p>All the best for 2025! This blog looks back on a demo which I created for <a href="https://sc24.supercomputing.org">SC24</a>
+last November to demonstrate InstructLab workflows running on an <a href="https://www.ibm.com/products/hpc-workload-management">IBM LSF</a>
+cluster. Let’s begin with a bit of background. I’d like to thank Michael
+Spriggs, STSM, IBM LSF for his contributions to this blog.</p>
+
+<p>When I think of tuning, what immediately comes to my mind are visions of an
+expert mechanic trying to extract the most from an engine. This blog is
+focused on an entirely different type of tuning, AI model tuning. Like tuning
+an engine, AI model tuning can be used to ensure a better fit for a given AI
+model for your business.</p>
+
+<p>Released by IBM and Red Hat in May 2024, <a href="https://research.ibm.com/blog/instruct-lab">InstructLab</a> is an open-source project
+which provides the ability to fine-tune LLMs by adding skills and knowledge,
+without having to retrain the model from scratch. InstructLab can run on
+resource-constrained systems such as laptops, but also supports GPUs. Much has
+been written about InstructLab and this blog is not intended to provide an
+in-depth look at InstructLab. Rather, the objective here is to demonstrate how
+InstructLab workloads can be distributed and managed in a high-performance
+computing cluster with GPUs using the IBM LSF workload scheduler. Recently, IBM
+published a paper describing the infrastructure used to train the Granite family
+of AI foundation models. The paper describes the Vela and Blue Vela environments
+in detail. In particular, the Blue Vela environment is built on a software stack
+using Red Hat Enterprise Linux, IBM LSF and Storage Scale. Learn more in the
+detailed paper <a href="https://arxiv.org/abs/2407.05467">here</a>.</p>
+
+<p>The demo workflow consists of two LSF jobs. The first job generates synthetic
+data, which is used to teach the LLM new skills or knowledge. The second job,
+which depends upon the successful completion of the first, is the training job,
+where the new skills or knowledge are incorporated into an existing base model.
+A simple LSF job dependency is used to ensure the training job only runs after
+the successful completion of the synthetic data generation step.</p>
+
+<p>The environment used is equipped with Nvidia GPUs.  InstructLab jobs will be
+run with the options for GPU support, and the jobs will be submitted to LSF
+with the appropriate GPU scheduling directives. Furthermore, it is assumed that
+the users' $HOME directory is available on all hosts in the cluster. Note that I
+require neither root access, nor a user account that is an LSF administrator, to
+install and use InstructLab on the LSF cluster.</p>
+
+<p><strong>Configuration</strong></p>
+
+<p>The HPC cluster is configured as follows:</p>
+
+<ul>
+<li>Red Hat Enterprise Linux v8.8</li>
+<li>IBM LSF v10.0.1.15</li>
+<li>InstructLab v0.19.4</li>
+<li>Miniforge v3 (24.9.0-0)</li>
+<li>NVIDIA CUDA v12.6</li>
+<li>Compute nodes are equipped with 8 x Nvidia H100 GPUs</li>
+</ul>
+<p><strong>Install InstructLab</strong></p>
+
+<ol>
+<li>Log in to a compute node in the LSF cluster equipped with GPUs. If ssh access
+is disabled to compute nodes, then submit an interactive LSF batch job. This job
+requests 8 GPUs on a single system and will set them to exclusive execution
+mode.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bsub -Is -R "span[hosts=1]" -gpu "num=8:j_exclusive=yes" bash</code></pre></div>
+
+<ol start="2">
+<li>Install and set up a Conda environment. This will enable you to install a
+self-contained Conda environment for your user account with the necessary
+Python version needed for InstructLab. Miniforge is installed in the default
+location and the option to update the users shell profile to start the Conda
+environment are selected. We assume here a shared $HOME directory.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ cd $HOME
+$ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+$ bash Miniforge3-$(uname)-$(uname -m).sh</code></pre></div>
+
+<ol start="3">
+<li>Before proceeding, you must logout and log back in to activate the
+environment. Next, a Conda environment is created with name <em>my_env</em>. Here we’ll
+specify Python v3.11, which is a requirement for InstructLab.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">conda create --name my_env -c anaconda python=3.11
+conda activate my_env</code></pre></div>
+
+<ol start="4">
+<li>Next, install InstructLab. Here, version 0.19.4 of InstructLab is specified.
+This was the version of InstructLab available in the timeframe preceding the
+SC24 event. Follow the installation steps in the official InstructLab
+documentation <a href="https://github.com/instructlab/instructlab?tab=readme-ov-file#-installing-ilab">here</a>.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ pip install instructlab==0.19.4</code></pre></div>
+
+<ol start="5">
+<li>Next, perform the installation of InstructLab with Nvidia CUDA support. This
+is required for InstructLab to utilize the GPUs. Without this step, InstructLab
+will run on the CPUs. Note that CUDA v12.6 is installed on the system and the
+variables set below reflect this.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ export CMAKE_ARGS="-DLLAMA_CUBLAS=on -DCUDA_PATH=/usr/local/cuda-12.6 -DCUDAToolkit_ROOT=/usr/local/cuda-12.6 -DCUDAToolkit_INCLUDE_DIR=/usr/local/cuda-12/include -DCUDAToolkit_LIBRARY_DIR=/usr/local/cuda-12.6/lib64"
+$ export PATH=/usr/local/cuda-12.6/bin:$PATH
+$ pip cache remove llama_cpp_python
+$ CMAKE_ARGS="-DLLAMA_CUDA=on -DLLAMA_NATIVE=off" pip install 'instructlab[cuda]'
+$ pip install vllm@git+https://github.com/opendatahub-io/vllm@v0.6.2</code></pre></div>
+
+<p><strong>Configure InstructLab</strong></p>
+
+<ol>
+<li>With the installation of InstructLab complete, the next step is to run the
+initialization. This will setup paths to models, taxonomy repo as well as the
+GPU configuration.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ ilab config init</code></pre></div>
+
+<ol start="2">
+<li>By default InstructLab stores models, training checkpoints and other files
+within <em>~/.cache</em> and <em>~/.local/share/instructlab</em>. If you have limited storage
+capacity available in $HOME, then you may opt to disable training checkpoint
+files. This can be done by setting the following option in <em>~/.config/instructlab/config.yaml</em> as follows.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">train:
+
+  checkpoint_at_epoch: false</code></pre></div>
+
+<ol start="3">
+<li>Next, we download the required models. The ilab model list command can be
+used to list the models which are available. Note that a <a href="https://huggingface.co">HuggingFace</a> token is
+required to download certain models. Please set HF_TOKEN in the environment
+with the appropriate token.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ export HF_TOKEN=&lt;HuggingFace token&gt;
+$ ilab model download
+$ ilab model download --repository=instructlab/granite-7b-lab
+$ ilab model list
+
++--------------------------------------+---------------------+---------+
+
+| Model Name                           | Last Modified       | Size    |
+
++--------------------------------------+---------------------+---------+
+| instructlab/granite-7b-lab           | 2024-12-27 20:37:29 | 12.6 GB |
+| mistral-7b-instruct-v0.2.Q4_K_M.gguf | 2024-12-27 16:55:46 | 4.1 GB  |
+| merlinite-7b-lab-Q4_K_M.gguf         | 2024-12-27 16:48:39 | 4.1 GB  |
++--------------------------------------+---------------------+---------+</code></pre></div>
+
+<p><strong>Generate synthetic data &amp; AI model training</strong></p>
+
+<p>Next, is the synthetic data generation step, which will be executed on GPUs.
+This step is a prerequisite to teaching the LLM new skills/knowledge via
+training.</p>
+
+<ol>
+<li>
+<p>Here we use example knowledge from the InstructLab github about Taylor Swift
+fans, who are known as “Swifties”. This is timely because Taylor Swift recently
+wrapped up 6 concerts in Toronto, Canada, where I happen to be based. Copy
+attribution.txt and qna.yaml from the following <a href="https://github.com/mairin/taxonomy/tree/swifties/knowledge/arts/music/fandom/swifties">location</a>.</p>
+
+</li>
+<li>
+<p>By default, the InstructLab taxonomy is found in <em>~/.local/share/instructlab/taxonomy</em>. Here we create the directories fandom/swifties under <em>~/.local/share/instructlab/taxonomy/knowledge/arts/fandom</em> and copy the files from step 1 into
+this location.</p>
+
+</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ mkdir -p ~/.local/share/instructlab/taxonomy/knowledge/arts/fandom/swifties
+$ cp &lt;path_to&gt;/attribution.txt ~/.local/share/instructlab/taxonomy/knowledge/arts/fandom/swifties
+$ cp &lt;path_to&gt;/qna.yaml ~/.local/share/instructlab/taxonomy/knowledge/arts/fandom/swifties</code></pre></div>
+
+<ol start="3">
+<li>With the Swifties taxonomy in place, check for any syntax errors with the
+command <em>ilab taxonomy diff</em>. It should report that the taxonomy is valid if
+there are no syntax errors.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ ilab taxonomy diff
+knowledge/arts/fandom/swifties/qna.yaml
+Taxonomy in /u/gsamu/.local/share/instructlab/taxonomy is valid :)</code></pre></div>
+
+<ol start="4">
+<li>With the taxonomy in place and having confirmed that the syntax is valid,
+it’s now time to run the synthetic data generation job through LSF. Here we will
+request 8 GPUs on a single server in exclusive execution mode. For the
+InstructLab ilab command, specify the <em>&ndash;gpus 8 and &ndash;pipeline full</em> options.
+Standard output is written to the $HOME/job-output with filename specification
+&lt;LSF_JOBID&gt;.out. The $HOME/job-output directory must already exist.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ mkdir -p $HOME/job-output
+$ bsub -o $HOME/job-output/%J.out -R "span[hosts=1]" -gpu "num=8:j_exclusive=yes" ilab data generate --pipeline full --gpus 8
+Job &lt;1131&gt; is submitted to default queue &lt;normal&gt;.</code></pre></div>
+
+<ol start="5">
+<li>During job execution, the LSF <em>bpeek</em> command can be used to monitor the job
+standard output.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bpeek -f 1131 
+&lt;&lt; output from stdout &gt;&gt;
+INFO 2025-01-02 09:51:29,503 numexpr.utils:146: Note: detected 96 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO 2025-01-02 09:51:29,504 numexpr.utils:149: Note: NumExpr detected 96 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+INFO 2025-01-02 09:51:29,504 numexpr.utils:162: NumExpr defaulting to 16 threads.
+INFO 2025-01-02 09:51:30,038 datasets:59: PyTorch version 2.3.1 available.
+INFO 2025-01-02 09:51:31,226 instructlab.model.backends.llama_cpp💯 Trying to connect to model server at http://127.0.0.1:8000/v1
+WARNING 2025-01-02 09:51:56,356 instructlab.data.generate:270: Disabling SDG batching - unsupported with llama.cpp serving
+Generating synthetic data using 'full' pipeline, '/u/gsamu/.cache/instructlab/models/mistral-7b-instruct-v0.2.Q4_K_M.gguf' model, '/u/gsamu/.local/share/instructlab/taxonomy' taxonomy, against http://127.0.0.1:55779/v1 server
+INFO 2025-01-02 09:51:56,861 instructlab.sdg.generate_data:356: Synthesizing new instructions. If you aren't satisfied with the generated instructions, interrupt training (Ctrl-C) and try adjusting your YAML files. Adding more examples may help.
+INFO 2025-01-02 09:51:56,872 instructlab.sdg.pipeline:153: Running pipeline single-threaded
+INFO 2025-01-02 09:51:56,872 instructlab.sdg.pipeline:197: Running block: duplicate_document_col
+INFO 2025-01-02 09:51:56,872 instructlab.sdg.pipeline:198: Dataset({
+    features: ['icl_document', 'document', 'document_outline', 'domain', 'icl_query_1', 'icl_query_2', 'icl_query_3', 'icl_response_1', 'icl_response_2', 'icl_response_3'],
+    num_rows: 35
+})
+INFO 2025-01-02 09:51:58,286 instructlab.sdg.llmblock:51: LLM server supports batched inputs: False
+INFO 2025-01-02 09:51:58,286 instructlab.sdg.pipeline:197: Running block: gen_spellcheck
+INFO 2025-01-02 09:51:58,286 instructlab.sdg.pipeline:198: Dataset({
+    features: ['icl_document', 'document', 'document_outline', 'domain', 'icl_query_1', 'icl_query_2', 'icl_query_3', 'icl_response_1', 'icl_response_2', 'icl_response_3', 'base_document'],
+    num_rows: 35
+})
+/u/gsamu/miniforge3/envs/my_env/lib/python3.11/site-packages/llama_cpp/llama.py:1054: RuntimeWarning: Detected duplicate leading "&lt;s&gt;" in prompt, this will likely reduce response quality, consider removing it...
+  warnings.warn(
+INFO 2025-01-02 09:57:42,264 instructlab.sdg.pipeline:197: Running block: flatten_auxiliary_columns
+INFO 2025-01-02 09:57:42,264 instructlab.sdg.pipeline:198: Dataset({
+    features: ['icl_document', 'document', 'document_outline', 'domain', 'icl_query_1', 'icl_query_2', 'icl_query_3', 'icl_response_1', 'icl_response_2', 'icl_response_3', 'base_document', 'spellcheck'],
+    num_rows: 35
+})
+INFO 2025-01-02 09:57:42,279 instructlab.sdg.pipeline:197: Running block: rename_to_document_column
+INFO 2025-01-02 09:57:42,279 instructlab.sdg.pipeline:198: Dataset({
+    features: ['icl_document', 'document', 'document_outline', 'domain', 'icl_query_1', 'icl_query_2', 'icl_query_3', 'icl_response_1', 'icl_response_2', 'icl_response_3', 'dataset_type', 'corrected_document'],
+    num_rows: 70
+})
+INFO 2025-01-02 09:57:42,282 instructlab.sdg.pipeline:197: Running block: gen_knowledge
+INFO 2025-01-02 09:57:42,282 instructlab.sdg.pipeline:198: Dataset({
+    features: ['icl_document', 'raw_document', 'document_outline', 'domain', 'icl_query_1', 'icl_query_2', 'icl_query_3', 'icl_response_1', 'icl_response_2', 'icl_response_3', 'dataset_type', 'document'],
+    num_rows: 70
+})
+…
+…</code></pre></div>
+
+<ol start="6">
+<li>During the runtime of the job, it’s possible to view GPU related metrics
+using the LSF <em>lsload</em> and <em>bhosts</em> commands. First, we need to identify the host
+where the job has been dispatched to using the LSF bjobs command. In this case
+the job was dispatched to host <em>p1-r01-n4</em>. Note that details GPU accounting
+metrics are available once the job runs to completion.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bjobs -w
+JOBID   USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
+1131    gsamu   RUN   normal     rmf-login-1 p1-r01-n4   ilab data generate --pipeline full --gpus 8 Jan  2 14:51
+$ lsload -w -gpu p1-r01-n4
+HOST_NAME                 status ngpus gpu_shared_avg_mut gpu_shared_avg_ut ngpus_physical
+p1-r01-n4                     ok     8                 2%                7%              8
+$ bhosts -w -gpu p1-r01-n4
+HOST_NAME            GPU_ID                MODEL     MUSED      MRSV  NJOBS    RUN   SUSP    RSV 
+p1-r01-n4                 0   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          1   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          2   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          3   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          4   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          5   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          6   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0
+                          7   NVIDIAH10080GBHBM3        2G        0G      1      1      0      0</code></pre></div>
+
+<ol start="7">
+<li>After job completion, it’s possible to view details about the job including
+GPU utilization which LSF collects by leveraging NVIDIA DCGM. These metrics are
+available upon job completion using both the LSF <em>bhist</em> and <em>bjobs</em> commands.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bhist -l -gpu 1131
+
+Job &lt;1131&gt;, User &lt;gsamu&gt;, Project &lt;default&gt;, Command &lt;ilab data generate --pipe
+                          line full --gpus 8&gt;
+Thu Jan  2 14:51:23 2025: Submitted from host &lt;rmf-login-1&gt;, to Queue &lt;normal&gt;,
+                           CWD &lt;$HOME&gt;, Output File &lt;/u/gsamu/job-output/%J.out
+                          &gt;, Requested Resources &lt;span[hosts=1]&gt;, Requested GPU
+                           &lt;num=8:j_exclusive=yes&gt;;
+Thu Jan  2 14:51:24 2025: Dispatched 1 Task(s) on Host(s) &lt;p1-r01-n4&gt;, Allocate
+                          d 1 Slot(s) on Host(s) &lt;p1-r01-n4&gt;, Effective RES_REQ
+                           &lt;select[((ngpus&gt;0)) &amp;&amp; (type == local)] order[r15s:p
+                          g] rusage[ngpus_physical=8.00] span[hosts=1] &gt;;
+Thu Jan  2 14:51:25 2025: Starting (Pid 3095851);
+Thu Jan  2 14:51:25 2025: External Message "p1-r01-n4:gpus=0,1,2,3,4,5,6,7;EFFE
+                          CTIVE GPU REQ: num=8:mode=shared:mps=no:j_exclusive=y
+                          es:gvendor=nvidia;" was posted from "gsamu" to messag
+                          e box 0;
+Thu Jan  2 14:51:26 2025: Running with execution home &lt;/u/gsamu&gt;, Execution CWD
+                           &lt;/u/gsamu&gt;, Execution Pid &lt;3095851&gt;;
+Thu Jan  2 16:08:05 2025: Done successfully. The CPU time used is 4624.0 second
+                          s;
+                          HOST: p1-r01-n4; CPU_TIME: 4624 seconds              
+                                          GPU ID: 0
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 579704 Joules
+                                  SM Utilization (%): Avg 9, Max 15, Min 0
+                                  Memory Utilization (%): Avg 2, Max 100, Min 0
+                                  Max GPU Memory Used: 1956642816 bytes
+
+                              GPU ID: 1
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 503956 Joules
+                                  SM Utilization (%): Avg 7, Max 11, Min 0
+                                  Memory Utilization (%): Avg 2, Max 5, Min 0
+                                  Max GPU Memory Used: 1767899136 bytes
+
+                              GPU ID: 2
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 501754 Joules
+                                  SM Utilization (%): Avg 7, Max 11, Min 0
+                                  Memory Utilization (%): Avg 2, Max 5, Min 0
+                                  Max GPU Memory Used: 1784676352 bytes
+
+                              GPU ID: 3
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 525195 Joules
+                                  SM Utilization (%): Avg 7, Max 11, Min 0
+                                  Memory Utilization (%): Avg 2, Max 54, Min 0
+                                  Max GPU Memory Used: 1767899136 bytes
+
+                              GPU ID: 4
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 525331 Joules
+                                  SM Utilization (%): Avg 7, Max 12, Min 0
+                                  Memory Utilization (%): Avg 2, Max 5, Min 0
+                                  Max GPU Memory Used: 1767899136 bytes
+
+                              GPU ID: 5
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 502416 Joules
+                                  SM Utilization (%): Avg 7, Max 11, Min 0
+                                  Memory Utilization (%): Avg 2, Max 5, Min 0
+                                  Max GPU Memory Used: 1784676352 bytes
+
+                              GPU ID: 6
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 508720 Joules
+                                  SM Utilization (%): Avg 7, Max 12, Min 0
+                                  Memory Utilization (%): Avg 2, Max 5, Min 0
+                                  Max GPU Memory Used: 1784676352 bytes
+
+                              GPU ID: 7
+                                  Total Execution Time: 4597 seconds
+                                  Energy Consumed: 491041 Joules
+                                  SM Utilization (%): Avg 6, Max 12, Min 0
+                                  Memory Utilization (%): Avg 2, Max 4, Min 0
+                                  Max GPU Memory Used: 1933574144 bytes
+
+GPU Energy Consumed: 4138117.000000 Joules
+
+Thu Jan  2 16:08:05 2025: Post job process done successfully;
+
+
+GPU_ALLOCATION:
+ HOST             TASK GPU_ID  GI_PLACEMENT/SIZE    CI_PLACEMENT/SIZE    MODEL        MTOTAL  FACTOR MRSV    SOCKET NVLINK/XGMI                      
+ p1-r01-n4        0    0       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    1       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    2       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    3       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    4       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+                  0    5       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+                  0    6       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+                  0    7       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+
+MEMORY USAGE:
+MAX MEM: 2 Gbytes;  AVG MEM: 1 Gbytes; MEM Efficiency: 0.00%
+
+CPU USAGE:
+CPU PEAK: 1.69 ;  CPU PEAK DURATION: 52 second(s)
+CPU AVERAGE EFFICIENCY: 100.69% ;  CPU PEAK EFFICIENCY: 169.23%
+
+Summary of time in seconds spent in various states by  Thu Jan  2 16:08:05 2025
+  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL
+  1        0        4601     0        0        0        4602 </code></pre></div>
+
+<ol start="8">
+<li>
+<p>When the synthetic data generation job completes, it’s output can be viewed
+at <em>~/job-output/<!-- raw HTML omitted -->.out</em>. The synthetic data sets will comprise files in
+the directory <em>~/.local/share/instructlab/datasets</em>. These files will be named
+*skills_train_msgs_*.jsonl* and *knowledge_train_msgs_*.jsonl*.</p>
+
+</li>
+<li>
+<p>With the synthetic data generation step complete, it’s now time to run the
+training. We first set 2 environment variables to point to the following
+files:  <em>~/.local/share/instructlab/datasets/knowledge_train_msgs_2025-01-02T09_51_56.jsonl</em>  and <em>~./.local/share/instructlab/datasets/skills_train_msgs_2025-01-02T09_51_56.jsonl</em>.</p>
+
+</li>
+</ol>
+<p>Afterward, we submit the training job to LSF requesting 8 GPUs and with ilab
+options <em>&ndash;pipeline accelerated</em>, <em>&ndash;gpus 8</em>, <em>&ndash;device cuda</em> and
+<em>&ndash;data-path</em> pointing to the two above data files that were produced in the
+synthetic data generation step.</p>
+
+<div class="highlight"><pre><code class="language-plaintext">$ export SKILLS_PATH=/u/gsamu/.local/share/instructlab/datasets/skills_train_msgs_2025-01-02T09_51_56.jsonl
+$ export KNOWLEDGE_PATH=/u/gsamu/.local/share/instructlab/datasets/knowledge_train_msgs_2025-01-02T09_51_56.jsonl
+$ bsub -o $HOME/job-output/%J.out -R "span[hosts=1]" -gpu "num=8:j_exclusive=yes" ilab model train --pipeline accelerated --data-path $SKILLS_PATH --data-path $KNOWLEDGE_PATH --device cuda --gpus 8
+Job &lt;1135&gt; is submitted to default queue &lt;normal&gt;.</code></pre></div>
+
+<ol start="10">
+<li>During job execution, the LSF <em>bpeek</em> command can be used to monitor the
+job standard output.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bpeek -f 1135
+&lt;&lt; output from stdout &gt;&gt;
+LoRA is disabled (rank=0), ignoring all additional LoRA args
+[2025-01-02 12:52:04,359] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+INFO 2025-01-02 12:52:09,061 numexpr.utils:146: Note: detected 96 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO 2025-01-02 12:52:09,061 numexpr.utils:149: Note: NumExpr detected 96 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+INFO 2025-01-02 12:52:09,061 numexpr.utils:162: NumExpr defaulting to 16 threads.
+INFO 2025-01-02 12:52:09,304 datasets:59: PyTorch version 2.3.1 available.
+You are using the default legacy behaviour of the &lt;class 'transformers.models.llama.tokenization_llama_fast.LlamaTokenizerFast'&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565 - if you loaded a llama tokenizer from a GGUF file you can ignore this message.
+INFO 2025-01-02 12:52:09,653 root:617: Special tokens: eos: [32000], pad: [32001], bos: [32005], system: [32004], user: [32002], assistant: [32003]
+INFO 2025-01-02 12:52:09,923 root:617: number of dropped samples: 0 -- out of 641
+ data arguments are:
+{"data_path":"/u/gsamu/.local/share/instructlab/datasets/knowledge_train_msgs_2025-01-02T09_51_56.jsonl","data_output_path":"/u/gsamu/.local/share/instructlab/internal","max_seq_len":4096,"model_path":"/u/gsamu/.cache/instructlab/models/instructlab/granite-7b-lab","chat_tmpl_path":"/u/gsamu/miniforge3/envs/my_env/lib/python3.11/site-packages/instructlab/training/chat_templates/ibm_generic_tmpl.py","num_cpu_procs":16}
+tokenizing the dataset with /u/gsamu/.cache/instructlab/models/instructlab/granite-7b-lab tokenizer...
+ten largest length percentiles:
+quantile 90th: 1459.0
+quantile 91th: 1466.0
+quantile 92th: 1469.6000000000001
+quantile 93th: 1478.2
+quantile 94th: 1483.0
+quantile 95th: 1488.0
+quantile 96th: 1497.1999999999998
+quantile 97th: 1516.5999999999997
+quantile 98th: 1540.6000000000001
+quantile 99th: 1656.0000000000016
+quantile 100th: 2578.0
+
+at 4096 max sequence length, the number of samples to be dropped is 0
+(0.00% of total)
+quantile 0th: 368.0
+quantile 1th: 393.0
+quantile 2th: 411.2
+quantile 3th: 421.2
+quantile 4th: 427.2
+quantile 5th: 442.0
+quantile 6th: 604.4
+quantile 7th: 631.8
+quantile 8th: 653.8000000000001
+quantile 9th: 679.8
+quantile 10th: 742.0
+at 20 min sequence length, the number of samples to be dropped is 0
+checking the validity of the samples...
+Categorizing training data type...
+unmasking the appropriate message content...
+ Samples Previews...
+…
+…</code></pre></div>
+
+<ol start="11">
+<li>During the runtime of the training job, we can observe some GPU utilization
+information using the LSF lsload and bhosts commands.  First we need to identify
+the server on which the training job is running. This is done using the bjobs
+command and checking for the execution host of the job.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bjobs -w
+JOBID   USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
+1135    gsamu   RUN   normal     rmf-login-1 p1-r01-n1   ilab model train --pipeline accelerated --data-path /u/gsamu/.local/share/instructlab/datasets/skills_train_msgs_2025-01-02T09_51_56.jsonl --data-path /u/gsamu/.local/share/instructlab/datasets/knowledge_train_msgs_2025-01-02T09_51_56.jsonl --device cuda --gpus 8 Jan  2 17:51
+$ lsload -w -gpu p1-r01-n1
+HOST_NAME                 status ngpus gpu_shared_avg_mut gpu_shared_avg_ut ngpus_physical
+p1-r01-n1                     ok     8                 0%               22%              8
+$ bhosts -w -gpu p1-r01-n1
+HOST_NAME            GPU_ID                MODEL     MUSED      MRSV  NJOBS    RUN   SUSP    RSV 
+p1-r01-n1                 0   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          1   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          2   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          3   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          4   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          5   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          6   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0
+                          7   NVIDIAH10080GBHBM3       10G        0G      1      1      0      0</code></pre></div>
+
+<ol start="12">
+<li>Once the job is complete, detailed GPU accounting can again be viewed using
+the LSF <em>bhist</em> command as follows below.</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ bhist -l -gpu 1135
+
+Job &lt;1135&gt;, User &lt;gsamu&gt;, Project &lt;default&gt;, Command &lt;ilab model train --pipeli
+                          ne accelerated --data-path /u/gsamu/.local/share/inst
+                          ructlab/datasets/skills_train_msgs_2025-01-02T09_51_5
+                          6.jsonl --data-path /u/gsamu/.local/share/instructlab
+                          /datasets/knowledge_train_msgs_2025-01-02T09_51_56.js
+                          onl --device cuda --gpus 8&gt;
+Thu Jan  2 17:51:48 2025: Submitted from host &lt;rmf-login-1&gt;, to Queue &lt;normal&gt;,
+                           CWD &lt;$HOME/.local/share/instructlab/checkpoints&gt;, Ou
+                          tput File &lt;/u/gsamu/job-output/%J.out&gt;, Requested Res
+                          ources &lt;span[hosts=1]&gt;, Requested GPU &lt;num=8:j_exclus
+                          ive=yes&gt;;
+Thu Jan  2 17:51:48 2025: Dispatched 1 Task(s) on Host(s) &lt;p1-r01-n1&gt;, Allocate
+                          d 1 Slot(s) on Host(s) &lt;p1-r01-n1&gt;, Effective RES_REQ
+                           &lt;select[((ngpus&gt;0)) &amp;&amp; (type == local)] order[r15s:p
+                          g] rusage[ngpus_physical=8.00] span[hosts=1] &gt;;
+Thu Jan  2 17:51:49 2025: Starting (Pid 3462241);
+Thu Jan  2 17:51:49 2025: Running with execution home &lt;/u/gsamu&gt;, Execution CWD
+                           &lt;/u/gsamu/.local/share/instructlab/checkpoints&gt;, Exe
+                          cution Pid &lt;3462241&gt;;
+Thu Jan  2 17:51:49 2025: External Message "p1-r01-n1:gpus=0,1,2,3,4,5,6,7;EFFE
+                          CTIVE GPU REQ: num=8:mode=shared:mps=no:j_exclusive=y
+                          es:gvendor=nvidia;" was posted from "gsamu" to messag
+                          e box 0;
+Thu Jan  2 17:57:56 2025: Done successfully. The CPU time used is 3024.0 second
+                          s;
+                          HOST: p1-r01-n1; CPU_TIME: 3024 seconds              
+                                          GPU ID: 0
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 98890 Joules
+                                  SM Utilization (%): Avg 20, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 62, Min 0
+                                  Max GPU Memory Used: 53022294016 bytes
+
+                              GPU ID: 1
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 97697 Joules
+                                  SM Utilization (%): Avg 53, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 58, Min 0
+                                  Max GPU Memory Used: 53087305728 bytes
+
+                              GPU ID: 2
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 94820 Joules
+                                  SM Utilization (%): Avg 53, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 62, Min 0
+                                  Max GPU Memory Used: 53221523456 bytes
+
+                              GPU ID: 3
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 98014 Joules
+                                  SM Utilization (%): Avg 53, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 59, Min 0
+                                  Max GPU Memory Used: 53041168384 bytes
+
+                              GPU ID: 4
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 99246 Joules
+                                  SM Utilization (%): Avg 53, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 60, Min 0
+                                  Max GPU Memory Used: 53045362688 bytes
+
+                              GPU ID: 5
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 94952 Joules
+                                  SM Utilization (%): Avg 53, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 65, Min 0
+                                  Max GPU Memory Used: 53047459840 bytes
+
+                              GPU ID: 6
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 98227 Joules
+                                  SM Utilization (%): Avg 53, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 63, Min 0
+                                  Max GPU Memory Used: 53127151616 bytes
+
+                              GPU ID: 7
+                                  Total Execution Time: 365 seconds
+                                  Energy Consumed: 94582 Joules
+                                  SM Utilization (%): Avg 52, Max 100, Min 0
+                                  Memory Utilization (%): Avg 9, Max 65, Min 0
+                                  Max GPU Memory Used: 53481570304 bytes
+
+GPU Energy Consumed: 776428.000000 Joules
+
+Thu Jan  2 17:57:56 2025: Post job process done successfully;
+
+
+GPU_ALLOCATION:
+ HOST             TASK GPU_ID  GI_PLACEMENT/SIZE    CI_PLACEMENT/SIZE    MODEL        MTOTAL  FACTOR MRSV    SOCKET NVLINK/XGMI                      
+ p1-r01-n1        0    0       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    1       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    2       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    3       -                    -                    NVIDIAH10080 80G     9.0    0G      0      -                               
+                  0    4       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+                  0    5       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+                  0    6       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+                  0    7       -                    -                    NVIDIAH10080 80G     9.0    0G      1      -                               
+
+MEMORY USAGE:
+MAX MEM: 104 Gbytes;  AVG MEM: 16 Gbytes; MEM Efficiency: 0.00%
+
+CPU USAGE:
+CPU PEAK: 17.86 ;  CPU PEAK DURATION: 49 second(s)
+CPU AVERAGE EFFICIENCY: 856.60% ;  CPU PEAK EFFICIENCY: 1785.71%
+
+Summary of time in seconds spent in various states by  Thu Jan  2 17:57:56 2025
+  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL
+  0        0        368      0        0        0        368         </code></pre></div>
+
+<ol start="13">
+<li>Finally, with the model successfully trained, let’s chat with the new model
+to check the result. Here’s we’ll pose it Swiftie specific questions. Note that
+the output from the training is written to <em>~/.local/share/instructlab/checkpoints/hf_format</em>. We’ll take the model from the latest checkpoint directory that was
+created. Here again, we launch the model chat job via LSF as an interactive
+batch job (i.e. <em>bsub -Is</em>).</li>
+</ol>
+<div class="highlight"><pre><code class="language-plaintext">$ grep hf_format 1135.out
+Model saved in /u/gsamu/.local/share/instructlab/checkpoints/hf_format/samples_886
+Model saved in /u/gsamu/.local/share/instructlab/checkpoints/hf_format/samples_1776
+Model saved in /u/gsamu/.local/share/instructlab/checkpoints/hf_format/samples_2658
+Model saved in /u/gsamu/.local/share/instructlab/checkpoints/hf_format/samples_3546
+Model saved in /u/gsamu/.local/share/instructlab/checkpoints/hf_format/samples_4435</code></pre></div>
+
+<div class="highlight"><pre><code class="language-plaintext">$ bsub -Is -R "span[hosts=1]" -gpu "num=8:j_exclusive=yes" ilab model chat --model /u/gsamu/.local/share/instructlab/checkpoints/hf_format/samples_4435
+Job &lt;1146&gt; is submitted to default queue &lt;interactive&gt;.
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on p1-r01-n2&gt;&gt;
+INFO 2025-01-02 15:06:07,600 instructlab.model.backends.vllm:105: Trying to connect to model server at http://127.0.0.1:8000/v1
+INFO 2025-01-02 15:06:08,876 instructlab.model.backends.vllm:308: vLLM starting up on pid 3744375 at http://127.0.0.1:41531/v1
+INFO 2025-01-02 15:06:08,876 instructlab.model.backends.vllm:114: Starting a temporary vLLM server at http://127.0.0.1:41531/v1
+INFO 2025-01-02 15:06:08,876 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 1/120
+INFO 2025-01-02 15:06:12,244 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 2/120
+INFO 2025-01-02 15:06:15,614 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 3/120
+INFO 2025-01-02 15:06:18,801 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 4/120
+INFO 2025-01-02 15:06:21,952 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 5/120
+INFO 2025-01-02 15:06:25,391 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 6/120
+INFO 2025-01-02 15:06:28,638 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 7/120
+INFO 2025-01-02 15:06:32,103 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 8/120
+INFO 2025-01-02 15:06:35,296 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 9/120
+INFO 2025-01-02 15:06:38,616 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 10/120
+INFO 2025-01-02 15:06:42,015 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 11/120
+INFO 2025-01-02 15:06:45,435 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 12/120
+INFO 2025-01-02 15:06:48,679 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 13/120
+INFO 2025-01-02 15:06:52,025 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 14/120
+INFO 2025-01-02 15:06:55,317 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 15/120
+INFO 2025-01-02 15:06:58,604 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 16/120
+INFO 2025-01-02 15:07:01,927 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 17/120
+INFO 2025-01-02 15:07:05,287 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 18/120
+INFO 2025-01-02 15:07:08,763 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 19/120
+INFO 2025-01-02 15:07:12,131 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 20/120
+INFO 2025-01-02 15:07:15,476 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 21/120
+INFO 2025-01-02 15:07:18,881 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 22/120
+INFO 2025-01-02 15:07:22,203 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 23/120
+INFO 2025-01-02 15:07:25,599 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 24/120
+INFO 2025-01-02 15:07:28,991 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 25/120
+INFO 2025-01-02 15:07:32,234 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 26/120
+INFO 2025-01-02 15:07:35,714 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 27/120
+INFO 2025-01-02 15:07:38,974 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 28/120
+INFO 2025-01-02 15:07:42,265 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 29/120
+INFO 2025-01-02 15:07:45,582 instructlab.model.backends.vllm:129: Waiting for the vLLM server to start at http://127.0.0.1:41531/v1, this might take a moment... Attempt: 30/120
+INFO 2025-01-02 15:07:45,586 instructlab.model.backends.vllm:136: vLLM engine successfully started at http://127.0.0.1:41531/v1
+╭────────────────────────────────────────────────────────────── system ──────────────────────────────────────────────────────────────╮
+│ Welcome to InstructLab Chat w/ SAMPLES_4435 (type /h for help)                                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+&gt;&gt;&gt; Tell me everything you know about Swifties.                                                                           [S][default]
+╭─────────────────────────────────────────────────────────── samples_4435 ───────────────────────────────────────────────────────────╮
+│ Swifties are the fandom of the American singer-songwriter Taylor Swift.                                                            │
+│ Regarded by journalists as one of the largest, most devoted, and influential fan bases, Swifties are known for their high levels   │
+│ of participation, creativity, community, fanaticism, and cultural impact on the music industry and popular culture. They are a     │
+│ subject of widespread coverage in the mainstream media.                                                                            │
+│                                                                                                                                    │
+│ Critics have opined that Swift has redefined artist-fan relationships by establishing an intimate connection with Swifties. She    │
+│ has frequently engaged with, helped, credited, and prioritized her fans, who have offered unprecedented support and interest in    │
+│ her works irrespective of her wavering reception in the media. They continued to support Swift through her genre transitions,      │
+│ unexpected artistic pivots, and her highly publicized controversies such as the 2019 masters dispute, while instigating the        │
+│ political scrutiny of Ticketmaster that led to implementation of various laws and stimulated economic growth with the Eras Tour.   │
+│ Swift's releases, promotional efforts, and fashion have garnered attention for incorporating Easter eggs and clues that are        │
+...
+...</code></pre></div>
+
+<p><strong>Conclusions</strong></p>
+
+<p>We’ve demonstrated a simple InstructLab workflow that is scheduled by IBM LSF
+in a compute cluster equipped with GPUs.  As part of this example, LSF GPU
+scheduling and accounting for GPU workloads was highlighted. For organizations
+looking to productionize InstructLab and where there is a pool of GPU equipped
+compute resources, LSF provides an ideal way to manage demand from a user
+community looking to run these intensive workloads.</p>
+
+<p>At the recent SC24 event, the demonstration went beyond what is shown in this
+blog. It incorporated single click job submission via LSF Application Center
+using a custom template that was created for InstructLab to submits both the
+synthetic data generation job, as well the training job with a single click.
+The demo environment was on IBM Cloud using instances equipped with Nvidia GPUs.
+The compute instances were automatically scaled up and down by the LSF resource
+connector. This will be the topic for a future blog.</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry><entry><title type="html">Surfing the Singularity - “Please hold for the next available agent”</title><link href="https://hpc.social/personal-blog/2025/surfing-the-singularity-please-hold-for-the-next-available-agent/" rel="alternate" type="text/html" title="Surfing the Singularity - “Please hold for the next available agent”" /><published>2025-01-03T17:00:00-07:00</published><updated>2025-01-03T17:00:00-07:00</updated><id>https://hpc.social/personal-blog/2025/surfing-the-singularity-please-hold-for-the-next-available-agent-</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/surfing-the-singularity-please-hold-for-the-next-available-agent/"><![CDATA[<div class="separator" style="clear: both; text-align: center;"></div>
 <p><br />&lt;div style="text-align: left;"&gt;<br />&lt;/div&gt;</p>
 <div><span style="font-family: verdana;">Our imaginations, having been so stimulated by the "innovation trigger" of early interactions with ChatGPT and its LLM kin, having experienced the illusion of the algorithm reading your mind, we have now firmly entered into the period of inflated expectations. Any day now we expect a knock on the door to be informed by some HAL Junior that not only are we now out of a job, we've also got 20 minutes to evacuate the premise before its bulldozed to make way for another solar farm and data center. AGI is only just one product announcement away, or maybe two, but certainly three at most... </span></div>
 <div><h3 style="text-align: left;"><span style="font-family: verdana;">Nose Deep </span></h3></div>
@@ -1835,250 +2503,4 @@ innovation is no longer constrained to <a href="https://www.llnl.gov/article/48
 and <a href="https://www.olcf.ornl.gov/wp-content/uploads/OLCF-6-RFP-Cover-Letter-07-19-2024.pdf">$500M</a> per
 supercomputer like it was when public-sector HPC was setting the bar for leadership. There is a whole new exciting world of challenges and possibilities when you start thinking about building supercomputers that consume <a href="https://www.datacenterdynamics.com/en/news/aws-acquires-talens-nuclear-data-center-campus-in-pennsylvania/">hundreds of megawatts of power</a>.</p>
 <p>Like I wrote two years ago, I don't think any government has the appetite to build data centers for scientific computing that are larger than today's 50 MW exascale facilities. This means that government HPC centers will never have a reason to explore the exciting world of 100+ MW supercomputers or work on the wacky problems that arise at that scale. Consequently, the biggest and most challenging problems in HPC--at least in terms of infrastructure and systems design at scale--are becoming unique to industry, not public HPC.</p>
-<p>I got into HPC because I enjoy working on large, complex systems. Considering where I am at this stage of my life, what I want to accomplish in the rest of my career, and what gets me out of bed in the morning, I feel like I wound up in the right place for now. I have no regrets.</p>]]></content><author><name>Glenn K. Lockwood&apos;s Blog</name></author><category term="glennklockwood" /><summary type="html"><![CDATA[June 2024 marked two years since I left my job at one of the world's most prestigious government HPC centers for a job in one of the world's largest technology corporations. In that time, the world of HPC has changed dramatically; just six months after I started, ChatGPT was released and triggered a gold rush in AI that is now overshadowing traditional scientific computing. This shift brought about massive HPC deployments led by hyperscalers, challenging the long-held belief that only national governments could deploy and operate world-leading supercomputers. My experiences at ISC'24 this past summer made clear to me that the traditional HPC community is now rethinking their role the industry, and some individuals who built their careers in public HPC are revisiting their assumption that world-class HPC systems are limited to the public institutions that have historically dominated the top of the Top500 list. I had no idea things would unfold this way when I left my job at NERSC back in 2022, and I've been remarkably lucky to now be a part of the largest forces driving this huge shift in HPC.]]></summary></entry><entry><title type="html">Advanced LSF resource connector configuration on IBM Cloud - part III</title><link href="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii/" rel="alternate" type="text/html" title="Advanced LSF resource connector configuration on IBM Cloud - part III" /><published>2024-08-01T13:08:20-06:00</published><updated>2024-08-01T13:08:20-06:00</updated><id>https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/advanced-lsf-resource-connector-configuration-on-ibm-cloud-part-iii/"><![CDATA[<p><strong>Overview</strong></p>
-
-<p>This is the third instalment in a series of blogs covering advanced configuration topics for LSF resource connector. The earlier parts in the series can be found here: <a href="https://community.ibm.com/community/user/cloud/blogs/gbor-samu/2023/11/09/advanced-resource-connector-configuration-on-ibm-c">part I</a>, <a href="https://community.ibm.com/community/user/cloud/blogs/gbor-samu/2024/03/20/advanced-lsf-resource-connector-configuration-on-i">part II</a>.</p>
-
-<p>As hinted in the closing of part II, this instalment will cover running Docker workloads on cloud instances which are dynamically managed by the LSF resource connector. The cloud environment in this example is <a href="https://cloud.ibm.com/catalog/content/terraform-1623200063-71606cab-c6e1-4f95-a47a-2ce541dcbed8-global">IBM Cloud</a>. To understand more about LSF resource connector, please read the earlier parts in the blog series.</p>
-
-<p><a href="https://www.ibm.com/products/hpc-workload-management">LSF</a> provides a framework for the management and execution of containerized workloads. It supports the following container runtimes: Docker, NVIDIA Docker, Shifter, Singularity, Podman and Enroot. The LSF <a href="https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=lsf-configuring-containers">documentation</a> provides configuration steps for the supported container runtimes. Once configured, this capability is effectively transparent from the end user perspective.</p>
-
-<p><strong>Enable Docker support</strong></p>
-
-<p>First we need to enable support in LSF to run Docker containers. This is covered in detail in the LSF <a href="https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=containers-lsf-docker">documentation</a> and also something which I wrote about previously in the blog post <a href="https://medium.com/ibm-data-ai/jack-of-all-containers-e0d7fd0633b3">Jack of all containers</a>. The following steps will assume that the configuration steps have been completed.</p>
-
-<p>LSF uses a Boolean resource named <em>docker</em> to identify hosts where the Docker runtime is available. This Boolean resource needs to be set on the compute nodes which are dynamically started by LSF resource connector.</p>
-
-<p>In our example, an insecure Docker repository (using http) has been setup on the LSF manager host in the cluster with hostname <em>lsf-mgmt-host</em>. This will serve as the repository to host an OpenFOAM Docker container which has been prepared according to the procedures documented <a href="https://community.ibm.com/community/user/cloud/blogs/john-welch/2020/02/12/building-an-openfoam-ready-container-for-lsf">here</a>. This blog will not go into detail on the creation of the insecure Docker registry. On the LSF management node, below is the output showing the available images. We see the OpenFoam image is available both locally and via http on port 5000.</p>
-
-<div class="highlight"><pre><code class="language-plaintext"># docker image ls
-REPOSITORY                   TAG           IMAGE ID      CREATED        SIZE
-localhost/openfoam/openfoam  v1912_update  bce4eb059f36  11 days ago    6.71 GB
-localhost:5000/openfoam      v1912_update  bce4eb059f36  11 days ago    6.71 GB
-docker.io/library/registry   2             6a3edb1d5eb6  10 months ago  26 MB</code></pre></div>
-
-<p><strong>Note</strong> An insecure Docker registry was used in this example for simplicity and is not recommended in production.</p>
-
-<p>As was the case in part II of the blog series, the <em>user_data.sh</em> script will be used for multiple purposes here:</p>
-
-<ul>
-<li>Set <em>docker</em> Boolean variable on dynamic compute nodes</li>
-<li>Install Docker CE runtime and relevant support packages</li>
-<li>Add user(s) to the docker group (<em>/etc/group</em>)</li>
-<li>Configuration to point to insecure Docker registry on LSF management host
-<em>lsf-mgmt-host</em></li>
-</ul>
-<p>The following updates were made to the <em>user_data.sh</em> script. See comments inline for details.</p>
-
-<div class="highlight"><pre><code class="language-plaintext">$ diff -u4 ./user_data.sh ./user_data_sh.org
---- ./user_data.sh	2024-07-29 18:44:24.483146000 +0000
-+++ ./user_data_sh.org	2024-07-11 14:34:47.688341000 +0000
-@@ -29,25 +29,8 @@
- 
- #!/bin/bash
- # shellcheck disable=all
- 
--# 
--# The following steps will add the Docker CE repo, install the latest Docker CE
--# version along with supporting packages. It will create a Docker Linux group
--# and add the lsfadmin user to that group. Furthermore, it will create
--# the /etc/docker/daemon.json file pointing to the insecure Docker registry
--# which has been configured on the LSF management host. Finally it will
--# start Docker. Note that the hostname lsf-mgmt-host for the insecure-registries
--# configuration of Docker needs to be updated accordingly. 
--# 
--yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo -y 
--dnf install htop hwloc hwloc-libs libevent stress stress-ng python36 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y  &gt;&gt; $logfile 2&gt;&amp;1
--ln -s /usr/bin/python3 /usr/bin/python
--groupadd docker &gt;&gt; $logfile 2&gt;&amp;1
--usermod -aG docker lsfadmin  &gt;&gt; $logfile 2&gt;&amp;1 
--echo -e "{\n \"insecure-registries\" : [ \”lsf-mgmt-host:5000\" ]\n }" &gt;&gt; /etc/docker/daemon.json 
--systemctl start docker &gt;&gt; $logfile 2&gt;&amp;1  
--
- if [ "$compute_user_data_vars_ok" != "1" ]; then
-   echo 2&gt;&amp;1 "fatal: vars block is missing"
-   exit 1
- fi
-@@ -225,15 +208,8 @@
- else
-   echo "Can not get instance ID" &gt;&gt; $logfile
- fi
- 
--# 
--# Add the docker Boolean variable to the LSF_LOCAL_RESOURCES variable in
--# the lsf.conf file on the compute hosts. This will ensure that the host
--# is tagged with the docker variable. 
--# 
--sed -i "s/\(LSF_LOCAL_RESOURCES=.*\)\"/\1 [resource docker]\"/" $LSF_CONF_FILE &gt;&gt; $logfile 2&gt;&amp;1 
--
- #Update LSF Tuning on dynamic hosts
- LSF_TUNABLES="etc/sysctl.conf"
- echo 'vm.overcommit_memory=1' &gt;&gt; $LSF_TUNABLES
- echo 'net.core.rmem_max=26214400' &gt;&gt; $LSF_TUNABLES</code></pre></div>
-
-<p><strong>Application profile configuration</strong></p>
-
-<p>Next, we configure the LSF application profile for the OpenFOAM Docker container which has been loaded into the insecure Docker registry on the LSF management host. LSF application profiles can be used to define common job parameters for the same job type. This includes the container and container runtime definition. Learn more about LSF application profiles <a href="https://www.ibm.com/docs/en/spectrum-lsf/10.1.0?topic=lsf-application-profiles">here</a>.</p>
-
-<p>On the LSF management node, the following application profile is defined in <em>$LSF_ENVDIR/lsbatch/&lt;clustername&gt;/configdir/lsb.applications</em>. Note that the hostname <em>lsf-mgmt-host</em> must point to the hostname where the insecure Docker repository has been setup in your environment. Additionally the volume specification <em>-v /mnt/vpcstorage/data</em> is specific to this environment and can be adjusted or removed as needed.</p>
-
-<div class="highlight"><pre><code class="language-plaintext">….
-….
-Begin Application
-NAME = openfoam
-DESCRIPTION = Example OpenFOAM application
-CONTAINER = docker[image(lsf-mgmt-host:5000/openfoam:v1912_update) \
-   options(--rm --net=host --ipc=host \
-   --cap-add=SYS_PTRACE \
-   -v /etc/passwd:/etc/passwd \
-   -v /etc/group:/etc/group \
-   -v /mnt/vpcstorage/data:/mnt/vpcstorage/data \ 
-   ) starter(root)]   
-EXEC_DRIVER = context[user(lsfadmin)] \
-   starter[/opt/ibm/lsf_worker/10.1/linux3.10-glibc2.17-x86_64/etc/docker-starter.py] \
-   controller[/opt/ibm/lsf_worker/10.1/linux3.10-glibc2.17-x86_64/etc/docker-control.py] \
-   monitor[/opt/ibm/lsf_worker/10.1/linux3.10-glibc2.17-x86_64/etc/docker-monitor.py]
-End Application
-….
-….</code></pre></div>
-
-<p>In order to make the above change take effect, run the <em>badmin reconfig</em> command as the defined LSF administrator. The LSF <em>bapp</em> command can be used to check the newly defined configuration for LSF application profile <em>openfoam</em>.</p>
-
-<div class="highlight"><pre><code class="language-plaintext">$ badmin reconfig
-
-Checking configuration files ...
-
-No errors found.
-
-Reconfiguration initiated
-
-$ bapp -l openfoam
-
-APPLICATION NAME: openfoam
- -- Example OpenFOAM application
-
-STATISTICS:
-   NJOBS     PEND      RUN    SSUSP    USUSP      RSV 
-       0        0        0        0        0        0
-
-PARAMETERS:
-
-CONTAINER: docker[image(lsf-mgmt-host:5000/openfoam:v1912_update)    options(--rm --net=host --ipc=host    --cap-add=SYS_PTRACE    -v /etc/passwd:/etc/passwd    -v /etc/group:/etc/group    -v /mnt/vpcstorage/data:/mnt/vpcstorage/data    ) starter(root)]
-EXEC_DRIVER: 
-    context[user(lsfadmin)]
-    starter[/opt/ibm/lsf_worker/10.1/linux3.10-glibc2.17-x86_64/etc/docker-starter.py]
-    controller[/opt/ibm/lsf_worker/10.1/linux3.10-glibc2.17-x86_64/etc/docker-control.py]
-    monitor[/opt/ibm/lsf_worker/10.1/linux3.10-glibc2.17-x86_64/etc/docker-monitor.py]</code></pre></div>
-
-<p><strong>Submitting workload</strong></p>
-
-<p>With all of the configuration in place, it’s now time to submit an OpenFOAM workload. For this, LSF Application Center is used. The OpenFOAM application template is available on the Spectrum Computing github <a href="https://github.com/IBMSpectrumComputing/lsf-integrations">here</a>. The OpenFOAM application template is configured to use the <em>openfoam</em> application profile. An example job is submitted and it runs to completion successfully. In the screenshot below, we see that the openfoam Docker container is executed.</p>
-
-<figure><img src="https://www.gaborsamu.com/images/openfoam_job.jpg" />
-</figure>
-
-<p>The LSF <em>bjobs</em> and <em>bhist</em> output from the job follows below:</p>
-
-<div class="highlight"><pre><code class="language-plaintext">$ bjobs -l 2613
-
-Job &lt;2613&gt;, Job Name &lt;myOpenFoam_run_motorBike&gt;, User &lt;lsfadmin&gt;, Project &lt;defa
-                     ult&gt;, Application &lt;openfoam&gt;, Status &lt;RUN&gt;, Queue &lt;normal&gt;
-                     , Command &lt;/mnt/lsf/repository-path/lsfadmin/myOpenFoam_ru
-                     n_1722358195200AuWDY/motorBike/bsub.myOpenFoam_run&gt;, Share
-                      group charged &lt;/lsfadmin&gt;
-Tue Jul 30 16:49:55: Submitted from host &lt;gsamu-hpc-demo-mgmt-1-a844-001&gt;, CWD 
-                     &lt;/mnt/lsf/repository-path/lsfadmin/myOpenFoam_run_17223581
-                     95200AuWDY/motorBike&gt;, Specified CWD &lt;/mnt/lsf/repository-
-                     path/lsfadmin/myOpenFoam_run_1722358195200AuWDY/motorBike&gt;
-                     , Output File &lt;/mnt/lsf/repository-path/lsfadmin/myOpenFoa
-                     m_run_1722358195200AuWDY/motorBike/output.lsfadmin.txt&gt;, E
-                     rror File &lt;/mnt/lsf/repository-path/lsfadmin/myOpenFoam_ru
-                     n_1722358195200AuWDY/motorBike/error.lsfadmin.txt&gt;, Notify
-                      when job begins/ends, 6 Task(s), Requested Resources &lt;spa
-                     n[hosts=1]&gt;;
-Tue Jul 30 16:55:23: Started 6 Task(s) on Host(s) &lt;gsamu-hpc-demo-10-241-0-137&gt;
-                     &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-10-241-0-137
-                     &gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-10-241-0-1
-                     37&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt;, Allocated 6 Slot(s) on 
-                     Host(s) &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-10-2
-                     41-0-137&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-10
-                     -241-0-137&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-
-                     10-241-0-137&gt;, Execution Home &lt;/home/lsfadmin&gt;, Execution 
-                     CWD &lt;/mnt/lsf/repository-path/lsfadmin/myOpenFoam_run_1722
-                     358195200AuWDY/motorBike&gt;;
-Tue Jul 30 17:03:33: Resource usage collected.
-                     The CPU time used is 1411 seconds.
-                     MEM: 928 Mbytes;  SWAP: 0 Mbytes;  NTHREAD: 41
-                     PGID: 18426;  PIDs: 18426 18427 18428 20088 
-                     PGID: 20374;  PIDs: 20374 20388 20800 21385 
-                     PGID: 21389;  PIDs: 21389 
-                     PGID: 21390;  PIDs: 21390 
-                     PGID: 21391;  PIDs: 21391 
-                     PGID: 21392;  PIDs: 21392 
-                     PGID: 21393;  PIDs: 21393 
-                     PGID: 21394;  PIDs: 21394 
-
-
- MEMORY USAGE:
- MAX MEM: 982 Mbytes;  AVG MEM: 422 Mbytes; MEM Efficiency: 0.00%
-
- CPU USAGE:
- CPU PEAK: 5.89 ;  CPU PEAK DURATION: 63 second(s)
- CPU AVERAGE EFFICIENCY: 42.81% ;  CPU PEAK EFFICIENCY: 98.15%
-
- SCHEDULING PARAMETERS:
-           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
- loadSched   -     -     -     -       -     -    -     -     -      -      -  
- loadStop    -     -     -     -       -     -    -     -     -      -      -  
-
- RESOURCE REQUIREMENT DETAILS:
- Combined: select[(docker) &amp;&amp; (type == any)] order[r15s:pg] span[hosts=1]
- Effective: select[(docker) &amp;&amp; (type == any)] order[r15s:pg] span[hosts=1] </code></pre></div>
-
-<div class="highlight"><pre><code class="language-plaintext">$ bhist -l 2613
-
-Job &lt;2613&gt;, Job Name &lt;myOpenFoam_run_motorBike&gt;, User &lt;lsfadmin&gt;, Project &lt;defa
-                     ult&gt;, Application &lt;openfoam&gt;, Command &lt;/mnt/lsf/repository
-                     -path/lsfadmin/myOpenFoam_run_1722358195200AuWDY/motorBike
-                     /bsub.myOpenFoam_run&gt;
-Tue Jul 30 16:49:55: Submitted from host &lt;gsamu-hpc-demo-mgmt-1-a844-001&gt;, to Q
-                     ueue &lt;normal&gt;, CWD &lt;/mnt/lsf/repository-path/lsfadmin/myOp
-                     enFoam_run_1722358195200AuWDY/motorBike&gt;, Specified CWD &lt;/
-                     mnt/lsf/repository-path/lsfadmin/myOpenFoam_run_1722358195
-                     200AuWDY/motorBike&gt;, Output File &lt;/mnt/lsf/repository-path
-                     /lsfadmin/myOpenFoam_run_1722358195200AuWDY/motorBike/outp
-                     ut.lsfadmin.txt&gt;, Error File &lt;/mnt/lsf/repository-path/lsf
-                     admin/myOpenFoam_run_1722358195200AuWDY/motorBike/error.ls
-                     fadmin.txt&gt;, Notify when job begins/ends, 6 Task(s), Reque
-                     sted Resources &lt;span[hosts=1]&gt;;
-Tue Jul 30 16:55:23: Dispatched 6 Task(s) on Host(s) &lt;gsamu-hpc-demo-10-241-0-1
-                     37&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-10-241-0
-                     -137&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-10-241
-                     -0-137&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt;, Allocated 6 Slot(s)
-                      on Host(s) &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-demo-
-                     10-241-0-137&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-dem
-                     o-10-241-0-137&gt; &lt;gsamu-hpc-demo-10-241-0-137&gt; &lt;gsamu-hpc-d
-                     emo-10-241-0-137&gt;, Effective RES_REQ &lt;select[(docker) &amp;&amp; (
-                     type == any)] order[r15s:pg] span[hosts=1] &gt;;
-Tue Jul 30 16:55:23: Starting (Pid 18426);
-Tue Jul 30 16:55:24: Running with execution home &lt;/home/lsfadmin&gt;, Execution CW
-                     D &lt;/mnt/lsf/repository-path/lsfadmin/myOpenFoam_run_172235
-                     8195200AuWDY/motorBike&gt;, Execution Pid &lt;18426&gt;;
-Tue Jul 30 17:04:01: Done successfully. The CPU time used is 1535.1 seconds;
-Tue Jul 30 17:04:02: Post job process done successfully;
-
-
-MEMORY USAGE:
-MAX MEM: 982 Mbytes;  AVG MEM: 431 Mbytes; MEM Efficiency: 0.00%
-
-CPU USAGE:
-CPU PEAK: 5.92 ;  CPU PEAK DURATION: 63 second(s)
-CPU AVERAGE EFFICIENCY: 50.67% ;  CPU PEAK EFFICIENCY: 98.68%
-
-Summary of time in seconds spent in various states by  Tue Jul 30 17:04:02
-  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL
-  328      0        518      0        0        0        846         </code></pre></div>
-
-<p><strong>Conclusion</strong></p>
-
-<p>The <em>user_data.sh</em> script of LSF resource connector allows a high degree of customization for cloud compute resources that dynamically join the LSF cluster. We’ve demonstrated how it can be used to tag cloud compute resources with a specific LSF Boolean resource in addition to the ability to install specific packages and do configuration customization. This is a simplified example, but illustrates this point.</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[Overview]]></summary></entry></feed>
+<p>I got into HPC because I enjoy working on large, complex systems. Considering where I am at this stage of my life, what I want to accomplish in the rest of my career, and what gets me out of bed in the morning, I feel like I wound up in the right place for now. I have no regrets.</p>]]></content><author><name>Glenn K. Lockwood&apos;s Blog</name></author><category term="glennklockwood" /><summary type="html"><![CDATA[June 2024 marked two years since I left my job at one of the world's most prestigious government HPC centers for a job in one of the world's largest technology corporations. In that time, the world of HPC has changed dramatically; just six months after I started, ChatGPT was released and triggered a gold rush in AI that is now overshadowing traditional scientific computing. This shift brought about massive HPC deployments led by hyperscalers, challenging the long-held belief that only national governments could deploy and operate world-leading supercomputers. My experiences at ISC'24 this past summer made clear to me that the traditional HPC community is now rethinking their role the industry, and some individuals who built their careers in public HPC are revisiting their assumption that world-class HPC systems are limited to the public institutions that have historically dominated the top of the Top500 list. I had no idea things would unfold this way when I left my job at NERSC back in 2022, and I've been remarkably lucky to now be a part of the largest forces driving this huge shift in HPC.]]></summary></entry></feed>
