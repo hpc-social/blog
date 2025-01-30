@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2025-01-28T19:55:04-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Fine tuning AI models with InstructLab under IBM LSF</title><link href="https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf/" rel="alternate" type="text/html" title="Fine tuning AI models with InstructLab under IBM LSF" /><published>2025-01-06T19:36:24-07:00</published><updated>2025-01-06T19:36:24-07:00</updated><id>https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf/"><![CDATA[<p><strong>Overview</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2025-01-29T19:54:07-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Surfing the Singularity - The World is Not Flat</title><link href="https://hpc.social/personal-blog/2025/surfing-the-singularity-the-world-is-not-flat/" rel="alternate" type="text/html" title="Surfing the Singularity - The World is Not Flat" /><published>2025-01-29T18:11:00-07:00</published><updated>2025-01-29T18:11:00-07:00</updated><id>https://hpc.social/personal-blog/2025/surfing-the-singularity-the-world-is-not-flat</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/surfing-the-singularity-the-world-is-not-flat/"><![CDATA[<div class="separator" style="clear: both; text-align: center;"></div>
+<p>As Bill Gates recalls in his recent book-bumping interview with the Wall Street Journal, in the early innocent days of Microsoft he and his co-founder Paul Allen didn't believe in having an office in Washington, D.C.[1] They were soon to learn that was a mistake.[2] Compare and contrast with the scene in the Capital Rotunda last week for the inauguration of the new populist administration - Microsoft, Amazon, Facebook, Apple, Google, TikTok, and of course Tesla, all represented by their CEOs.[3] Microsoft's market capitalization as of this writing is now greater than the GDP of France.[4] Elon Musk's personal wealth is on par with the GDP of Denmark. Meta's platforms reach an estimated 40% of the world's population. </p>
+<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto;"><tbody><tr><td style="text-align: center;"></td></tr><tr><td class="tr-caption" style="text-align: center;">Apple ad from yesteryear. We're now long past 1984.</td></tr></tbody></table>
+<p>Consider these other inconvenient truths about global technology: that NVIDIA does not make the GPUs it designs, that most are manufactured by TSMC in Taiwan, which is about as far away from China as Cuba is from Florida. Software talent is globally distributed, and prices vary widely. There are some very good schools in some of these relatively inexpensive places - in the 2024 edition of the ACM student programming contest, MIT placed the highest among US teams, in 11th place.[5] </p>
+<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto;"><tbody><tr><td style="text-align: center;"></td></tr><tr><td class="tr-caption" style="text-align: center;">Software salaries 2023, by country, exchange rate normalized.[6]</td></tr></tbody></table>
+<p>AI programs and quantum computing initiatives are increasingly becoming nationalized as a strategic imperative. It is assumed that the country which is first to Artificial General Intelligence (AGI) will be the first to be able to use it to take control of the world. This fear is fueling an arms race in AI architectures, and the chips and the energy stations which power them. But is this a rational fear? </p>
+<h3 style="text-align: left;">Unlearn What You Have Learned</h3>
+<p>DeepSeek, with its deja vu inducing name and similarly eerily similar whale icon, is a new AI chatbot model wholly owned out of Hangzhou, China. And its #1 on the Apple app store, with a bullet. And yes, its quite up front that it tracks your data. There are several notable features and claims about this model: that is was trained in a fraction of the typical cost and time on a fraction of the typical hardware. That it performs about as well the OpenAI model released last month, maybe not as well on some things like straight math, but perhaps better at general writing, maybe with a bit more "personality". It shows its work - how it arrived at the answer its providing to the chat prompt. And, for the kicker from the totalitarian state, its open source up on Hugging Face.[7] </p>
+<p>Shots fired. NVIDIA shares tumbled for a loss of $600B in one day in response, the largest single day loss in history. But what I'd like to know is, if this is the open source model, what's the real one like? Recent Federal governments have tried to enforce policies limiting technology exports to China, but in truth they've long had their own development programs - China has not participated in standardized HPC metric sharing and supercomputer ranking since 2017.</p>
+<h3 style="text-align: left;">Red Flag on the Track</h3>
+<p>Along with NVIDIA, power generation stocks were also down hard - GE Vernova down almost 20%. This does not mean the recent trend of tech companies buying nuclear power plants won't continue, or that we won't continue to hear of existing power stations giving data centers a direct hard wire bypassing the municipal grid. But clearly this open ended hunger for power - watts and GPU cycles - is not sustainable. And DeepSeek exposes that bare.</p>
+<p>But make no mistake - this race is not over, its just warming up. OpenAI with their new Operators product currently defines AGI as a gaggle of collaborating AI agents, each with its own unique set of capabilities and goals. NVIDIA CEO Jansen Huang does his part in driving the GPU-dependent AI hype cycle by saying IT departments will become the new HR departments - for AI employees.[9] Goldman Sachs is telling clients to expect AI employees this year.[10] Cost avoidance will be a major driver.[11] And why not, when the same major technology companies report seemly amazing results using AI for software development? Google saves 50% on code migration time with AI! It gives *me* FOMO! [12]</p>
+<p>The CEO of Anthropic predicts that by 2027 AI will be generally better than humans at almost everything.[13] Well, at some things maybe better than others. Turns out, what's the number one occupation we expect to be replaced by AI? Why, AI engineers and data scientists.</p>
+<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto;"><tbody><tr><td style="text-align: center;"></td></tr><tr><td class="tr-caption" style="text-align: center;">Job skills impacted by generative AI, ranked. <br />Maybe I should have been a plumber.[14]</td></tr></tbody></table>
+<p>This is vast uncharted territory for companies, especially for those of size, wedded to their legacy political structures and being either un-nimble or worse, fragile. People are not machines. The mistakes AI agents make are not of the same kind made by humans - current generative AI models are intentionally designed to make stuff up, to not just say "I don't know".[15] As a manager, you'll get no benefit of human insights into the truth such as from body language, though you may get to understand the "personality" and general performance characteristics of your AI employees over time. That is, until the managers are replaced by AI. But until then, what does your management interface look like? Is it perhaps similar to the IDE for a senior software engineer who manages a team of AI coders? In the AI-laced future, there will still be a place for HCI/UX designers.</p>
+<h3 style="text-align: left;">Chef of the Future</h3>
+<p>Finally, the November 2024 report from the National Academies on the "future of work" says "its impossible to predict exactly the nature of the coming changes in AI and all their effects on the economy and society".[16] This includes how it changes the nature of various jobs, or outright eliminates them. Continuing education will be key to a resilient workforce, and it turns out, AI might even play a role in that.</p>
+<p>As shown in Washington last week, there are new business trends being driven by a rejuvenated alliance between big technology and big government, and it is therefore time for astute technology and business leaders to pay attention to both.[17] For example, tomorrow (January 30, 2025) OpenAI is holding a previously scheduled closed door meeting in Washington regarding its own current agentic technology innovations, and what they potentially imply for the US people and its government. I imagine the topic of DeepSeek will now disrupt the meeting agenda, somewhat. </p>
+<p>At minimum, its a topic for a future blog. Regards. - andy</p>
+<p><br /></p>
+<h3 style="text-align: left;">References</h3>
+<div><div><span style="font-size: x-small;">[0] Photo by AJ Colores on Unsplash, https://unsplash.com/@ajcolores</span></div>
+<div><span style="font-size: x-small;">      </span></div>
+<div><span style="font-size: x-small;">[1] Bill Gates interview by the Wall Street Journal, January 2025, https://www.youtube.com/watch?v=4LL-ynK_exM</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[2] US vs. Microsoft, https://en.wikipedia.org/wiki/United_States_v._Microsoft_Corp</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[3] https://apnews.com/article/trump-inauguration-tech-billionaires-zuckerberg-musk-wealth-0896bfc3f50d941d62cebc3074267ecd</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[4] https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[5] https://icpc.global/worldfinals/results </span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[6] https://www.reddit.com/r/dataisbeautiful/comments/17a63yo/oc_2023_developer_compensation_by_country taken from the 2023 Stack Overflow developer survey.</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[7] DeepSeek at Hugging Face: https://huggingface.co/organizations/deepseek-ai/activity/all</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[8] OpenAI Operators: https://www.nytimes.com/2025/01/23/technology/openai-operator-launch.html</span></div>
+<div><span style="font-size: x-small;"> </span></div>
+<div><span style="font-size: x-small;">[9] NVIDIA CEO Jensen Huang on IT as the new HR: https://www.aol.com/finance/nvidia-jensen-huang-says-become-133641793.html</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[10] Goldman Sachs on the rise of AI employees: https://it.slashdot.org/story/25/01/21/2213230/managing-ai-agents-as-employees-is-the-challenge-of-2025-says-goldman-sachs-cio</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[11] https://www.msn.com/en-us/money/markets/why-cost-avoidance-became-an-ai-buzzword-for-holding-down-headcount/ar-BB1rmJSx</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[12] https://developers.slashdot.org/story/25/01/17/2156235/google-reports-halving-code-migration-time-with-ai-help</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[13] https://arstechnica.com/ai/2025/01/anthropic-chief-says-ai-could-surpass-almost-all-humans-at-almost-everything-shortly-after-2027/</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[14] https://reports.weforum.org/docs/WEF_Future_of_Jobs_Report_2025.pdf</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[15] https://slashdot.org/story/25/01/23/1645242/ai-mistakes-are-very-different-from-human-mistakes</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[16] https://nap.nationalacademies.org/resource/27644/interactive/</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><span style="font-size: x-small;">[17] https://hbr.org/2024/11/navigating-the-new-geopolitics-of-tech</span></div>
+<div><span style="font-size: x-small;"><br /></span></div>
+<div><br /></div>
+</div>]]></content><author><name>Surfing the Singularity</name></author><category term="surfthesing" /><summary type="html"><![CDATA[As Bill Gates recalls in his recent book-bumping interview with the Wall Street Journal, in the early innocent days of Microsoft he and his co-founder Paul Allen didn't believe in having an office in Washington, D.C.[1] They were soon to learn that was a mistake.[2] Compare and contrast with the scene in the Capital Rotunda last week for the inauguration of the new populist administration - Microsoft, Amazon, Facebook, Apple, Google, TikTok, and of course Tesla, all represented by their CEOs.[3] Microsoft's market capitalization as of this writing is now greater than the GDP of France.[4] Elon Musk's personal wealth is on par with the GDP of Denmark. Meta's platforms reach an estimated 40% of the world's population.  Apple ad from yesteryear. We're now long past 1984. Consider these other inconvenient truths about global technology: that NVIDIA does not make the GPUs it designs, that most are manufactured by TSMC in Taiwan, which is about as far away from China as Cuba is from Florida. Software talent is globally distributed, and prices vary widely. There are some very good schools in some of these relatively inexpensive places - in the 2024 edition of the ACM student programming contest, MIT placed the highest among US teams, in 11th place.[5]  Software salaries 2023, by country, exchange rate normalized.[6] AI programs and quantum computing initiatives are increasingly becoming nationalized as a strategic imperative. It is assumed that the country which is first to Artificial General Intelligence (AGI) will be the first to be able to use it to take control of the world. This fear is fueling an arms race in AI architectures, and the chips and the energy stations which power them. But is this a rational fear?  Unlearn What You Have Learned DeepSeek, with its deja vu inducing name and similarly eerily similar whale icon, is a new AI chatbot model wholly owned out of Hangzhou, China. And its #1 on the Apple app store, with a bullet. And yes, its quite up front that it tracks your data. There are several notable features and claims about this model: that is was trained in a fraction of the typical cost and time on a fraction of the typical hardware. That it performs about as well the OpenAI model released last month, maybe not as well on some things like straight math, but perhaps better at general writing, maybe with a bit more "personality". It shows its work - how it arrived at the answer its providing to the chat prompt. And, for the kicker from the totalitarian state, its open source up on Hugging Face.[7]  Shots fired. NVIDIA shares tumbled for a loss of $600B in one day in response, the largest single day loss in history. But what I'd like to know is, if this is the open source model, what's the real one like? Recent Federal governments have tried to enforce policies limiting technology exports to China, but in truth they've long had their own development programs - China has not participated in standardized HPC metric sharing and supercomputer ranking since 2017. Red Flag on the Track Along with NVIDIA, power generation stocks were also down hard - GE Vernova down almost 20%. This does not mean the recent trend of tech companies buying nuclear power plants won't continue, or that we won't continue to hear of existing power stations giving data centers a direct hard wire bypassing the municipal grid. But clearly this open ended hunger for power - watts and GPU cycles - is not sustainable. And DeepSeek exposes that bare. But make no mistake - this race is not over, its just warming up. OpenAI with their new Operators product currently defines AGI as a gaggle of collaborating AI agents, each with its own unique set of capabilities and goals. NVIDIA CEO Jansen Huang does his part in driving the GPU-dependent AI hype cycle by saying IT departments will become the new HR departments - for AI employees.[9] Goldman Sachs is telling clients to expect AI employees this year.[10] Cost avoidance will be a major driver.[11] And why not, when the same major technology companies report seemly amazing results using AI for software development? Google saves 50% on code migration time with AI! It gives *me* FOMO! [12] The CEO of Anthropic predicts that by 2027 AI will be generally better than humans at almost everything.[13] Well, at some things maybe better than others. Turns out, what's the number one occupation we expect to be replaced by AI? Why, AI engineers and data scientists. Job skills impacted by generative AI, ranked. Maybe I should have been a plumber.[14] This is vast uncharted territory for companies, especially for those of size, wedded to their legacy political structures and being either un-nimble or worse, fragile. People are not machines. The mistakes AI agents make are not of the same kind made by humans - current generative AI models are intentionally designed to make stuff up, to not just say "I don't know".[15] As a manager, you'll get no benefit of human insights into the truth such as from body language, though you may get to understand the "personality" and general performance characteristics of your AI employees over time. That is, until the managers are replaced by AI. But until then, what does your management interface look like? Is it perhaps similar to the IDE for a senior software engineer who manages a team of AI coders? In the AI-laced future, there will still be a place for HCI/UX designers. Chef of the Future Finally, the November 2024 report from the National Academies on the "future of work" says "its impossible to predict exactly the nature of the coming changes in AI and all their effects on the economy and society".[16] This includes how it changes the nature of various jobs, or outright eliminates them. Continuing education will be key to a resilient workforce, and it turns out, AI might even play a role in that. As shown in Washington last week, there are new business trends being driven by a rejuvenated alliance between big technology and big government, and it is therefore time for astute technology and business leaders to pay attention to both.[17] For example, tomorrow (January 30, 2025) OpenAI is holding a previously scheduled closed door meeting in Washington regarding its own current agentic technology innovations, and what they potentially imply for the US people and its government. I imagine the topic of DeepSeek will now disrupt the meeting agenda, somewhat.  At minimum, its a topic for a future blog. Regards. - andy References [0] Photo by AJ Colores on Unsplash, https://unsplash.com/@ajcolores        [1] Bill Gates interview by the Wall Street Journal, January 2025, https://www.youtube.com/watch?v=4LL-ynK_exM [2] US vs. Microsoft, https://en.wikipedia.org/wiki/United_States_v._Microsoft_Corp [3] https://apnews.com/article/trump-inauguration-tech-billionaires-zuckerberg-musk-wealth-0896bfc3f50d941d62cebc3074267ecd [4] https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal) [5] https://icpc.global/worldfinals/results  [6] https://www.reddit.com/r/dataisbeautiful/comments/17a63yo/oc_2023_developer_compensation_by_country taken from the 2023 Stack Overflow developer survey. [7] DeepSeek at Hugging Face: https://huggingface.co/organizations/deepseek-ai/activity/all [8] OpenAI Operators: https://www.nytimes.com/2025/01/23/technology/openai-operator-launch.html   [9] NVIDIA CEO Jensen Huang on IT as the new HR: https://www.aol.com/finance/nvidia-jensen-huang-says-become-133641793.html [10] Goldman Sachs on the rise of AI employees: https://it.slashdot.org/story/25/01/21/2213230/managing-ai-agents-as-employees-is-the-challenge-of-2025-says-goldman-sachs-cio [11] https://www.msn.com/en-us/money/markets/why-cost-avoidance-became-an-ai-buzzword-for-holding-down-headcount/ar-BB1rmJSx [12] https://developers.slashdot.org/story/25/01/17/2156235/google-reports-halving-code-migration-time-with-ai-help [13] https://arstechnica.com/ai/2025/01/anthropic-chief-says-ai-could-surpass-almost-all-humans-at-almost-everything-shortly-after-2027/ [14] https://reports.weforum.org/docs/WEF_Future_of_Jobs_Report_2025.pdf [15] https://slashdot.org/story/25/01/23/1645242/ai-mistakes-are-very-different-from-human-mistakes [16] https://nap.nationalacademies.org/resource/27644/interactive/ [17] https://hbr.org/2024/11/navigating-the-new-geopolitics-of-tech]]></summary></entry><entry><title type="html">Fine tuning AI models with InstructLab under IBM LSF</title><link href="https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf/" rel="alternate" type="text/html" title="Fine tuning AI models with InstructLab under IBM LSF" /><published>2025-01-06T19:36:24-07:00</published><updated>2025-01-06T19:36:24-07:00</updated><id>https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/fine-tuning-ai-models-with-instructlab-under-ibm-lsf/"><![CDATA[<p><strong>Overview</strong></p>
 
 <p>All the best for 2025! This blog looks back on a demo which I created for <a href="https://sc24.supercomputing.org">SC24</a>
 last November to demonstrate InstructLab workflows running on an <a href="https://www.ibm.com/products/hpc-workload-management">IBM LSF</a>
@@ -2003,504 +2061,4 @@ speculation online about whether the hugeness of the exhibit this year was due t
 <p class="ember-view reader-text-block__paragraph" id="ember3459">5.<span class="white-space-pre"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo " href="https://www.faa.gov/sites/faa.gov/files/2024-07/d_VVFlow_2024Mar21.jpg" target="_self">https://www.faa.gov/sites/faa.gov/files/2024-07/d_VVFlow_2024Mar21.jpg</a></p>
 <p class="ember-view reader-text-block__paragraph" id="ember3460">6.<span class="white-space-pre"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo " href="https://www.linkedin.com/advice/0/how-can-you-stay-relevant-software-development-skills-it-services-kxeme" target="_self">https://www.linkedin.com/advice/0/how-can-you-stay-relevant-software-development-skills-it-services-kxeme</a></p>
 <p class="ember-view reader-text-block__paragraph" id="ember3461">7.<span class="white-space-pre"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo " href="https://www.gartner.com/en/articles/30-emerging-technologies-that-will-guide-your-business-decisions" target="_self">https://www.gartner.com/en/articles/30-emerging-technologies-that-will-guide-your-business-decisions</a></p>
-<p class="ember-view reader-text-block__paragraph" id="ember3462">8.<span class="white-space-pre"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo " href="https://www.youtube.com/playlist?list=PLOFEBzvs-Vvr-GzDWlZpAcDpki5jUqYJu" target="_self">https://www.youtube.com/playlist?list=PLOFEBzvs-Vvr-GzDWlZpAcDpki5jUqYJu</a></p>]]></content><author><name>Surfing the Singularity</name></author><category term="surfthesing" /><summary type="html"><![CDATA[The If you've been tracking the technology industry, and the software space in particular, for any amount of time you've witnessed the accelerating rate of technical change - it was always there, but now its become impossible to miss. The rate of technological change has seemed exponential for a while now, but recent advancements in AI have pushed this curve to new heights. An Accenture report released for Davos 2024 suggests that technical rate of change is seen by C-level leaders as the number one most impactful force on their business - more than financial or geopolitical matters - largely as a result of advances in various forms of AI tooling. [1] Of those surveyed, 88% see the rate of change increasing even further, and half say their organizations are not ready, even though 70% see it as a revenue opportunity. Dinosaur Developers? Today staying alive in business, especially the business of software engineering, means surfing increasingly turbulent and potentially disruptive waters. Consider the leaked recent remarks of Amazon Web Services CEO Matt Garman, wherein he suggested that a mere 2 years from now most AWS programmers wouldn't be coding. [2] In their Q2 investor call, Amazon cited 4,500 person-years of savings through the use of AI assistants on mostly mundane programming tasks like porting and hardening code with patterns of best practices. [3] While the International Monetary Fund suggests AI will impact 60% of jobs and increase wealth inequality, the jobs impacted are more likely to be skewed to higher income countries. [4] These remarks from influential leaders in the industry suggest that the impact of AI will be felt most acutely among software practitioners. Those of us who use integrated development environments (IDEs) to write code (and documents, like this one) with AI assist already are familiar with the benefits. For those unwilling to adapt, to retool and upscale their skills, the future might be bleak. Growing might mean zooming out from code to a more soup-to-nuts view of the software engineering process, especially specification and validation - the need to clearly state requirements and validate results without an immediate need to focus on implementation details. Notice that in the below diagram, taken from the Federal Aviation Administration which is increasingly interested in software engineering and model validation, traditional coding sits only at the bottom of the process rendered as a "V". [5] Development in the context of verification and validation, as seen by the FAA. So how to stay relevant in a rapidly changing world, to stay one step ahead of AI and the algorithmic job reaper? A recent LinkedIn survey of technologists suggests the number one thing a person can do is to learn new technologies. [6] A recent Gartner report [7] of the 30 most impactful technologies lists quantum computing as a weighty albeit distant critical enabler. Why? For starters, the existence of Shor's quantum-based numerical factoring algorithm means its a matter of when, not if, quantum computers will be used to crack existing military-grade encryption. In the hands of an adversary, especially when unknown as with the Enigma machine in WWII, the results could be catastrophic, and this is a good part of what is fueling the current government interest in quantum computing. Off to Quantum Summer School So for me, it was back to school. Summer school. First I hit the stacks, brushed my very stale self up on the fundamentals of the necessary calculus and linear algebra, the quantum mechanics to at least an undergraduate level of understanding, read several texts on the subject of quantum computing including the K&amp;R of quantum "Mike &amp; Ike", consumed mass quantities of videos from companies like IBM and Xanadu, and kicked the tires on their programming tool kits. Next I traveled a short distance from my home office to the Griffiss Institute in Rome NY at their now annual "Quantum 4 International" conference. This consisted of an impressive array of researchers and government administrators presenting their latest findings and laboratory results, often in a sort of national inventory of funded priority projects. The US Air Force, which maintains a research presence in Rome NY, is particularly interested in quantum computing and networking, for example, scaling up to a larger quantum computer by networking (entangling) a set of smaller ones. The Army and Navy are more focused on other non-computing aspects of quantum technology - sensing, magnetics, material defect identification, and as radio receivers. The Canadian delegation was focused on many of the same research topics, as well as a national emphasis on quantum technology education - to be impactful in quantum computing, one must be able to meld a variety of maths, physics, and programming skills with an unusual level of creativity to design novel and efficient algorithms which take advantage of the power of the quantum qubit - as a former college adjunct, this is no small educational challenge. Finally, researchers from the EU demonstrated new upper bounds on entanglement at a distance for wider area networking, and the use of novel estimation techniques to scale up quantum simulators in this "NISQ" era where real quantum computers are still small, noisy, fragile, and scarce. What was noticeably lacking was the demonstration of any current industrial utility for quantum computing applications, and the head of DARPA saw none emerging until we collectively move beyond the NISQ era. Pack a Remote Lunch While some industrial domains like chemistry will likely gain utility first, the head of DARPA suggests that utility in my own current application area - computational fluid dynamics (CFD) - will not emerge until we move into the "cryptographically relevant" era. It was with this in mind that I remotely attended the von Karman Institute for Fluid Dynamics in Belgium for a week-long course called "Introduction to Quantum Computing in Fluid Dynamics" funded by NATO. Entirely civilian in nature, the training was aimed at CFD researchers who might take advantage of one of the quantum facilities being installed at national laboratories in the US and EU, often collocated with their existing high performance computing (HPC) clusters. Not being a physicist, for me much of the class was consumed for general domain literacy, and the "tl;dr" is the re-emergence of particle-based methods like Lattice Boltzmann as a focus of research over finite volume methods and solving the Navier-Stokes equations, as is currently dominant in HPC-based CFD. With mind fully blown by the Von Karman experience, I next took two weeks and attended the IBM Global Quantum Summer School, 2024 edition, consisting of 10 lectures on a variety of topics and 4 labs. The videos are now posted on YouTube [8] and while I personally enjoyed the lecture on Hamiltonian simulation, there was a distinct and unfortunately NISQ-era necessity to focus on error correction and compensating for noise, and on the inner workings of the IBM Qiskit transpiler. In the latter case, because of the diverse nature of the emerging quantum hardware, because inter-qubit connectivity is often not N-way, and because at this stage things often break, it becomes common to mess with the compiler, and to adopt a toolchain with an eye to portability. Qiskit, a library and tool set for Python, is one of a couple frameworks (another being PennyLane) which currently meet this need, and the labs went to length to expose the student to the various topological mapping, translation, and optimization stages which are present in the quantum programming toolchain. And we got to play with a Hamiltonian simulation up to 50 qubits on real hardware, as most classical machines would have a hard time managing the simultaneous behavior of 50 spins. Next Up: AI Assistants &amp; Hybrid Quantum Computing During the Qiskit labs, naturally I was using LLM assist in my IDE, at minimum for tedious or repetitive tasks. But it was remarkable how often the AI assistant was helpful, even for a seemingly niche programming task such as using a quantum computing framework. I intend to delve into this topic more in a future blog and share my experiences with the various emerging AI tools for code and document assist, as well as in the broader end-to-end software engineering context. In addition, I intend to share future blog installments as my quantum education in search of industrial utility continues through the fall conference season. As a software engineer, I'll be particularly on the lookout for frameworks, including those which leverage AI, which allow the programmer to rise above the level of 1950s-like qubits and gates to higher and portable constructs. I'll also be sharing learnings on the rise of classical-quantum hybrids, especially in HPC contexts, as today's quantum approaches such as variational algorithms which converge on solutions require it. Here is another place where toolchains will play a major role, and where heterogeneous workflows which utilize AI tools will likely be impactful. Until next time, enjoy these last few weeks of summer. - andy References: 0. Photo by Ben Wicks on Unsplash 1. https://www.accenture.com/us-en/about/company/pulse-of-change 2. https://www.businessinsider.com/aws-ceo-developers-stop-coding-ai-takes-over-2024-8 3. https://accelerationeconomy.com/cloud-wars/amazon-genai-slashes-260-million-in-costs-saves-4500-years/ 4. https://nypost.com/2024/01/15/business/ai-will-affect-60-of-us-jobs-imf-warns/ 5. https://www.faa.gov/sites/faa.gov/files/2024-07/d_VVFlow_2024Mar21.jpg 6. https://www.linkedin.com/advice/0/how-can-you-stay-relevant-software-development-skills-it-services-kxeme 7. https://www.gartner.com/en/articles/30-emerging-technologies-that-will-guide-your-business-decisions 8. https://www.youtube.com/playlist?list=PLOFEBzvs-Vvr-GzDWlZpAcDpki5jUqYJu]]></summary></entry><entry><title type="html">How has life after leaving the Labs been going?</title><link href="https://hpc.social/personal-blog/2024/how-has-life-after-leaving-the-labs-been-going/" rel="alternate" type="text/html" title="How has life after leaving the Labs been going?" /><published>2024-08-04T20:21:00-06:00</published><updated>2024-08-04T20:21:00-06:00</updated><id>https://hpc.social/personal-blog/2024/how-has-life-after-leaving-the-labs-been-going-</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/how-has-life-after-leaving-the-labs-been-going/"><![CDATA[<p>June 2024 marked two years since I <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">left my job at one of the world's most prestigious government HPC centers for a job in one of the world's largest technology corporations</a>. In that time, the world of HPC has changed
-dramatically; just six months after I started, ChatGPT was released and triggered a gold rush in AI that is now overshadowing traditional scientific computing. This shift brought about massive HPC
-deployments led by hyperscalers, challenging the long-held belief that only national governments could
-deploy and operate world-leading supercomputers. <a href="http://blog.glennklockwood.com/2024/05/isc24-recap.html">My experiences at
-ISC'24 this past summer</a> made clear to me that the traditional HPC community is now rethinking their role the industry, and some individuals who built their careers in public HPC are revisiting their
-assumption that world-class HPC systems are limited to the public institutions that have
-historically dominated the <a href="https://www.top500.org/lists/top500/list/2024/06/">top of the Top500 list</a>. I
-had no idea things would unfold this way when I left my job at NERSC back in 2022, and I've been remarkably lucky to
-now be a part of the largest forces driving this huge shift in HPC.</p>
-<div class="separator" style="clear: both; text-align: center;">
-<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
-
-<figcaption style="font-size: 14px; margin-top: 5px;">One of my new offices. Nicer than my old government office, and it has free food, but it's a ninety-minute drive each way.</figcaption>
-</figure>
-</div>
-<p>In the spirit of openness and helping others who are facing similar career decisions, I thought I would follow up on my <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">Life and leaving
-NERSC</a> post by sharing how my professional journey from DOE HPC into cloud HPC has been going. I'll first explain the path I've traveled over these past two years, then answer some of the most
-common questions I've been asked about this transition.</p>
-<p>As a forewarning, this is not a typical technology-focused post, and most of this might be obvious to people who already work in Big Tech. Here are the questions on which I reflected:</p>
-<ol>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#first-two-years">What happened during my first two years in Corporate America?</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#what-i-do">So what do I actually do?</a>
-<ol>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#storage-product-management">Storage product management</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#hpc-ai-development">HPC/AI development</a></li>
-</ol>
-</li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#am-i-happy">Am I happy with my decision and the new job?</a>
-<ol>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#am-i-happy-broadly-yes">Broadly, yes</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#long-time-no">But for a long time, no</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#finally-yes">Finally, yes</a></li>
-</ol>
-</li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#industry-does-better">What does industry do better than the Labs?</a>
-<ol>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#accountability">Accountability</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#pace-and-decision-making">Pace and decision making</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#relevance">Relevance</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#technically-security">Technically: security</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#pay-good">But the pay is good, right?</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#work-life-balance">How's work-life balance?</a></li>
-</ol>
-</li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#what-i-miss">Do you miss anything about working at the lab?</a>
-<ol>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#freedom-to-have-an-off-day">Freedom to have an off day</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#travel">Travel</a></li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#openness">Openness</a></li>
-</ol>
-</li>
-<li><a href="http://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#regret-decision">Would you still have left NERSC knowing what you know now?</a></li>
-</ol>
-<h2 id="first-two-years">What happened during my first two years in Corporate America?</h2>
-<p>I published my <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">Life and leaving NERSC</a> blog post on a
-Thursday, which was my last day working at NERSC. The following Monday was my first day at the new job, and being
-hired as 100% remote, it didn't feel that different; I was just booting up a Lenovo laptop (yuck) instead of a
-MacBook, using Teams and Outlook instead of Slack, GSuite, and Zoom, and that sort of thing.</p>
-<p>However, the job was undeniably different; whereas I used to be an engineer at NERSC, I was hired to be a "Principal Product
-Manager" within the cloud storage organization which was responsible for all object, disk, and file storage
-services. Although my title was "product manager," I wasn't a people manager, and
-I didn't manage any specific storage products. Rather, my responsibility was to act as an HPC-focused overlay
-across all cloud storage services, and my job was to represent the interests of HPC users to all the people who did manage specific storage products. I didn't define product or feature roadmaps myself, but I could help those responsible for each product or service understand how to shape their roadmaps to benefit HPC workloads.
-</p>
-<p>I struggled in this position for a variety of reasons, so after I gave the new role
-an honest six to nine months, I decided that being a storage product manager just wasn't a good fit for me.
-Unfortunately, I reached this decision after the <a href="https://www.nytimes.com/2022/07/21/business/yield-curve-inversion.html">yield curve inverted</a> and
-<a href="https://www.theverge.com/2023/1/18/23560315/microsoft-job-cuts-layoffs-2023-tech">mass-layoffs and hiring
-freezes</a> were implemented, so there weren't a lot of places to go other than back to a government lab.
-Although I wasn't thriving as a storage product manager, I did have allies that helped me navigate my
-day-to-day struggles, and I decided to wait until more opportunities opened up and learn as much about
-product management as I could in the meantime.</p>
-<div class="separator" style="clear: both; text-align: center;">
-<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
-
-<figcaption style="font-size: 14px; margin-top: 5px;">The yield curve inverted a month after I started my new job. Not great timing.</figcaption>
-</figure>
-</div>
-<p>After a little over a year as a storage product manager, a new engineering role opened up within a sister team in our
-HPC/AI infrastructure organization. After discussing the needs and nature of the work with the hiring manager, I applied for the job, went through the
-interview process, and was eventually given a verbal offer to join his team in June 2023. Unfortunately, the global
-economic outlook was still uncertain, and I wound up sitting in a holding pattern (as a storage product
-manager) from June 2023 to November 2023. It wasn't until the week of SC'23 that I finally got the written offer
-letter, and I spent December wrapping up loose ends within the storage organization.</p>
-<p>On January 2, 2024, I began my new (and current) role within the company. The move was completely lateral, but I changed job titles from "Product Manager" to "Software Engineer," and I
-changed organizations from storage to specialized compute.</p>
-<p>I say all this because my experiences in making the professional transition from government HPC to cloud HPC are colored by the fact that I really changed jobs twice. I've had both product management and engineering/development roles, and I've been in both storage and HPC
-organizations.</p>
-<h2 id="what-i-do">So what do I actually do?</h2>
-<p>I've had two very different roles within the same orbit of HPC/AI infrastructure, so I'll
-describe them separately to give you a sense of the breadth of HPC roles possible.</p>
-<h3 id="storage-product-management">Storage product management</h3>
-<p>As a <b>storage product manager</b> (PM), I was an inch deep but a mile wide on every storage service, every commercial HPC workload, and
-all the ways in which those two could touch each other. I'd guess that only 25% of my day-to-day work required deep
-expertise in HPC; the remainder was either business-centric or required only understanding HPC in broad strokes. This
-was quite unlike the things I'd done earlier in my career in the public sector, since there's not an equivalent to
-what a product manager does within the DOE Labs.
-</p>
-<p>For example, I spent a lot of my time as a storage PM explaining the basics of HPC I/O to different teams within the
-company. When most cloud people think "storage," they are really thinking about either enterprise storage (things
-like virtual disks for virtual machines) or content distribution (think serving up content for web apps). The
-concept of hundreds or thousands of VMs all writing to the same place at the same time is standard practice in the
-HPC world, but in the cloud world, this is a <a href="https://www.microsoft.com/en-us/security/business/security-101/what-is-a-ddos-attack?msockid=2008901357a56c4518b3840856e96dad">DDoS
-attack</a>. Since my organization was responsible for all storage, not just HPC storage, there were a lot of
-people who simply never had to think about the challenges that HPC people take for granted, and it could be challenging (as the new guy) to convince seasoned cloud storage PMs that some workloads legitimately need hundreds of gigabytes per second of bandwidth.</p>
-<p>As a PM, I also wound up doing a fair amount of business reporting. For example, object storage is used by all manner of cloud
-customers, so prioritizing features that specifically help HPC customers required understanding how many HPC
-customers actually used it. How do you define whether a workload is really an HPC workloads or not? In
-DOE, we'd waste hours debating stuff like this for no real purpose, but when I became a product manager, I had to
-define this to make the business case that we needed to develop a certain feature that would only be used by HPC workloads.</p>
-<p>Finally, I did a fair amount of actual product and project management work. Get on the phone with a customer,
-write down what they do, and turn those into requirements. Do that a bunch of times, then synthesize a more general
-requirements document. Review it with leadership. Get approval to assign developers to work on the features to meet
-those requirements. Ask other teams to develop features you need for your feature. Negotiate with everyone on
-development priorities in the next six months. Track progress of the development team. Produce demos to show that
-progress is being made. Present progress to leadership. That sort of thing. It's similar to being a PI on a research
-grant, except I had customers, dependencies, and ultimate accountability.</p>
-<p>As far as technical work, a lot of it revolved around meeting customers and internal partner teams where they were in
-terms of their knowledge of HPC. I did a fair amount of technical marketing; I would come up with
-the ways people should think about combining storage services together in their HPC workflows, then figure out
-how to communicate that to audiences with vastly different levels of technical understanding. For example, I didn't
-own our <a href="https://learn.microsoft.com/en-us/azure/azure-managed-lustre/amlfs-overview">Lustre product</a>, <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction">object storage
-product</a>, or <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/high-performance-compute/hb-family">HPC CPU
-node product</a>, but I owned <a href="https://techcommunity.microsoft.com/t5/azure-high-performance-computing/azure-managed-lustre-not-your-grandparents-parallel-file-system/ba-p/3889946">the
-story around how we envisioned all three services worked well together</a>. This meant I would create slides and
-narratives around this, then present them to anyone from our sales teams (who often had limited HPC-specific experience) to
-the world's leading HPC centers.</p>
-<p>I also sometimes helped development teams accurately test their storage systems against HPC workloads. For example,
-when ChatGPT exploded, everyone wanted to know how well their storage service worked for training large language
-models. I would talk to the engineers who trained LLMs, infer what their I/O patterns would be based on
-their description of how they did training, then design a benchmark that our developers could follow to
-emulate that LLM training workflow. Since I understood both the workload and the storage technology, it was often faster for me to translate between AI engineers and storage engineers rather than have them speak directly.</p>
-<h3 id="hpc-ai-development">HPC/AI development</h3>
-<p>As an <b>HPC/AI engineer</b>, my work is a lot more technical and focused. I'm on a "white-glove support team"
-that works directly with large, strategic customers in HPC and AI, so rather than working with dozens of customers and connect them to dozens of storage technologies, I work with one or two customers and the specific technologies on which they build their HPC or AI clusters. Because of this, I'd wager 95% of my day-to-day work is
-technical.</p>
-<p>I don't spend much time in a terminal by virtue of my relative seniority. Instead, I sit in on a lot of internal meetings and represent the perspective of our strategic HPC and AI customers. For example, if we are trying to decide which CPU to
-include in our next HPC-optimized CPU node, I might work with our benchmarking engineers to develop a representative
-benchmark and then interpret the results with the node's product managers. I'm not the person running the benchmark
-myself; instead, I might ask hard questions that the customer might ask, help decide the next experiments to run,
-and backstop our engineers if the customer starts poking too many holes in the work.</p>
-<p>I also function as a system architect at times; if a customer shows up with unusually large or complex
-HPC system requirements, I'll help translate the customer requirement (e.g., "We need 10 TB/s of storage bandwidth)
-for individual product teams (e.g., "they will be using N compute nodes and accessing storage via a network with
-this topology and tapering, likely running an application that has this pattern, ..."). This often requires understanding what the compute, network, <i>and</i> storage product teams are doing and being able to explain it all in
-whatever terms each team understands. I also wind up sitting in on customer meetings and asking critical questions
-so that we can make informed design tradeoffs.</p>
-<p>I do write code, but no more than I did when I was a system architect at NERSC. For example, I might pull PDU
-telemetry from across a data center to help determine if oversubscribing the power for a future cluster would
-impact workloads. The code itself is pretty straightforward statistical analysis, but interpreting it requires an
-understanding of a bunch of things ranging from the workload running on the nodes to how nodes are distributed
-across PDUs, racks, rows, halls, and buildings.</p>
-<p>The remaining 5% of my work is not very technical and involves things I opt into because it's interesting or
-the right thing to do. This might be spending time providing historical context for a business strategy document or showing up at a meeting to help explain the customer perspective to a finance or sales team.</p>
-<h2 id="am-i-happy">Am I happy with my decision and the new job?</h2>
-<p>Yes, no, and yes.</p>
-<h3 id="am-i-happy-broadly-yes">Broadly, yes</h3>
-<p>I am glad I made the decision to leave NERSC and take on a job in Big Tech for a couple of
-high-level reasons.</p>
-<p>As a product manager, I learned a lot about how businesses and corporations work to a
-degree that I never did when I worked at a startup and I never would have if I stayed with the government. Not only
-do I now know what the difference between gross and operating margin is, but I <i>get</i> it because I've had to
-build <a href="https://www.investopedia.com/terms/c/cogs.asp">COGS</a> and pricing models that could sustain and grow a new product. I know exactly how to
-price cloud services (or any product or service, really) and where that money goes. I now pay much more attention to
-quarterly earnings reports, and I have a more confident opinion on what different elements of these reports say
-about a technology company's trajectory. This has equipped me with what feels like a much more complete
-understanding of the HPC industry overall.</p>
-<p>I'm also glad to work at a company that generally tries to do the right things. It
-is investing heavily towards being <a href="https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/">carbon
-negative</a> (rather than just buying carbon offsets) while others are <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/elon-musks-new-worlds-fastest-ai-data-center-is-powered-by-massive-portable-power-generators-to-sidestep-electricity-supply-constraints">burning gas inefficiently</a> in a race to be #1. It also <a href="https://givebutter.com/blog/companies-that-match-donations">matches
-every donation I make to 501(c)3 nonprofits</a> which is a huge benefit that matches up with the ways in
-which I try to share my good fortune with others. And it beats employees over the heads with a strong, positive <a href="https://careers.microsoft.com/v2/global/en/culture">corporate culture</a> which holds managers and leaders
-accountable for the wellness of their employees. These sorts of things don't meaningfully exist in government, and
-there are a lot of big corporations out prioritize short-term profits over the longer-term benefits that come from investing in sustainability and philanthropy.</p>
-<h3 id="long-time-no">But for a long time, no</h3>
-<p>However, I was unhappy for my first eighteen months.</p>
-<p>I took a gamble on storage product management being as interesting and fulfilling as
-engineering when I decided to step into this new job, and I lost that bet. I quickly came to realize that there's a big difference between
-being a <u>storage person in an HPC organization</u> and being an <u>HPC person in a storage organization</u>.</p>
-<p>When I worked in an HPC organization like NERSC, I was used to being the odd man out
-because parallel storage is a complicated topic that most HPC folks don't <i>really</i> understand. Despite that, everyone is still generally like-minded and appreciates the same things; everyone knows what MPI and InfiniBand
-are, and everybody knows what a checkpoint and restart might look like.</p>
-<p>Conversely, when I worked in a storage organization, I was an odd man out because nobody
-really understood HPC. The average engineer only had a vague notion of what MPI or
-InfiniBand accomplished. If you don't understand that MPI is what lets hundreds of servers all work on the same
-distributed problem at once, it's easy to forget that an MPI application will also cause hundreds of servers to
-all write data at once. And if you've never used an MPI barrier, it's hard to internalize the fact that the whole
-application stops until the slowest process finishes writing.</p>
-<p>Instead of worrying about tightly coupled applications, I realized that storage people
-worry about data availability and durability above all else. After all, storage's #1 job is to not lose data. In
-contrast, it's not unusual for an HPC user to have hundreds of terabytes of data vanish because they forgot to copy
-it off of scratch before it got purged. This sharp difference in priorities--data durability versus
-performance--causes friction, because at the end of the day, what's good for HPC (high bandwidth and low latency) is
-usually bad for storage (high durability and availability).</p>
-<div class="separator" style="clear: both; text-align: center;">
-<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
-
-<figcaption style="font-size: 14px; margin-top: 5px;">The landscape of storage for HPC and storage for enterprises as I see it. If you care about one but work with people who care about the other, expect friction.</figcaption>
-</figure>
-</div>
-<p>These are technological differences, but they result in a persistent, elevated level of latent stress that never goes away. People tend to worry about the things they understand, and people tend to ask for help
-about the things that worry them. What this meant for me is that I spent a lot of time focusing on things that
-everyone understood (like market trends, revenue, and general indicators of performance) instead of hard problems
-unique to large-scale HPC. And because I was never solving the hard problems, I never got the gratification of feeling like I accomplished something that, as I learned, is an important motivator to me.</p>
-<p>To be clear, I realize that I made the decision to focus on problems that other people brought me
-rather than carve out a space for me to work on the problems I felt were important. I'm sure that someone who was
-more tenacious and unafraid to pursue challenges that nobody else understood would have a very different experience as a PM. But after about a year, I realized that what I value and enjoy doing just isn't
-aligned with what a successful storage PM needs to be successful. I realized I didn't want to keep doing what I was doing
-for another five years, so I decided to stop.</p>
-<h3 id="finally-yes">Finally, yes</h3>
-<p>I quite enjoy my role in HPC/AI engineering and development now, as it's similar to
-what I used to do in the DOE. I have to learn about how different hardware, software,
-and systems work, and I have a lot of room to focus on challenges that play to my strengths and interests.
-For example, I love engaging with the HPC community, and my job still allows me to go out to the big HPC conferences to do that. At the same time, I also like getting into the guts of system behavior, and I still get to spend at least an hour or two a week doing something quantitative.</p>
-<p>My day-to-day is also steeped in that familiar feel of working in an HPC organization.
-Every cluster has a name that gets bandied about in meetings, and they have the same familiar challenges--fabric disruptions, firmware
-upgrades, flaky nodes, and the like. The standard responsibilities are also all there; some teams perform system
-administration, others support users, and some of us focus on future system designs. But the cluster names aren't nearly as creative as those in the public sector (<a href="https://www.top500.org/system/180236/">Eagle's</a> real name sounds like a serial number). And they look pretty boring too; there are no fancy rack graphics.</p>
-<div class="separator" style="clear: both; text-align: center;">
-<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
-
-<figcaption style="font-size: 14px; margin-top: 5px;">Five racks of a cloud GPU cluster that runs ND H100 v5-series VMs. <a href="https://www.youtube.com/watch?v=ntKZ5CibuIQ">Source</a></figcaption></figure></div>
-<p>There are also teams that have no analogue in the traditional HPC world, like those who
-are responsible for things ranging from the <a href="https://techcommunity.microsoft.com/t5/azure-infrastructure-blog/announcing-the-general-availability-of-azure-boost/ba-p/3981384">smart NICs</a> and software-defined networks to profits and losses. This is
-what keeps things interesting; I can just as easily spend an hour reviewing benchmark results from the latest GPU
-with my teammates as I can learning how the control systems for <a href="https://news.microsoft.com/source/features/ai/in-house-chips-silicon-to-service-to-meet-ai-demand/">liquid
-heat exchangers</a> affect system reliability or <a href="https://www.osha.gov/noise/standards">data center
-safety</a>. When things are quiet and no fires are burning, going to work can sometimes feel like going to a big
-playground full of HPC and HPC-adjacent technology.</p>
-<p>Don't get me wrong; it's still a job, and there are still unpleasant tasks and
-uncomfortable situations. Working at a cloud provider means a lot of processes are designed to be slow and steady,
-and some teams struggle to understand why anyone would want to reboot every node in a cluster at once--such an event would be a massive outage in general-purpose cloud! But working in an HPC organization means that when these
-situations arise, I'm no longer the <i>odd HPC guy</i>--I'm on the <i>odd HPC team</i>.</p>
-<h2 id="industry-does-better">What does industry do better than the Labs?</h2>
-<h3 id="accountability">Accountability</h3>
-<p>Organizational planning happens <a href="https://devblogs.microsoft.com/azure-sdk/planning-2021/">twice a year</a>,
-and this planning is the time when teams all get on the same page about what
-work to prioritize in the next six months (a <i>semester</i>). Teams coordinate dependent work with each other,
-trades horses on what the priority of each request is, and at the end of planning, have committed agreements about what work
-will be done in the next semester. The progress on that work is tracked throughout the semester, delays and
-interrupts are accounted, and there's an escalation path up through the ranks of management and leadership if
-priorities cannot be agreed upon by individual teams.</p>
-<p>The DOE Labs operate much more loosely in my experience. There, people tend
-to work on whatever pet projects they want until they lose interest. If a project is funded by a research grant, there are loose
-deliverables and timelines (write X papers per year), but at the end of the day, nothing really bad happens if the
-work progresses slowly or its quality is poor. There's no penalty if a research grant results in a piece of software
-that nobody uses or a paper that nobody reads. The value of the work is largely intellectual, and as a result, it's perfectly
-possible to have a long career at a DOE lab, churning out papers and software, that lacks any
-lasting impact.</p>
-<p>Tying money to the value of work can make accountability much more black and white. If you pay a team of engineers a
-million dollars a year to develop a new service that only increases revenue by a million dollars a year, that
-service is going to be scrutinized every time prioritization happens. Is there a way to increase its revenue through
-better features or better positioning? It'll be a product manager's job to go figure that out. If the answer comes
-back as "no," then that service might be put on a shelf and its engineering team reassigned to work on something
-that has a greater impact. Those engineers don't get to decide that they keep wanting to work on the service that
-has limited demonstrable value.</p>
-<p>At the same time, managers are accountable for the wellbeing of their team and the teams underneath them. All
-employees fill out regular, semi-anonymized surveys on different aspects of job satisfaction, and the results of
-these surveys roll up all the way to the top of the company. If employees are disgruntled, their managers know it,
-and those managers' managers know it, and everyone up the chain is accountable for improving those scores. Sometimes that results
-in increased hiring so engineers don't feel overworked. Other times it means reorganizing people and teams to align
-them with the work they are good at performing. And if nothing works and a team's morale keeps declining, maybe it's because of
-the manager--and the manager gets replaced.</p>
-<h3 id="pace-and-decision-making">Pace and decision making</h3>
-<p>Because managers and leaders are accountable, I've also found them to be much more empowered to just do what they
-feel is the right thing to do. Whereas no big decision in the DOE Labs can be made without reviews, panels,
-strategic offsites, more reviews, and presentations to headquarters--all of which could add months or
-years to a project--the direction can move on a dime because all it takes is one executive to sign off and accept
-full responsibility for the consequences of their decision. Getting the approval to staff up and pursue a good idea
-often requires only winning over one or two key people, not an army of feds in Germantown or an anonymous review
-panel who isn't conversant in what you're proposing.</p>
-<p>And again, sometimes money makes decisions much easier to make. For example, a few people at ISC'24 asked me why we
-didn't re-do the <a href="https://www.top500.org/system/180236/">Top500 run for Eagle</a> to beat Aurora since the
-SC'23 scoring was so close. The decision process can be as simple as this:</p>
-<p></p>
-<ul>
-<li>According to the <a href="https://top500.org/lists/top500/2024/06/download/TOP500_202406.xlsx">Top500 list's raw
-data</a>, Eagle achieved 561,200 TFlop/s using an Nmax of 11,796,480.</li>
-<li>Knowing that HPL's walltime is (flop count / Rmax) and HPL's flop count is (2/3 * Nmax^3), you can calculate
-that the HPL walltime for this run was 1,950 seconds or 0.512 hours.</li>
-<li>The <a href="https://azure.microsoft.com/en-us/pricing/calculator/">public list price</a> for an Eagle
-node (ND96isr H100 v5) is something like $60 an hour.</li>
-<li>The HPL run used 1,800 such nodes.</li>
-</ul>
-<p>Give the above, during the half hour it would take to run HPL, those same nodes could be
-running a production workload which would have resulted in $58,000 in revenue. That is, the <i>opportunity cost</i>
-of re-running HPL is at least $58,000 in lost revenue. In reality, it would take time to boot up and configure the
-cluster of virtual machines and do a few scale-up runs which would tie up the nodes for a couple hours, making
-this opportunity cost closer to a couple hundred thousand dollars.</p>
-<p>Is getting a marginally higher Top500 score worth a couple hundred thousand dollars if your
-machine is already listed and had its day in the sun? I don't need an executive to answer that question. But in the
-public HPC space, who's to say what the opportunity cost is? If HPL wasn't running twice a year on Frontier, are the
-dozen or so lattice QCD jobs that would be running instead worth a couple hundred thousand dollars?</p>
-<p></p>
-<h3 id="relevance">Relevance</h3>
-<p>I might be more vain than I thought when I worked for the government, because I really enjoy being able to talk about the work that I do
-with the general public now. When people ask, "What work do you do?" and I respond with, "Have you ever heard of Copilot or
-ChatGPT?" there is almost always a conversation that follows. People may not really understand how artificial intelligence and
-large language models work, but they've played with those technologies and have opinions and questions. Sometimes the conversation is about big-picture stuff like "will AI take over the world?" At other times it's specific like "what do you think about
-AI's effect on global climate change?" Because I am steeped in all aspects of AI in my day-to-day work, I can
-usually speak intelligently about any dimension of the AI industry when my neighbors ask.</p>
-<div class="separator" style="clear: both; text-align: center;">
-<figure style="display: inline-block; margin-left: 1em; margin-right: 1em;">
-
-<figcaption style="font-size: 14px; margin-top: 5px;">Every blog post these days needs at least one AI-generated picture, so here is a picture generated by DALL-E that "captures the essence of explaining AI concepts to neighbors in a friendly, approachable setting." But more poignantly, my team directly supports the supercomputers that trained the model that generates these pictures.</figcaption>
-</figure>
-</div>
-<p>This was a much bigger challenge when I worked in the public sector. When I told people that I worked at Lawrence Berkeley
-National Lab, nobody knew what I was talking about half of the time. The other half of the time, people would think I worked on
-nuclear weapons because Lawrence Livermore National Lab has a confusingly similar name and geography. And if the
-conversation ever got as far as what people did on the supercomputers I supported, it would rapidly tail off once
-all parties (including me) realized that cosmological hydrodynamics and quantum Monte Carlo don't really make for great conversation since they don't touch people's everyday lives.</p>
-<p>This isn't to say that the work done at the Labs isn't important. But the general public doesn't understand it, and
-to a large degree, doesn't really care about it. I realize that being able to impress your neighbors with what you
-do isn't at the top of the list of most people's job requirements, but I get a lot of satisfaction out of it.</p>
-<h3 id="technically-security">Technically: security</h3>
-<p>HPC doesn't really worry about cybersecurity. Every HPC center has a security group and does scans and threat
-modeling, but at the end of the day, the security practices on all the largest supercomputers in the public sector
-are roughly the same as they were twenty years ago. Users ssh into a login node, and once you're inside, you have
-access to everything. You can see everyone else who's logged in, you can see everyone who chmodded their home
-directory to be +777, and the only thing separating you from everyone else is the Linux kernel. Passwordless ssh is
-everywhere, and often times, passwordless ssh for the root user is everywhere.</p>
-<p>This does not fly with paying commercial HPC and AI customers in the cloud who use supercomputing to develop better
-products faster than their competitors. For example, both <a href="https://www.synopsys.com/blogs/chip-design/eda-in-the-cloud-snug-2023.html">Arm and AMD have publicly
-stated that they perform a lot of their silicon design simulations using HPC in the cloud</a>. What would happen
-if both AMD and Arm used the same cluster and one accidentally made their project directory world-readable? Should
-domain scientists' understanding of how POSIX file permissions work really be the last line of defense against a
-next-generation CPU or GPU's specs being leaked to the competition?</p>
-<p>I had to quickly learn about modern security practices when I started doing HPC in the commercial cloud out of
-necessity. I'm still nowhere close to being a security expert, but two years has been long enough for me to now
-cringe when I talk to my colleagues in the traditional HPC community about how they protect against threats. It's
-not really their fault that most of the HPC community hasn't adopted modern practices, because the tools and
-practices required to do it right aren't easy to set up, automate, and maintain from scratch.</p>
-<p>For example, basic LDAP is a short path to allowing users to log into a cluster's nodes, but if those users also need
-to authenticate themselves to REST services that support an HPC workflow across multiple clusters, you have to start building a Rube Goldberg machine of software on top of LDAP. Similarly, sticking every user on their own overlay network is great to limit the blast radius of a
-compromised account. However, automating the configuration of VXLAN tunnel endpoints as nodes get allocated and deallocated to
-jobs requires a lot of fancy orchestration that is either very complicated to build and maintain yourself or very
-expensive to buy and maintain. As a result, HPC just accepts the risk. Cloud has
-figured all this out though, and the price of providing this security infrastructure is included in the cost of
-cloud-based supercomputers.</p>
-<h3 id="pay-good">But the pay is good, right?</h3>
-<p>Like I said before I left the public sector, <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">my base salary is
-comparable to what I got at the lab</a>. It's actually gotten less competitive because <a href="https://www.theregister.com/2023/05/11/microsoft_pay_freeze/">all salaries were frozen</a> when I was first eligible for a raise. So, after considering the effects of inflation, my paycheck is a little lower than what it was in the government two years ago.</p>
-<p>What's different is the bonus structure which simply does not exist in the government or university world. For those
-who aren't familiar with how bonuses work in the tech industry, I'll share how it works for me:</p>
-<p></p>
-<ul>
-<li>In the first year, I was awarded two signing bonuses: one in cash, one in stock. Half of the cash bonus was paid
-out up-front, and the other half was paid out after I had been there a year. The stock grant cannot be touched
-during the first year because it had a one-year "cliff."</li>
-<li>On my one-year anniversary, I got the second half of my cash signing bonus, and my signing stock grant began
-"vesting."</li>
-<li>After a year, I was also eligible for an annual performance-based raise, cash bonus, and stock bonus.</li>
-<ul>
-<li>Because of the economy, my annual raise was zero.</li>
-<li>The cash bonus was paid out in a lump sum, similar to my cash signing bonus.</li>
-<li>The stock bonus was awarded all at once but follows a multi-year "vesting schedule" which means I am only
-actually given fractions of the total award over time. However, these bonuses don't have a "cliff" and begin
-vesting immediately.</li>
-</ul>
-<li>Every year thereafter, I am eligible for an annual raise, cash bonus, and another stock bonus.</li>
-</ul>
-<p>The way stock bonuses work was the least intuitive part to me, but since it's such a significant part of total compensation, it's worth spelling
-out for anyone who's considering an offer that includes this:</p>
-<p></p>
-<ul>
-<li>Stock bonuses are defined in terms of dollar values. For example, let's say I got a signing stock bonus of $1000
-with a one-year cliff that vests quarterly (every three months) over five years.</li>
-<li>On the day that stock bonus is awarded, my employer converts that $1000 value into company stock based on the
-market value that day. If stocks are $50 per share, I am awarded 20 shares. My employer hangs on to those shares
-on my behalf, so I can't actually do anything with them yet.</li>
-<li>Since I have a five-year vesting schedule and the award vests quarterly, my shares will vest twenty times (four
-quarters, five years). Coincidentally, since I have 20 shares, I will get one share per quarter.</li>
-<li>However, because I have a one-year cliff, I get all four quarters of my first year at my one-year anniversary.
-So, four shares should appear in my brokerage account on my one-year anniversary. Once a share is in my
-brokerage account, I can do whatever I want with it (like sell it immediately!)</li>
-<li>Every quarter thereafter, one more share vests and appears in my brokerage account.</li>
-</ul>
-<p>Assuming I get a stock bonus as part of my overall annual bonus, this means that stock
-awards pile up and vest every year. This is tricky for two reasons:</p>
-<p></p>
-<ol>
-<li>Although my initial stock award was $1,000 in the above example, that amount was converted to stock the day it
-was awarded. <i>Assuming I am doing a good job and increasing the value of my employer's stock</i>, the value of
-those shares will increase while they're vesting. This means by the time the first four shares of my award
-vested at my one-year anniversary, they were worth more than the $50 per share they represented when they were
-awarded. More broadly, the value of a stock bonus tends to increase over time, making the true cash value of a
-$1000 stock bonus worth a lot more than $1000 by the time it completely vests.</li>
-<li>Every year's stock award comes with its own multi-year vesting period, which means at any given time, I have
-multiple years' bonuses all vesting at once. This also means that at any given time, I have a bunch of unvested
-stock that's worth a lot of money that I can't yet spend. If I quit my job though, all these unvested shares
-vanish into thin air.</li>
-</ol>
-<p>These two factors make up the golden handcuffs that people often talk about in industry.
-The longer I stick around, the more unvested stock I have hanging over my head, and it usually becomes increasingly
-valuable (yet inaccessible!) over time. The reality is that if you've put in a few years in Big Tech, you might have
-years' worth of base salary tied up in unvested stock that all goes away if you quit.</p>
-<p>The end result is that although base salary is competitive with what you can make in a government HPC facility, there's a significant cash bonus that falls out of the sky once a year, and
-an appreciable amount of stock appears in your brokerage account every couple of months which you can turn around
-and sell for more cash. Depending on seniority and performance, these bonuses can add up to a significant fraction
-of base salary.</p>
-<p>Finally, the above is consistent with what I've seen firsthand at two companies in Big Tech but may be different based on the role and the company. For example, field-facing roles in sales and support may be completely different beasts, and private companies and startups load things differently due to the value of equity.</p>
-<h3 id="work-life-balance">How's work-life balance?</h3>
-<p>It hasn't been different than working in the government. Just like at a lab or university, some people
-work around the clock while others stick pretty close to the standard workday. There may be a higher concentration
-of Type A personalities who put in a lot of time in Big Tech, and this may pressure others to keep up and also put
-in long hours, but there's rarely been an occasion where a manager expects staff to routinely work nights and
-weekends. Doing so would probably result in negative employee satisfaction scores which would roll up and eventually
-have to be addressed.</p>
-<p>Of course, there are cases where working odd hours is required to get the job done. Because
-I work for a global organization, I've had to get up early to meet with teams or customers in Europe. I've also had
-to stay up late to meet with teams or customers in Asia. And in some particularly annoying days, I've had to do both
-and wind up working from 5am to 8pm. But I never felt that I had no choice in the matter; I pulled these hours
-because it was the right thing to do at the time. And I don't see this as being too different from the days when I'd
-work sixteen-hour days, seven days a week, for the entire month of March to put together a paper for SC. Or days
-when I'm at SC and am preparing talks, meeting with partners, and otherwise hustling from 8am to 1am for five days
-straight.</p>
-<p>One big difference is the fact that my employer offers discretionary time off ("unlimited vacation"). This is a divisive topic in industry, but I see it as a positive for work-life balance
-because it underscores an emphasis on <i>outcomes</i> rather than <i>output</i>. I can take an afternoon
-off or enjoy a long weekend with little fanfare, because <i>productivity</i> is infinitely more valuable that <i>presence</i>. As
-long as I do what needs to get done, I don't have to worry about timing vacations to ensure I am banking enough time
-off in between.</p>
-<h2 id="what-i-miss">Do you miss anything about working at the lab?</h2>
-<div>Absolutely. There are a bunch of appealing things about working in a DOE lab (or an NSF center)
-that I've had to give up since coming to industry.</div>
-<h3 id="freedom-to-have-an-off-day">Freedom to have an off day</h3>
-<p>Right before I finished graduate school, I had
-a conversation with <a href="https://engineering.lehigh.edu/faculty/edmund-webb-iii">Professor Edmund Webb</a> soon
-after he became a professor after a decade-long career at Sandia National Labs about life at the Labs. He said that,
-after becoming a professor, he lost the ability to just close the door to his office and focus on
-something he needed to get done for a day. I didn't really grasp what this meant at the time, but I totally get it now. The
-DOE might be one of the few places where you can take a day--maybe even a week--and just close your door to
-everything else that's going on around you to focus on what you want to do. In the case of professorship, there's always students requiring attention; in industry, it's customers and partners.</p>
-<p>I think this difference results from two factors: very few things in public
-HPC are very urgent, and the Labs are stocked full of independent, free-thinking Ph.D. types. There's rarely a
-penalty if something is late by a day (or two years! Remember when <a href="https://insidehpc.com/2020/10/doe-under-secretary-for-science-dabbars-exascale-update-frontier-to-be-first-aurora-to-be-monitored/">Aurora
-was called "A21?"</a>), but there can be huge payoff in prestige if one of your wacky side projects turns out to be
-something useful (this is how <a href="https://docs.nersc.gov/development/containers/shifter/">Shifter</a> came to be). By comparison, working at a giant corporation often means there are a bunch of interdependencies
-on others, and the odds of any one of your 200,000 coworkers sending you a Teams message asking for help is just a lot higher than it is at a 70-person supercomputer center. The culture is much more team-oriented, and being a one-person army isn't incentivized as much.</p>
-<h3 id="travel">Travel</h3>
-<p>Part of my job within the DOE complex was to go around the country (and the world) and be smart, and secondarily,
-show that my lab hired smart people and did smart things. If headquarters wanted to make sure that the supercomputer
-they were about to spend $500M on was technically sound, I'd sometimes get invited to go sit in on a review and try
-to poke holes in the design. If a European HPC project wanted to ensure they were including a global perspective on
-some dimension of future HPC strategy, I'd sometimes get invited to give a talk about how I view the world of data.
-And if these reviews and workshops happened to be in awesome places around the world--oh well!</p>
-<p>I feel a lot more self-conscious about requesting approval to attend these sorts of boondoggles as an engineer now
-because the first question I have to answer is, "Is this trip business critical?" If there's a direct line of sight
-between me giving a talk at a workshop and a specific business strategy, I can say "yes" with a straight face. But it's
-hard to accept an invitation to fly off to Switzerland to give a 30-minute talk when I know that my attendance isn't
-going to move any needles.</p>
-<h3 id="openness">Openness</h3>
-<p>Just like it's no longer my job to travel the world and just be smart, it's not my job to write about the work that I
-(or my team) does. I miss writing papers and giving technical talks, because the process of putting together
-coherent thoughts around a technical topic is one of the ways I really come to understand it. There's also a lot of
-really wild ideas that we're pursuing at scale that the scientific computing
-community has never considered, but there are two factors that work against being open about these things:</p>
-<p></p>
-<ol>
-<li>In terms of prioritization, my time is always better spent solving problems, or at least documenting them for
-internal audiences who fully grasp the context around them, than writing about them in a way that the rest of
-the world can understand. It's hard to justify the time to write a retrospective or a study unless there's a
-strategic advantage behind it.</li>
-<li>The customers I support typically do not want the world knowing what they're doing. There is an AI arms race
-happening right now, and having the technical sophistication to utilize massive-scale supercomputers effectively
-is a competitive advantage. In the traditional HPC community, only national security is comparable to the level
-of secrecy involved, and none of the intelligence agencies are openly contributing to the state of the art in
-HPC either.</li>
-</ol>
-<div>So instead of making conference papers and presentations, these days I make more internal papers and presentations.
-I'm trying to figure out ways to publish interesting technical anecdotes on my website (for example, I maintain <a href="https://www.glennklockwood.com/ai/ai-requirements.html">a collection of LLM training requirements as I am exposed to them</a>), but it's a lot of extra work to disentangle the proprietary bits from my work notes to do this.</div>
-<p></p>
-<p>Related to openness is also freedom to speak my mind in public forums. I had the most latitude to blast my
-opinions out on to the Internet when I was still early in my career and nobody listened to me, but I've had to get
-progressively less opinionated over the years. At this point, I abide by a written corporate social media policy
-which, although very reasonable in what it requests (don't slander competitors, always be transparent about who employs you), it stops me from commenting on news as much as I used to since so many tech
-companies qualify as competitors in some dimension.</p>
-<h2 id="regret-decision">Would you still have left knowing what you know now?</h2>
-<p>Yes. I still stand by just about everything I wrote in my <a href="http://blog.glennklockwood.com/2022/05/life-and-leaving-nersc.html">original blog post</a>; at the time, I just needed a change, and I
-found the change that I was looking for. Without immersing myself in the world of cloud, I would have
-never learned about virtualization, physical infrastructure, or modern security to the degree that I have. And the fact that I
-stumbled into what has become one of the leading companies in AI at the dawn of generative AI was an extremely lucky
-coincidence.</p>
-<p>However, this doesn't mean that I now turn my nose up at doing HPC in the public sector.
-There are many unique aspects to working at a DOE lab or NSF center that have no parallel in industry. I also believe that I am
-the sum of the experiences that led me to where I work today, and I would never have gotten the opportunity to write
-this retrospective if I didn't learn everything I did working in the DOE and NSF.</p>
-<p>And perhaps above all else, there is something attractive about public service that I haven't been
-able to shake in the last two years. I still dial in to <a href="https://science.osti.gov/ascr/ascac">ASCAC
-meetings</a> to see what the world of public HPC and scientific computing is thinking and doing, and I still try
-to contribute time and attention to working groups like <a href="https://www.nitrd.gov/coordination-areas/lsn/magic/">NITRD's MAGIC</a>. I write lengthy blog posts in a <a href="http://blog.glennklockwood.com/2024/05/isc24-recap.html">futile attempt to caution the leaders in public-sector HPC</a> against
-rejecting AI workloads in commercial clouds as HPC. And every time I learn some slick way we deal with hard technological or sociological issues at work, I still file it away in the "good ideas for when I go
-back" folder in the back of my mind.</p>
-<p>I don't have any near-term plans on going anywhere though. Like I said before, there are
-still plenty of days when dialing into work is like going to the playground. Amazing things are happening in the
-world of HPC infrastructure at scale now that the world is pouring money into AI, and the rate of scale and
-innovation is no longer constrained to <a href="https://www.llnl.gov/article/48101/powering-llnl-prepares-exascale-massive-energy-water-upgrade">40 MW</a>
-and <a href="https://www.olcf.ornl.gov/wp-content/uploads/OLCF-6-RFP-Cover-Letter-07-19-2024.pdf">$500M</a> per
-supercomputer like it was when public-sector HPC was setting the bar for leadership. There is a whole new exciting world of challenges and possibilities when you start thinking about building supercomputers that consume <a href="https://www.datacenterdynamics.com/en/news/aws-acquires-talens-nuclear-data-center-campus-in-pennsylvania/">hundreds of megawatts of power</a>.</p>
-<p>Like I wrote two years ago, I don't think any government has the appetite to build data centers for scientific computing that are larger than today's 50 MW exascale facilities. This means that government HPC centers will never have a reason to explore the exciting world of 100+ MW supercomputers or work on the wacky problems that arise at that scale. Consequently, the biggest and most challenging problems in HPC--at least in terms of infrastructure and systems design at scale--are becoming unique to industry, not public HPC.</p>
-<p>I got into HPC because I enjoy working on large, complex systems. Considering where I am at this stage of my life, what I want to accomplish in the rest of my career, and what gets me out of bed in the morning, I feel like I wound up in the right place for now. I have no regrets.</p>]]></content><author><name>Glenn K. Lockwood&apos;s Blog</name></author><category term="glennklockwood" /><summary type="html"><![CDATA[June 2024 marked two years since I left my job at one of the world's most prestigious government HPC centers for a job in one of the world's largest technology corporations. In that time, the world of HPC has changed dramatically; just six months after I started, ChatGPT was released and triggered a gold rush in AI that is now overshadowing traditional scientific computing. This shift brought about massive HPC deployments led by hyperscalers, challenging the long-held belief that only national governments could deploy and operate world-leading supercomputers. My experiences at ISC'24 this past summer made clear to me that the traditional HPC community is now rethinking their role the industry, and some individuals who built their careers in public HPC are revisiting their assumption that world-class HPC systems are limited to the public institutions that have historically dominated the top of the Top500 list. I had no idea things would unfold this way when I left my job at NERSC back in 2022, and I've been remarkably lucky to now be a part of the largest forces driving this huge shift in HPC.]]></summary></entry></feed>
+<p class="ember-view reader-text-block__paragraph" id="ember3462">8.<span class="white-space-pre"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo " href="https://www.youtube.com/playlist?list=PLOFEBzvs-Vvr-GzDWlZpAcDpki5jUqYJu" target="_self">https://www.youtube.com/playlist?list=PLOFEBzvs-Vvr-GzDWlZpAcDpki5jUqYJu</a></p>]]></content><author><name>Surfing the Singularity</name></author><category term="surfthesing" /><summary type="html"><![CDATA[The If you've been tracking the technology industry, and the software space in particular, for any amount of time you've witnessed the accelerating rate of technical change - it was always there, but now its become impossible to miss. The rate of technological change has seemed exponential for a while now, but recent advancements in AI have pushed this curve to new heights. An Accenture report released for Davos 2024 suggests that technical rate of change is seen by C-level leaders as the number one most impactful force on their business - more than financial or geopolitical matters - largely as a result of advances in various forms of AI tooling. [1] Of those surveyed, 88% see the rate of change increasing even further, and half say their organizations are not ready, even though 70% see it as a revenue opportunity. Dinosaur Developers? Today staying alive in business, especially the business of software engineering, means surfing increasingly turbulent and potentially disruptive waters. Consider the leaked recent remarks of Amazon Web Services CEO Matt Garman, wherein he suggested that a mere 2 years from now most AWS programmers wouldn't be coding. [2] In their Q2 investor call, Amazon cited 4,500 person-years of savings through the use of AI assistants on mostly mundane programming tasks like porting and hardening code with patterns of best practices. [3] While the International Monetary Fund suggests AI will impact 60% of jobs and increase wealth inequality, the jobs impacted are more likely to be skewed to higher income countries. [4] These remarks from influential leaders in the industry suggest that the impact of AI will be felt most acutely among software practitioners. Those of us who use integrated development environments (IDEs) to write code (and documents, like this one) with AI assist already are familiar with the benefits. For those unwilling to adapt, to retool and upscale their skills, the future might be bleak. Growing might mean zooming out from code to a more soup-to-nuts view of the software engineering process, especially specification and validation - the need to clearly state requirements and validate results without an immediate need to focus on implementation details. Notice that in the below diagram, taken from the Federal Aviation Administration which is increasingly interested in software engineering and model validation, traditional coding sits only at the bottom of the process rendered as a "V". [5] Development in the context of verification and validation, as seen by the FAA. So how to stay relevant in a rapidly changing world, to stay one step ahead of AI and the algorithmic job reaper? A recent LinkedIn survey of technologists suggests the number one thing a person can do is to learn new technologies. [6] A recent Gartner report [7] of the 30 most impactful technologies lists quantum computing as a weighty albeit distant critical enabler. Why? For starters, the existence of Shor's quantum-based numerical factoring algorithm means its a matter of when, not if, quantum computers will be used to crack existing military-grade encryption. In the hands of an adversary, especially when unknown as with the Enigma machine in WWII, the results could be catastrophic, and this is a good part of what is fueling the current government interest in quantum computing. Off to Quantum Summer School So for me, it was back to school. Summer school. First I hit the stacks, brushed my very stale self up on the fundamentals of the necessary calculus and linear algebra, the quantum mechanics to at least an undergraduate level of understanding, read several texts on the subject of quantum computing including the K&amp;R of quantum "Mike &amp; Ike", consumed mass quantities of videos from companies like IBM and Xanadu, and kicked the tires on their programming tool kits. Next I traveled a short distance from my home office to the Griffiss Institute in Rome NY at their now annual "Quantum 4 International" conference. This consisted of an impressive array of researchers and government administrators presenting their latest findings and laboratory results, often in a sort of national inventory of funded priority projects. The US Air Force, which maintains a research presence in Rome NY, is particularly interested in quantum computing and networking, for example, scaling up to a larger quantum computer by networking (entangling) a set of smaller ones. The Army and Navy are more focused on other non-computing aspects of quantum technology - sensing, magnetics, material defect identification, and as radio receivers. The Canadian delegation was focused on many of the same research topics, as well as a national emphasis on quantum technology education - to be impactful in quantum computing, one must be able to meld a variety of maths, physics, and programming skills with an unusual level of creativity to design novel and efficient algorithms which take advantage of the power of the quantum qubit - as a former college adjunct, this is no small educational challenge. Finally, researchers from the EU demonstrated new upper bounds on entanglement at a distance for wider area networking, and the use of novel estimation techniques to scale up quantum simulators in this "NISQ" era where real quantum computers are still small, noisy, fragile, and scarce. What was noticeably lacking was the demonstration of any current industrial utility for quantum computing applications, and the head of DARPA saw none emerging until we collectively move beyond the NISQ era. Pack a Remote Lunch While some industrial domains like chemistry will likely gain utility first, the head of DARPA suggests that utility in my own current application area - computational fluid dynamics (CFD) - will not emerge until we move into the "cryptographically relevant" era. It was with this in mind that I remotely attended the von Karman Institute for Fluid Dynamics in Belgium for a week-long course called "Introduction to Quantum Computing in Fluid Dynamics" funded by NATO. Entirely civilian in nature, the training was aimed at CFD researchers who might take advantage of one of the quantum facilities being installed at national laboratories in the US and EU, often collocated with their existing high performance computing (HPC) clusters. Not being a physicist, for me much of the class was consumed for general domain literacy, and the "tl;dr" is the re-emergence of particle-based methods like Lattice Boltzmann as a focus of research over finite volume methods and solving the Navier-Stokes equations, as is currently dominant in HPC-based CFD. With mind fully blown by the Von Karman experience, I next took two weeks and attended the IBM Global Quantum Summer School, 2024 edition, consisting of 10 lectures on a variety of topics and 4 labs. The videos are now posted on YouTube [8] and while I personally enjoyed the lecture on Hamiltonian simulation, there was a distinct and unfortunately NISQ-era necessity to focus on error correction and compensating for noise, and on the inner workings of the IBM Qiskit transpiler. In the latter case, because of the diverse nature of the emerging quantum hardware, because inter-qubit connectivity is often not N-way, and because at this stage things often break, it becomes common to mess with the compiler, and to adopt a toolchain with an eye to portability. Qiskit, a library and tool set for Python, is one of a couple frameworks (another being PennyLane) which currently meet this need, and the labs went to length to expose the student to the various topological mapping, translation, and optimization stages which are present in the quantum programming toolchain. And we got to play with a Hamiltonian simulation up to 50 qubits on real hardware, as most classical machines would have a hard time managing the simultaneous behavior of 50 spins. Next Up: AI Assistants &amp; Hybrid Quantum Computing During the Qiskit labs, naturally I was using LLM assist in my IDE, at minimum for tedious or repetitive tasks. But it was remarkable how often the AI assistant was helpful, even for a seemingly niche programming task such as using a quantum computing framework. I intend to delve into this topic more in a future blog and share my experiences with the various emerging AI tools for code and document assist, as well as in the broader end-to-end software engineering context. In addition, I intend to share future blog installments as my quantum education in search of industrial utility continues through the fall conference season. As a software engineer, I'll be particularly on the lookout for frameworks, including those which leverage AI, which allow the programmer to rise above the level of 1950s-like qubits and gates to higher and portable constructs. I'll also be sharing learnings on the rise of classical-quantum hybrids, especially in HPC contexts, as today's quantum approaches such as variational algorithms which converge on solutions require it. Here is another place where toolchains will play a major role, and where heterogeneous workflows which utilize AI tools will likely be impactful. Until next time, enjoy these last few weeks of summer. - andy References: 0. Photo by Ben Wicks on Unsplash 1. https://www.accenture.com/us-en/about/company/pulse-of-change 2. https://www.businessinsider.com/aws-ceo-developers-stop-coding-ai-takes-over-2024-8 3. https://accelerationeconomy.com/cloud-wars/amazon-genai-slashes-260-million-in-costs-saves-4500-years/ 4. https://nypost.com/2024/01/15/business/ai-will-affect-60-of-us-jobs-imf-warns/ 5. https://www.faa.gov/sites/faa.gov/files/2024-07/d_VVFlow_2024Mar21.jpg 6. https://www.linkedin.com/advice/0/how-can-you-stay-relevant-software-development-skills-it-services-kxeme 7. https://www.gartner.com/en/articles/30-emerging-technologies-that-will-guide-your-business-decisions 8. https://www.youtube.com/playlist?list=PLOFEBzvs-Vvr-GzDWlZpAcDpki5jUqYJu]]></summary></entry></feed>
