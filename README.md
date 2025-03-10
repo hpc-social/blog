@@ -35,9 +35,10 @@ Thus, you can add an rss/xml feed to share stories and experiences to be present
 and it will show up in the feed for the respective repository and the [aggregated blogs feed](https://hpc.social/blog/)
 here. Here is how to get started, for either of the above!
 
-1. Fork the repository that you've chosen in the step above (**you should not be forking this repository where you are reading!**), clone it to your machine, and checkout a new branch.
+1. Fork the repository that you've chosen in the step above (**you should not be forking this repository where you are reading!**), checkout a new branch, and clone it to your machine.
 1. Add your entry to the [_data/authors.yml](_data/authors.yml) file
 1. Generate your set of posts (instructions below)
+1. Push your change to GitHub
 1. Open a pull request to the main repository!
 
 > ⚠️ **important** The blog you chose from the links above should be the one that you clone, and not the central portal repository where you are reading the instructions now.
