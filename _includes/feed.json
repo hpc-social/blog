@@ -17,6 +17,25 @@
 "items": [
     
         {
+            "id": "https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact/",
+            "title": "The trap of prioritizing impact",
+            "summary": null,
+            "content_text": "(I wrote this originally as a comment in RLS in response to a staff-level engineer who was frustrated at how little they got to code anymore, and it resonated with enough folks that maybe it’s worth sharing here!)There’s a trap I’ve seen a lot of staff+ folks fall into where they over-prioritize the idea that they should always be doing “the right, most effective thing for the company”. When I see engineers complain that they don’t get to code enough, I often suspect they’ve fallen prey to this.I say that’s a trap! because I see people do this at the expense of their own job satisfaction and growth, which is bad for both them and (eventually) for the company which is likely to lose them.I don’t blame people for falling into this trap, it’s what we’re rewarded for. I’ve fallen into it! I have stopped doing technical work I cared about, prioritized #impact, and fought fires wherever they arose. I have spent all my time mentoring and teaching and none coding. The result was often grateful colleagues, but also burnout and leaving jobs I otherwise liked.Whereas when I’ve allowed myself to be like 30% selfish — picking some of my work because it was fun and technical, even when doing so was not the “most impactful” thing I could do — I was happier, learned more, and stayed in roles longer.An example: I worked on a team that was doing capacity planning poorly and was buying too much hardware. (On-prem, physical hardware.) I could have solved the problem with a spreadsheet, but that was boring and made my soul hurt.What I did instead was dig into how our container scheduling platform worked, and wrote a nifty little CLI tool that would look at the team’s configured workloads and spit out a capacity requirement calculation. It took about three times as long as the spreadsheet would have, but it was fun and accomplished the same goal and gave me some experience in the container platform. And it wasn’t that much of a time sink.Was that better for the company? No idea. I hope it was — I hear the tool is still maintained and no one has replaced it with a spreadsheet yet! But that’s a happy accident.Was it better for me? Absolutely! It was a bit selfish, but it made an otherwise tedious task more fun and I learned some useful tricks.So — if you wish you had more time to code… go code a bit more. Don’t let the idea of being more effective guilt you into giving it up. Your career is your career and you should enjoy it.",
+            "content_html": "<p>(I wrote this originally as a comment in <a href=\"https://randsinrepose.com/welcome-to-rands-leadership-slack/\">RLS </a>in response to a staff-level engineer who was frustrated at how little they got to code anymore, and it resonated with enough folks that maybe it’s worth sharing here!)</p><p>There’s a trap I’ve seen a lot of staff+ folks fall into where they over-prioritize the idea that they should always be doing “the right, most effective thing for the company”. When I see engineers complain that they don’t get to code enough, I often suspect they’ve fallen prey to this.</p><p>I say <strong><em>that’s a trap</em></strong>! because I see people do this at the expense of their own job satisfaction and growth, which is bad for both them and (eventually) for the company which is likely to lose them.</p><p>I don’t blame people for falling into this trap, it’s what we’re rewarded for. I’ve fallen into it! I have stopped doing technical work I cared about, prioritized #impact, and fought fires wherever they arose. I have spent all my time mentoring and teaching and none coding. The result was often grateful colleagues, but also burnout and leaving jobs I otherwise liked.</p><p>Whereas when I’ve allowed myself to be like 30% selfish — picking some of my work because it was fun and technical, even when doing so was not the “most impactful” thing I could do — I was happier, learned more, and stayed in roles longer.</p><p>An example: I worked on a team that was doing capacity planning poorly and was buying too much hardware. (On-prem, physical hardware.) I could have solved the problem with a spreadsheet, but that was boring and made my soul hurt.</p><p>What I did instead was dig into how our container scheduling platform worked, and wrote a nifty little CLI tool that would look at the team’s configured workloads and spit out a capacity requirement calculation. It took about three times as long as the spreadsheet would have, but it was fun and accomplished the same goal and gave me some experience in the container platform. And it wasn’t that much of a time sink.</p><p>Was that better for the company? No idea. I hope it was — I hear the tool is still maintained and no one has replaced it with a spreadsheet yet! But that’s a happy accident.</p><p>Was it better for me? Absolutely! It was a bit selfish, but it made an otherwise tedious task more fun and I learned some useful tricks.</p><p>So — if you wish you had more time to code… go code a bit more. Don’t let the idea of being more effective guilt you into giving it up. Your career is your career and you should enjoy it.</p>",
+            "url": "https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact/",
+            
+            
+            
+            
+            
+            "date_published": "2025-09-20T14:46:41-06:00",
+            "date_modified": "2025-09-20T14:46:41-06:00",
+            
+                "author": "Thinking Out Loud"
+            
+        },
+    
+        {
             "id": "https://hpc.social/personal-blog/2025/lessons-learned-from-three-years-in-cloud-supercomputing/",
             "title": "Lessons learned from three years in cloud supercomputing",
             "summary": null,
@@ -678,25 +697,6 @@
             "date_modified": "2022-11-18T08:30:00-07:00",
             
                 "author": "Vanessasaurus"
-            
-        },
-    
-        {
-            "id": "https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1/",
-            "title": "Ceph OSD CPU Scaling - Part 1",
-            "summary": null,
-            "content_text": "Last summer we had a user that hit some performance issues based on a recommendation to use 2 cores per OSD in their systems.  I wanted to provide some data for the community and wrote up a blog post on the ceph.io website.  Please take a look!",
-            "content_html": "<p>Last summer we had a user that hit some performance issues based on a recommendation to use 2 cores per OSD in their systems.  I wanted to provide some data for the community and wrote up a blog <a href=\"https://ceph.io/en/news/blog/2022/ceph-osd-cpu-scaling/\">post</a> on the ceph.io website.  Please take a look!</p>",
-            "url": "https://hpc.social/personal-blog/2022/ceph-osd-cpu-scaling-part-1/",
-            
-            
-            
-            
-            
-            "date_published": "2022-11-08T00:00:00-07:00",
-            "date_modified": "2022-11-08T00:00:00-07:00",
-            
-                "author": "Mark Nelson's Blog"
             
         }
     
