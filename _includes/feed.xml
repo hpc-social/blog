@@ -1,4 +1,1085 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2025-11-30T21:00:11-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">The trap of prioritizing impact</title><link href="https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact/" rel="alternate" type="text/html" title="The trap of prioritizing impact" /><published>2025-09-20T14:46:41-06:00</published><updated>2025-09-20T14:46:41-06:00</updated><id>https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact/"><![CDATA[<p>(I wrote this originally as a comment in <a href="https://randsinrepose.com/welcome-to-rands-leadership-slack/">RLS </a>in response to a staff-level engineer who was frustrated at how little they got to code anymore, and it resonated with enough folks that maybe it’s worth sharing here!)</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2025-12-01T20:38:46-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">SC’25 recap</title><link href="https://hpc.social/personal-blog/2025/sc-25-recap/" rel="alternate" type="text/html" title="SC’25 recap" /><published>2025-12-01T14:34:00-07:00</published><updated>2025-12-01T14:34:00-07:00</updated><id>https://hpc.social/personal-blog/2025/sc-25-recap</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/sc-25-recap/"><![CDATA[<p>
+  The annual SC conference was held last week, drawing over
+  <a href="https://www.hpcwire.com/2025/11/19/sc25-observations-more-pumps-than-processors/">16,000 registrants and 560 exhibitors</a>
+  to in St. Louis, Missouri to talk about high-performance computing, artificial
+  intelligence, infrastructure, and science. It was my tenth time attending
+  in-person (12th overall), and as is always the case, it was a great week to
+  reconnect with colleagues, hear what people are worrying about, and get a
+  finger on the pulse of the now-rapidly changing HPC industry.
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Outside the SC'25 convention center on the only clear day of the week.</figcaption>
+</figure>
+</div>
+<p>Although every SC I've attended always felt a little different from the
+  previous year, this one felt quite different. Part of that results from my own
+  personal circumstances: this is the first year I attended as an employee of
+  VAST Data, and so the people with whom I met and the technical problems to
+  which I paid attention were certainly biased towards those most relevant to my
+  work. But the backdrop of the whole conference has also shifted. It's been
+  three SC conferences since ChatGPT came out, and it's now undeniable that AI
+  isn't simply on the horizon; it's shaping the field of HPC and scientific
+  computing. What used to be an argument of "<a href="https://blog.glennklockwood.com/2024/05/isc24-recap.html#section11">us vs. them</a>" is now more like "them (and us?)"<span></span></p>
+<p></p>
+<p>
+  As has become tradition, I'm sharing some of my thoughts from the week with
+  the world in the hopes that someone finds this interesting and insightful.
+  I've roughly organized them into two areas big themes and the exhibition hall.
+</p>
+<ul style="text-align: left;">
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#big-themes">Big themes</a>
+<ul>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#theme-1-the-big-number-is-losing-its-shine">Theme 1: The big number is losing its shine</a>
+<ul>
+<li><a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#top500">Top500</a></li>
+<li><a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#the-gordon-bell-prize">The Gordon Bell Prize</a></li>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#fixing-problems-caused-by-the-big-number">Fixing problems caused by the big number</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#theme-2-hpc-policy-is-becoming-ai-policy">Theme 2: HPC policy is becoming AI policy</a>
+</li>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#theme-3-ai-discourse-is-growing-up">Theme 3: AI discourse is growing up</a>
+<ul>
+<li><a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#agentic-workflows">Agentic workflows</a></li>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#data-and-agentcentric-service-infrastructure">Data and agent-centric service infrastructure</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#the-exhibit-hall">The exhibit hall</a>
+<ul>
+<li><a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#by-the-numbers">By the numbers</a></li>
+<li>
+<a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#interesting-new-technology">Interesting new technology</a>
+<ul>
+<li><a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#dell-ir700">Dell IR700</a></li>
+<li><a href="https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#hpe-cray-gx5000">HPE Cray GX5000</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="big-themes">Big themes</h2>
+<p>
+  HPC has always been at the center of a tension between keeping things the same
+  (supercomputers are the most stable the day they are turned off) and pushing
+  the technological envelope (which is the fastest way to unlock new discovery).
+  The desire to push the envelope has always been a "pull" towards the future;
+  researchers first led with kooky ideas (like DAOS and Kokkos), and as those
+  ideas turn from research into production, they make new technologies (like
+  all-flash and AMD GPUs) accessible to scientists.
+</p>
+<p>
+  What hasn't historically happened, though, is a strong "push" towards the
+  future. Scientific HPC centers push themselves to justify building the next
+  big supercomputer, but it's been a given that there will always be another big
+  machine, so this push has been internal and gentle. Combined with the
+  not-so-urgent pull of HPC researchers, every center has gotten a new machine
+  every five years or so.
+</p>
+<p>
+  This is the year where it became clear to me that AI is now exerting a strong
+  push on the HPC industry--a shove even, forcing HPC centers around the world
+  to align themselves on an AI mission if they want to survive. All the
+  big-money HPC systems being announced this year are clearly being positioned
+  as AI-first and AI-motivated, and these announcements are going well beyond
+  simply peppering "AI" throughout the press release and otherwise acting as if
+  it was business-as-usual. This is the first SC where I saw scientists,
+  architects, and decision-makers being being forced to confront real tradeoffs
+  favor either HPC or AI, and they are beginning to choose AI.
+</p>
+<p>
+  This push-and-pull on HPC towards the future manifested in three big themes.
+</p>
+<h3 id="theme-1-the-big-number-is-losing-its-shine">
+  Theme 1: The big number is losing its shine
+</h3>
+<p>
+  HPC has long organized itself around treating the big machine and the big
+  number as its top priority, and this is why the two largest HPC conferences of
+  the year honor the semiannual release of the Top500 list on their main stage.
+  However, this year felt like the first time that one number (that somehow
+  reflects "performance") dominated the conversation. Instead, the discourse was
+  more diffuse and discussed "performance and x" or "the supercomputer and x."
+</p>
+<h4 id="top500">Top500</h4>
+<p>
+  The place where this was most evident to me was at the
+  <a href="https://sc25.conference-program.com/presentation/?id=bof117&amp;sess=sess409">Top500 BOF</a>, where the latest list was unveiled.
+</p>
+<p>
+  The biggest announcement was that Europe now has its first benchmark-confirmed
+  exascale system in JUPITER, which ran a full-system HPL at
+  <a href="https://mastodon.social/@andih/115566907716591104">1,000,184 TFLOPS</a>
+  for two hours and seven minutes. However, JUPITER didn't get any stage time at
+  the BOF since, like Aurora, it actually debuted on a previous list with a
+  sub-exascale run. This run pushed it over the finish exascale finish line, but
+  if the Top500 list metadata is to be believed, the run used 100% of JUPITER's
+  5,884 nodes to break the barrier--a feat that is unlikely to be reproduced on
+  any production applications, since it is rare to have zero failed nodes in any
+  large-scale production environment.
+</p>
+<p>
+  So, while there was little fanfare for Europe in breaking the exaflops barrier
+  with its new big machine and big number, there were some big
+  announcements--one overt, and others more muted.
+</p>
+<p>
+  The biggest news was that <strong>the Top500 list is changing hands</strong>.
+  Whereas it has historically been controlled by three people--Jack Dongarra,
+  Horst Simon, and Erich Strohmaier--it will be transitioning to be
+  community-controlled under the stewardship of ACM SIGHPC. Dongarra, Simon, and
+  Strohmaier will still be on the steering committee under the ACM stewardship,
+  but this new governance structure opens the doors for new ideas to breathe new
+  life into the way systems are ranked and, more broadly, how "performance" is
+  meant to be interpreted from Rmax.
+</p>
+<p>
+  At present, the list (and related lists) are bound by rules that, in the
+  present day of reduced-precision accelerators, make little sense. For example,
+  using the Ozaki scheme within the LU decomposition is not allowed by Top500
+  despite the fact that it can produce the same answer with the same numerical
+  accuracy much faster than hardware FP64. And while the HPL-MxP benchmark does
+  allow solving the same problem using more creative methods, Strohmaier
+  highlighted a problem there too: it never dictated how to deal with multiple
+  levels of mixed precision until AIST broke the rankings. AIST ran HPL-MxP at
+  both 16-bit and 8-bit precisions, resulting in their ABCI 3.0 system
+  simultaneously ranking at #6 and #10.
+</p>
+<p>
+  These sorts of issues make it easy to question the value of leaderboards like
+  Top500 or HPL-MxP, as their definition of "performance" becomes increasingly
+  further divorced from how large supercomputers are really used. The past few
+  years have shown that there hasn't been the time or energy to get ahead of
+  these ambiguities amongst the three men maintaining the list, so transitioning
+  it to ACM will hopefully be a positive move that will give the list a chance
+  to be revitalized.
+</p>
+<p>
+  To their credit,
+  <strong>the incipient stagnation of the Top500 list</strong> was called out by
+  Strohmaier during his analysis of the list, acknowledging that "growth has
+  tremendously slowed down compared to what it used to be" and "we don't have
+  proof of what is actually the reason for that:"
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">All the key highlights of this SC's Top500 list.</figcaption>
+</figure>
+</div>
+<p>China has stopped submitting, the AI and hyperscale providers really never
+  started submitting, and retired systems are being thrown off the list long
+  before they fall off the bottom. To me, this was a tacit acknowledgment that
+  the list does not have a bright future out to 2030 unless it is modernized to
+  be relevant to the way in which today's largest systems are actually being
+  used--which is not DGEMM.
+</p>
+<p>
+  The final surprising acknowledgment during Strohmaier's talk was that
+  <strong>the list is trailing the state of the art in hardware</strong> by
+  quite a bit. He pointed out that Blackwell systems are only now starting to
+  appear even though they've been shipping in volume for the better part of a
+  year. While he hypothesized that there is "uneasiness" about Blackwell in an
+  HPC context, the reality is that there are no Blackwells for HPC until the
+  Blackwell orders for hyperscale AI have been fulfilled. HPC is second in line,
+  and even then, the only Blackwells I could find on this year's Top500 list
+  were NVL8 configurations--not the NVL72 configurations that have been filling
+  up hyperscale datacenters like
+  <a href="https://glennklockwood.com/garden/systems/Fairwater">Fairwater</a>.
+</p>
+<p>
+  Strohmaier pointed out that Blackwell, by virtue of its HBM3e (vs. Hopper's
+  HBM3), is showing up higher on the HPCG list (which is a memory bandwidth
+  test) than on Top500 (which is an FP64 FLOPS test). He phrased this as
+  evidence that "not everything is bad for the HPC community," but I would have
+  phrased my conclusion a little differently:
+</p>
+<ol type="1">
+<li>
+    Blackwell is actually great for HPC, because most real workloads are
+    memory-bandwidth bound, not FLOPS bound. The fact that B200 offers similar
+    FP64 FLOPS at higher memory bandwidth means that real applications will get
+    higher effective use of those FP64 FLOPS.
+  </li>
+<li>
+    Despite the above, Blackwell doesn't perform well on Top500 because HPL
+    doesn't reflect the reality that memory bandwidth is important. It follows
+    that HPL doesn't reflect the reality of real HPC applications. A Blackwell
+    system can be significantly better for real HPC applications than a
+    comparably sized Hopper system even though it may rank lower than Hopper on
+    Top500.
+  </li>
+<li>
+    Blackwell isn't showing up in volume now because the HPC community is second
+    in line. The HPC community isn't uneasy as much as it is completely locked
+    out. The first NVIDIA-based exascale system debuted in November 2025 despite
+    its GPU being three years old, suggesting that if big Blackwell systems ever
+    appear on Top500, it'll happen in 2026-2027.
+  </li>
+</ol>
+<p>
+  All of this is a roundabout way of showing that the big number--in this case,
+  the HPL score--no longer leads meaningful conversation around how useful a
+  system is for science.
+</p>
+<h4 id="the-gordon-bell-prize">The Gordon Bell Prize</h4>
+<p>
+  Another major indicator of the changing tide away from the big number was the
+  work that won this year's
+  <a href="https://awards.acm.org/bell">Gordon Bell Prize</a>. The winning
+  paper, titled "<a href="https://arxiv.org/html/2504.16344v2">Real-time Bayesian inference at extreme scale: A digital twin for tsunami
+    early warning applied to the Cascadia subduction zone</a>," wasn't the typical case of running a huge simulation for a few hours and
+  reporting some result. Rather, it described a four-step workflow that
+  culminates in the desired insight popping out of a computation that runs
+  across only 128 nodes and completes in less than 0.2 seconds. Furthermore, the
+  hero run part could be decomposed into trivially parallel components, allowing
+  the bulk of the computation to be geographically distributed across HPC
+  centers or GPUs spread across on-prem and cloud providers.
+</p>
+<p>
+  My understanding of the work is that there was a massive "offline" computation
+  to precompute a few key matrices (Phase 1) followed by two shorter offline
+  steps that turn those matrices into the core of the digital twin. The last
+  step, which was "online" and designed to be computed in real-time, could then
+  take this core and solve the input problem with extremely low latency. This
+  workflow front-loads a hero run in such a way that, if an earthquake were to
+  occur, the risk of tsunami could be calculated in less than a second using
+  only modest compute resources and the precomputed core.
+</p>
+<p>
+  The authors eschewed methods that generated tons of FLOPS in favor of methods
+  that were less FLOPS-efficient but got to the answer faster. In the authors'
+  own words:
+</p>
+<blockquote>
+<p>
+    As shown in Fig. <a href="https://arxiv.org/html/2504.16344v2#S7.F7">7</a>, higher FLOP/s does not necessarily lead to faster time-to-solution. On
+    MI300A nodes of <em>El Capitan</em>, the best-performing
+    implementation, Fused PA, achieves a lower percentage (5.2%) of theoretical
+    peak FLOP/s than Fused MF (5.5%) but is faster.
+  </p>
+</blockquote>
+<p>
+  Interestingly, the hero computation here was embarrassingly parallel(ish) as
+  well; in their demonstration run, the hero run (Phase 1) was broken into 621
+  independent calculations each requiring 128 nodes (512 A100 GPUs) for about an
+  hour. Because they are independent, these tasks could be parallelized across
+  multiple HPC centers as well, and my understanding of the data volumes
+  involved are modest; Phase 1 would require a single shared copy of the input
+  mesh (a hundred GiB?) per HPC center, and each of the 621 tasks would output
+  around 8 GiB which would have to be copied back.
+</p>
+<p>
+  While I don't understand the mathematics behind this work, the paper took what
+  would've been a huge exascale-class mathematical problem ("10 years on a
+  sustained 1 EFLOP/s machine") and reformulated it into a workflow that solves
+  the problem faster and more usefully. Instead of brute-forcing the problem
+  with a big supercomputer, they split it into separate offline and online
+  parts, and this naturally allowed the most computationally expensive part to
+  be geographically distributable.
+</p>
+<p>
+  This work surrendered the need for a single big machine, and it didn't produce
+  a big-number result. But it did win the Gordon Bell Prize, again signaling
+  that the HPC community is beginning to look beyond performance-only and think
+  about awarding innovation according to outcomes, not just FLOPS.
+</p>
+<p>
+  The talk for this paper can be viewed
+  <a href="https://sc25.conference-program.com/presentation/?id=gb106&amp;sess=sess577">here in the SC25 Digital Experience</a>.
+</p>
+<h4 id="fixing-problems-caused-by-the-big-number">
+  Fixing problems caused by the big number
+</h4>
+<p>
+  Most of my perception around the HPC community beginning to de-emphasize the
+  singular big machine or big number arose from organic interactions I had with
+  colleagues and customers though. It's hard to summarize how these
+  conversations went, but the
+  <a href="https://sc25.conference-program.com/presentation/?id=bof197&amp;sess=sess439">Lustre Community BoF</a>
+  is a good example of what I saw elsewhere.
+</p>
+<p>
+  Lustre has long been the gold standard in high-performance parallel I/O in the
+  HPC community because it was designed from day one to deliver high bandwidth
+  above all else. As a result, Lustre already has the big number solved in many
+  ways, and events like the Lustre BOF are a great case study in what it looks
+  like for a performance-first technology to be pushed into adapting to deliver
+  more than just a big number.
+</p>
+<p>
+  First, the ever-innovative Stéphane Thiell from Stanford discussed the process
+  and tooling he developed to enable online capacity expansion of a Lustre file
+  system. The basis for it was a distributed, fault-tolerant tool he developed
+  that uses redis, lfs find, and lfs migrate to manage the state of file
+  migrations across Lustre servers as the file system is rebalanced. While a
+  part of me thought this was a great tool that would be super helpful for many
+  others, another part of me was kind of horrified.
+</p>
+<p>
+  Maybe I've been spoiled by working in hyperscale and AI these past three
+  years, but online capacity expansion and rebalancing is a built-in capability
+  of all distributed storage systems these days. All the major cloud object
+  stores do this, as do all modern parallel file systems including Quobyte,
+  VAST, and WEKA. Of course, none of these modern systems are as efficient (on a
+  per-CPU core or per-SSD basis) as Lustre at delivering peak performance. But
+  Stéphane's talk made me realize the price that's paid for this great
+  performance.
+</p>
+<p>
+  Andreas Dilger and others went on to talk about Lustre futures, and as they
+  were speaking, I noticed that nobody was talking about performance
+  improvements to Lustre. Rather, feature development was focused on catching up
+  in every other dimension--data governance, reliability, manageability, and
+  others. For example, Andreas talked a bit about the upcoming "multi-tenancy"
+  features coming to Lustre:
+</p>
+<p></p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">It's a lot of work to retrofit multitenancy into a performance-first file system.</figcaption>
+</figure>
+</div>
+
+<p>I put “multi-tenancy” in quotes because these changes really represent
+trying to back into a security posture that is fundamentally different from the
+one that Lustre was designed around. In the pursuit of performance, Lustre (as
+with most other HPC technologies) was designed assuming that security was
+someone else’s problem. By the time someone could log into a system that could
+mount a Lustre file system, they had already been authenticated, and it was up
+to the OS on each compute node to authorize any interactions with Lustre itself.
+This is the “implicit trust” model.</p>
+<p></p>
+<p>
+  The problem, of course, is that the rest of the world has adopted a "zero
+  trust" model which makes many things (except performance!) generally easier.
+  Compliance is easier when the system assumes that everything is encrypted as a
+  default and key management can be delegated to a third party. Because Lustre
+  didn't do this from the outset, it is going through this process of
+  retrofitting encryption in various places and using a mixture of nodemaps,
+  UID/GID maps, and shared secrets to patch over all the places where trust was
+  fundamentally implicit.
+</p>
+<p>
+  Later on in the BOF, panelists acknowledged (some half-heartedly) that
+  manageability of Lustre was a barrier. One panelist admitted that it took five
+  years of work to almost get to the point where a Lustre update can be done
+  without crashing applications. Another panelist said that multitenancy in
+  Lustre is easy <em>if you follow a million steps</em>, and that his company
+  was developing script-based ways to simplify this. While the idea of using
+  scripts to simplify operations is not bad, from a secure supply chain
+  standpoint, relying on third-party bash scripts to enable features required
+  for legal compliance is horrifying.
+</p>
+<p>
+  I don't mean to pick on Lustre alone here; other HPC technologies such as
+  InfiniBand, Slurm, and DAOS are facing the same reality: retrofitting modern
+  requirements like security and manageability into architectures that
+  prioritized performance and scalability over everything else are now going
+  through similar contortions to meet modern requirements around data
+  governance. For those HPC centers who do not have to worry about compliance
+  (which is most of open-science computing), these technologies will continue to
+  be just fine.
+</p>
+<p>
+  However, the
+  <a href="https://blocksandfiles.com/2025/11/18/vast-data-dell-versity-and-spectra-logic-are-shining-storage-stars-on-taccs-horizon/">successes of these modern file systems</a>
+<a href="https://blocksandfiles.com/2025/07/04/vast-doudna-supercomputer-storage/">across leading HPC centers</a>
+  and the proliferation of alternative technologies such as
+  <a href="https://nrp.ai">Kubernetes-based HPC</a> and
+  <a href="https://blogs.microsoft.com/blog/2025/11/12/infinite-scale-the-architecture-behind-the-azure-ai-superfactory/?utm_source=chatgpt.com">MRC over Ethernet</a>
+  tells me that HPC coming around to the idea that marginal increases in
+  performance are no longer worth missing out on factors that weigh heavily on
+  day-to-day operations like manageability, reliability, and flexibility.
+</p>
+<h3 id="theme-2-hpc-policy-is-becoming-ai-policy">
+  Theme 2: HPC policy is becoming AI policy
+</h3>
+<p>
+  Some of the biggest news at SC was not actually showcased at the conference
+  despite being what many people wanted to talk about in side conversations: HPC
+  policy is rapidly becoming AI policy, resulting in a slew of huge (but poorly
+  defined) "public-private partnerships."
+</p>
+<p>
+  As a bit of background, the Oak Ridge Leadership Computing facility announced
+  its next system, Discovery, in late October--this was the result of a
+  "typical" supercomputer procurement process that
+  <a href="https://www.nextplatform.com/2023/10/02/the-first-peeks-at-the-doe-post-exascale-supercomputers/">first came into the public eye in 2023</a>. However, the Discovery announcement also included mention of a smaller
+  system, Lux, which will "<a href="https://www.olcf.ornl.gov/2025/10/27/ornl-amd-and-hpe-to-deliver-does-newest-ai-supercomputers-discovery-and-lux/">leverage the Oracle Cloud Infrastructure (OCI)</a>" (whatever that means) to provide earlier access to AMD MI355X GPUs ahead of
+  Discovery's full-scale deployment.
+</p>
+<p>
+  Then, two days later, Argonne National Laboratory announced a
+  <a href="https://www.energy.gov/articles/energy-department-announces-new-partnership-nvidia-and-oracle-build-largest-doe-ai">similar arrangement with Oracle Cloud and NVIDIA</a>
+  to deliver a small (Lux-sized) GPU supercomputer named Equinox, followed by a
+  much-larger 100,000-GPU supercomputer named Solstice. Neither Equinox nor
+  Solstice are attached to a "typical" supercomputer procurement; the follow-on
+  to Aurora, to be named
+  <a href="https://intro-hpc-bootcamp.alcf.anl.gov/sites/hpc/files/2025-09/WelcomeToHPC_Papka.pdf">Helios</a>, is
+  <a href="https://www.alcf.anl.gov/draft-technical-requirements-alcf-4-system">still in planning</a>
+  and will be deployed in 2028. This strongly suggests that, whatever
+  "public-private partnership" means to the DOE, it is not the same as the
+  typical leadership computing systems; it is its own AI-centric program.
+</p>
+<p>
+  At SC itself, Evangelos Floros (EuroHPC's head of infrastructure) also
+  mentioned the "need for public-private partnerships" to realize EuroHPC's goal
+  of building "AI Gigafactories" with "100,000 advanced AI processors" across
+  Europe.
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">"Need for public-private partnerships" to fund AI factories is recognized by EuroHPC too.</figcaption>
+</figure>
+</div>
+<p>Again, what exactly this "public-private partnership" model entails in Europe
+  was never really defined.
+</p>
+<p>
+  What was clear is that both American and European efforts are declaring the
+  need to build massive (100K+ GPU) supercomputers for AI, the traditional HPC
+  centers will be the public stewards of them, and "public-private partnerships"
+  are the only way to realize them since governments alone cannot foot the bill.
+</p>
+<p>
+  The Top500 BOF also included a short, awkward talk by Rick Stevens titled "The
+  DOE AI Initiatives" that amounted to Stevens saying he had nothing to say.
+  What really happened, I suspect, is that DOE's new "<a href="https://genesis.energy.gov">Genesis Mission</a>," which was announced the week <em>after</em> the SC conference, was a week
+  late and therefore couldn't be discussed as originally planned. If Stevens had
+  been able to describe the Genesis Mission, though, I'm sure he would've also
+  described "public-private partnership" as a key aspect, since the same
+  language is used in the
+  <a href="https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/">Executive Order that established Genesis</a>. And I'm sure his description would've been no clearer about what this
+  really means than what EuroHPC or the OCI/DOE descriptions have stated.
+</p>
+<p>
+  Most revealing was my observation that, even outside of the proper conference
+  program, nobody really knew what any of this meant. I talked to plenty of my
+  colleagues from both government HPC and hyperscale cloud organizations, and
+  the only consistent message was that there aren't many concrete facts backing
+  up the the press releases right now. It appears that these partnerships were
+  brokered far outside the usual channels that large supercomputer procurements
+  are normally done, and the people in charge of actually delivering on the
+  promises of the press releases are still figuring out what is possible.
+</p>
+<p>
+  Connecting the dots between Lux/Equinox/Solstice, Genesis, and a recent
+  <a href="https://www.energy.gov/sites/default/files/2025-04/RFI%20to%20Inform%20Public%20Bids%20to%20Construct%20AI%20Infrastructure%20%28website%20copy%29.pdf">RFI</a>
+  and
+  <a href="https://sam.gov/workspace/contract/opp/7864e8f4d61f42dc811ba095a41c8368/view">RFP</a>
+  from DOE to allow
+  <a href="https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal">hyperscalers to build AI factories on federal land</a>, it appears that what is happening is...
+</p>
+<ul>
+<li>
+    The DOE has a bunch of land that is adjacent to the National Labs that is
+    undeveloped but has the infrastructure to support massive AI factories.
+    Specifically named is a 110-acre parcel at Argonne that can accommodate up
+    to 1 GW "AI data park," and a 100-acre parcel at Oak Ridge with up to 800
+    MW. These details were disclosed in
+    <a href="https://www.energy.gov/sites/default/files/2025-04/RFI%20to%20Inform%20Public%20Bids%20to%20Construct%20AI%20Infrastructure%20%28website%20copy%29.pdf">an RFI they issued earlier in the spring</a>.
+  </li>
+<li>
+    The
+    <a href="https://www.energy.gov/articles/energy-department-announces-new-partnership-nvidia-and-oracle-build-largest-doe-ai">Solstice press release</a>
+    specifically said that DOE envisions "shared investments and shared
+    computing power between government and industry." Given the RFI/RFP were
+    about land leases, these public-private partnerships may involve splitting
+    the costs of space/power/cooling (the land and infrastructure being leased)
+    and the capital/operations (the supercomputer cloud services being built)
+    between the Labs and Oracle.
+  </li>
+</ul>
+<p>
+  A potential model for operations is that cloud providers are allowed to build
+  and operate commercial AI cloud services adjacent to the DOE HPC facilities in
+  exchange for the DOE Genesis Mission being entitled to some of those AI cloud
+  capabilities. Exactly how much supercomputing resources hyperscalers like OCI
+  would give to DOE, and exactly how much it would cost the DOE Labs to serve as
+  landlords, is probably still undefined. But seeing as how power is the single
+  biggest limiter in AI these days, I expect this model will only spread costs
+  around, not actually lower them.
+</p>
+<p>
+  If this is indeed how Genesis plays out, this would establish a bizarre new
+  way for the government to acquire HPC (or AI) capabilities that completely
+  sidesteps the standard procurement model. Instead of plunking down a hundred
+  million dollars a year to finance a new leadership supercomputer, we might be
+  moving into a world where the Labs plunk down a hundred million dollars a year
+  to cover the costs of power, space, and cooling for a cloud provider. And
+  instead of owning a leadership supercomputer, these national HPC facilities
+  wind up consuming HPC (well, AI) resources from cloud providers--hopefully at
+  a cost that reflects the fact that the cloud providers are also profiting from
+  cycles being sold off of these machines to commercial AI customers.
+</p>
+<p>
+  But again, this is all speculation based on the consistencies I heard
+  throughout the conference and the experience I had trying to build these sorts
+  of partnership with the HPC community while I worked at Microsoft. I may be
+  right, or I may be wildly wrong. There are probably only a handful of people
+  in the world with a clear idea of what these partnerships are meant to look
+  like right now, and they are all way above the heads of the people at the HPC
+  centers who will be tasked with executing on the vision.
+</p>
+<p>
+  Selfishly, I am also left with a bit of heartburn over all of this news. I put
+  a lot of personal time and energy into giving the HPC community the
+  information it needed to feel comfortable about partnering with hyperscale AI
+  infrastructure providers while I was at Microsoft, and it often felt like a
+  Sisyphean task. Within months of me giving up and moving on from my career at
+  a cloud provider, seeing a complete reversal of policy from the leadership HPC
+  folks--and to see the "other guy" in pole position--is a bit of a slap in the
+  face.
+</p>
+<p>
+  I also couldn't help but notice that the cloud provider in all the headlines
+  in the US didn't seem to demonstrate a very strong and unified presence at SC
+  this year. Comically, they didn't even use their own brand's colors for their
+  booth on the exhibit floor. And the color scheme they did use left no room for
+  Oak Ridge's Lux system, which will be AMD-based, to be showcased.
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Oracle's booth at SC25. Their brand color is red, not green. Or so I thought.</figcaption>
+</figure>
+</div>
+<p>Though I may have read too much into this, it feels like these public-private
+  partnerships are not necessarily composed of equal partners with equal levels
+  of commitment.
+</p>
+<p>
+  More broadly, I left the conference concerned that the discourse happening
+  around these cloud-HPC/AI integrations--at least in the US--appears to have
+  regressed compared to where it was when I worked at Microsoft. Many of the
+  things we had to figure out years ago (cybersecurity models, impacts on jobs
+  at the HPC centers) seem to have reset to zero. And sidestepping the
+  procurement processes for leadership computing to enable these public-private
+  partnerships will either require significant new funding (of which Genesis
+  provides none; the executive order as-written appears to recolor existing
+  money) or robbing Peter (the budget funding the next generation of leadership
+  HPCs) to pay Paul (the cloud providers serving up compute resources for AI).
+  As a result, I can envision a future where all of the money that used to fund
+  leadership computing for science becomes money to fund commercial AI
+  factories, resulting in a slow evaporation of the LCFs as their HPC
+  capabilities shrink in size and relevance.
+</p>
+<p>
+  Though there's lots more to be said on this topic, it's all based on
+  conjecture. So, maybe the best thing to do is quietly wait and see.
+</p>
+<h3 id="theme-3-ai-discourse-is-growing-up">
+  Theme 3: AI discourse is growing up
+</h3>
+<p>
+  This was the first SC where it felt like the discourse around AI's role in the
+  future of scientific computing actually carried some substance. Whereas
+  previous years saw talk that mostly revolved around basic ideas like "do LLMs
+  hallucinate too much?" or "can ChatGPT write MPI code?," I sat in on a number
+  of interesting talks and conversations that skipped the question of "is AI
+  useful?" and went straight to "this is how AI is proving useful to us."
+</p>
+<p>
+  Maybe it's related to the previous theme: HPC money is becoming AI money, so
+  AI research is becoming required to stay afloat. Or maybe it's because 2025
+  has been the year of agentic AI, and agents allow LLMs to be integrated much
+  more surgically into complex workflows. Or maybe confirmation bias led me to
+  sit in sessions and talk with people who are at the frontier of applying AI to
+  scientific discovery. Whatever the case may be, I was glad to hear so much
+  discussion from researchers around the importance of all the connective tissue
+  required to operationalize AI in scientific computing.
+</p>
+<h4 id="agentic-workflows">Agentic workflows</h4>
+<p>
+  A great example of this was the
+  <a href="https://aiexscale.github.io">1st International Symposium on Artificial Intelligence and Extreme-Scale
+    Workflows</a>, which happened on Friday. One of the invited speakers, Dr. Katrin Heitmann,
+  connected a lot of dots in my head with a talk she gave on how massive-scale,
+  physics-based simulation workflows can benefit from agentic AI.
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Heitmann's vision on how agentic approaches can augment (but not replace) humans in complex scientific workflows.</figcaption>
+</figure>
+</div>
+<p>The crux of the challenge faced by most massive-scale simulation (like
+  <a href="https://cpac.hep.anl.gov/projects/hacc/">HACC</a>, the cosmology code
+  for which she is famous) is that they generate massive amounts of data. The
+  <a href="https://www.anl.gov/cels/article/simulating-the-cosmos-frontiere-sets-new-record-with-trillionparticle-universe-model">most recent HACC run</a>
+  generated hundreds of terabytes of compressed data per checkpoint and over a
+  hundred petabytes of data in the end; this cosmological simulation serves as a
+  reference dataset from which downstream cosmological research can draw when
+  exploring targeted questions. The challenge, of course, is finding relevant
+  pieces of the simulated universe from amidst a hundred petabytes of raw data.
+</p>
+<p>
+  Dr. Heitmann's premise is that agents and tools have very specific scopes and
+  capabilities, and researchers have control over which of these tools they wish
+  to use. However, they can hand off these tools to an agentic workflow to let
+  it autonomously sift through all of the data, looking for specific features
+  within the simulated universe that are relevant. A specific example she gave
+  was the process of examining 500 million galaxy clusters; with an agentic,
+  AI-driven approach, a postdoc was able to interactively sift through these
+  objects without examining each one individually. For truly interesting
+  objects, a separate agent could go search the literature and provide an
+  explanation as to why it may be interesting, absolving the postdoc from having
+  to make round trips between the dataset and external literature.
+</p>
+<p>
+  That all said, it was clear from this talk (and others) that integrating
+  agentic AI into scientific inquiry is still in its early days. But what I
+  appreciated about this talk (and the entire workshop) is that it sidestepped
+  pedestrian questions about trustworthiness by acknowledging that the goal
+  isn't full autonomy, but rather, enabling researchers to do things faster.
+  There is still a human at the start and the end of the workflow just as there
+  always has been, but agents can reduce the number of times a human must be in
+  the loop.
+</p>
+<h4 id="data-and-agentcentric-service-infrastructure">
+  Data and agent-centric service infrastructure
+</h4>
+<p>
+  Even when AI wasn't the main topic of discussion, it was clear to me at this
+  SC that AI is influencing the way researchers are thinking about the
+  infrastructure surrounding supercomputers. A great example of this was the
+  keynote at the <a href="https://www.pdsw.org/index.shtml">PDSW workshop</a>,
+  given by the ever-insightful
+  <a href="https://sc25.conference-program.com/presentation/?id=misc185&amp;sess=sess202">Dr. Rob Ross, where he offered a retrospective on the work his team has
+    done over the last two decades</a>, what he felt they got right, what they missed, and what's ahead.
+</p>
+<p>
+  Towards the end of his presentation, he made the case that "science is
+  increasingly multi-modal." But rather than talk about multimodality in the AI
+  sense, he was emphasizing that there's more to scientific computing than
+  performance:
+</p>
+<p></p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Domain science, provenance, search, and resilience are equal partners to performance in scientific computing.</figcaption>
+</figure>
+</div>
+
+<p>Taken at face value, this slide positions performance on equal footing
+with domain science, provenance, findability, and his argument was that we’ve
+moved beyond the world where the only storage problem that HPC faces is
+checkpointing. Just as Dr. Heitmann would say on Friday, Dr. Ross’ argument was
+that the increasing volume of scientific data coming out of both exascale
+simulation and scientific instruments is driving the field towards more
+automation. And with automation comes a greater need to understand data
+provenance–after all, if automation produces a surprising result, a human
+ultimately has to go back and understand exactly how the automation generated
+that result.</p>
+<p></p>
+<p>
+  He also point out that in this coming world of automation-by-necessity,
+  infrastructure itself might have to be rethought. After all, traditional
+  technologies like parallel file systems were designed to make the lives of
+  human researchers easier; when the primary consumer of data becomes AI agents,
+  not humans, there may be better ways to organize and expose data than through
+  files and directories. A human might repeatedly cd and ls to find a specific
+  dataset on a file system, whereas an agent use a query a flat index to find
+  the same data in a single step.
+</p>
+<p>
+  At the end of the same PDSW workshop, I was fortunate enough to contribute to
+  <a href="https://sc25.conference-program.com/presentation/?id=miscp112&amp;sess=sess202">a panel</a>
+  where many of these same themes--how will data systems change as AI plays a
+  greater role in scientific discovery--were discussed. Although we touched on a
+  lot of topics, what stuck with me was a general acknowledgment that, while HPC
+  has always talked about data management and provenance as being important,
+  they were always treated as a "nice to have" rather than a "must have."
+  However, as was echoed across many presentations (including the two I
+  described above), governance and provenance are now becoming non-negotiable as
+  larger datasets drive us towards AI-driven automation.
+</p>
+<p>
+  Regardless of what you think about AI's ability to accelerate scientific
+  discovery, I left SC with the feeling that AI is forcing the HPC community to
+  grow up with regards to how seriously it takes data management:
+</p>
+<ul>
+<li>
+    The size and velocity of datasets generated by simulation or experiment is
+    growing beyond any single person's ability to analyze it by hand. The
+    complexity of these data are also making it harder to develop
+    herustics-based or analytical approaches to combing through all of it.
+  </li>
+<li>
+    The best path forward to understanding these data is through AI (via
+    purpose-built models for analysis) or AI-driven data exploration (via
+    autonomous, agentic workflows).
+  </li>
+<li>
+    Automation or autonomous workflows will always act under authority delegated
+    to them by human researchers, meaning there is a growing need to be able to
+    inspect how these workflows arrived at the conclusions they generate.
+  </li>
+<li>
+    Understanding how an answer was achieved requires significantly better data
+    management features such as governance, provenance, and auditability. A
+    result is ultimately only useful if a human can trust it, and that trust
+    comes from understanding which data informed that conclusion, how that data
+    was created, and how it was modified over time.
+  </li>
+</ul>
+<p>
+  Put differently, checkpointing was the main concern of I/O research because
+  I/O performance was the first scalability issue that scientific computing ran
+  into as supercomputers and scientific instruments got bigger. However, we're
+  now at a point where issues ancillary to performance have reached the limits
+  of scalability. Dr. Ross's multi-modal slide indicate that provenance,
+  indices/search, and resilience are some examples of these new barriers, but
+  there are plenty more as well.
+</p>
+<p>
+  In a sense, this theme is the opposite side of the same coin as the first
+  theme I discussed--that the big number is losing its shine. The hardest
+  questions going forward aren't the obvious ones about scaling performance;
+  they are about scaling everything else to keep up. AI seems to be the
+  technology that has cleared a path to these data management hurdles, but the
+  benefits of adopting strong data management practices and systems will extend
+  far beyond the reach of just enabling AI-based automation.
+</p>
+<h2 id="the-exhibit-hall">The exhibit hall</h2>
+<p>
+  The exhibit hall has long been one of my favorite parts of attending SC
+  because it's a great way to get a feeling for what technologies and vendors
+  are hot, where the innovation is trending, and what sorts of commercial
+  problems are worth solving. Every year I feel like I have less and less time
+  to walk the exhibit hall though, and the layout and composition of this year's
+  exhibition meant I only saw a small fraction of what I wanted to see in the
+  few days it was up.
+</p>
+<p>
+  The most common comment I heard about the exhibit this year is captured in
+  Doug Eadline's article,
+  <a href="https://www.hpcwire.com/2025/11/26/sc25-observations-more-pumps-than-processors/">SC25 Observations: More Pumps than Processors</a>
+  (which is well worth the read!). The same commentary was repeated throughout
+  the OCP conference in October as well, suggesting that there is a lot of money
+  to be made (or at least the prospect of money) in helping datacenters get
+  outfitted for the liquid cooling demanded by the next generation of
+  large-scale GPU infrastructure. However, I found the overwhelming amount of
+  space devoted to liquid cooling companies acutely problematic at SC25 this
+  year for two reasons:
+</p>
+<ol type="1">
+<li>
+<strong>Most SC attendees have nothing to do with liquid cooling</strong>. A
+    colleague of mine who operates supercomputers for the energy sector asked
+    one of these big liquid cooling vendors what he could do to actually engage
+    with them. After all, he doesn't buy liquid cooling infrastructure; he buys
+    whole supercomputers that come with heat exchangers and CDUs that are
+    integrated into the solution. The vendor had no good answer, because the
+    reality is that the typical supercomputer user or buyer has no say over what
+    piping, coolant, or exchangers are used inside the machine itself. The whole
+    point of buying an integrated supercomputer is to not have to deal with that
+    level of details.
+  </li>
+<li>
+<strong>These liquid cooling vendors soaked up a ton of floor space</strong>. A few of these physical infrastructure providers had massive (50x50)
+    booths sprinkled across the exhibit hall. Combined with the fact that the
+    average SC attendee has nothing to do with liquid cooling meant that the
+    booths that were more likely to be relevant to a typical attendee were much
+    further apart than they had to be.
+  </li>
+</ol>
+<p>
+  The end result was that the exhibit hall was absolutely gargantuan and yet
+  information-sparse. In fact, this year saw a secondary exhibit hall in the old
+  football stadium serve as overflow space, because the entire primary exhibit
+  hall was full. What's worse is that this overflow space was (as best as I
+  could tell) completely disconnected from the main hall, and the only time I
+  ever saw it was from the dining area used to serve lunch for the tutorials.
+</p>
+<p></p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">The exhibit hall's overflow space being set up in the former football stadium.</figcaption>
+</figure>
+</div>
+
+<p>I would’ve been furious if if I had been stuck with a booth in this
+overflow space, because I can’t imagine the foot traffic in there was very high.
+I personally couldn’t even find the entrance to this second exhibition area in
+the few hours I had to look for it.</p>
+<p></p>
+<p>
+  I can't help but think the SC organizers leaned far too much into booking up
+  as much space (and therefore exhibitor dollars) as possible without thinking
+  about the dilutive effects of having such a massive vendor count. Some vendors
+  definitely benefitted from having a good location near one of the hall
+  entrances, but I also heard a nontrivial amount of grumbling around how little
+  traffic there was at some of the big booths. It wouldn't surprise me if there
+  was a contraction of the HPC mainstays at SC26.
+</p>
+<h3 id="by-the-numbers">By the numbers</h3>
+<p>
+  Rather than rely solely on anecdotes though, it's also fun to take a
+  quantitative look at the changes in exhibitors relative to last year. Since I
+  spent the time figuring out how to generate tree maps for my SC24 recap last
+  year, I figured I should re-run the same analysis to compare SC25 to SC24.
+</p>
+<p>
+  Of the biggest booths who were exhibiting for the first time this year, it
+  should be no surprise that the two biggest new entrants were Danfoss (liquid
+  cooling infrastructure) and Mitsubishi Heavy Industries (gas turbines and
+  other large-scale infrastructure):
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+ <figcaption class="image-caption">New exhibitors with the largest booths.</figcaption></figure>
+</div>
+<p>Of the other top new exhibitors, some (Solidigm, Sandisk, C-DAC, MinIO, and
+  University of Missouri Quantum Innovation Center) were quite relevant to the
+  typical SC attendee. Arm was also back after having skipped SC24. But there
+  were scores of new exhibitors whose services and products seem much more
+  relevant to very niche aspects of physical datacenter infrastructure.
+</p>
+<p>
+  Of the exhibitors who didn't show up to SC25 but had big booths at SC24, there
+  was a diverse mix of markets:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Vendors who didn't show up to SC'25 but had big booths at SC'24.</figcaption>
+</figure>
+</div>
+<p>Sadly, higher ed and government popped up on this list (see
+  <a href="https://www.hpcwire.com/2025/11/26/sc25-observations-more-pumps-than-processors/">Doug Eadline's take on this for more</a>). A bunch of datacenter infrastructure providers also vanished, including
+  Valvoline and Boundary Electric; this suggests that some of the top new
+  vendors of this year (Danfoss, Mitsubishi) may similarly vanish entirely next
+  year after realizing that SC isn't really their crowd. But I was also
+  surprised to see some big names in AI vanish; Iris Energy (IREN) is a GPU
+  cloud provider that just inked a multi-billion dollar deal with Microsoft;
+  Ingrasys manufactures much of the world's GB200 NVL72 infrastructure; Groq,
+  Sambanova, and SambaNova also inexplicably vanished.
+</p>
+<p>
+  Perhaps more interesting are the top growers; these vendors exhibited both
+  last year and this year, but went significantly larger on their booth sizes:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Biggest increases in booth size at SC'25 vs. SC'24.</figcaption>
+</figure>
+</div>
+<p>Legrand, which provides datacenter infrastructure bits, likely grew as a
+  result of it acquiring USystems and merging USystems' booth with Legrand's
+  booth this year. The other big booth expansions are mostly household names
+  though; Gates, EBARA, and GRC are cooling vendors that the typical SC attendee
+  can't do much with, but the others are organizations with whom a researcher or
+  HPC datacenter operator might actually talk to.
+</p>
+<p>
+  Finally, the top contractions in booth space are a mix of service providers,
+  HPC facilities or research centers, and component suppliers:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Biggest decreases in booth size at SC'25 vs. SC'24.</figcaption>
+</figure>
+</div>
+<p>Of the biggest vendors who downsized, Carahsoft is a component reseller and
+  service provider, Stulz is a liquid cooling company, HLRS is a German
+  supercomputer center, and Viridien is an HPC services company that primarily
+  serves the energy sector. It is surprising to see AWS shrink while Microsoft
+  grew, and it is doubly surprising to see Oracle shrink when it's at the center
+  of the biggest HPC deployment news of the season. Given that these booth sizes
+  are chosen a year in advance, this may speak to how unexpected the turn of
+  events were that resulted in Oracle carrying the cloud services end of DOE's
+  big public-private partnerships.
+</p>
+<h3 id="interesting-new-technology">Interesting new technology</h3>
+<p>
+  For reasons I'll discuss later, I didn't have much time to walk the exhibit
+  hall floor. Combined with the fact that everything was so spread out and
+  diffuse, I just didn't get a great sense of what interesting new technology
+  was being introduced this year beyond what tended to stick out. And amidst all
+  the giant CDUs and liquid cooling infrastructure, it was hard for anything to
+  stick out except really big compute cabinets.
+</p>
+<h4 id="dell-ir700">Dell IR700</h4>
+<p>
+  Dell's booth had a fully loaded IR7000 rack on display (as they did at
+  <a href="https://blog.glennklockwood.com/2025/03/gtc-2025-recap.html#dells-480-kw-ir7000">GTC earlier in the year</a>) with 36 GB200 NVL4 sleds. At 50OU high (almost eight feet tall), this thing
+  is physically huge:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Dell's 50OU IR7000 rack, fully loaded. This is what TACC Horizon will be built from.</figcaption>
+</figure>
+</div>
+<p>Unlike the version they had on display at GTC though, this one had both the
+  front door and a full rear-door heat exchanger installed:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">HUGE rear-door heat exchanger on the back of the Dell IR7000 rack.</figcaption>
+</figure>
+</div>
+<p>What's notable about this platform is that we now know that it is the basis
+  for both
+  <a href="https://tacc.utexas.edu/systems/horizon/">TACC's upcoming Horizon system</a>
+  (which will have
+  <a href="https://glennklockwood.com/garden/systems/Horizon">28 of these fully loaded racks</a>) and
+  <a href="https://www.nersc.gov/what-we-do/computing-for-science/doudna-system">NERSC's upcoming Doudna system</a>
+  (which will have Vera Rubin rather than Blackwell). This rack was nominally
+  designed for hyperscale AI and is the basis for Dell's GB200 NVL72 (XE9712)
+  deployments at places like CoreWeave and xAI, which means that it'll be
+  thoroughly tested at scale long before TACC or NERSC have it up and running.
+  This is the opposite of what has historically happened: before AI, it was
+  usually government HPC that had to debug new rack-scale architectures before
+  industry would touch it.
+</p>
+<h4 id="hpe-cray-gx5000">HPE Cray GX5000</h4>
+<p>
+  However, government HPC will still have a chance to debug a new supercomputing
+  platform in the recently announced
+  <a href="https://glennklockwood.com/garden/Cray-GX">Cray GX</a> (formally
+  called "the HPE Cray Supercomputing GX platform"), which is the successor to
+  the current Cray EX platform. This is the platform that the
+  <a href="https://glennklockwood.com/garden/systems/Discovery">Discovery supercomputer</a>
+  at OLCF will use, and HPE had a CPU-only blade (<a href="https://glennklockwood.com/garden/nodes/Cray-GX250">Cray GX250</a>) and a rack mockup on display at SC:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">HPE's new GX blade form factor. This one appears to be the GX250, the 8-socket CPU-only blade.</figcaption>
+</figure>
+</div>
+<p>It's hard to tell the size of this blade from the photo, but if you look at
+  the relative size of the CPU socket and the DIMM slots, you can get a sense of
+  how physically massive it is--it's like a coffee table. It also isn't
+  perfectly rectangular; Cray decided to put this unusual protrusion on the
+  front of the blades which is where the four NICs and eight E1.S SSDs are
+  housed:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">A look at the side of the Cray GX blade's "nose" showing the side-mounted NIC ports.</figcaption>
+</figure>
+</div>
+<p>This nose(?) adds more surface area to the front of the rack, and it makes
+  more sense when you see a rack full of these nodes. HPE had a full GX5000 rack
+  with mocked-up cardboard nodes in their booth as well:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">Fully loaded GX5000 rack. The nodes were cardboard, but pretty nice cardboard.</figcaption>
+</figure>
+</div>
+<p>By having the NIC ports (which are Slingshot 400) face the sides of the rack
+  rather than stick out the front, the bend radius of all that copper doesn't
+  have to be quite as dramatic to route it along the sides of these node noses.
+  And unlike previous Cray designs, there's also no midplane or backplane that
+  connect the nodes in a rack to the rack-local switches; everything connects
+  through discrete copper or optical cables.
+</p>
+<p>
+  At the center of the rack is a liquid-cooled switch chassis, and each rack can
+  support either 8-, 16-, or 32-switch configurations. Each switch is a 64-port
+  Slingshot 400 switch, and I think the premise is that a single GX5000 rack is
+  always exactly one dragonfly group. If you want a smaller group, you use a
+  switch chassis with fewer switches.
+</p>
+<p>
+  Interestingly, this GX will also support non-Slingshot Ethernet and XDR
+  InfiniBand switches. Given that both XDR InfiniBand and 800G Ethernet are
+  shipping today and have twice the bandwidth that Slingshot 400 will have when
+  it starts shipping in a year, perhaps the Slingshot 400 option is just a
+  stopgap until HPE's investments in Ultra Ethernet result in a product. The
+  lack of a network backplane in the rack also makes it easier for the rack to
+  accommodate the non-dragonfly topologies that would be required for InfiniBand
+  or Ethernet.
+</p>
+<p>
+  The rear of the rack is remarkably unremarkable in that it simply contains a
+  rear bus bar and the liquid cooling manifolds and mates. In this sense, the
+  rack looks very
+  <a href="https://www.opencompute.org/documents/open-rack-base-specification-version-3-pdf">OCP-like</a>; the boring stuff is in the back, everything exciting is serviced from the
+  front, and the rack itself is passive plumbing. Like any OCP ORv3 rack, power
+  shelves slot in just as server blades do, and they use the same liquid cooling
+  infrastructure as the rest of the rack. They power the bus bar, and the blades
+  and switches draw from the same bus bar.
+</p>
+<p>
+  Compared to an ORv3 rack though, these GX racks are wider and shorter. The
+  width probably offers more flexibility for future NVIDIA or AMD GPU boards,
+  but I was surprised that Cray didn't go ultra tall like Dell's 50OU IR7000. I
+  was also surprised to hear that Cray is launching GX with a 400 kW cabinet
+  design; power appears to already be a limiting factor in the nodes launching
+  with GX. A single 400 kW GX rack can support
+</p>
+<ul>
+<li>40 CPU-only blades (81,920 cores of Venice)</li>
+<li>28 AMD Venice+MI430X blades (112 GPUs)</li>
+<li>24 NVIDIA Vera+Rubin blades (192 GPUs)</li>
+</ul>
+<p>
+  For reference, the demo GX5000 rack pictured above had only 29 blades and 16
+  switches. I assume that fitting 40 blades into the rack requires using the
+  smallest dragonfly group possible.
+</p>
+<p>
+  On the cooling front, the GX5000 rack will launch with support for the same
+  1.6 MW CDUs as the current Cray EX platform. I heard talk of a neat sidecar
+  CDU option as well, but the person with whom I spoke at the HPE booth said
+  that would come a little later.
+</p>
+<p>
+  Overall, I was surprised by how un-exotic the new Cray GX platform is compared
+  to what the AI world has been doing with ORv3 racks. The fact that Cray and
+  Dell's designs are more similar than different suggests that the HPC/AI world
+  is converging on a place where the future is uncertain, and flexibility is
+  more important that highly engineered racks that optimize for very specific
+  nodes and networks. It also suggests that the real value of buying Cray is
+  higher up the stack; liquid cooling, power delivery, and rack integration is
+  becoming commoditized thanks to AI.
+</p>
+<p>
+  I was also surprised that Cray's next-generation design is not obviously
+  superior to what the hyperscale community is designing. Whereas the GX rack
+  caps out at 400 kW, Dell's will allegedly scale up to 480 kW. That said,
+  today's IR7000 racks shipping for Horizon are only 215 kW (for GPU racks) and
+  100 kW (for CPU-only racks) according to a talk given by Dan Stanzione:
+</p>
+<div class="separator" style="clear: both; text-align: center;">
+<figure>
+
+<figcaption class="image-caption">The physical configuration of TACC's upcoming Horizon supercomputer.</figcaption>
+</figure>
+</div>
+<p>So until the final specifications for the Rubin GPU are released, I suspect we
+  won't know whether Cray still leads the pack in terms of compute density, or
+  if Dell made the better bet by aligning its supercomputing platform on a
+  standard OCP rack design.
+</p>]]></content><author><name>Glenn K. Lockwood&apos;s Blog</name></author><category term="glennklockwood" /><summary type="html"><![CDATA[The annual SC conference was held last week, drawing over 16,000 registrants and 560 exhibitors to in St. Louis, Missouri to talk about high-performance computing, artificial intelligence, infrastructure, and science. It was my tenth time attending in-person (12th overall), and as is always the case, it was a great week to reconnect with colleagues, hear what people are worrying about, and get a finger on the pulse of the now-rapidly changing HPC industry.]]></summary></entry><entry><title type="html">The trap of prioritizing impact</title><link href="https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact/" rel="alternate" type="text/html" title="The trap of prioritizing impact" /><published>2025-09-20T14:46:41-06:00</published><updated>2025-09-20T14:46:41-06:00</updated><id>https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/the-trap-of-prioritizing-impact/"><![CDATA[<p>(I wrote this originally as a comment in <a href="https://randsinrepose.com/welcome-to-rands-leadership-slack/">RLS </a>in response to a staff-level engineer who was frustrated at how little they got to code anymore, and it resonated with enough folks that maybe it’s worth sharing here!)</p>
 
 <p>There’s a trap I’ve seen a lot of staff+ folks fall into where they over-prioritize the idea that they should always be doing “the right, most effective thing for the company”. When I see engineers complain that they don’t get to code enough, I often suspect they’ve fallen prey to this.</p>
 
@@ -1452,85 +2533,4 @@ Consider the rise of the bots, farm bots. GPS-guided autonomous tractors (alread
 <p><span style="font-family: verdana;">[10] https://www.organism.earth/library/document/unapologetically-human</span></p>
 <p><span style="font-family: verdana;">[11] https://www.youtube.com/watch?v=IPSzTBP5PAU</span></p>
 <p><span style="font-family: verdana;"><br /></span></p>
-<p><br /></p>]]></content><author><name>Surfing the Singularity</name></author><category term="surfthesing" /><summary type="html"><![CDATA[Mustapha Suleyman knows a thing or two about AI.  Originally co-founder of DeepMind, a company and IP eventually acquired by Google, Mr. Suleyman is now CEO of AI at Microsoft. In this latest "Surfing the Singularity" blog installment, we'll review his recent book "The Coming Wave". Hang ten! Go Where You Wanna Go As a game, Go is notorious for its huge array of potential moves, exponentially more complex than chess for example, where computer models beat the best chess player way back in 1997. In 2016, DeepMind's model AlphaGo beat the best Go player in world after being trained the better part of a year with reinforced machine learning on a data set of human Go games and computer-vs-computer play. The following year, DeepMind's AlphaZero exceeded that performance in just a few days of training computation without ever being shown a single Go game, just having been described the rules of the game.[1]    &lt;div style="text-align: center;"&gt;Alas, born at the wrong time.&lt;/div&gt; In his Bill Gates-recommended [2] book "The Coming Wave", Mr. Suleyman's dystopian thesis is this: that the combination of AI, synthetic biology, and a host of other general purpose technologies such as robotics and additive manufacturing will combine into a major technological wave which will wash over the human race and alter it in unprecedented ways. Much as in past waves - the harnessing of fire, the wheel, the printing press, the combustion engine - each set off dramatic and often cataclysmic societal change the likes of which was certainly not obvious or expected by the "engineers" which developed the tooling. Call it the "rule of unintended consequences". The author supposes there have been about two dozen such waves over human history, and as expected in these times, the rate of arrival of transformational technologies is accelerating. Take the printing press. Originally in 1440 there is but one device, the lab prototype. Fifty years later there are 1,000 printing presses in Europe. From producing just a few thousand hand-copied manuscripts a year, the bookmakers now produced millions. Demand for books soars, cost per unit drops, adoption deepens. What was the impact of this new information proliferation in the society? As Suleyman writes: "Gutenberg just wanted to make money printing Bibles. Yet his press catalyzed the Scientific Revolution and the Reformation, and so became the greatest threat to the Catholic Church since its establishment." And in spite of the efforts of certain Byzantine lords to control the press, proliferation of the technology was and is the default, driven by FOMO, at least. Straight Outta Coruscant The mass-scale rollout of AI is already underway, hand-in-hand with surveillance devices at the edge, high speed networking, nearly bottomless storage, and high performance computing on demand to make sense of it all. All so "The Algorithm" can feed you tailored news (and ads) with your morning coffee. And more, much more. Large Language Models (LLMs), trained on the corpus of human written and other creative output can now generate helpful suggestions in a variety of useful contexts (such as blog writing). And as I wrote about in my last blog [3], LLMs are useful code assistants too, although here current state of the art is about a 50% success rate on senior-level software development tasks. So yes, there is room to grow, but in line with the acceleration of the rate of change, we expect that gap to be closed in short time. What then? A whole host of human-centric but generally rule-oriented tasks - think: back-office work in the finance and insurance industry - will become fair game for AI augmentation, meaning, human replacement. We see the rise of autonomous vehicles - think: bus and cab drivers, mail and package delivery, pilots. Air traffic controllers. Call centers. Medical radiology readers. Not one of these applications requires a super "artificial general intelligence" (AGI), simply a good model tailored to a specific task set, aka "artificial capable intelligence" (ACI). This is nearly all line-of-sight to market. What then is not here now? The author spends a good amount of time discussing the rise and impact of artificial and synthetic biology, CRISPR gene hacking and the like. Not being personally equipped to analyze such biotechnologies, I'm simply going to leave that one to the reader, suggest its some heady stuff, but otherwise stay in the domain of the electro-mechanical. But even with this scope limitation, what is the wider wave? &lt;p&gt;&lt;/p&gt; Consider the rise of the bots, farm bots. GPS-guided autonomous tractors (already a thing).[4] These robots don’t look like C3PO tending the moisture reapers on Tatooine - these robots look like farm equipment and are painted John Deere green. Amazon and Walmart distribution warehouses are already highly automated - combined with autonomous vehicles and AI-driven back-office work, how many employees do we think Amazon will need in 2 years? In 5 years? They currently employ 1.5 million people and reduced headcount 5% in the last 2 years while growing revenues over 20%.[5]&lt;p&gt;&lt;/p&gt; Mind the Gap And while your local Joe the Plumber [6] may continue to have a job visiting homes for some time to come, the use of single-task robotic automation in construction, especially new commercial construction, and property maintenance is on the rise. Concrete and paint-spraying robots. High rise window washers. Roofers, and general laborers to move material around a job site - bots - flying, floating, swimming, walking, drilling, boring bots. And more factory bots too, using traditional and additive techniques, to print their own parts. Bots that make bots. And an unemployment office at the Department of Labor run by AI.[7] What about joining up with Uncle Sam, see the world, serve your country? Drone warfare in Ukraine has shown the folly of the massing of expensively equipped troops, and in the Red Sea the risks associated with large and high priced floating projections of power. Hypersonic weapons, beyond the capabilities of a human in-the-loop system to thwart. The result is asymmetric bot-on-bot warfare, beyond the battlefield, beyond borders. What are we to do with legions of technically unemployed, if they are not even useful for cannon fodder? And what are we to do with the State, if it cannot provide a system which benefits the population, which can keep it protected from proliferating technological threats? With information, wealth, and power centralized in the hands of a self-selected few, is it pitchforks and torches to the barricades then?[8] While its clear and no surprise the coming wave will benefit those with technical and financial authority, there is a chance of a boomerang effect which will result in forces in the opposite direction. The tooling, including the availability of sophisticated AI models and the means to run them, is being democratized. While increasing in capability, the cost of military-grade drones has decreased orders of magnitude in the last decade.[9] Rabble-rousing AI deepfakes proliferate. As Mr. Suleyman says, "anyone motivated to sow instability now has an easier time of it", not just state actors, agents, or oligarchs, but anyone with a few thousand dollars and an axe to grind. And considering the examples from recent 21st century past, if a rogue actor were to leverage the technology for nefarious purposes (think: 9/11 and the Patriot Act), there would surely be immediate call by the population for protection, likely but perhaps not exclusively by the State, backed by pervasive security surveillance. And this time, the means to fully execute on that wish exists.  The China Syndrome &lt;p style="text-align: center;"&gt;”The system works! That’s not the problem!”&lt;/p&gt; &lt;div style="text-align: left;"&gt;It is a coming wave of contradictions and competing forces, and it sounds disruptive and quite unpleasant to say the least, perhaps even a human catastrophe. And besides avoiding the topic of bioengineering, we also haven’t yet discussed what happens when we actually do get to superhuman generalized AI - we’re still talking here about relatively dumb AI with human actors in charge, in theory.&lt;/div&gt; &lt;p&gt;&lt;/p&gt; The author Mr. Suleyman concludes that the containment of this new technology - this artificial intelligence backed by autonomous mobility - a containment which has rarely if ever been possible (nukes being maybe the sole exception), must be done successfully, and urgently. Its a good sentiment, albeit one which may be too optimistic, even blindly. Can the march of this autonomous AI "progress" with its obvious and as yet to be seen additional consequences be stopped? I would argue, and the author would likely in the final analysis have to admit, that it cannot. What to do about it? Maybe we should give serious thought to the existential question of what it actually means to be human.[10] Or, alternatively, as Timothy Leary said...[11] Until next time.  - andy References &amp; Amusements [1] "The Coming Wave", Mustapha Suleyman, Crown Pub., 2023 [2] Bill Gates blog, https://www.gatesnotes.com/holiday-books-2024 [3] "Surfing the Singularity: Super Grover!", https://surfthesing.blogspot.com/2024/12/surfing-singularity-super-grover.html [4] "John Deere Robot Planter", https://www.cnet.com/tech/john-deere-robot-planter-the-future-of-farming-looks-like-fewer-chemicals/ [5] https://www.statista.com/statistics/234488/number-of-amazon-employees/ and https://www.statista.com/statistics/266282/annual-net-revenue-of-amazoncom/ [6] https://www.nytimes.com/2023/08/28/us/politics/samuel-wurzelbacher-joe-the-plumber-dead.html [7] https://www.dol.gov/agencies/oasam/centers-offices/ocio/ai-inventory [8] https://www.stlouisfed.org/community-development-research/the-state-of-us-wealth-inequality [9] https://www.technologyreview.com/2023/01/30/1067348/mass-market-military-drones-have-changed-the-way-wars-are-fought/ [10] https://www.organism.earth/library/document/unapologetically-human [11] https://www.youtube.com/watch?v=IPSzTBP5PAU]]></summary></entry><entry><title type="html">Surfing the Singularity - Super Grover!</title><link href="https://hpc.social/personal-blog/2024/surfing-the-singularity-super-grover/" rel="alternate" type="text/html" title="Surfing the Singularity - Super Grover!" /><published>2024-12-07T17:00:00-07:00</published><updated>2024-12-07T17:00:00-07:00</updated><id>https://hpc.social/personal-blog/2024/surfing-the-singularity-super-grover-</id><content type="html" xml:base="https://hpc.social/personal-blog/2024/surfing-the-singularity-super-grover/"><![CDATA[<header class="pt4"><p style="line-height: 1.2; text-align: left;"><span style="font-weight: normal;"><span style="font-family: verdana;"><span color="rgba(255, 255, 255, 0.9)" face="-apple-system, system-ui, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, &quot;Fira Sans&quot;, Ubuntu, Oxygen, &quot;Oxygen Sans&quot;, Cantarell, &quot;Droid Sans&quot;, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Lucida Grande&quot;, Helvetica, Arial, sans-serif" style="background-color: #1b1f23; font-size: 16px;">Hello and happy holidays to all. In this blog installment I'll report back from SuperComputing 2024, offer up a programmer-friendly view of the quantum computing space with a code tour of Grover's algorithm, and share some of my own thoughts on using the latest crop of AI programmer assistant tools.</span><span class="white-space-pre" color="rgba(255, 255, 255, 0.9)" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></span></p>
-</header>
-<div class="relative reader__grid"><div><div><div class="reader-article-content reader-article-content--content-blocks" dir="ltr"><div class="reader-content-blocks-container" tabindex="0"><div class="reader-image-block reader-image-block--resize"><figure class="reader-image-block__figure"><div class="ivm-image-view-model"><div class="ivm-view-attr__img-wrapper"><img alt="" class="ivm-view-attr__img--centered reader-image-block__img evi-image lazy-image ember-view" id="ember869" src="https://media.licdn.com/dms/image/v2/D4E12AQEXGYm_FH40rg/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1733613595470?e=1740009600&amp;v=beta&amp;t=27x_IfTeyWu00AhmowXKRB402xwRZI5SLAg3MUm9UGc" /></div>
-</div>
-<figcaption class="reader-image-block__figure-image-caption display-block full-width text-body-small-open t-sans text-align-center t-black--light"><span style="font-family: verdana;">(Sadly, not this Grover.)</span></figcaption></figure></div>
-<p class="ember-view reader-text-block__paragraph" id="ember870"><span style="font-family: verdana;">It was a pleasant SC24 high performance computing (HPC) conference in November. Having attended in past either in-person (Atlanta this year) or virtual, this year I chose virtual again. The big loss was being unable to troll the enormous vendor hall, but otherwise, webcasts make it much easier to be in two places at one time or to skim topics of passing interest.[1]<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember871"><span style="font-family: verdana;">There's a new top HPC machine (that we know of) - El Capitan, and its powered by AMD, containing about a million CPU cores and about 10 million GPU cores.[2] Molecular dynamics papers presented using a GPU-accelerated exascale computer reminds that, quantum aside for a moment, the real work is still being done in the classical world.[3] NVIDIA showcased the growing fusion of AI and HPC with their "superchip" designs - incorporating a CPU and a GPU on the same chip.[4] And why not, the money keeps flowing, the current outgoing federal administration now locking in the CHIPS Act funding before the end of the term.[5]</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember872"><br /></p>
-<div class="reader-image-block reader-image-block--full-width"><figure class="reader-image-block__figure"><div class="ivm-image-view-model"><div class="ivm-view-attr__img-wrapper"><img alt="" class="ivm-view-attr__img--centered reader-image-block__img evi-image lazy-image ember-view" id="ember873" src="https://media.licdn.com/dms/image/v2/D4E12AQE0Sq5LcwFEAQ/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1733610500704?e=1740009600&amp;v=beta&amp;t=Dr2oQXKZQk3AXM8R_LhkmyXIRrnOeaejjn8q97YVy_w" /></div>
-</div>
-<figcaption class="reader-image-block__figure-image-caption display-block full-width text-body-small-open t-sans text-align-center t-black--light"><span style="font-family: verdana;">NVIDIA's Grace Hopper architecture [6]</span></figcaption></figure></div>
-<p class="ember-view reader-text-block__paragraph" id="ember874"><span style="font-family: verdana;">But beyond the incremental improvements in compute, storage, cooling, power consumption and the like, it seemed to me, through my remote goggles, that the real action was happening on the sidelines of SC24, in the quantum computing space.</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember874"><span style="font-family: verdana;"><br /></span></p>
-<h2><span style="font-family: verdana;">Quantum Chip on Shoulder<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></h2><p class="ember-view reader-text-block__paragraph" id="ember876"><span style="font-family: verdana;">There's significant skepticism of quantum computing from the HPC community at the moment. Quantum computers today are toys in comparison to HPC, and stakeholders in HPC and classical computing (which would include myself) might wonder aloud "what's the point?" For some applications (like the fluid dynamics apps my company uses), quantum utility is perhaps still a decade away.[7]<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember877"><span style="font-family: verdana;">But the groundwork is being laid today, and when we understand that there are useful problems which can be solved on quantum computers, and only on quantum computers, we might at least allow the playing to continue. And we might be surprised at how fast quantum computing is progressing, and also just churning. Even those in the industry are hedging their bets - on which qubit technologies and which companies will be the winners - and as such are changing partners on a regular basis [8,9,10], although this sometimes means needing to unproductively reinvent the wheel (how many Python quantum circuit libraries do we need?)[11]</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember878"><span style="font-family: verdana;">A couple of new announcements from Big Blue caught my eye. First, an early demonstrator of incorporating an IBM quantum computer into an HPC data center, unifying the resource scheduling, was shown at RPI with their AiMOS cluster and their first-in-the-nation academic installation.[12] The second, and more important, was the paper in Nature demonstrating the union of two quantum computers via classical networks, providing another avenue for scaling up hybrid quantum computing.[13]<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember879"><span style="font-family: verdana;">But today's QPUs are still noisy, fragile, small, expensive, and scarce. Maturity is still a ways off. QPUs are not fungible - to be successful in executing an application on a quantum computer, we must understand the error profile of that specific device! Not just that brand of quantum computer product, but this instance of that product! We need hands-on examples to grow the personal and team experience with quantum while we await stabilized hardware and the productivity-enabling software abstractions which can only come after industry maturity, and these early (head-butting) experiences.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember879"><span style="font-family: verdana;"><span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"><br /></span></span></p>
-<h2><span style="font-family: verdana;">Making Your Quantum Bones</span></h2><p class="ember-view reader-text-block__paragraph" id="ember881"><span style="font-family: verdana;">Today's education in and around quantum computing is still focused on the experimental audience. We are still doing experiments about quantum more than experiments with quantum. The educational material which does exist, and there is an increasing amount, is focused on a community which is very comfortable with quantum physics and its associated mathematics. Most people, myself included, do not fit this description. As a computer science graduate, adjunct prof, and software engineer by trade, I want to see higher level programming abstractions, not those centered around qubits and gates which clearly does not scale for large programs. We will be waiting a while. So in the meantime, we need to see some examples using today's technology and syntax but which are more suited for the Comp Sci student audience, to help begin to bridge that gap.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember882"><span style="font-family: verdana;">If we visit the Algorithm Zoo [14], a collection of quantum algorithms which show a computational advantage over similar classical approaches, we find some things (but not many) which might look familiar to a CS undergrad, but the implementations, when they exist, are often broken. In this current early phase of the quantum era, vendors are playing free and loose with their SDKs, and releases with significant object model refactorings and breaking changes are the norm.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember883"><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://github.com/agallojr/research-notes/blob/02253900f33d784402f0cd0b3ed4d9d360544605/quantum/src/qiskit/pattern_match.py" target="_self"><span style="font-family: verdana;">pattern_match.py</span></a></p>
-<p class="ember-view reader-text-block__paragraph" id="ember884"><span style="font-family: verdana;">So I offer here an example of a quantum program which itself likely has a short shelf life. You can find it here.[15, &amp; above] It shows a cooked up example of using Grover's algorithm, which is a quantum algorithm for search in unstructured (e.g. unsorted) data. Classically, "cuz Murphy's Law", you might need to walk the entire dataset to find the item of interest (or show its not there) - we call this an O(n) algorithm. Using Grover's algorithm, you can do the search with a strong probability of success in O(sqrt(n)) time - a quadratic speedup, and one worth pursuing for many applications. Note we are only saying we can perform the search with high probability - this is quantum computing, and everything is a probability. And while the example shown isn't necessarily the most common application of Grover, understanding Grover is worthwhile, as it appears as a sub-procedure in many other quantum algorithms.</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember885"><span style="font-family: verdana;">Here are a few key points to take away, even if you don't take the time to look at the documented code example:</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember886"></p>
-<ul><li><span style="font-family: verdana;">We're going to store a small set of strings - binary strings of 1's and 0's representing a small dataset - into a quantum system of qubits.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></li><li><span style="font-family: verdana;">Since our strings are chosen to be 16 binary digits long, we will use 16 qubits. This is a large enough number of qubits to show some non-trivial problems, but not so many as to not be runnable on a simulator on your laptop. (The performance does not scale linearly with the number of qubits.)</span></li><li><span style="font-family: verdana;">A system of n qubits contains 2**n possible states (combinations of 0's and 1's). That's a lot. We will have far fewer state strings in our dataset - just a handful for this experiment.</span></li><li><span style="font-family: verdana;">After initializing the qubits, we will mark each state in the quantum system which corresponds to a binary string in our dataset. To do this we will use the phase of the qubit, which is an extra useful lever you do not find in classical bits (among other unique quantum advantages).</span></li></ul><p style="color: black;"></p>
-<div class="reader-image-block reader-image-block--full-width"><figure class="reader-image-block__figure"><div class="ivm-image-view-model"><div class="ivm-view-attr__img-wrapper"><img alt="" class="ivm-view-attr__img--centered reader-image-block__img evi-image lazy-image ember-view" id="ember887" src="https://media.licdn.com/dms/image/v2/D4E12AQH3qvl7gip82A/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1733610781858?e=1740009600&amp;v=beta&amp;t=5rAwLjF3EHyEDVvd1GHOAO65F-dKDYWy8gCvJ27vCF4" /></div>
-</div>
-<figcaption class="reader-image-block__figure-image-caption display-block full-width text-body-small-open t-sans text-align-center t-black--light"><span style="font-family: verdana;">Three qubits in superposition.[16]</span></figcaption></figure></div>
-<div class="reader-image-block reader-image-block--full-width"><figure class="reader-image-block__figure"><div class="ivm-image-view-model"><div class="ivm-view-attr__img-wrapper"><img alt="" class="ivm-view-attr__img--centered reader-image-block__img evi-image lazy-image ember-view" id="ember888" src="https://media.licdn.com/dms/image/v2/D4E12AQGrCHC-cx2zUg/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1733610877320?e=1740009600&amp;v=beta&amp;t=lHNGjay8jH78KrwCl9WJwEIHqXuIj4LIX6gviS9nVSM" /></div>
-</div>
-<figcaption class="reader-image-block__figure-image-caption display-block full-width text-body-small-open t-sans text-align-center t-black--light"><span style="font-family: verdana;">Marking one of the states by flipping its phase.[16]</span></figcaption></figure></div>
-<p class="ember-view reader-text-block__paragraph" id="ember889"></p>
-<ul><li><span style="font-family: verdana;">Using Grover's algorithm, we will amplify the probability of finding the marked states relative to other background states. I.e., the signal is separated from the noise. To do this we iteratively apply an oracle quantum circuit to the initial system.</span></li></ul><p style="color: black;"></p>
-<div class="reader-image-block reader-image-block--full-width"><figure class="reader-image-block__figure"><div class="ivm-image-view-model"><div class="ivm-view-attr__img-wrapper"><img alt="" class="ivm-view-attr__img--centered reader-image-block__img evi-image lazy-image ember-view" id="ember890" src="https://media.licdn.com/dms/image/v2/D4E12AQHu1UQVg1dbqQ/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1733610938287?e=1740009600&amp;v=beta&amp;t=-vmo3-9uS3FY-kCQiudQ-Ui0eEUyxl0Ao7k45IwSOMg" /></div>
-</div>
-<figcaption class="reader-image-block__figure-image-caption display-block full-width text-body-small-open t-sans text-align-center t-black--light"><span style="font-family: verdana;">The states, with our target amplified, after some number of iterations of Grover's algorithm.[16]</span></figcaption></figure></div>
-<p class="ember-view reader-text-block__paragraph" id="ember891"></p>
-<ul><li><span style="font-family: verdana;">Note that we use the same 16 qubits to encode all of the 16-digit strings in the dataset. Try that with a classical computer!</span></li><li><span style="font-family: verdana;">We then use Grover's algorithm again using a target string, applying the oracle against the now prepared quantum system, and returning the result that the target either is or is not in the dataset.</span></li></ul><p style="color: black;"></p>
-<p class="ember-view reader-text-block__paragraph" id="ember892"><span style="font-family: verdana;">Hopefully this gives some flavor of what its like to program a quantum computer using an example most classical programmers today can understand. There are places where the code can potentially be improved - I welcome your input in the comments section below.</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember892"><span style="font-family: verdana;"><br /></span></p>
-<h2><span style="font-family: verdana;">AI AI, Oh.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></h2><p class="ember-view reader-text-block__paragraph" id="ember894"><span style="font-family: verdana;">During these quantum coding explorations, during other coding work, and while writing documents (like this one), I've also been experimenting with a sequence of so-called "AI assistants". Starting with Copilot as a plugin for the popular VS Code IDE, I quickly switched to the Codeium plugin which performed better for my purposes, mostly because it took more of my code into context while making suggestions.[17] Since, the various vendors have leap-frogged each other in features and quality of results, and so while this tool comparison may be stale, its also the case that any new comparison would soon itself become stale.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember895"><span style="font-family: verdana;">While the VS Code IDE provides hooks for plugins, some vendors, most notably Cursor [18] took the approach that to provide a true AI assistant (AIA) for a modern software developer you needed plugin hooks in many places, and control over things like the rendering of change sets. So they forked the VS Code IDE entirely. And they weren't the only ones to do this - Codeium now also has its own IDE called Windsurf - this is what I'm currently using. This can't be end state for the discussion and more leap-frogging is expected, so watch this space. I've now seen cases where people are putting "Cursor" on their resume - not a good idea to commit to that, but it is a good idea to start using one of these modern tools in your work, and to better understand how to adopt your work practices in light of their potential.</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember896"><span style="font-family: verdana;">In other words, to experiment while these AIA tools improve. The head of Anthropic, a major AI player and the maker of the model driving my current IDE, is proud to say their model reaches 50% success rates on a popular software engineering metric.[19,20] Do<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><span face="var(--artdeco-reset-typography-font-family-sans)">you</span><span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span>want to pair program with an assistant which is only right 50% of the time? I can tell you that its got its ups and downs.</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember897"><span style="font-family: verdana;">On the positive, for mundane tasks, it can do a pretty good job. Questions like "how do you do X in Python?" which you might have previously taken to Stack Overflow can now be answered in the IDE with custom-made code samples. You can turn your question into an instruction:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<blockquote class="ember-view reader-text-block__blockquote" id="ember898"><span style="color: #b6d7a8; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">Me</span>: modify this code to take the target string as a command line argument and default to the current target string if none is provided</span></blockquote><blockquote class="ember-view reader-text-block__blockquote" id="ember899"><span style="color: #cc0000; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">AIA</span>: I've modified the code to...</span></blockquote><p class="ember-view reader-text-block__paragraph" id="ember900"><span style="font-family: verdana;">And it will describe in words and code a working solution, albeit in my case one I found to be slightly over-engineered:</span></p>
-<blockquote class="ember-view reader-text-block__blockquote" id="ember901"><span style="color: #b6d7a8; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">Me</span>: use sys to determine if a single arg was provided</span></blockquote><blockquote class="ember-view reader-text-block__blockquote" id="ember902"><span style="color: #cc0000; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">AIA</span>: I'll modify the code to use sys.argv for a simpler command line argument handling...</span></blockquote><p class="ember-view reader-text-block__paragraph" id="ember903"><span style="font-family: verdana;">In another interaction, we debated if an AIA-proposed solution was mathematically efficient, at one point:</span></p>
-<blockquote class="ember-view reader-text-block__blockquote" id="ember904"><span style="color: #cc0000; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">AIA</span>: Would you like me to: 1) Implement a simpler but less efficient version that demonstrates the concept? 2) Or explore how to properly implement the quantum multiplexing needed for efficient database loading?</span></blockquote><blockquote class="ember-view reader-text-block__blockquote" id="ember905"><span style="color: #b6d7a8; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">Me</span>: yes, but make it in a new file</span></blockquote><p class="ember-view reader-text-block__paragraph" id="ember906"><span style="font-family: verdana;">And it did. The main reason for asking for a new file rather than change in place was that the AIA is still often wrong! And reviewing a large amount of inline change is hard for the human eye and mind.</span></p>
-<blockquote class="ember-view reader-text-block__blockquote" id="ember907"><span style="color: #b6d7a8; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">Me</span>: but now your proposed solution doesn't load the database or even look at it!</span></blockquote><blockquote class="ember-view reader-text-block__blockquote" id="ember908"><span style="color: #cc0000; font-family: courier;"><span face="var(--artdeco-reset-typography-font-family-sans)">AIA</span>: Ah, you're absolutely right again!<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></blockquote><p class="ember-view reader-text-block__paragraph" id="ember909"><span style="font-family: verdana;">And it then goes on to suggest further changes, which you might wonder why those changes weren't proposed in the first place? Keep in mind, its only (proudly) right 50% of the time. It is, as we say, "generative AI" after all - it doesn't so much "hallucinate" - it is designed to make s***... I mean, "stuff" up. (The idea that this GPT-based technology such as it is would be even capable of producing generalized AI (AGI) is an open question, indeed.)</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember910"><span style="font-family: verdana;">But these tools can still be useful, not just for single-line "tab" completions, but now as we see here, in higher level conversations with the programmer. It can help articulate requirements, and write test cases, and help drive CI/CD pipelines. And it will improve in scope and accuracy, and custom AIA models tuned for specific programming domains (e.g. quantum) already exist.[21]<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember911"><span style="font-family: verdana;">This is truly the death and rebirth of computer programming, as we have come to experience it. In 1975, IBM's Fred Brooks published the seminal book "The Mythical Man-Month" which described, among other things, the software team which one would want to wrap around a senior technical engineer - a team of as many as 10 specialized professionals to handle the documentation, testing, business communications, and more common technical tasks so your senior contributor ("the surgeon") can focus on great ideas and great architecture.[22] But however, in today's DevOps culture, where we expect our senior engineers to be "full stack", to do it all, to play all roles, the AI tooling brings back some sanity and reminds that there are tasks best left delegated.</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember911"><span style="font-family: verdana;"><br /></span></p>
-<h2><span style="font-family: verdana;">2025</span></h2><p class="ember-view reader-text-block__paragraph" id="ember913"><span style="font-family: verdana;">It's that time in the calendar when everyone offers up their forecasts for the coming year. I'll not wade into that. My only prediction is this - that in 2025, the rate of change in key emerging and difficult to humanly understand (nearly black-box) technologies like AI and quantum computing will continue to accelerate, in many cases, beyond our ability to comprehend or predict. This is the so-called singularity, and it's evolving and emerging during a period also marked by political, military, and economic upheaval.<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember914"><span style="font-family: verdana;">Surf's up. Happy New Year. - andy</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember915"><br /></p>
-<h2><span style="font-family: verdana;">References</span></h2><p class="ember-view reader-text-block__paragraph" id="ember917"><span style="font-family: verdana;">[0] Photo by Ben Wicks on Unsplash</span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember918"><span style="font-family: verdana;">[1] SC24 schedule:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://sc24.conference-program.com/" target="_self">https://sc24.conference-program.com/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember919"><span style="font-family: verdana;">[2] El Capitan hardware overview:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://hpc.llnl.gov/documentation/user-guides/using-el-capitan-systems/hardware-overview" target="_self">https://hpc.llnl.gov/documentation/user-guides/using-el-capitan-systems/hardware-overview</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember920"><span style="font-family: verdana;">[3] "Breaking the Million-Electron and 1 EFLOP/s Barriers: Biomolecular-Scale Ab Initio Molecular Dynamics Using MP2 Potentials",<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://dl.acm.org/doi/pdf/10.1109/SC41406.2024.00015" target="_self">https://dl.acm.org/doi/pdf/10.1109/SC41406.2024.00015</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember921"><span style="font-family: verdana;">[4] NVIDIA SC24 superchip press release:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.datacenterdynamics.com/en/news/nvidia-announces-new-gb200-nvl4-superchip-at-sc24-but-says-theres-still-value-to-be-found-in-grace-hopper/" target="_self">https://www.datacenterdynamics.com/en/news/nvidia-announces-new-gb200-nvl4-superchip-at-sc24-but-says-theres-still-value-to-be-found-in-grace-hopper/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember922"><span style="font-family: verdana;">[5] Tracking CHIPS Act funding:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.semiconductors.org/chips-incentives-awards/" target="_self">https://www.semiconductors.org/chips-incentives-awards/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember923"><span style="font-family: verdana;">[6] NVIDIA Grace Hopper architecture:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://developer-blogs.nvidia.com/wp-content/uploads/2022/11/grace-hopper-overview.png" target="_self">https://developer-blogs.nvidia.com/wp-content/uploads/2022/11/grace-hopper-overview.png</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember924"><span style="font-family: verdana;">[7] "Exploring quantum use cases for the aerospace industry", IBM white paper,<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/quantum-aerospace" target="_self">https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/quantum-aerospace</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember925"><span style="font-family: verdana;">[8] IonQ with NVIDIA SC24 press release:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://ionq.com/news/ionq-to-advance-hybrid-quantum-computing-with-new-chemistry-application-and" target="_self">https://ionq.com/news/ionq-to-advance-hybrid-quantum-computing-with-new-chemistry-application-and</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember926"><span style="font-family: verdana;">[9] Microsoft and Atom quantum press releease:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://azure.microsoft.com/en-us/blog/quantum/2024/11/19/microsoft-and-atom-computing-offer-a-commercial-quantum-machine-with-the-largest-number-of-entangled-logical-qubits-on-record/" target="_self">https://azure.microsoft.com/en-us/blog/quantum/2024/11/19/microsoft-and-atom-computing-offer-a-commercial-quantum-machine-with-the-largest-number-of-entangled-logical-qubits-on-record/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember927"><span style="font-family: verdana;">[10] Alice &amp; Bob logical qubit lib press release :<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://alice-bob.com/newsroom/logical-qubit-emulator-felis-quantum-cloud-alice-bob/" target="_self">https://alice-bob.com/newsroom/logical-qubit-emulator-felis-quantum-cloud-alice-bob/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember928"><span style="font-family: verdana;">[11] Quantinuum stack press release:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.quantinuum.com/blog/announcing-the-launch-of-quantinuum-nexus-our-all-in-one-quantum-computing-platform" target="_self">https://www.quantinuum.com/blog/announcing-the-launch-of-quantinuum-nexus-our-all-in-one-quantum-computing-platform</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember929"><span style="font-family: verdana;">[12] RPI's experiments with HPC and quantum co-scheduling:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.ibm.com/quantum/blog/supercomputing-24" target="_self">https://www.ibm.com/quantum/blog/supercomputing-24</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember930"><span style="font-family: verdana;">[13] "Combining quantum processors with real-time classical communication", Nature, Nov 2024,<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.nature.com/articles/s41586-024-08178-2" target="_self">https://www.nature.com/articles/s41586-024-08178-2</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember931"><span style="font-family: verdana;">[14] Algorithm Zoo:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://quantumalgorithmzoo.org/" target="_self">https://quantumalgorithmzoo.org/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember932"><span style="font-family: verdana;">[15] Pattern match example code:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://github.com/agallojr/research-notes/blob/02253900f33d784402f0cd0b3ed4d9d360544605/quantum/src/qiskit/pattern_match.py" target="_self">https://github.com/agallojr/research-notes/blob/02253900f33d784402f0cd0b3ed4d9d360544605/quantum/src/qiskit/pattern_match.py</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember933"><span style="font-family: verdana;">[16] "QC — Grover’s algorithm", J. Hui,<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://jonathan-hui.medium.com/qc-grovers-algorithm-cd81e61cf248" target="_self">https://jonathan-hui.medium.com/qc-grovers-algorithm-cd81e61cf248</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember934"><span style="font-family: verdana;">[17] Codeium Windsurf IDE:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://codeium.com/windsurf" target="_self">https://codeium.com/windsurf</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember935"><span style="font-family: verdana;">[18] Cursor IDE:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.cursor.com/" target="_self">https://www.cursor.com/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember936"><span style="font-family: verdana;">[19] Dario Amodei, CEO Anthropic, on Lex Fridman podcast:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.youtube.com/watch?v=ugvHCXCOmm4&amp;t=20s&amp;pp=ygULbGV4IGZyaWRtYW4%3D" target="_self">https://www.youtube.com/watch?v=ugvHCXCOmm4&amp;t=20s&amp;pp=ygULbGV4IGZyaWRtYW4%3D</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember937"><span style="font-family: verdana;">[20] SWE-bench:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.swebench.com/" target="_self">https://www.swebench.com/</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember938"><span style="font-family: verdana;">[21] IBM Qiskit Code Assistant:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://www.ibm.com/quantum/blog/qiskit-code-assistant" target="_self">https://www.ibm.com/quantum/blog/qiskit-code-assistant</a></span></p>
-<p class="ember-view reader-text-block__paragraph" id="ember939"><span style="font-family: verdana;">[22] "The Mythical Man-Month", Fred Brooks, 1975:<span class="white-space-pre" face="var(--artdeco-reset-typography-font-family-sans)"> </span><a class="bpCpipVrrjRHIWtfjEjtbNsDescTJyo" href="https://web.eecs.umich.edu/~weimerw/2018-481/readings/mythical-man-month.pdf" target="_self">https://web.eecs.umich.edu/~weimerw/2018-481/readings/mythical-man-month.pdf</a></span></p>
-<br class="Apple-interchange-newline" /></div>
-</div>
-</div>
-</div>
-</div>]]></content><author><name>Surfing the Singularity</name></author><category term="surfthesing" /><summary type="html"><![CDATA[Hello and happy holidays to all. In this blog installment I'll report back from SuperComputing 2024, offer up a programmer-friendly view of the quantum computing space with a code tour of Grover's algorithm, and share some of my own thoughts on using the latest crop of AI programmer assistant tools. (Sadly, not this Grover.) It was a pleasant SC24 high performance computing (HPC) conference in November. Having attended in past either in-person (Atlanta this year) or virtual, this year I chose virtual again. The big loss was being unable to troll the enormous vendor hall, but otherwise, webcasts make it much easier to be in two places at one time or to skim topics of passing interest.[1] There's a new top HPC machine (that we know of) - El Capitan, and its powered by AMD, containing about a million CPU cores and about 10 million GPU cores.[2] Molecular dynamics papers presented using a GPU-accelerated exascale computer reminds that, quantum aside for a moment, the real work is still being done in the classical world.[3] NVIDIA showcased the growing fusion of AI and HPC with their "superchip" designs - incorporating a CPU and a GPU on the same chip.[4] And why not, the money keeps flowing, the current outgoing federal administration now locking in the CHIPS Act funding before the end of the term.[5] NVIDIA's Grace Hopper architecture [6] But beyond the incremental improvements in compute, storage, cooling, power consumption and the like, it seemed to me, through my remote goggles, that the real action was happening on the sidelines of SC24, in the quantum computing space. Quantum Chip on Shoulder There's significant skepticism of quantum computing from the HPC community at the moment. Quantum computers today are toys in comparison to HPC, and stakeholders in HPC and classical computing (which would include myself) might wonder aloud "what's the point?" For some applications (like the fluid dynamics apps my company uses), quantum utility is perhaps still a decade away.[7] But the groundwork is being laid today, and when we understand that there are useful problems which can be solved on quantum computers, and only on quantum computers, we might at least allow the playing to continue. And we might be surprised at how fast quantum computing is progressing, and also just churning. Even those in the industry are hedging their bets - on which qubit technologies and which companies will be the winners - and as such are changing partners on a regular basis [8,9,10], although this sometimes means needing to unproductively reinvent the wheel (how many Python quantum circuit libraries do we need?)[11] A couple of new announcements from Big Blue caught my eye. First, an early demonstrator of incorporating an IBM quantum computer into an HPC data center, unifying the resource scheduling, was shown at RPI with their AiMOS cluster and their first-in-the-nation academic installation.[12] The second, and more important, was the paper in Nature demonstrating the union of two quantum computers via classical networks, providing another avenue for scaling up hybrid quantum computing.[13] But today's QPUs are still noisy, fragile, small, expensive, and scarce. Maturity is still a ways off. QPUs are not fungible - to be successful in executing an application on a quantum computer, we must understand the error profile of that specific device! Not just that brand of quantum computer product, but this instance of that product! We need hands-on examples to grow the personal and team experience with quantum while we await stabilized hardware and the productivity-enabling software abstractions which can only come after industry maturity, and these early (head-butting) experiences. Making Your Quantum BonesToday's education in and around quantum computing is still focused on the experimental audience. We are still doing experiments about quantum more than experiments with quantum. The educational material which does exist, and there is an increasing amount, is focused on a community which is very comfortable with quantum physics and its associated mathematics. Most people, myself included, do not fit this description. As a computer science graduate, adjunct prof, and software engineer by trade, I want to see higher level programming abstractions, not those centered around qubits and gates which clearly does not scale for large programs. We will be waiting a while. So in the meantime, we need to see some examples using today's technology and syntax but which are more suited for the Comp Sci student audience, to help begin to bridge that gap. If we visit the Algorithm Zoo [14], a collection of quantum algorithms which show a computational advantage over similar classical approaches, we find some things (but not many) which might look familiar to a CS undergrad, but the implementations, when they exist, are often broken. In this current early phase of the quantum era, vendors are playing free and loose with their SDKs, and releases with significant object model refactorings and breaking changes are the norm. pattern_match.py So I offer here an example of a quantum program which itself likely has a short shelf life. You can find it here.[15, &amp; above] It shows a cooked up example of using Grover's algorithm, which is a quantum algorithm for search in unstructured (e.g. unsorted) data. Classically, "cuz Murphy's Law", you might need to walk the entire dataset to find the item of interest (or show its not there) - we call this an O(n) algorithm. Using Grover's algorithm, you can do the search with a strong probability of success in O(sqrt(n)) time - a quadratic speedup, and one worth pursuing for many applications. Note we are only saying we can perform the search with high probability - this is quantum computing, and everything is a probability. And while the example shown isn't necessarily the most common application of Grover, understanding Grover is worthwhile, as it appears as a sub-procedure in many other quantum algorithms. Here are a few key points to take away, even if you don't take the time to look at the documented code example: We're going to store a small set of strings - binary strings of 1's and 0's representing a small dataset - into a quantum system of qubits. Since our strings are chosen to be 16 binary digits long, we will use 16 qubits. This is a large enough number of qubits to show some non-trivial problems, but not so many as to not be runnable on a simulator on your laptop. (The performance does not scale linearly with the number of qubits.)A system of n qubits contains 2**n possible states (combinations of 0's and 1's). That's a lot. We will have far fewer state strings in our dataset - just a handful for this experiment.After initializing the qubits, we will mark each state in the quantum system which corresponds to a binary string in our dataset. To do this we will use the phase of the qubit, which is an extra useful lever you do not find in classical bits (among other unique quantum advantages). Three qubits in superposition.[16] Marking one of the states by flipping its phase.[16] Using Grover's algorithm, we will amplify the probability of finding the marked states relative to other background states. I.e., the signal is separated from the noise. To do this we iteratively apply an oracle quantum circuit to the initial system. The states, with our target amplified, after some number of iterations of Grover's algorithm.[16] Note that we use the same 16 qubits to encode all of the 16-digit strings in the dataset. Try that with a classical computer!We then use Grover's algorithm again using a target string, applying the oracle against the now prepared quantum system, and returning the result that the target either is or is not in the dataset. Hopefully this gives some flavor of what its like to program a quantum computer using an example most classical programmers today can understand. There are places where the code can potentially be improved - I welcome your input in the comments section below. AI AI, Oh. During these quantum coding explorations, during other coding work, and while writing documents (like this one), I've also been experimenting with a sequence of so-called "AI assistants". Starting with Copilot as a plugin for the popular VS Code IDE, I quickly switched to the Codeium plugin which performed better for my purposes, mostly because it took more of my code into context while making suggestions.[17] Since, the various vendors have leap-frogged each other in features and quality of results, and so while this tool comparison may be stale, its also the case that any new comparison would soon itself become stale. While the VS Code IDE provides hooks for plugins, some vendors, most notably Cursor [18] took the approach that to provide a true AI assistant (AIA) for a modern software developer you needed plugin hooks in many places, and control over things like the rendering of change sets. So they forked the VS Code IDE entirely. And they weren't the only ones to do this - Codeium now also has its own IDE called Windsurf - this is what I'm currently using. This can't be end state for the discussion and more leap-frogging is expected, so watch this space. I've now seen cases where people are putting "Cursor" on their resume - not a good idea to commit to that, but it is a good idea to start using one of these modern tools in your work, and to better understand how to adopt your work practices in light of their potential. In other words, to experiment while these AIA tools improve. The head of Anthropic, a major AI player and the maker of the model driving my current IDE, is proud to say their model reaches 50% success rates on a popular software engineering metric.[19,20] Do you want to pair program with an assistant which is only right 50% of the time? I can tell you that its got its ups and downs. On the positive, for mundane tasks, it can do a pretty good job. Questions like "how do you do X in Python?" which you might have previously taken to Stack Overflow can now be answered in the IDE with custom-made code samples. You can turn your question into an instruction: Me: modify this code to take the target string as a command line argument and default to the current target string if none is providedAIA: I've modified the code to...And it will describe in words and code a working solution, albeit in my case one I found to be slightly over-engineered: Me: use sys to determine if a single arg was providedAIA: I'll modify the code to use sys.argv for a simpler command line argument handling...In another interaction, we debated if an AIA-proposed solution was mathematically efficient, at one point: AIA: Would you like me to: 1) Implement a simpler but less efficient version that demonstrates the concept? 2) Or explore how to properly implement the quantum multiplexing needed for efficient database loading?Me: yes, but make it in a new fileAnd it did. The main reason for asking for a new file rather than change in place was that the AIA is still often wrong! And reviewing a large amount of inline change is hard for the human eye and mind. Me: but now your proposed solution doesn't load the database or even look at it!AIA: Ah, you're absolutely right again! And it then goes on to suggest further changes, which you might wonder why those changes weren't proposed in the first place? Keep in mind, its only (proudly) right 50% of the time. It is, as we say, "generative AI" after all - it doesn't so much "hallucinate" - it is designed to make s***... I mean, "stuff" up. (The idea that this GPT-based technology such as it is would be even capable of producing generalized AI (AGI) is an open question, indeed.) But these tools can still be useful, not just for single-line "tab" completions, but now as we see here, in higher level conversations with the programmer. It can help articulate requirements, and write test cases, and help drive CI/CD pipelines. And it will improve in scope and accuracy, and custom AIA models tuned for specific programming domains (e.g. quantum) already exist.[21] This is truly the death and rebirth of computer programming, as we have come to experience it. In 1975, IBM's Fred Brooks published the seminal book "The Mythical Man-Month" which described, among other things, the software team which one would want to wrap around a senior technical engineer - a team of as many as 10 specialized professionals to handle the documentation, testing, business communications, and more common technical tasks so your senior contributor ("the surgeon") can focus on great ideas and great architecture.[22] But however, in today's DevOps culture, where we expect our senior engineers to be "full stack", to do it all, to play all roles, the AI tooling brings back some sanity and reminds that there are tasks best left delegated. 2025It's that time in the calendar when everyone offers up their forecasts for the coming year. I'll not wade into that. My only prediction is this - that in 2025, the rate of change in key emerging and difficult to humanly understand (nearly black-box) technologies like AI and quantum computing will continue to accelerate, in many cases, beyond our ability to comprehend or predict. This is the so-called singularity, and it's evolving and emerging during a period also marked by political, military, and economic upheaval. Surf's up. Happy New Year. - andy References[0] Photo by Ben Wicks on Unsplash [1] SC24 schedule: https://sc24.conference-program.com/ [2] El Capitan hardware overview: https://hpc.llnl.gov/documentation/user-guides/using-el-capitan-systems/hardware-overview [3] "Breaking the Million-Electron and 1 EFLOP/s Barriers: Biomolecular-Scale Ab Initio Molecular Dynamics Using MP2 Potentials", https://dl.acm.org/doi/pdf/10.1109/SC41406.2024.00015 [4] NVIDIA SC24 superchip press release: https://www.datacenterdynamics.com/en/news/nvidia-announces-new-gb200-nvl4-superchip-at-sc24-but-says-theres-still-value-to-be-found-in-grace-hopper/ [5] Tracking CHIPS Act funding: https://www.semiconductors.org/chips-incentives-awards/ [6] NVIDIA Grace Hopper architecture: https://developer-blogs.nvidia.com/wp-content/uploads/2022/11/grace-hopper-overview.png [7] "Exploring quantum use cases for the aerospace industry", IBM white paper, https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/quantum-aerospace [8] IonQ with NVIDIA SC24 press release: https://ionq.com/news/ionq-to-advance-hybrid-quantum-computing-with-new-chemistry-application-and [9] Microsoft and Atom quantum press releease: https://azure.microsoft.com/en-us/blog/quantum/2024/11/19/microsoft-and-atom-computing-offer-a-commercial-quantum-machine-with-the-largest-number-of-entangled-logical-qubits-on-record/ [10] Alice &amp; Bob logical qubit lib press release : https://alice-bob.com/newsroom/logical-qubit-emulator-felis-quantum-cloud-alice-bob/ [11] Quantinuum stack press release: https://www.quantinuum.com/blog/announcing-the-launch-of-quantinuum-nexus-our-all-in-one-quantum-computing-platform [12] RPI's experiments with HPC and quantum co-scheduling: https://www.ibm.com/quantum/blog/supercomputing-24 [13] "Combining quantum processors with real-time classical communication", Nature, Nov 2024, https://www.nature.com/articles/s41586-024-08178-2 [14] Algorithm Zoo: https://quantumalgorithmzoo.org/ [15] Pattern match example code: https://github.com/agallojr/research-notes/blob/02253900f33d784402f0cd0b3ed4d9d360544605/quantum/src/qiskit/pattern_match.py [16] "QC — Grover’s algorithm", J. Hui, https://jonathan-hui.medium.com/qc-grovers-algorithm-cd81e61cf248 [17] Codeium Windsurf IDE: https://codeium.com/windsurf [18] Cursor IDE: https://www.cursor.com/ [19] Dario Amodei, CEO Anthropic, on Lex Fridman podcast: https://www.youtube.com/watch?v=ugvHCXCOmm4&amp;t=20s&amp;pp=ygULbGV4IGZyaWRtYW4%3D [20] SWE-bench: https://www.swebench.com/ [21] IBM Qiskit Code Assistant: https://www.ibm.com/quantum/blog/qiskit-code-assistant [22] "The Mythical Man-Month", Fred Brooks, 1975: https://web.eecs.umich.edu/~weimerw/2018-481/readings/mythical-man-month.pdf]]></summary></entry></feed>
+<p><br /></p>]]></content><author><name>Surfing the Singularity</name></author><category term="surfthesing" /><summary type="html"><![CDATA[Mustapha Suleyman knows a thing or two about AI.  Originally co-founder of DeepMind, a company and IP eventually acquired by Google, Mr. Suleyman is now CEO of AI at Microsoft. In this latest "Surfing the Singularity" blog installment, we'll review his recent book "The Coming Wave". Hang ten! Go Where You Wanna Go As a game, Go is notorious for its huge array of potential moves, exponentially more complex than chess for example, where computer models beat the best chess player way back in 1997. In 2016, DeepMind's model AlphaGo beat the best Go player in world after being trained the better part of a year with reinforced machine learning on a data set of human Go games and computer-vs-computer play. The following year, DeepMind's AlphaZero exceeded that performance in just a few days of training computation without ever being shown a single Go game, just having been described the rules of the game.[1]    &lt;div style="text-align: center;"&gt;Alas, born at the wrong time.&lt;/div&gt; In his Bill Gates-recommended [2] book "The Coming Wave", Mr. Suleyman's dystopian thesis is this: that the combination of AI, synthetic biology, and a host of other general purpose technologies such as robotics and additive manufacturing will combine into a major technological wave which will wash over the human race and alter it in unprecedented ways. Much as in past waves - the harnessing of fire, the wheel, the printing press, the combustion engine - each set off dramatic and often cataclysmic societal change the likes of which was certainly not obvious or expected by the "engineers" which developed the tooling. Call it the "rule of unintended consequences". The author supposes there have been about two dozen such waves over human history, and as expected in these times, the rate of arrival of transformational technologies is accelerating. Take the printing press. Originally in 1440 there is but one device, the lab prototype. Fifty years later there are 1,000 printing presses in Europe. From producing just a few thousand hand-copied manuscripts a year, the bookmakers now produced millions. Demand for books soars, cost per unit drops, adoption deepens. What was the impact of this new information proliferation in the society? As Suleyman writes: "Gutenberg just wanted to make money printing Bibles. Yet his press catalyzed the Scientific Revolution and the Reformation, and so became the greatest threat to the Catholic Church since its establishment." And in spite of the efforts of certain Byzantine lords to control the press, proliferation of the technology was and is the default, driven by FOMO, at least. Straight Outta Coruscant The mass-scale rollout of AI is already underway, hand-in-hand with surveillance devices at the edge, high speed networking, nearly bottomless storage, and high performance computing on demand to make sense of it all. All so "The Algorithm" can feed you tailored news (and ads) with your morning coffee. And more, much more. Large Language Models (LLMs), trained on the corpus of human written and other creative output can now generate helpful suggestions in a variety of useful contexts (such as blog writing). And as I wrote about in my last blog [3], LLMs are useful code assistants too, although here current state of the art is about a 50% success rate on senior-level software development tasks. So yes, there is room to grow, but in line with the acceleration of the rate of change, we expect that gap to be closed in short time. What then? A whole host of human-centric but generally rule-oriented tasks - think: back-office work in the finance and insurance industry - will become fair game for AI augmentation, meaning, human replacement. We see the rise of autonomous vehicles - think: bus and cab drivers, mail and package delivery, pilots. Air traffic controllers. Call centers. Medical radiology readers. Not one of these applications requires a super "artificial general intelligence" (AGI), simply a good model tailored to a specific task set, aka "artificial capable intelligence" (ACI). This is nearly all line-of-sight to market. What then is not here now? The author spends a good amount of time discussing the rise and impact of artificial and synthetic biology, CRISPR gene hacking and the like. Not being personally equipped to analyze such biotechnologies, I'm simply going to leave that one to the reader, suggest its some heady stuff, but otherwise stay in the domain of the electro-mechanical. But even with this scope limitation, what is the wider wave? &lt;p&gt;&lt;/p&gt; Consider the rise of the bots, farm bots. GPS-guided autonomous tractors (already a thing).[4] These robots don’t look like C3PO tending the moisture reapers on Tatooine - these robots look like farm equipment and are painted John Deere green. Amazon and Walmart distribution warehouses are already highly automated - combined with autonomous vehicles and AI-driven back-office work, how many employees do we think Amazon will need in 2 years? In 5 years? They currently employ 1.5 million people and reduced headcount 5% in the last 2 years while growing revenues over 20%.[5]&lt;p&gt;&lt;/p&gt; Mind the Gap And while your local Joe the Plumber [6] may continue to have a job visiting homes for some time to come, the use of single-task robotic automation in construction, especially new commercial construction, and property maintenance is on the rise. Concrete and paint-spraying robots. High rise window washers. Roofers, and general laborers to move material around a job site - bots - flying, floating, swimming, walking, drilling, boring bots. And more factory bots too, using traditional and additive techniques, to print their own parts. Bots that make bots. And an unemployment office at the Department of Labor run by AI.[7] What about joining up with Uncle Sam, see the world, serve your country? Drone warfare in Ukraine has shown the folly of the massing of expensively equipped troops, and in the Red Sea the risks associated with large and high priced floating projections of power. Hypersonic weapons, beyond the capabilities of a human in-the-loop system to thwart. The result is asymmetric bot-on-bot warfare, beyond the battlefield, beyond borders. What are we to do with legions of technically unemployed, if they are not even useful for cannon fodder? And what are we to do with the State, if it cannot provide a system which benefits the population, which can keep it protected from proliferating technological threats? With information, wealth, and power centralized in the hands of a self-selected few, is it pitchforks and torches to the barricades then?[8] While its clear and no surprise the coming wave will benefit those with technical and financial authority, there is a chance of a boomerang effect which will result in forces in the opposite direction. The tooling, including the availability of sophisticated AI models and the means to run them, is being democratized. While increasing in capability, the cost of military-grade drones has decreased orders of magnitude in the last decade.[9] Rabble-rousing AI deepfakes proliferate. As Mr. Suleyman says, "anyone motivated to sow instability now has an easier time of it", not just state actors, agents, or oligarchs, but anyone with a few thousand dollars and an axe to grind. And considering the examples from recent 21st century past, if a rogue actor were to leverage the technology for nefarious purposes (think: 9/11 and the Patriot Act), there would surely be immediate call by the population for protection, likely but perhaps not exclusively by the State, backed by pervasive security surveillance. And this time, the means to fully execute on that wish exists.  The China Syndrome &lt;p style="text-align: center;"&gt;”The system works! That’s not the problem!”&lt;/p&gt; &lt;div style="text-align: left;"&gt;It is a coming wave of contradictions and competing forces, and it sounds disruptive and quite unpleasant to say the least, perhaps even a human catastrophe. And besides avoiding the topic of bioengineering, we also haven’t yet discussed what happens when we actually do get to superhuman generalized AI - we’re still talking here about relatively dumb AI with human actors in charge, in theory.&lt;/div&gt; &lt;p&gt;&lt;/p&gt; The author Mr. Suleyman concludes that the containment of this new technology - this artificial intelligence backed by autonomous mobility - a containment which has rarely if ever been possible (nukes being maybe the sole exception), must be done successfully, and urgently. Its a good sentiment, albeit one which may be too optimistic, even blindly. Can the march of this autonomous AI "progress" with its obvious and as yet to be seen additional consequences be stopped? I would argue, and the author would likely in the final analysis have to admit, that it cannot. What to do about it? Maybe we should give serious thought to the existential question of what it actually means to be human.[10] Or, alternatively, as Timothy Leary said...[11] Until next time.  - andy References &amp; Amusements [1] "The Coming Wave", Mustapha Suleyman, Crown Pub., 2023 [2] Bill Gates blog, https://www.gatesnotes.com/holiday-books-2024 [3] "Surfing the Singularity: Super Grover!", https://surfthesing.blogspot.com/2024/12/surfing-singularity-super-grover.html [4] "John Deere Robot Planter", https://www.cnet.com/tech/john-deere-robot-planter-the-future-of-farming-looks-like-fewer-chemicals/ [5] https://www.statista.com/statistics/234488/number-of-amazon-employees/ and https://www.statista.com/statistics/266282/annual-net-revenue-of-amazoncom/ [6] https://www.nytimes.com/2023/08/28/us/politics/samuel-wurzelbacher-joe-the-plumber-dead.html [7] https://www.dol.gov/agencies/oasam/centers-offices/ocio/ai-inventory [8] https://www.stlouisfed.org/community-development-research/the-state-of-us-wealth-inequality [9] https://www.technologyreview.com/2023/01/30/1067348/mass-market-military-drones-have-changed-the-way-wars-are-fought/ [10] https://www.organism.earth/library/document/unapologetically-human [11] https://www.youtube.com/watch?v=IPSzTBP5PAU]]></summary></entry></feed>
