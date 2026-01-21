@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-01-18T21:00:37-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Quoting Nicholas Carlini</title><link href="https://hpc.social/personal-blog/2026/quoting-nicholas-carlini/" rel="alternate" type="text/html" title="Quoting Nicholas Carlini" /><published>2026-01-18T17:07:12-07:00</published><updated>2026-01-18T17:07:12-07:00</updated><id>https://hpc.social/personal-blog/2026/quoting-nicholas-carlini</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/quoting-nicholas-carlini/"><![CDATA[<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-01-19T20:54:12-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Quoting Charity Majors</title><link href="https://hpc.social/personal-blog/2026/quoting-charity-majors/" rel="alternate" type="text/html" title="Quoting Charity Majors" /><published>2026-01-19T17:47:51-07:00</published><updated>2026-01-19T17:47:51-07:00</updated><id>https://hpc.social/personal-blog/2026/quoting-charity-majors</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/quoting-charity-majors/"><![CDATA[<p>Charity’s latest post, <em><a href="https://charity.wtf/2026/01/19/bring-back-ops-pride-xpost/">Bring back ops pride</a></em>, is an excellent discussion (rant?) on the importance of operations for software systems and why it’s a bad idea to try and pretend it isn’t a real concern, or make conventional application teams do the work in addition to their regular job.</p>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>“Operations” is not a dirty word, a synonym for toil, or a title for people who can’t write code. May those who shit on ops get the operational outcomes they deserve.</p>
+
+</blockquote>
+
+<p>You should absolutely go read the <a href="https://charity.wtf/2026/01/19/bring-back-ops-pride-xpost/">full piece</a>, as well as Charity’s earlier post on the Honeycomb blog: <em><a href="https://www.honeycomb.io/blog/you-had-one-job-why-twenty-years-of-devops-has-failed-to-do-it">You had one job: Why twenty years of DevOps has failed to do it</a></em>. </p>
+
+<p>Below find several pull quotes from the post itself, because there were just too many to choose from.</p>
+
+<p><span id="more-430"></span></p>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The difference between “dev” and “ops” is not about whether or not you can write code. Dude, it’s 2026:&nbsp;<strong>everyone writes software</strong>.</p>
+
+
+
+
+<p>The difference between dev and ops is a separation of concerns.</p>
+
+</blockquote>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The hardest technical challenges and the long, stubborn tail of intractable problems have&nbsp;<em>always</em>&nbsp;been on the infrastructure side.&nbsp;<strong>That’s why we work&nbsp;<em>so hard</em>&nbsp;to try not to have them</strong>—to solve them by partnerships, cloud computing, open source, etc.&nbsp;<em>Anything</em>&nbsp;is better than trying to build them again, starting over from scratch. We know the cost of new code in our bones.</p>
+
+
+
+
+<p>As I have said a thousand times: the closer you get to laying bits down on disk, the more conservative (and afraid) you should be.</p>
+
+</blockquote>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The difference between dev and ops isn’t about writing code or not. But there&nbsp;<em>are</em>&nbsp;differences. In perspective, priorities, and (often) temperament.</p>
+
+
+
+
+<p>I touched on a number of these in&nbsp;<a href="https://www.honeycomb.io/blog/you-had-one-job-why-twenty-years-of-devops-has-failed-to-do-it">the article I just wrote on feedback loops</a>, so I’m not going to repeat myself here.</p>
+
+
+
+
+<p>The biggest difference I did&nbsp;<em>not</em>&nbsp;mention is that they have different relationships with resources and definitions of success.</p>
+
+
+
+
+<p>Infrastructure is a cost center. You aren’t going to make more money if you give ten laptops to everyone in your company, and you aren’t going to make more money by over-spending on infrastructure, either. Great operations engineers and architects never forget that&nbsp;<strong>cost is a first class citizen</strong>&nbsp;of their engineering decisions.</p>
+
+</blockquote>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Operational rigor and excellence are not, how shall I say this…not yet something you can take for granted in the tech industry. The most striking thing about the 2025 DORA report was that the&nbsp;<em>majority of companies</em>&nbsp;report that AI is just adding more chaos to a system already defined by chaos. In other words, most companies are bad at ops.</p>
+
+</blockquote>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Charity’s latest post, Bring back ops pride, is an excellent discussion (rant?) on the importance of operations for software systems and why it’s a bad idea to try and pretend it isn’t a real concern, or make conventional application teams do the work in addition to their regular job.]]></summary></entry><entry><title type="html">Quoting Nicholas Carlini</title><link href="https://hpc.social/personal-blog/2026/quoting-nicholas-carlini/" rel="alternate" type="text/html" title="Quoting Nicholas Carlini" /><published>2026-01-18T17:07:12-07:00</published><updated>2026-01-18T17:07:12-07:00</updated><id>https://hpc.social/personal-blog/2026/quoting-nicholas-carlini</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/quoting-nicholas-carlini/"><![CDATA[<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
 <p>Because when the people training these models justify why they&#8217;re worth it, they appeal to pretty extreme outcomes. When Dario Amodei wrote his essay&nbsp;<a href="https://www.darioamodei.com/essay/machines-of-loving-grace">Machines of Loving Grace</a>, he wrote that he sees the benefits as being extraordinary: &#8220;Reliable prevention and treatment of nearly all natural infectious disease &#8230; Elimination of most cancer &#8230; Prevention of Alzheimer’s &#8230; Improved treatment of most other ailments &#8230; Doubling of the human lifespan.&#8221; These are the benefits that the CEO of Anthropic uses to justify his belief that LLMs are worth it. If you think that these risks sound fanciful, then I might encourage you to consider what benefits you see LLMs as bringing, and then consider if you think the risks&nbsp;are worth it.</p>
 
 </blockquote>
@@ -435,17 +491,4 @@
 
 <p>The worst of both worlds is when you let devs keep merging diffs, checking items off their todo lists, closing out tasks, for days or weeks. All these changes build up like a snowdrift over a pile of grenades. You aren’t going to find the grenades til you plow into the snowdrift on January 5th, and then you’ll find them with your face. Congrats!</p>
 
-</blockquote>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[This post from Charity Majors on Friday deploys is well worth reading.]]></summary></entry><entry><title type="html">Why generic software design advice is often useless</title><link href="https://hpc.social/personal-blog/2025/why-generic-software-design-advice-is-often-useless/" rel="alternate" type="text/html" title="Why generic software design advice is often useless" /><published>2025-12-30T03:33:15-07:00</published><updated>2025-12-30T03:33:15-07:00</updated><id>https://hpc.social/personal-blog/2025/why-generic-software-design-advice-is-often-useless</id><content type="html" xml:base="https://hpc.social/personal-blog/2025/why-generic-software-design-advice-is-often-useless/"><![CDATA[<p>In <em><a href="https://www.seangoedecke.com/you-cant-design-software-you-dont-work-on/">You can&#8217;t design software you don&#8217;t work on</a>, </em>Sean Goedecke discusses why generic advice on the design of software systems is often unhelpful.</p>
-
-<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<p><strong>When you’re doing real work, concrete factors dominate generic factors</strong>. Having a clear understanding of what the code looks like right now is far, far more important than having a good grasp on general design patterns or principles.</p>
-
-</blockquote>
-
-<p>This tracks with my experience not just of software systems, but also systems with a hardware component (eg ML training clusters) or a facility component (eg datacenters). The specifics of your system absolutely dominate any general design guidance.</p>
-
-<p>As the manager of a team that publishes reference architectures, I do think that it’s helpful to clearly understand where your specific design differs from generic advice. If you’re going off the beaten path, you should k<em>now </em>you’re doing that! And be able to plan for any additional validation involved in doing that.</p>
-
-<p>But relatedly, this is part of why I think that any generic advice should be based on some actually existing system. If you are telling someone they should follow a given principle, you should be able to point to an implementation that <em>does</em> follow that principle. </p>
-
-<p>Or else you’re just speculating into the void. Which admittedly can be <em>fun</em> but is not nearly as valuable as speaking from experience.</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[In You can&#8217;t design software you don&#8217;t work on, Sean Goedecke discusses why generic advice on the design of software systems is often unhelpful.]]></summary></entry></feed>
+</blockquote>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[This post from Charity Majors on Friday deploys is well worth reading.]]></summary></entry></feed>
