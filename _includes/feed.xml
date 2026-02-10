@@ -1,4 +1,233 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-02-07T21:41:06-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Who needs full-featured CI and why</title><link href="https://hpc.social/personal-blog/2026/who-needs-full-featured-ci-and-why/" rel="alternate" type="text/html" title="Who needs full-featured CI and why" /><published>2026-02-07T00:38:16-07:00</published><updated>2026-02-07T00:38:16-07:00</updated><id>https://hpc.social/personal-blog/2026/who-needs-full-featured-ci-and-why</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/who-needs-full-featured-ci-and-why/"><![CDATA[<p>Ian Duncan has written a great post on CI orchestration called <em><a href="https://www.iankduncan.com/engineering/2026-02-06-bash-is-not-enough/">No, Really, Bash Is Not Enough: Why Large-Scale CI Needs an Orchestrator</a></em>. It does a good job of distinguishing between the simple cases where bash and make really are good enough for CI, and when you actually need a full-featured CI system.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-02-08T21:37:13-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">HPC in an AI world- swimming upstream with more conviction</title><link href="https://hpc.social/personal-blog/2026/hpc-in-an-ai-world-swimming-upstream-with-more-conviction/" rel="alternate" type="text/html" title="HPC in an AI world- swimming upstream with more conviction" /><published>2026-02-07T22:11:00-07:00</published><updated>2026-02-07T22:11:00-07:00</updated><id>https://hpc.social/personal-blog/2026/hpc-in-an-ai-world-swimming-upstream-with-more-conviction</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/hpc-in-an-ai-world-swimming-upstream-with-more-conviction/"><![CDATA[<p>Dan Reed recently published an essay, <a href="https://hpcdan.org/2026/02/06/hpc-in-an-ai-world/">HPC In An AI
+World</a>, that summarizes a longer-form statement piece he co-authored
+with Jack Dongarra and Dennis Gannon called <a href="https://hpcdan.org/wp-content/uploads/2026/01/Ride-The-Wave-Build-The-Future.pdf">Ride the Wave, Build the Future: Scientific Computing in an AI World</a>. It's worth a read since, as with
+much of Dr. Reed's writing, it takes a necessary, hard look at where
+the HPC community needs to look as the world underneath it shifts as a
+result of the massive market forces driving AI.</p>
+<p>This is a topic about which I've written at length in the past on my
+blog, and as I read Dr. Reed's latest post (and the Riding the Wave paper that
+motivated it), I found myself agreeing with a many of his positions but
+disagreeing with some others.</p>
+<p>My own background is in the world at the center of Dr. Reed's
+writing: traditional HPC for scientific computing at the national scale.
+However, my outlook has also been colored by the years I spent at
+Microsoft supporting massive-scale supercomputing infrastructure for
+training frontier models and the days I now spend at VAST, steeped in
+the wider enterprise AI market. This undoubtedly results in an unusual lens through which I now view Dr. Reed's position, and I couldn't
+help but mark up his essay with my own notes as I read through it.</p>
+<p>In the event that my perspective--that of an HPC-turned-AI
+infrastructure practitioner--is of interest to anyone who found Dr.
+Reed's latest essay as engaging as I did, I've shared them below.</p>
+<div class="separator" style="clear: both; display: none; text-align: center;"></div>
+<blockquote>
+<p><b>New Maxim Two: Energy and data movement, not floating point
+operations, are the scarce resources.</b></p>
+</blockquote>
+<p>This has been true long before exascale in the HPC world. This is not
+a new maxim. Ironically, it is in the AI world that this maxim is
+relatively new; as inference overtakes training as the predominant
+consumer of GPU cycles, we are seeing widespread shortages of DRAM
+because of the extreme demand for HBM and the memory bandwidth it
+provides.</p>
+<blockquote>
+<p><b>New Maxim Three: Benchmarks are mirrors, not
+levers. Benchmarks rarely drive technical change. Instead,
+they are snapshots of past and current reality, highlighting progress
+(or the lack thereof), but they have little power to influence strategic
+directions.</b></p>
+</blockquote>
+<p>Benchmarks drive technical change amongst technology providers who
+act without conviction. The tech industry is full of companies who are
+blindly chasing consumer demand, and these companies design entire
+product lines to achieve high benchmark results with the mistaken belief
+that those benchmarks are a reasonable proxy for actual productivity.
+And even worse, many buyers (especially in lower-sophistication markets
+like enterprise) also believe that benchmarks, by virtue of being
+designed by community organizations who have ostensibly thought deeply
+about performance, are a good proxy for productivity, make purchasing
+decisions around these same benchmarks.</p>
+<p>The net result is that a bad set of benchmarks can create and sustain
+an entire economy of buyers and sellers who think they are buying and
+selling something useful, when in fact they are wasting resources (time,
+energy, and COGS) because none of them actually understand what really
+drives productivity within their organizations.</p>
+<p>Fortunately, the HPC community is generally savvier than enterprises,
+and most national computing centers now recognize that HPL is simply not
+a meaningful yardstick. While it used to be good for convincing
+politicians and other non-technical funders that good work was being
+  done, the discourse around AI has squarely put R<sub>max</sub> in the ground as a
+meaningful metric. Politicians now understand "hundreds of thousands of
+GPUs" or "gigawatts," neither of which require a benchmark like HPL to
+prove.</p>
+<p>Also, as an aside, I find it ironic that a paper with Jack Dongarra
+listed as an author is now saying HPL is a snapshot of the past. I've
+heard that he is the reason that HPL results achieved using emulated
+FP64 are not allowed on Top500. Despite achieving the required residuals
+through more innovative means than simply brute-forcing a problem
+through FP64 ALUs, using techniques like the Ozaki scheme were deemed
+incompatible with the purpose of Top500. Which is to say, I think he's
+the reason why HPL and Top500 has been reduced to a benchmark that
+reflects outputs (hardware FP64 throughput) rather than outcomes
+(solving a system of equations using LU decomposition).</p>
+<blockquote>
+<p><b>New Maxim Four: Winning systems are co-designed
+end-to-end—workflow first, parts list second.</b></p>
+<p><b>…</b></p>
+<p><b>In HPC, we must pivot to funding sustained co-design ecosystems that
+bet on specific, high-impact scientific workflows</b></p>
+</blockquote>
+<p>I don't agree with this. Funding sustained co-design is just swimming
+upstream with more conviction.</p>
+<p>The real way forward is to find ways to align scientific discovery
+with the way the technology landscape is moving. This means truly riding
+the wave and accepting that scientific discovery may have to turn to
+completely different techniques that achieve their desired precision and
+validation through means that may render obsolete the skills and
+expertise some people have spent their careers developing.</p>
+<p>Consider the scaffolding of end-to-end workflow automation; a rich
+ecosystem of technologies exists in the enterprise and hyperscale worlds
+that have been used to build extreme-scale, globally distributed,
+resilient, observable, and high-performance workflows that combine
+ultra-scalable analytics engines with exascale data warehouses. However,
+realizing these capabilities in practice requires fundamentally
+rethinking the software infrastructure on which everything is built. The
+rigidities of Slurm and the inherent insecurities of relying on ACL- and
+kernel-based authentication and authorization need to be abandoned, or
+at least understood to be critically limiting factors that the HPC
+community chains itself to.</p>
+<p>To make this very specific, consider a bulk-synchronous MPI job
+running across a hundred thousand GPUs; if one node fails, the whole job
+fails. The "swimming upstream with more conviction" way of solving this
+problem is to pay a storage company to build a faster file system, pay
+some researchers to develop a domain-specific checkpoint library that
+glues the MPI application to platform-specific APIs, and pay SchedMD to
+automate fast restart based on these two enhancements. Fund all three
+projects under the same program, and it is arguably a "co-designed
+end-to-end workflow."</p>
+<p>Riding the wave would be something different though: instead of
+requiring a job requeue and full restart from checkpoint upon job
+failure, treat the entire job as an end-to-end workflow. If a node
+fails, the job doesn't stop; it just transitions into a recovery state,
+where the orchestrator gives it a new node on which the job runtime can
+rebuild the state of the dead node using distributed parity or
+domain-specific knowledge. A fast file system is completely unnecessary
+for failure recovery. But the application developers would have to
+abandon the model of an application being a single process invocation in
+favor of the application being a system whose state evolves with the
+underlying hardware.</p>
+<p>Slurm can't do any of this, because Slurm is tied to the MPI model of
+parallel execution which assumes nothing ever fails. Which is to say, I
+think co-design should be deferred until a time that the HPC community
+first recognizes that, so long as they continue to approach end-to-end
+co-design as an HPC problem to be solved by HPC people using HPC approaches, they will continue
+to swim upstream regardless of how much co-design they do.</p>
+<blockquote>
+<p><b>New Maxim Five: Research requires prototyping at
+scale (and risking failure), otherwise it is procurement.
+A variant of our 2023 maxim, prototyping – testing new and novel ideas –
+means accepting the risk of failure, otherwise it is simply incremental
+development. Implicit in the notion of prototyping is the need to test
+multiple ideas, then harvest the ones with promise. Remember, a
+prototype that cannot fail has another name – it’s called a product.</b></p>
+</blockquote>
+<p>The idea is right, but the title is wrong. Prototyping at scale is
+the wrong way to think about developing leadership supercomputing capability. The largest
+commercial AI infrastructure providers do not prototype at scale. Instead,
+they frame their thinking differently: anything done at scale is
+production, and if it doesn't work, make it work.</p>
+<p>In practice, this means foregoing <a href="https://cdn.lanl.gov/files/ats-5-rfp-sept2024_d80e2.pdf#page=55">years-long acceptance test processes</a>
+and beating up suppliers over hundred-page-long statements of work.
+Instead, they accept the reality that they share the responsibility of
+integration with their suppliers, and if things go sideways, they are
+working with partners who will not walk away when times get tough.</p>
+<p>National-scale supercomputing has always been this way in practice,
+but the HPC community likes to pretend that it isn't. Consider Aurora:
+if that system wasn't a prototype-at-scale, I don't know what is. That
+system's <a href="https://www.tomshardware.com/news/us-governments-aurora-supercomputer-delayed-due-to-intels-7nm-setback">deployment and operations was and remains fraught</a>, and it is
+built on processors and nodes that <a href="https://www.servethehome.com/intel-ponte-vecchio-spaceship-gpu-no-longer-hunting-new-clusters/">were cancelled as products</a> <a href="https://www.alcf.anl.gov/news/argonne-releases-aurora-exascale-supercomputer-researchers">before the system even entered production</a>. Yet the theatrics of acceptance testing
+went on, Intel got paid something, and we all pretend like Aurora just
+like Frontier or Perlmutter.</p>
+<p>AI doesn’t prototype at scale; they just take a risk because the next
+breakthrough can't wait for every "i" to be dotted and "t" to be
+crossed. If a hyperscale AI system is a failure, that’s fine. The demand
+for FLOPS is sufficiently high that it will be utilized by someone for
+something, even if that use generates low-value results rather than the
+next frontier model that it was meant to build. The same is true for
+systems like Aurora; it's not like these systems sit idle, even if they
+don't live up to their original vision.</p>
+<p>And rest assured, AI systems prove to be bad ideas just like HPC
+systems do. The difference is scale: there are multi-billion-dollar AI
+supercomputers in existence that were obsolete before they even came
+online, because the problem they were designed to solve became
+irrelevant in the years it took to build them. But what was really lost?
+A bit of money and a little time. The GPUs are still used for day-to-day R&amp;D or inferencing, and the time lost was made up for in
+lessons learned for the systems that followed.</p>
+<p>All the big AI systems are prototypes, because AI
+workloads themselves are continually evolving prototypes. As a result, the line between prototype and production become blurry, if not
+meaningless.</p>
+<blockquote>
+<p><b>All too often, in scientific computing, our gold is buried
+in disparate, multi-disciplinary datasets. This needs to change; we must
+build sustainable, multidisciplinary data fusion.</b></p>
+</blockquote>
+<p>This is so easy to say, but it always feels empty when it is said.
+What’s stopping this data fusion? I don’t think it’s willpower or
+resources. It’s just really difficult to figure out what good any of it
+would be within a standard theory-based modeling framework. Making
+productive use of fused multimodal data (meshes, particles, and discrete
+observations, for example) requires multimodal, multiphysics models. And
+such models are really expensive relative to the insights they
+deliver.</p>
+<p>To me, this means the challenge isn't in getting the world's
+scientific data to hold hands and sing kumbaya; it's accepting that
+there's limited value in actually doing this data fusion unless you're
+willing to also take on more approximations within the models that use
+them so that the net return--science per dollar--comes out as a net
+positive over today's physics-based, single-mode scientific models.</p>
+<p>The AI community accepts that wholly empirical models are much less
+interpretable but can much more readily turn multimodal data into
+results in a meaningfully faster, most resource-efficient way. for
+example the <a href="https://www.microsoft.com/en-us/research/project/aurora-forecasting/">Aurora model</a> and how it took <a href="https://arxiv.org/html/2405.13063v2">all sorts of disparate climate datasets</a> to develop an incredibly efficient forecasting tool. In a
+minute on a single GPU, it produces forecasts of comparable quality to
+what would take hours across multiple GPUs using a physics-based model.
+And it achieves this efficiency by having trained on a diverse
+collection of gridded 3D atmosphere data and tabular data that was
+fused.</p>
+<p>The only problem, of course, is that the model is much less
+interpretable than a physics-based model. If the Aurora model's forecast
+is off, forecasters mostly have to shrug and move on with life. But for
+the purposes of solving the scientific problem at hand (predicting the
+weather a few days out), that may be good enough.</p>
+<blockquote>
+<p><b>Governments must now treat advanced computing as a strategic
+utility, requiring a scale of coordination and investment that rivals
+the <a href="https://en.wikipedia.org/wiki/Manhattan_Project">Manhattan
+Project</a> or the <a href="https://en.wikipedia.org/wiki/Apollo_program">Apollo
+program</a>.</b></p>
+</blockquote>
+<p>Manhattan Project and the Apollo mission had distinct goals with a
+defined "lump of work" required to achieve them. They are not
+comparable. Computing is a commodity, and it’s a far fairer comparison
+to liken it to oil or gas reserves. And even then, exactly what good are
+these computing reserves or capabilities really? Is it one big
+supercomputer, or many small ones? What are the range of problems that
+such a strategic utility would be called upon to solve?</p>
+<p>In the AI game, advanced computing is certainly a pillar of
+competitiveness, but it is not necessarily the most limiting one.
+DeepSeek showed us that ingenuity and massive computing are two
+orthogonal axes towards developing new capabilities. They showed that,
+although you can spend a ton of money on GPUs to train a new frontier
+model, you can also be a lot more clever about how you use much fewer
+GPUs to do the same thing. And the ratio of people to capital that
+resulted in DeepSeek-R1 arguably showed that investing in innovation,
+not just datacenter buildout, has a much higher return on
+investment.</p>
+<p>In the context of the above statement, I think governments would do
+far better to treat its innovators as a strategic asset and worry less
+about issuing press releases that lead with how many thousands of GPUs
+they will deploy. For every thousand GPUs to be deployed on government
+land in the US this year, how many government researchers, architects,
+and visionaries have headed out the door and are never coming back?</p>]]></content><author><name>Glenn K. Lockwood&apos;s Blog</name></author><category term="glennklockwood" /><summary type="html"><![CDATA[Dan Reed recently published an essay, HPC In An AI World, that summarizes a longer-form statement piece he co-authored with Jack Dongarra and Dennis Gannon called Ride the Wave, Build the Future: Scientific Computing in an AI World. It's worth a read since, as with much of Dr. Reed's writing, it takes a necessary, hard look at where the HPC community needs to look as the world underneath it shifts as a result of the massive market forces driving AI. This is a topic about which I've written at length in the past on my blog, and as I read Dr. Reed's latest post (and the Riding the Wave paper that motivated it), I found myself agreeing with a many of his positions but disagreeing with some others. My own background is in the world at the center of Dr. Reed's writing: traditional HPC for scientific computing at the national scale. However, my outlook has also been colored by the years I spent at Microsoft supporting massive-scale supercomputing infrastructure for training frontier models and the days I now spend at VAST, steeped in the wider enterprise AI market. This undoubtedly results in an unusual lens through which I now view Dr. Reed's position, and I couldn't help but mark up his essay with my own notes as I read through it. In the event that my perspective--that of an HPC-turned-AI infrastructure practitioner--is of interest to anyone who found Dr. Reed's latest essay as engaging as I did, I've shared them below. New Maxim Two: Energy and data movement, not floating point operations, are the scarce resources. This has been true long before exascale in the HPC world. This is not a new maxim. Ironically, it is in the AI world that this maxim is relatively new; as inference overtakes training as the predominant consumer of GPU cycles, we are seeing widespread shortages of DRAM because of the extreme demand for HBM and the memory bandwidth it provides. New Maxim Three: Benchmarks are mirrors, not levers. Benchmarks rarely drive technical change. Instead, they are snapshots of past and current reality, highlighting progress (or the lack thereof), but they have little power to influence strategic directions. Benchmarks drive technical change amongst technology providers who act without conviction. The tech industry is full of companies who are blindly chasing consumer demand, and these companies design entire product lines to achieve high benchmark results with the mistaken belief that those benchmarks are a reasonable proxy for actual productivity. And even worse, many buyers (especially in lower-sophistication markets like enterprise) also believe that benchmarks, by virtue of being designed by community organizations who have ostensibly thought deeply about performance, are a good proxy for productivity, make purchasing decisions around these same benchmarks. The net result is that a bad set of benchmarks can create and sustain an entire economy of buyers and sellers who think they are buying and selling something useful, when in fact they are wasting resources (time, energy, and COGS) because none of them actually understand what really drives productivity within their organizations. Fortunately, the HPC community is generally savvier than enterprises, and most national computing centers now recognize that HPL is simply not a meaningful yardstick. While it used to be good for convincing politicians and other non-technical funders that good work was being done, the discourse around AI has squarely put Rmax in the ground as a meaningful metric. Politicians now understand "hundreds of thousands of GPUs" or "gigawatts," neither of which require a benchmark like HPL to prove. Also, as an aside, I find it ironic that a paper with Jack Dongarra listed as an author is now saying HPL is a snapshot of the past. I've heard that he is the reason that HPL results achieved using emulated FP64 are not allowed on Top500. Despite achieving the required residuals through more innovative means than simply brute-forcing a problem through FP64 ALUs, using techniques like the Ozaki scheme were deemed incompatible with the purpose of Top500. Which is to say, I think he's the reason why HPL and Top500 has been reduced to a benchmark that reflects outputs (hardware FP64 throughput) rather than outcomes (solving a system of equations using LU decomposition). New Maxim Four: Winning systems are co-designed end-to-end—workflow first, parts list second. … In HPC, we must pivot to funding sustained co-design ecosystems that bet on specific, high-impact scientific workflows I don't agree with this. Funding sustained co-design is just swimming upstream with more conviction. The real way forward is to find ways to align scientific discovery with the way the technology landscape is moving. This means truly riding the wave and accepting that scientific discovery may have to turn to completely different techniques that achieve their desired precision and validation through means that may render obsolete the skills and expertise some people have spent their careers developing. Consider the scaffolding of end-to-end workflow automation; a rich ecosystem of technologies exists in the enterprise and hyperscale worlds that have been used to build extreme-scale, globally distributed, resilient, observable, and high-performance workflows that combine ultra-scalable analytics engines with exascale data warehouses. However, realizing these capabilities in practice requires fundamentally rethinking the software infrastructure on which everything is built. The rigidities of Slurm and the inherent insecurities of relying on ACL- and kernel-based authentication and authorization need to be abandoned, or at least understood to be critically limiting factors that the HPC community chains itself to. To make this very specific, consider a bulk-synchronous MPI job running across a hundred thousand GPUs; if one node fails, the whole job fails. The "swimming upstream with more conviction" way of solving this problem is to pay a storage company to build a faster file system, pay some researchers to develop a domain-specific checkpoint library that glues the MPI application to platform-specific APIs, and pay SchedMD to automate fast restart based on these two enhancements. Fund all three projects under the same program, and it is arguably a "co-designed end-to-end workflow." Riding the wave would be something different though: instead of requiring a job requeue and full restart from checkpoint upon job failure, treat the entire job as an end-to-end workflow. If a node fails, the job doesn't stop; it just transitions into a recovery state, where the orchestrator gives it a new node on which the job runtime can rebuild the state of the dead node using distributed parity or domain-specific knowledge. A fast file system is completely unnecessary for failure recovery. But the application developers would have to abandon the model of an application being a single process invocation in favor of the application being a system whose state evolves with the underlying hardware. Slurm can't do any of this, because Slurm is tied to the MPI model of parallel execution which assumes nothing ever fails. Which is to say, I think co-design should be deferred until a time that the HPC community first recognizes that, so long as they continue to approach end-to-end co-design as an HPC problem to be solved by HPC people using HPC approaches, they will continue to swim upstream regardless of how much co-design they do. New Maxim Five: Research requires prototyping at scale (and risking failure), otherwise it is procurement. A variant of our 2023 maxim, prototyping – testing new and novel ideas – means accepting the risk of failure, otherwise it is simply incremental development. Implicit in the notion of prototyping is the need to test multiple ideas, then harvest the ones with promise. Remember, a prototype that cannot fail has another name – it’s called a product. The idea is right, but the title is wrong. Prototyping at scale is the wrong way to think about developing leadership supercomputing capability. The largest commercial AI infrastructure providers do not prototype at scale. Instead, they frame their thinking differently: anything done at scale is production, and if it doesn't work, make it work. In practice, this means foregoing years-long acceptance test processes and beating up suppliers over hundred-page-long statements of work. Instead, they accept the reality that they share the responsibility of integration with their suppliers, and if things go sideways, they are working with partners who will not walk away when times get tough. National-scale supercomputing has always been this way in practice, but the HPC community likes to pretend that it isn't. Consider Aurora: if that system wasn't a prototype-at-scale, I don't know what is. That system's deployment and operations was and remains fraught, and it is built on processors and nodes that were cancelled as products before the system even entered production. Yet the theatrics of acceptance testing went on, Intel got paid something, and we all pretend like Aurora just like Frontier or Perlmutter. AI doesn’t prototype at scale; they just take a risk because the next breakthrough can't wait for every "i" to be dotted and "t" to be crossed. If a hyperscale AI system is a failure, that’s fine. The demand for FLOPS is sufficiently high that it will be utilized by someone for something, even if that use generates low-value results rather than the next frontier model that it was meant to build. The same is true for systems like Aurora; it's not like these systems sit idle, even if they don't live up to their original vision. And rest assured, AI systems prove to be bad ideas just like HPC systems do. The difference is scale: there are multi-billion-dollar AI supercomputers in existence that were obsolete before they even came online, because the problem they were designed to solve became irrelevant in the years it took to build them. But what was really lost? A bit of money and a little time. The GPUs are still used for day-to-day R&amp;D or inferencing, and the time lost was made up for in lessons learned for the systems that followed. All the big AI systems are prototypes, because AI workloads themselves are continually evolving prototypes. As a result, the line between prototype and production become blurry, if not meaningless. All too often, in scientific computing, our gold is buried in disparate, multi-disciplinary datasets. This needs to change; we must build sustainable, multidisciplinary data fusion. This is so easy to say, but it always feels empty when it is said. What’s stopping this data fusion? I don’t think it’s willpower or resources. It’s just really difficult to figure out what good any of it would be within a standard theory-based modeling framework. Making productive use of fused multimodal data (meshes, particles, and discrete observations, for example) requires multimodal, multiphysics models. And such models are really expensive relative to the insights they deliver. To me, this means the challenge isn't in getting the world's scientific data to hold hands and sing kumbaya; it's accepting that there's limited value in actually doing this data fusion unless you're willing to also take on more approximations within the models that use them so that the net return--science per dollar--comes out as a net positive over today's physics-based, single-mode scientific models. The AI community accepts that wholly empirical models are much less interpretable but can much more readily turn multimodal data into results in a meaningfully faster, most resource-efficient way. for example the Aurora model and how it took all sorts of disparate climate datasets to develop an incredibly efficient forecasting tool. In a minute on a single GPU, it produces forecasts of comparable quality to what would take hours across multiple GPUs using a physics-based model. And it achieves this efficiency by having trained on a diverse collection of gridded 3D atmosphere data and tabular data that was fused. The only problem, of course, is that the model is much less interpretable than a physics-based model. If the Aurora model's forecast is off, forecasters mostly have to shrug and move on with life. But for the purposes of solving the scientific problem at hand (predicting the weather a few days out), that may be good enough. Governments must now treat advanced computing as a strategic utility, requiring a scale of coordination and investment that rivals the Manhattan Project or the Apollo program. Manhattan Project and the Apollo mission had distinct goals with a defined "lump of work" required to achieve them. They are not comparable. Computing is a commodity, and it’s a far fairer comparison to liken it to oil or gas reserves. And even then, exactly what good are these computing reserves or capabilities really? Is it one big supercomputer, or many small ones? What are the range of problems that such a strategic utility would be called upon to solve? In the AI game, advanced computing is certainly a pillar of competitiveness, but it is not necessarily the most limiting one. DeepSeek showed us that ingenuity and massive computing are two orthogonal axes towards developing new capabilities. They showed that, although you can spend a ton of money on GPUs to train a new frontier model, you can also be a lot more clever about how you use much fewer GPUs to do the same thing. And the ratio of people to capital that resulted in DeepSeek-R1 arguably showed that investing in innovation, not just datacenter buildout, has a much higher return on investment. In the context of the above statement, I think governments would do far better to treat its innovators as a strategic asset and worry less about issuing press releases that lead with how many thousands of GPUs they will deploy. For every thousand GPUs to be deployed on government land in the US this year, how many government researchers, architects, and visionaries have headed out the door and are never coming back?]]></summary></entry><entry><title type="html">Who needs full-featured CI and why</title><link href="https://hpc.social/personal-blog/2026/who-needs-full-featured-ci-and-why/" rel="alternate" type="text/html" title="Who needs full-featured CI and why" /><published>2026-02-07T00:38:16-07:00</published><updated>2026-02-07T00:38:16-07:00</updated><id>https://hpc.social/personal-blog/2026/who-needs-full-featured-ci-and-why</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/who-needs-full-featured-ci-and-why/"><![CDATA[<p>Ian Duncan has written a great post on CI orchestration called <em><a href="https://www.iankduncan.com/engineering/2026-02-06-bash-is-not-enough/">No, Really, Bash Is Not Enough: Why Large-Scale CI Needs an Orchestrator</a></em>. It does a good job of distinguishing between the simple cases where bash and make really are good enough for CI, and when you actually need a full-featured CI system.</p>
 
 <p><span id="more-456"></span></p>
 
@@ -285,212 +514,4 @@
 
 </blockquote>
 
-<p>The <a href="https://mikecaulfield.substack.com/p/notes-towards-a-narrative-llm-benchmark">full article</a> is well-worth reading, and not only because it discusses <em>My Cousin Vinny</em> in substantial detail (great movie).</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Mike Caulfield wrote a very thorough and quite entertaining article about posing the following question to ChatGPT:]]></summary></entry><entry><title type="html">Podcasts and blogs I’m following in early 2026</title><link href="https://hpc.social/personal-blog/2026/podcasts-and-blogs-i-m-following-in-early-2026/" rel="alternate" type="text/html" title="Podcasts and blogs I’m following in early 2026" /><published>2026-01-02T19:13:35-07:00</published><updated>2026-01-02T19:13:35-07:00</updated><id>https://hpc.social/personal-blog/2026/podcasts-and-blogs-i-m-following-in-early-2026</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/podcasts-and-blogs-i-m-following-in-early-2026/"><![CDATA[<p>As part of the new year, I&#8217;m going through my feed readers for podcasts and blogs. This is mostly a cleanup exercise to remove sources that I regularly skip, but I&#8217;m also adding in a few feeds for sites that I find myself regularly clicking on in social media. As part of this, I figured I&#8217;d share the sources that made the cut to stick around.</p>
-
-<p><span id="more-377"></span></p>
-
-<p>You&#8217;ll notice that there are a lot of podcasts in this post! With two golden doodles in the family, I spend a lot of time on dog walks, not to mention doing chores around the house. Because of this, it&#8217;s often a lot easier for me to listen to content than read it, and indeed I often find myself feeding long-form text articles into <a href="https://elevenreader.io/">ElevenReader</a> so that I can listen to those items too.</p>
-
-<p><strong>Nerd notes:</strong></p>
-
-<ul class="wp-block-list">
-<li>I self-host <a href="https://freshrss.org/index.html">FreshRSS</a> to aggregate written blog feeds and read them using <a href="https://reederapp.com/">Reeder</a>. FreshRSS is hosted on a private VPS that I access via <a href="https://tailscale.com/">Tailscale</a> on my various devices, because I&#8217;m really the only person that needs to access it.</li>
-
-
-
-<li>I listen to podcasts via <a href="https://overcast.fm/">Overcast</a>, which I prefer for its audio features to the default Apple Podcasts app.</li>
-
-
-
-<li>This is not 100% complete as there are some blogs I follow purely through the Patreon site, and I haven’t (yet) taken the time to go through that and add them to this list.</li>
-
-
-
-<li>There are a few NSFW items left out intentionally, as my voice on this blog is at least semi-professional <img alt="😉" class="wp-smiley" src="https://s.w.org/images/core/emoji/17.0.2/72x72/1f609.png" style="height: 1em;" /> </li>
-</ul>
-
-<h2 class="wp-block-heading">Computing-related</h2>
-
-<p><strong>Podcasts:</strong></p>
-
-<ul class="wp-block-list">
-<li><em><a href="https://oxide-and-friends.transistor.fm/">Oxide and Friends</a></em> is a weekly live show recorded by Bryan Cantrill, Adam Leventhal, and friends from the <a href="https://oxide.computer">Oxide Computer Company</a>. Despite being a &#8220;corporate&#8221; podcast, it generally has the vibe of &#8220;Car Talk for Computers&#8221; and can often dig into really interesting computer systems topics, and even computer and industry history. Some of the episodes get into specifics of the Oxide product, which may be interesting or skip-able depending on your interests.</li>
-
-
-
-<li><em><a href="https://www.fafo.fm/">Fork Around and Find Out</a></em> is a resurrection of the <em>Ship It!</em> podcast that used to be part of the Changelog network, focused on production systems, on-call, and large-scale engineering. The updates are a bit irregular but Justin and Autumn are enjoyable hosts to listen to.</li>
-
-
-
-<li><em><a href="https://www.thisisfinepod.com/">This is Fine!</a></em> is a podcast on resilience engineering from Colette Alexander and Clint Byrum. It sometimes picks up topics from discussions in the <a href="https://resilienceinsoftware.org/">Resilience in Software Foundation Slack</a> instance and is almost always a fun listen.</li>
-
-
-
-<li><em><a href="https://randsinrepose.com/the-important-thing/">The Important Thing</a> </em>is an occasional discussion podcast between <a href="https://randsinrepose.com/">Michael Lopp</a> and <a href="https://troxell.com/">Lyle Troxell</a>. Often very random, with widely varying episode lengths, it&#8217;s nicely chatty and a great listen during dog walks.</li>
-
-
-
-<li><em><a href="https://signalsandthreads.com/">Signals and Threads</a></em>, from Jane Street, is another occasional podcast but often gets very deep into interesting software topics such as performance analysis, state machine replication, and memory management &#8212; with a focus on low-latency trading systems that have interesting constraints. </li>
-
-
-
-<li><a href="https://changelog.com/podcast"><em>The Changelog</em></a> is a long-standing general software news podcast. I dip in and out of this one based on the topic being covered, and often like their &#8220;Changelog and Friends&#8221; chatty episodes more than the news or interview episodes.</li>
-
-
-
-<li><em><a href="https://comparchpodcast.podbean.com/">The Compute Architecture Podcast</a></em> updates very infrequently but often has interesting, hardware- or systems-focused interviews.</li>
-</ul>
-
-<p><strong>Personal blogs:</strong></p>
-
-<ul class="wp-block-list">
-<li><a href="https://charity.wtf/">Charity Majors</a> is a long-time follow of mine for her technical work on observability, her practical SRE/sysadmin mentality, and her useful perspectives on engineering management.</li>
-
-
-
-<li><a href="https://www.brendangregg.com/blog/">Brendan Gregg</a> posts infrequently, but will publish fascinating deep dives on performance engineering that are always worth reading.</li>
-
-
-
-<li><a href="https://utcc.utoronto.ca/~cks/space/blog/">Chris Siebenmann</a> is a sysadmin at the University of Toronto and a prolific blogger about nuts-and-bolts Linux admin topics. He publishes a <em>ton</em> so I dip in and out of his feed, but always keep it in my feed reader.</li>
-
-
-
-<li><a href="https://www.drcathicks.com/blog">Cat Hicks</a> does psychological research on software teams and I always learn a ton from her writing.</li>
-
-
-
-<li><a href="https://soatok.blog/b/">Soatok</a> writes excellent, interesting, and opinionated articles on security and cryptography topics.</li>
-
-
-
-<li><a href="https://ferd.ca/">Fred Hebert</a> is an SRE with a strong interest in resilience engineering who frequently discusses interesting academic research on resilience and human factors.</li>
-
-
-
-<li><a href="https://blog.glennklockwood.com/">Glenn Lockwood</a> is an HPC engineer who I&#8217;ve known online for a long time, and who came into the field from materials science in a similar manner to me. He&#8217;s worked at SDSC, NERSC, Microsoft, and VAST, and his annual recap of the SuperComputing conference is worth reading every year. (So is the rest of his blog!)</li>
-
-
-
-<li><a href="https://www.seangoedecke.com/">Sean Goedecke</a> is a software engineer at Github who writes interesting work on AI and on the dynamics of large companies.</li>
-
-
-
-<li><a href="https://simonwillison.net/">Simon Willison</a> is one of the most essential bloggers on AI and LLMs today, not to mention incredibly prolific. His style of writing short posts on whatever he&#8217;s thinking about is one I hope to emulate more often here!</li>
-
-
-
-<li>Rachel Kroll, aka <a href="https://rachelbythebay.com/w/">Rachel By the Bay</a>, is a long-time sysadmin/SRE who writes on detailed sysadmin and software engineering topics in an often-ironic fashion.</li>
-
-
-
-<li><a href="https://xeiaso.net/blog/">Xe Iaso</a> is a software engineer and author of the <a href="https://anubis.techaro.lol/">Anubis</a> Web AI Firewall tool. Xer blog covers a wide variety of software, systems, and AI work.<br /></li>
-</ul>
-
-<p><strong>Technical blogs and industry news:</strong></p>
-
-<ul class="wp-block-list">
-<li><em><a href="https://lwn.net/">LWN</a></em> is the definitive source for Linux and free software news, and is supported by the community via subscriptions. You should subscribe!</li>
-
-
-
-<li><em><a href="https://chipsandcheese.com/">Chips and Cheese</a></em> does really interesting deep dives into chip architecture and performance, often focused on newer products but occasionally digging into older hardware.</li>
-
-
-
-<li><a href="https://semianalysis.com/"><em>SemiAnalysis</em></a> is at this point one of the most essential news sources for the semiconducting industry, and one of the few paid sources I follow.</li>
-
-
-
-<li><em><a href="https://jepsen.io/blog">Jepsen</a></em> performs detailed analyses of distributed systems reliability and consistency by <a href="https://aphyr.com/">Kyle Kingsbury</a>, both as consulting engagements and for the community. Read all of these, they&#8217;re excellent!</li>
-
-
-
-<li><em><a href="https://semiengineering.com/">Semiconductor Engineering</a></em> is one of the long-standing industry news sites. I don&#8217;t read a ton of this but I do keep an eye on the feed for interesting headlines.</li>
-
-
-
-<li>Similarly, <em><a href="https://www.datacenterdynamics.com/en/">Data Center Dynamics</a></em> is one of the standard industry news sites for data centers.</li>
-</ul>
-
-<h2 class="wp-block-heading">News and Politics</h2>
-
-<p><strong>Podcasts:</strong></p>
-
-<ul class="wp-block-list">
-<li><em><a href="https://www.lawfaremedia.org/podcasts-multimedia/podcast">The Lawfare Podcast</a></em> covers a really wide variety of national security law topics. My only regular listen is their <em><a href="https://www.lawfaremedia.org/podcasts-multimedia/podcast/rational-security">Rational Security</a></em> episodes which provide a weekly roundup of relevant news in an informal discussion format, but I dip in and out of the others.</li>
-
-
-
-<li><em><a href="https://www.bloomberg.com/podcasts/series/money-stuff">Money Stuff</a></em> is a fun weekly podcast from Matt Levine and Katie Greifeld of Bloomberg News, who discuss weekly financial news from a very nerdy perspective. I&#8217;m not generally a huge finance person, but I like that this podcast allows me to listen in to people geeking out about the topic.</li>
-
-
-
-<li><em><a href="https://www.economist.com/the-world-in-brief">The World in Brief</a></em> from the Economist is their daily quick summary of the news. I have very mixed feelings about the Economist in general &#8212; as with many British sources, they platform far too much transphobia &#8212; but I have yet to find a better substitute for &#8220;quick morning summary of the news&#8221;. At least, nothing else that doesn&#8217;t make me want to throw my phone at a wall.</li>
-</ul>
-
-<p><strong>Blogs and News:</strong></p>
-
-<ul class="wp-block-list">
-<li><em><a href="https://restofworld.org/">Rest of World</a></em> covers tech industry news with a focus on impacts outside the West, and often has really interesting coverage from a different angle.</li>
-
-
-
-<li><em><a href="https://www.liberalcurrents.com/">Liberal Currents</a></em> is a political blog focused on liberalism, both in current events and as a political philosophy, and has published a lot of excellent pieces since I started reading it in 2025.</li>
-</ul>
-
-<h2 class="wp-block-heading">Miscellaneous</h2>
-
-<p><strong>Podcasts:</strong></p>
-
-<ul class="wp-block-list">
-<li><a href="https://www.armscontrolwonk.com/archive/author/podcast/"><em>Arms Control Wonk</em></a> continues to be a good listen, though it&#8217;s updated something sporadically the past few years. The coverage of nuclear weapons, missiles and other delivery systems, and current events around arms control (or lack thereof) is very good. If you sponsor them via Patreon, their Slack instance is also a fascinating discussion forum, though I only dip in and out of it occasionally.</li>
-
-
-
-<li><em><a href="https://culturestudypod.substack.com/">The Culture Study Podcast</a></em> by Anne Helen Petersen features conversations between Anne and a guest and focuses on listener Q&amp;A. It often covers culture topics that I otherwise don&#8217;t get much of through other feeds. For example, recent episodes have talked about anything from birding to K-pop to the anatomy of cultural panics. I don&#8217;t listen to every episode, but they&#8217;re often quite fun.</li>
-
-
-
-<li><em><a href="https://www.liberalcurrents.com/neonliberalism/">Neon Liberalism</a></em> is a regular podcast from <a href="https://www.liberalcurrents.com/">Liberal Currents</a>. I might put this in the News category except that it often digs into political topics from a historical or theoretical perspective rather than just focusing on current events.</li>
-
-
-
-<li>Similarly, <em><a href="https://open.spotify.com/show/29wW6zsYyYuelcFJcyHOmv">Reimagining Liberty</a></em> from Aaron Ross Powell digs into political theory and current events from the perspective of Powell&#8217;s particular strain of libertarian-ism, which is much more in conversation with modern liberalism and anarchism vs more right-wing strains.</li>
-</ul>
-
-<p><strong>Personal blogs:</strong></p>
-
-<ul class="wp-block-list">
-<li><a href="https://www.funraniumlabs.com/">Phil Broughton</a> is a health physicist at UC Berkeley who has worked in classified nuclear work at LLNL as well as spending a year in Alaska, and has a wealth of fascinating and hilarious stories.</li>
-
-
-
-<li><a href="https://www.goodreads.com/author/show/16094.Lois_McMaster_Bujold/blog">Lois McMaster Bujold</a> is one of my favorite science fiction and fantasy authors. While she&#8217;s semi-retired, she still writes occasional novellas following Penric, a sorcerer in her World of the Five Gods, which I really love. Her blog helpfully announces new stories!</li>
-
-
-
-<li><a href="https://whatever.scalzi.com/">John Scalzi</a> is another favorite author, and also has an excellent blog called <em>Whatever</em>.</li>
-
-
-
-<li>Bret Devereaux writes <em><a href="https://acoup.blog/">A Collection of Unmitigated Pedantry</a></em> about history, the military, and pop culture. If you&#8217;re interested in an extensive deep dive into the military missteps made Saruman in <em>The Two Towers</em>, this is the blog for you!</li>
-
-
-
-<li><em><a href="https://www.bitsaboutmoney.com/">Bits About Money</a></em> is Patrick McKenzie&#8217;s blog about finance, and each entry tends to be a highly-nerdy deep dive about how some interesting corner of the financial system works.</li>
-</ul>
-
-<p><strong>Webcomics:</strong></p>
-
-<ul class="wp-block-list">
-<li><em><a href="https://www.giantitp.com/comics/oots.html">The Order of the Stick</a></em> is a long-running D&amp;D stick-figure comic that I have been reading for longer than I can really say. I highly recommend it, though I&#8217;ll warn you that with an archive of &gt;1,300 comics (and growing!) you are likely to lose a lot of time this way.</li>
-
-
-
-<li><em><a href="https://questionablecontent.net/">Questionable Content</a></em> is a slice-of-life comic about a coffee shop&#8230; with robots, super-intelligent AIs, stupid dick jokes, and more. Also has a long archive to dig through.</li>
-
-
-
-<li><em><a href="https://www.girlgeniusonline.com/">Girl Genius</a></em> is a long-running online comic book about &#8220;Adventure, Romance, and MAD SCIENCE!&#8221; and thoroughly excellent.</li>
-</ul>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[As part of the new year, I&#8217;m going through my feed readers for podcasts and blogs. This is mostly a cleanup exercise to remove sources that I regularly skip, but I&#8217;m also adding in a few feeds for sites that I find myself regularly clicking on in social media. As part of this, I figured I&#8217;d share the sources that made the cut to stick around.]]></summary></entry></feed>
+<p>The <a href="https://mikecaulfield.substack.com/p/notes-towards-a-narrative-llm-benchmark">full article</a> is well-worth reading, and not only because it discusses <em>My Cousin Vinny</em> in substantial detail (great movie).</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Mike Caulfield wrote a very thorough and quite entertaining article about posing the following question to ChatGPT:]]></summary></entry></feed>
