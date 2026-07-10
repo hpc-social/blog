@@ -4,13 +4,1308 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2026-07-07T23:34:32-06:00</updated>
+ <updated>2026-07-09T00:25:17-06:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>ISC&apos;26 recap</title>
+   <link href="https://hpc.social/2026/isc-26-recap/"/>
+   <updated>2026-07-08T00:00:08-06:00</updated>
+   <id>https://hpc.social/2026/isc-26-recap</id>
+   <content type="html">&lt;p&gt;Last month was the 2026 ISC High Performance Conference in the
+    beautiful (and sweltering) Hamburg, Germany. It was my fifth time
+    attending in-person, and it has fast become my favorite HPC community
+    conference of the year. Some combination of the program, the people, and
+    the venue that strikes the right balance of technology, community, and
+    commerce that always leaves me coming away with a enough new ideas and
+    invigoration to get through the summer.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;This balance is a double-edged sword though, and I found myself
+    spread thin amidst trying to attend conference sessions, catching up
+    with colleagues, and &lt;em&gt;supporting the business&lt;/em&gt;™. I didn&apos;t see
+    as much of the program as I&apos;d have liked, but a few noteworthy themes
+    still stood out to me.&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Foremost, HPC has moved to the final stage of grief with respect to
+    AI: acceptance. The &quot;us vs. them&quot; mentality of past conferences is
+    largely gone, replaced now with a lingering question of purpose. What
+    does the HPC community want to be now that it cannot define itself by
+    having the biggest GPU clusters? What is on the horizon for scientific
+    computing that we&apos;ve been ignoring because of AI? And how do we work
+    with AI technologies to get there faster?&lt;/p&gt;
+&lt;p&gt;Nobody had answers to these questions, and I&apos;m not even sure
+    attendees realized they were being asked. But this uncertainty was
+    pervasive, resulting in a technical program that felt scattered. There
+    was a bit of optimism which took the form of more mature, deep discourse
+    around the ways in which AI can accelerate discovery. At the same time,
+    many sessions retreated to the same old safe and comfortable topics;
+    many of the same old broad challenges and opportunities (like non-von
+    Neumann architectures and disaggregated memory) kept popping up
+    throughout the week.&lt;/p&gt;
+&lt;p&gt;There was one big surprise during the week though--that of the new
+    Chinese, all-CPU LineShine supercomputer appearing at the top of the
+    Top500 list--and it was an amazing distillation of the uncertainties
+    across the HPC community. It forces us to think about a wide range of
+    existential questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Is it OK to care about HPC more than AI? LineShine is an FP64-first
+        system that is not trying to masquerade as an AI machine.&lt;/li&gt;
+&lt;li&gt;Does leadership in HPC necessarily require accelerators and
+        heterogeneity? LineShine is a CPU-only, homogeneous architecture.&lt;/li&gt;
+&lt;li&gt;How do we reconcile the HPC community&apos;s history of openness and
+        collaboration with the demands of sovereignty, supply chain competition,
+        and the optics of leadership?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Beyond LineShine, China also flexed its sophistication with a new
+    all-flash parallel file system developed by Sugon and debuted at the top
+    of the IO500, beating out Argonne&apos;s massive DAOS system. Though it
+    didn’t get the same headline coverage as compute, this storage system
+    indicates that China is no longer trying to simply fill gaps left by
+    export controls; it is building its own best-in-class HPC hardware and
+    software stack for its own domestic uses.&lt;/p&gt;
+&lt;p&gt;As always, it&apos;s hard for me to find the best way to structure a post
+    that captures both these broad themes and all the little interesting
+    bits across the week. So I figure I’d just jump around the interesting
+    things I saw in no particular order.&lt;/p&gt;
+&lt;ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#lineshine&quot;&gt;LineShine!&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#lineshines-mostlychinese-architecture&quot;&gt;LineShine&apos;s
+                        mostly-Chinese architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#chinese-cores&quot;&gt;Chinese cores&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#chinese-memory&quot;&gt;Chinese memory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#chinese-networking&quot;&gt;Chinese networking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#china-wants-to-make-the-hpc-world-a-better-place&quot;&gt;China wants to
+                        make the HPC world a better place&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#the-geopolitical-message&quot;&gt;The geopolitical message&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#not-caring-about-ai-is-ok&quot;&gt;Not caring about AI is OK&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#but-pretending-to-care-about-ai-remains-pervasive&quot;&gt;But
+                pretending to care about AI remains pervasive&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#misconception-1-ai-is-just-going-to-wait-for-hardware-to-solve-their-problems&quot;&gt;Misconception                        1: AI is just going to wait for hardware to solve their problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#misconception-2-ai-for-hpc-is-a-singular-area-of-research&quot;&gt;Misconception
+                        2: AI for HPC is a singular area of research&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#open-or-closed&quot;&gt;Open or closed?&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#ai-doesnt-want-free&quot;&gt;AI doesn&apos;t want free&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#and-hpc-isnt-really-that-open&quot;&gt;And HPC isn&apos;t really that
+                        open&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#sovereign-is-the-next-big-thing-for-everyone-except-the-us&quot;&gt;Sovereign
+                is the next big thing for everyone (except the US)&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#sovereignty-is-forcing-modernization&quot;&gt;Sovereignty is forcing
+                        modernization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#sovereignty-is-an-opportunity&quot;&gt;Sovereignty is an
+                        opportunity&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#cpus-are-backmaybe&quot;&gt;CPUs are back...maybe?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#storage-stuff&quot;&gt;Storage stuff&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#parastor&quot;&gt;ParaStor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#only-bad-ai-requires-many-iops&quot;&gt;Only bad AI requires many
+                        IOPS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#maybe-hpc-and-ai-really-are-different&quot;&gt;Maybe HPC and AI really
+                are different&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#takeaway-themes&quot;&gt;Take-away themes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#appendix-the-personal-stuff&quot;&gt;Appendix: The personal stuff&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#isc-is-two-conferences&quot;&gt;ISC is two conferences&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#the-makings-of-a-keynote&quot;&gt;The makings of a keynote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#dumb-things-to-avoid-at-isc&quot;&gt;Dumb things to avoid at ISC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;lineshine&quot;&gt;LineShine!&lt;/h2&gt;
+&lt;p&gt;The most exciting news of the week for me was China&apos;s [[LineShine]]
+    supercomputer, which debuted at the top of the Top500. It was
+    interesting for several reasons:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;It is homogeneous and uses Arm CPUs exclusively to achieve its FP64
+        performance. This opens up the possibility that GPUs aren&apos;t the only
+        path forward.&lt;/li&gt;
+&lt;li&gt;It uses components that are all Chinese-designed, and many of them
+        appear to be Chinese-fabricated too. The blacklisting of Chinese
+        supercomputing centers that prevents them from buying US-designed chips
+        appears to have succeeded in forcing China to develop its own
+        supercomputing supply chain that is (in many ways) at least as good as
+        what the rest of the world can design and deploy.&lt;/li&gt;
+&lt;li&gt;China has notably abstained from submitting to the Top500 &lt;a href=&quot;https://top500.org/system/178764/&quot;&gt;since
+            2016&lt;/a&gt;, and they came
+        back this year with a message of peace and love.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here’s what I gathered throughout the week about the system and its
+    implications.&lt;/p&gt;
+&lt;h3 id=&quot;lineshines-mostlychinese-architecture&quot;&gt;LineShine&apos;s
+    mostly-Chinese architecture&lt;/h3&gt;
+&lt;p&gt;The basic LineShine hardware architecture has been covered in the
+    media for a few months now, as some of the Gordon Bell prize submissions
+    performed on this system appeared on arxiv a few months ago. There are a
+    few interesting technical details to infer from these sources which I&apos;ve
+    detailed in &lt;a href=&quot;https://glennklockwood.com/garden/systems/lineshine&quot;&gt;my Digital
+        Garden&apos;s LineShine page&lt;/a&gt;, but let&apos;s talk about why they might matter
+    based on the slides that Yutong Lu (卢宇彤) shared at the &lt;a href=&quot;https://app.swapcard.com/event/isc-high-performance-2026/planning/UGxhbm5pbmdfNDQxMDE2Mg==&quot;&gt;Top500
+        session&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;chinese-cores&quot;&gt;Chinese cores&lt;/h3&gt;
+&lt;p&gt;LineShine&apos;s LX2 processors are dual-die, with each die having its own
+    I/O chiplet, core cluster chiplets, HBM controllers, DDR controllers,
+    and 800G NIC. Given its nominal frequency of 1.55 GHz and 304 cores per
+    socket, its 60.3 TFLOPS FP64 with ARMv9&apos;s matrix extensions (SME)
+    cleanly resolves into each core being able to do 128 FLOPS (or 64 FMACs)
+    per cycle. This works out to 512-bit vectors, which was supported by a
+    cartoon showed by Lu.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;LineShine&apos;s LX2 CPU architecture in a nutshell.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;Unlike GPUs, which use a bunch of threads to cooperatively compute a
+    matrix multiplication, SME gives each thread its own “ZA tile register”
+    to fill up using vector-vector outer products. This makes SME a little
+    more forgiving when matrices are small and there isn&apos;t as much
+    parallelism, but I&apos;d imagine it also makes it less energy-efficient than
+    a tensor/matrix core on a per-FLOP basis. Good for weirdly shaped HPC
+    problems, but perhaps less so for huge transformer tensors.&lt;/p&gt;
+&lt;p&gt;The most interesting thing about LX2 is what wasn&apos;t said though--who
+    fabricated it, and what lithography was applied. Given its chiplet
+    architecture, some part of the manufacturing or integration may rely on
+    foreign fabs.&lt;/p&gt;
+&lt;h3 id=&quot;chinese-memory&quot;&gt;Chinese memory&lt;/h3&gt;
+&lt;p&gt;LineShine attaches HBM and DDR to each CPU, and it allows the HBM to
+    act as a huge cache for the DDR through dedicated DMA engines. This
+    seems conceptually similar to how Knight&apos;s Landing CPUs could run their
+    MCDRAM in cache mode, which turned out to be a &lt;a href=&quot;https://escholarship.org/content/qt6bp1p34d/qt6bp1p34d.pdf?t=p8qbab&quot;&gt;very
+        easy and effective way to get its memory bandwidth benefits without
+        burdening programmers&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The size (32 GB) and performance (4 TB/s) of each LX2&apos;s eight HBM
+    stacks suggests it&apos;s older HBM2e, which happens to be the standard that
+    CXMT (the Chinese memory fabricator) &lt;a href=&quot;https://x.com/jukan05/status/1927517527036608737&quot;&gt;may have begun
+        shipping in 2025&lt;/a&gt;. Seeing as how LineShine came online at the end of
+    2025, this adds up.&lt;/p&gt;
+&lt;p&gt;LineShine also uses some unidentified form of DDR, though one of the
+    early papers benchmarked it at &lt;a href=&quot;https://arxiv.org/abs/2605.08633&quot;&gt;125 GB/s per die&lt;/a&gt;. Given each
+    die has four memory controllers and NUMA domains, this matches up with
+    DDR5: either domestically produced DDR5-4800(ish) with four channels, or
+    foreign-produced DDR5-8000.&lt;/p&gt;
+&lt;p&gt;Like the CPU lithography and HBM spec, the exact DDR specification
+    has been explicitly omitted, with &lt;a href=&quot;https://arxiv.org/abs/2604.15821&quot;&gt;one LineShine paper&lt;/a&gt; giving
+    plenty of detail about a different Chinese exascale system (having
+    8-channel DDR5-6400), but LineShine simply having &quot;DDR memory&quot; in the
+    next paragraph.&lt;/p&gt;
+&lt;h3 id=&quot;chinese-networking&quot;&gt;Chinese networking&lt;/h3&gt;
+&lt;p&gt;LineShine&apos;s LingQi network is also Chinese-made. Its topology is
+    cost-optimized and likely build on 32-port 100G switches, well within
+    the capability of Chinese manufacturing. Each compute node is advertised
+    as having 1.6 Tbit/s of injection bandwidth, but Lu shared a network
+    diagram that clarifies that this is really two (likely independent) 800G
+    injection ports into independent planes:&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;LineShine&apos;s unusual four-level tree topology with a single intercalated optical layer.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;The only way I could get the math to work with Lu’s network diagram
+    and constraints are if the network looks like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each compute node is attached to its own switch(!), and those leaf
+        switches have non-blocking connectivity to in-rack (actually in-&quot;frame&quot;)
+        spines. This is all copper.&lt;/li&gt;
+&lt;li&gt;Each compute node frame uses optical to connect into dedicated
+        network frames with a 2:1 taper. These network frames implement an
+        all-copper L3 and L4 switching layer with a 3.81:1 taper.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The most likely exact configuration results in 32-port, 100G switches
+    where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L1 has 2,944 switches with all-copper up and down (8D, 8U)&lt;/li&gt;
+&lt;li&gt;L2 has 1,472 switches with copper down, optical up and a 2:1 taper
+        to minimize optics (16D, 8U)&lt;/li&gt;
+&lt;li&gt;L3 has 512 switches with optical down, copper up, and a 23:6 taper
+        (23D, 6U). This feels weird, though. Maybe L3 uses a different switch
+        radix?&lt;/li&gt;
+&lt;li&gt;L4 has 192 switches with copper down (16D)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The end result is a steep 7.67:1 taper but with a very low use of
+    optics. It&apos;s also all achievable using 32x100G switching ASICs which
+    should be well within the capabilities of Chinese domestic foundries. I
+    don&apos;t know how good Chinese transceivers are, but the choice to minimize
+    optics could have been driven by both cost and minimal reliance on
+    foreign-made parts.&lt;/p&gt;
+&lt;p&gt;This taper is also good enough to run HPL. Since this is an all-CPU
+    system, there is no pesky host-device memcpy in the loop to drag down
+    the HPL efficiency. They used OpenMPI with a custom driver for this
+    LQLink interconnect, and its collectives are almost certainly aware of
+    the high locality effects of staying within the nonblocking L2
+    domain.&lt;/p&gt;
+&lt;h3 id=&quot;china-wants-to-make-the-hpc-world-a-better-place&quot;&gt;China wants to
+    make the HPC world a better place&lt;/h3&gt;
+&lt;p&gt;One of Lu&apos;s concluding statements was that LineShine is open for
+    international collaboration. And while I would normally be cynical about
+    such an empty statement, I spoke with a non-Chinese researcher who was
+    already running on LineShine and--much to my surprise--was finding it
+    productive.&lt;/p&gt;
+&lt;p&gt;Lu and others were also openly bragging that they have authored 14
+    Gordon Bell submissions for SC&apos;26 based on work performed on LineShine,
+    and three of those papers are Gordon Bell finalists. By all accounts,
+    the system works, and China wants the world to judge LineShine for
+    themselves.&lt;/p&gt;
+&lt;h3 id=&quot;the-geopolitical-message&quot;&gt;The geopolitical message&lt;/h3&gt;
+&lt;p&gt;James Lin (林新华), the vice director of Shanghai Jiao Tong
+    University’s HPC center, gave a much more unvarnished perspective on
+    LineShine&apos;s Top500 entry later in the week, where he presented what I
+    believe to be &lt;a href=&quot;https://app.swapcard.com/event/isc-high-performance-2026/planning/UGxhbm5pbmdfNDQ1ODU2MA==&quot;&gt;the
+        best presentation of the conference&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;He led with this magnanimous slide:&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;China being at the top of Top500 is good for China, but it&apos;s also good for the US DOE!&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;In his eyes, China breaking its ten-year absence on Top500 is good
+    for the entire HPC community worldwide:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;It brings international recognition to China for its technical
+        achievements - this is undebatable.&lt;/li&gt;
+&lt;li&gt;It restores credibility to Top500 - mostly true. There are still
+        giant AI systems missing from the list, but if we accept that Top500 is
+        really about the best supercomputers &lt;em&gt;for modeling and
+            simulation&lt;/em&gt;, this is 100% true.&lt;/li&gt;
+&lt;li&gt;It will cause the US to panic at visibly losing supremacy, bringing
+        more HPC funding to the U.S. Department of Energy. Absent a crystal
+        ball, I would wager this is absolutely true. And the timing to debut
+        this system right before the US’s big semiquincentennial birthday bash
+        makes it sting extra.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lin went on to present another slide that put to words exactly what
+    everyone has been thinking for the past decade: the US had essentially
+    turned the Top500 list into a hitlist.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;James Lin pointing out that Chinese entries on Top500 are matched by Chinese institutions on the BIS Entity List.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;Any Chinese supercomputer center that dared to list on the Top500 was
+    banned from being allowed to buy American CPUs or GPUs.&lt;/p&gt;
+&lt;p&gt;China’s reappearance at the top of the Top500 list sends a clear
+    message that this no longer matters; being banned from buying US
+    technologies has been ineffective in stopping China from achieving
+    world-leading computational capability. China was able to design,
+    fabricate, and deploy the world&apos;s fastest supercomputer for simulation,
+    without any weird accelerators, using a hardware stack and supply chain
+    that is predominantly domestic. No other country can claim that, not
+    even the US.&lt;/p&gt;
+&lt;p&gt;However, what was understated is how much open-source software
+    (derived from US-funded work, no less!) was used to turn a pile of
+    Chinese-made silicon into a functional supercomputer. The software stack
+    appears to rely on a mix of open-source software like PyTorch, OpenBLAS,
+    and OpenMPI (the latter two being used for the HPL run) and Huawei
+    software (KML BLAS, Hyper MPI). Similarly, the Chinese-developed network
+    appears to expose a UCX provider, an open interface whose &lt;a href=&quot;https://openucx.org/news/hpc-leading-institutes-announce-formation-of-the-ucx-consortium-to-expand-collaboration-within-hpc-community/&quot;&gt;original
+        founders include (surprise!) U.S. Department of Energy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In bringing this message to ISC, China is painting a picture for the
+    HPC community about the spirit of collaboration in furtherance of
+    science: while the US government has been &lt;a href=&quot;https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities&quot;&gt;banning
+        exports of its hardware&lt;/a&gt;, &lt;a href=&quot;https://www.anthropic.com/news/fable-mythos-access&quot;&gt;banning the
+        use of its AI models by foreign nationals&lt;/a&gt;, and generally &lt;a href=&quot;https://www.aip.org/fyi/the-week-of-june-2-2025&quot;&gt;rolling back
+        commitments international collaborations&lt;/a&gt;, China is throwing open its
+    doors and inviting all comers to try out its home-grown
+    technologies.&lt;/p&gt;
+&lt;p&gt;Of course, I don&apos;t know whether China&apos;s intentions are true or if
+    they&apos;re just using the current political climate as an performative
+    opportunity to show the greatest contrast with the US on an
+    international stage. But to a non-political scientist, the optics of &quot;we
+    want to collaborate even if it brings us punishment&quot; are hard to dismiss
+    outright.&lt;/p&gt;
+&lt;p&gt;I&apos;m also not sure who all is included in &quot;China&quot; here. &lt;a href=&quot;https://www.nytimes.com/2026/06/23/technology/china-supercomputer-crown-us.html&quot;&gt;The
+        New York Times reported&lt;/a&gt;,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dr. Dongarra, who wrote a detailed report on the new system, was told
+        while visiting China that the system had been made without government
+        funding, so the designers felt it was permissible to submit tests for
+        the Top500 ranking, he said.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There was no mention at ISC of who sponsored the design and
+    manufacture of this machine if not the Chinese government. LineShine&apos;s
+    LX2 processors, despite being Arm-based, are unlikely to appear in any
+    other systems given how bespoke some of its features (like the
+    on-package LQLink NIC) are. In addition, the story I heard is that the
+    designers had to fight with Chinese bureaucrats to allow the HPL results
+    to be submitted to Top500.&lt;/p&gt;
+&lt;p&gt;This tells me that the voices of Lu and Lin may reflect that of the
+    HPC community in China rather than the Chinese government; they are not
+    necessarily one and the same. The researchers may genuinely want to
+    collaborate internationally even if the government does not. And mind
+    you, this is not unique to China; a US colleague intimated that
+    everything his institution publishes is scrutinized by a government
+    watchdog. Alarm bells ring if papers written with any hint of
+    collaboration with Chinese research centers.&lt;/p&gt;
+&lt;p&gt;That all said, one announcement at ISC gives me a pang of doubt that
+    China’s relationship with the HPC community may really change: the
+    Top500 is being transitioned to ACM SIGHPC under the governance of
+    representatives from the US, Japan, Europe, the Middle East, and
+    Japan--but not China. As such, China remains as much an outsider going
+    forward as in the past.&lt;/p&gt;
+&lt;h2 id=&quot;not-caring-about-ai-is-ok&quot;&gt;Not caring about AI is OK&lt;/h2&gt;
+&lt;p&gt;This ISC felt like the first time that the conference program has
+    come to accept the fact that HPC and AI, despite some overlap of
+    technologies, are not the same thing.&lt;/p&gt;
+&lt;p&gt;There was no shortage of sessions about AI, agents, and the usual
+    rigamarole. But there were also sessions that were &lt;em&gt;not&lt;/em&gt; about AI
+    as well. In fact, the conference opened with a keynote that was about as
+    indifferent to AI as a keynote could be in this age.&lt;/p&gt;
+&lt;p&gt;Martin Schulz gave the conference opening keynote titled &quot;HPC: A
+    Heterogeneous Future,&quot; and he managed to say &quot;AI&quot; only ten times across
+    his entire 40-minute presentation--and nine of those were within the
+    first three minutes. He even managed to avoid saying &quot;AI&quot; for two
+    minutes on a three-minute slide titled &quot;AI Has Shifted the Center of
+    Gravity.&quot; Amazing.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;90% of Martin Schulz&apos;s mentions of AI came from this one slide.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;Given that I said &quot;AI&quot; more times at breakfast than the conference&apos;s
+    entire opening keynote, I got the strong message that ISC is an HPC
+    conference, not an AI conference, and it&apos;s OK if you don&apos;t want to talk
+    about AI. So what did Schulz talk about? Quantum computing.&lt;/p&gt;
+&lt;p&gt;Schulz&apos;s keynote was quite broad, and came away with two (perhaps
+    unintentional) realizations:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;Quantum computing seems to be less about high-performance computing
+        and more about using weird computers to solve physics problems, which is
+        also what motivates most (non-AI) HPC today. The challenges of quantum
+        computing (hardware engineering, algorithms) overlap with many
+        challenges of parallel computing, but I don&apos;t think quantum and HPC are
+        as complementary as HPC-turned-quantum researchers try to make them. The
+        fact that they are mashed together at conferences like ISC seem to
+        reflect that the same kind of people like both HPC and quantum.&lt;/li&gt;
+&lt;li&gt;It seems pretty easy for smart people to quickly pivot from
+        traditional HPC to quantum computing. I&apos;ve known of Schulz because of
+        his work on the MPI Forum, so I was expecting a keynote on something a
+        little closer to that. Instead, he gave a survey of quantum computing
+        research he&apos;s touched over the past few years, and it all sounded pretty
+        impressive to me. So I guess if you are getting tired of parallel
+        computing but don&apos;t care about AI, consider caring about quantum
+        instead.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I was also glad to realize that I&apos;m not the last HPC person to be a
+    quantum expert. Rio Yokota, next year&apos;s ISC chair, admitted to having
+    not studied quantum much during the closing session. This was echoed in
+    private conversation by a couple long-time HPC folks who told me that
+    they were using the conference as an opportunity to figure out where
+    their gaps in understanding quantum are. If I was smarter, maybe I
+    would&apos;ve done the same. But it seems like I still have time, because
+    there are still plenty of HPC experts in the community who haven&apos;t
+    gotten on the quantum bandwagon yet.&lt;/p&gt;
+&lt;p&gt;On the topic of AI indifference though, the second day&apos;s morning
+    plenary followed a similar pattern as the first. Amanda Randles spoke
+    about digital twins which--despite having &lt;a href=&quot;https://www.nvidia.com/en-us/omniverse/&quot;&gt;considerable backing by
+        NVIDIA&lt;/a&gt;--are overwhelmingly built on physics-based models rather than
+    empirical ones. Randles only said &quot;AI&quot; four times and &quot;machine learning&quot;
+    six times in her entire 37-minute keynote, and by comparison, said
+    &quot;simulation&quot; 16 times. Again, a strong message that not everything at
+    ISC has to be about AI.&lt;/p&gt;
+&lt;p&gt;Finally, LineShine was probably the biggest proof point that
+    everything doesn&apos;t have to be about AI. While it &lt;em&gt;can&lt;/em&gt; do
+    hardware-accelerated 16-bit math, it has no 8-bit support; it is very
+    much a traditional 64-bit machine for modeling and simulation. Someone
+    in China decided that spending hundreds of millions on a machine for
+    physics simulation instead of AI training was worth the investment.&lt;/p&gt;
+&lt;h2 id=&quot;but-pretending-to-care-about-ai-remains-pervasive&quot;&gt;But
+    pretending to care about AI remains pervasive&lt;/h2&gt;
+&lt;p&gt;Just as HPC experts are now becoming quantum experts, many HPC
+    experts are also pivoting to become AI experts (myself included!). And
+    as &lt;a href=&quot;https://blog.glennklockwood.com/2025/12/sc25-recap.html#theme-3-ai-discourse-is-growing-up&quot;&gt;I
+        noticed at SC&apos;25&lt;/a&gt;, the level of discourse around AI within the HPC
+    community is rapidly maturing. Panels about how bad ChatGPT is at
+    generating MPI code are no longer passing peer review; instead, their
+    place was taken by talks about how to fine-tune models to generate
+    better Fortran this year.&lt;/p&gt;
+&lt;p&gt;That said, the AI sessions I attended still felt like a step back
+    from where I thought this community was based on the talks at SC&apos;25 last
+    year. Two misconceptions perpetuated throughout the week and are worth
+    addressing:&lt;/p&gt;
+&lt;h3 id=&quot;misconception-1-ai-is-just-going-to-wait-for-hardware-to-solve-their-problems&quot;&gt;Misconception
+    1: AI is just going to wait for hardware to solve their problems&lt;/h3&gt;
+&lt;p&gt;I attended a panel on &lt;a href=&quot;https://app.swapcard.com/event/isc-high-performance-2026/planning/UGxhbm5pbmdfNDM5MDIwMw==&quot;&gt;advanced
+        memory architectures&lt;/a&gt; where a panelist&apos;s position was that future
+    memory technologies for AI should be designed to reflect the fact that
+    AI (inferencing...) is a workflow that has distinctly separate
+    compute-bound and memory bandwidth-bound stages. Through a hardware
+    lens, his argument was reasonable: memory bandwidth is the harder
+    problem to solve, so if you design a node architecture around that
+    problem rather than the compute, you can create a node that&apos;s optimal
+    for more of the workflow.&lt;/p&gt;
+&lt;p&gt;The problem is that this hardware lens assumes that AI model
+    developers just sit around waiting for hardware people to tape out new
+    chips to solve their problems. This is not the case.&lt;/p&gt;
+&lt;p&gt;Although he didn&apos;t name it outright, the AI workflow that this
+    panelist was describing is inferencing of transformer models, which is
+    notoriously costly. Inferencing transformers is the reason why we hear
+    about gigawatt datacenters being built for billions of dollars in the
+    news. It follows that the entire AI industry has billions of dollars of
+    financial incentives to solve this memory bandwidth problem more quickly
+    than the time it takes design a new memory architecture from a blank
+    sheet of paper.&lt;/p&gt;
+&lt;p&gt;Instead of solving this problem with hardware, the AI community is
+    iterating on software and algorithms to reduce the burden of inferencing
+    by designing non-transformer models that simply do not have such severe
+    memory bandwidth problems. It took Intel seven quarters to go from &lt;a href=&quot;https://www.nextplatform.com/compute/2021/06/29/intel-delays-sapphire-rapids-server-chips-confirms-hbm-memory-option/1653656&quot;&gt;formally
+        announcing its HBM CPU at ISC&apos;21&lt;/a&gt; to &lt;a href=&quot;https://www.intel.com/content/www/us/en/products/sku/232592/intel-xeon-cpu-max-9480-processor-112-5m-cache-1-90-ghz/specifications.html&quot;&gt;shipping
+        it to its first customers in 2023&lt;/a&gt;. By comparison, in the seven
+    quarters that followed ChatGPT&apos;s release, the following fundamental
+    inferencing algorithm advancements were made:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/2211.17192&quot;&gt;Speculative decoding&lt;/a&gt;
+        came out, reducing the pressure on memory bandwidth&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/2309.06180&quot;&gt;PagedAttention&lt;/a&gt; came
+        out, reducing the pressure on HBM capacity&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/2307.08691&quot;&gt;FlashAttention-2&lt;/a&gt; came
+        out, improving compute utilization&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/en-us/research/publication/splitwise-efficient-generative-llm-inference-using-phase-splitting/&quot;&gt;Prefill/decode
+            disaggregation&lt;/a&gt; came out, improving compute and memory bandwidth
+        utilization&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To assume that memory bandwidth will always be the biggest challenge
+    for AI reflects ignorance of the pace at which AI algorithms are
+    advancing. Just as techniques like &lt;a href=&quot;https://glennklockwood.com/garden/mixture-of-experts&quot;&gt;mixtures of
+        experts&lt;/a&gt; dramatically reduced the HBM capacity required to inference
+    transformer models a few years ago, we&apos;re seeing &lt;a href=&quot;https://glennklockwood.com/garden/mamba&quot;&gt;non-attention&lt;/a&gt;
+    or &lt;a href=&quot;https://glennklockwood.com/garden/attention#linear-attention&quot;&gt;linear
+        attention&lt;/a&gt; methods rapidly replacing the memory-bandwidth-heavy
+    quadratic attention that transformers have historically used.&lt;/p&gt;
+&lt;p&gt;Like HPC, AI tends to adapt to whatever hardware is widely available.
+    Designing future memory architectures to solve today&apos;s problems might be
+    a fun thought exercise, but anything too exotic or bespoke will be
+    irrelevant by the time it&apos;s ready to run real workloads.&lt;/p&gt;
+&lt;h3 id=&quot;misconception-2-ai-for-hpc-is-a-singular-area-of-research&quot;&gt;Misconception
+    2: AI for HPC is a singular area of research&lt;/h3&gt;
+&lt;p&gt;There were a lot of talks about using AI in HPC across the main
+    program and workshops, but many of them mistook &quot;AI for science&quot; to
+    include using AI for any aspect of HPC or scientific computing. I don&apos;t
+    think this is right; instead, there are really two orthogonal parts to
+    AI in HPC:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;strong&gt;AI for productivity&lt;/strong&gt;: Using AI to allow researchers
+        to do more of the same things faster, and&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI for science&lt;/strong&gt;: Using AI to allow researchers to
+        tackle new classes of problems that were previously intractable&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I felt like AI for productivity got a disproportionate amount of
+    attention at ISC this year. Many of those talks felt incremental or like
+    claims of &quot;me too&quot; that just showed how to translate commercial AI
+    productivity tools to HPC-specific work. For example, this slide on &quot;key
+    elements for an accelerated discovery loop&quot; was shown at a BOF on
+    agentic AI for HPC:&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;Agents for accelerated discovery look a lot like agents for, well, everything else.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;However, you could take this exact same slide and (excepting the &quot;HPC
+    ready&quot; requirement) drop it into any domain--commercial, scientific, or
+    whatever else--and it&apos;d still be true.&lt;/p&gt;
+&lt;p&gt;I also sat in on on the &lt;a href=&quot;https://ornl.github.io/events/llm4hpc2026/&quot;&gt;2nd LLM4HPC
+        workshop&lt;/a&gt; on Friday, hoping to see how language models were improving
+    science, only to find that the entire workshop was focused on using LLMs
+    to generate scientific code or, at best, simulation input decks. On one
+    hand, I get it: code generation is where the world is finding AI most
+    useful today, and it only makes sense for scientific programmers to
+    explore how tools like Claude Code can simplify their daily grind. But
+    on the other hand, Claude Code is not AI for science. It is AI for
+    productivity, cast in the context of people who support science.&lt;/p&gt;
+&lt;p&gt;AI for science is the area with much more opportunity for impact;
+    these are cases where AI (whether they be surrogate models, agentic data
+    exploration, or other techniques) turn intractable problems into
+    solvable ones. AI for science involves new models that operate directly
+    on numerical data or agents that analyze data rather than run parameter
+    sweeps. And, &lt;a href=&quot;https://blog.glennklockwood.com/2025/12/sc25-recap.html#agentic-workflows&quot;&gt;unlike
+        at SC25 last year&lt;/a&gt;, I just didn&apos;t see much of it at ISC. It felt like
+    the majority of people presenting on AI were reaching for the
+    low-hanging fruit of, essentially, how AI can automate scientific
+    drudgery. This is useful, but it isn&apos;t terribly intellectual.&lt;/p&gt;
+&lt;h2 id=&quot;open-or-closed&quot;&gt;Open or closed?&lt;/h2&gt;
+&lt;p&gt;An unexpected theme that I kept tripping over during the week was the
+    growing tension between openness and closedness across the HPC
+    ecosystem. While HPC and open source have historically gone together
+    like peanut butter and jelly, a couple of interactions during the week
+    made me reconsider whether this remains true.&lt;/p&gt;
+&lt;h3 id=&quot;ai-doesnt-want-free&quot;&gt;AI doesn&apos;t want free&lt;/h3&gt;
+&lt;p&gt;The first interaction happened off-site at one of my private meetings
+    with a large HPC center, where I was told that my employer&apos;s proprietary
+    nature was not desirable compared to our open-source competitors. This
+    feedback didn&apos;t surprise me. But when I brought this up with one of my
+    open-source competitors, I was surprised to hear that they get the exact
+    opposite feedback: being open-source is undesirable, because nothing
+    good is free. That is, while large HPC centers may prefer open source,
+    industry (particularly enterprise AI) prefers proprietary because it
+    &quot;feels&quot; like higher quality.&lt;/p&gt;
+&lt;p&gt;Since enterprises tend to pay premium prices for software and
+    support, this creates a closed system of rapid advancement. Software
+    sophistication can rapidly iterate because it&apos;s generating lots of
+    revenue, allowing it to improve faster than open source. And because
+    it&apos;s improving faster, it becomes more desirable, driving more revenue,
+    and so on. The only way for open source to keep up is with a broad,
+    committed base of developers. And in the HPC world, there simply aren&apos;t
+    enough user-developers to maintain a level of software quality that can
+    compete with the deep pockets of AI investors.&lt;/p&gt;
+&lt;p&gt;I haven&apos;t thought through how broadly this applies across the
+    software used in HPC and AI, but it certainly is true in the storage
+    world. If you look at where the most rapid and exciting advances are
+    being made in storage for HPC and AI, it&apos;s not in open source; it&apos;s in
+    proprietary file systems and object stores. AI companies may start with
+    open-source Ceph or community Lustre, but they invariably graduate to
+    proprietary systems when it becomes easier to solve their problems with
+    money rather than time and engineering effort.&lt;/p&gt;
+&lt;h3 id=&quot;and-hpc-isnt-really-that-open&quot;&gt;And HPC isn&apos;t really that
+    open&lt;/h3&gt;
+&lt;p&gt;At the &lt;a href=&quot;https://ornl.github.io/events/llm4hpc2026/&quot;&gt;LLM4HPC
+        workshop&lt;/a&gt; on Friday, there were two talks that also made me realize
+    that there is another systematic reason why HPC is being left out of the
+    greatest advancements being realized by AI today: it&apos;s not actually as
+    open, so frontier models and tools just aren&apos;t very good at doing
+    HPC-specific work.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://agenda.isc-hpc.com/media/2026/slides_pdf/09-00_Fortran_LLM_ISC2026.pdf&quot;&gt;first
+        talk&lt;/a&gt; was straightforward in principle: create a set of coding and
+    optimization tests that involved Fortran and porting OpenACC to OpenMP,
+    then see how different open and closed models perform. And the result
+    wasn&apos;t terribly surprising: today&apos;s leading LLMs are still pretty bad at
+    writing Fortran.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;Not surprising: frontier LLMs are bad at writing Fortran. Surprising: frontier LLMs are better at Fortran than Fortran-specific models built for science.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;What &lt;em&gt;was&lt;/em&gt; unexpected is that open models optimized for code,
+    which &lt;em&gt;are&lt;/em&gt; becoming quite good at general programming, are
+    significantly worse than proprietary frontier models like Claude Opus
+    and GPT-5. And even worse, purpose-built models for Fortran coding were
+    the worst of all. Why is this?&lt;/p&gt;
+&lt;p&gt;The latter finding (Fortran-specific models are junk) actually made
+    perfect sense to me. The world&apos;s best AI model builders are not building
+    Fortran-specific models, so conversely, a model built for Fortran is
+    probably old, poorly trained, and not keeping up with the state of the
+    art in training models.&lt;/p&gt;
+&lt;p&gt;But the former finding (open models are worse than frontier models,
+    but all models are bad) was more interesting. It&apos;s generally accepted
+    that &lt;a href=&quot;https://arxiv.org/abs/2512.13472&quot;&gt;larger models are better
+        at cross-lingual transfer learning&lt;/a&gt; than smaller models. That is, a
+    big model can see an algorithm written in C++ and figure out how to
+    implement it in Fortran better than a smaller model when all else is
+    equal. So, massive (proprietary) models will probably generate better
+    Fortran than smaller (open) models even though they&apos;ve both trained on
+    the same amount of Fortran simply because they&apos;re better at generalizing
+    to Fortran.&lt;/p&gt;
+&lt;p&gt;Unfortunately, much of the world&apos;s highest-quality Fortran code is
+    &lt;em&gt;not&lt;/em&gt; represented in these models&apos; training corpora. That code is
+    often proprietary and in private or air-gapped repositories because it
+    is responsible for computations that inform defense or national
+    security. Because of this, some of the best examples of HPC code are not
+    very open at all.
+&lt;/p&gt;
+&lt;p&gt;The talk that followed was essentially a prescription of how to
+    address this problem: how to fine-tune open models using non-public,
+    HPC-specific source code. It was specifically describing a new method
+    for reward modeling that allowed a model being fine-tuned to get the
+    most out of every snippet of HPC-specific code it was shown, and the
+    outcomes were amazingly good in some cases.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;A good model can be fine-tuned on a little bit of HPC-specific data to teach it how to HPC much better.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;What I really took away from these talks, though, is that&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;The obscurity and &quot;closedness&quot; of HPC applications is why the HPC
+        community doesn&apos;t get as many benefits from new coding models as, say,
+        the Python developer community. The fact that much of the world&apos;s
+        Fortran is locked up and not open source means the improvements we do
+        see are the result of cross-lingual transfer learning, which is not very
+        efficient compared to simply training a model on good Fortran.&lt;/li&gt;
+&lt;li&gt;Fine-tuning an open model by exposing it to proprietary,
+        HPC-specific examples can turn a mediocre coding model that struggles
+        with Fortran or OpenMP into a strong one. And because it&apos;s just
+        fine-tuning, it&apos;s possible to get this HPC coding model with a limited
+        amount of Fortran and a limited number of GPUs compared to creating a
+        coding model from scratch, which remains too costly for all but the
+        largest AI companies.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This leads me to envision a future where every large HPC site has its
+    own fine-tuned coding model that has been post-trained on internal,
+    closed-source HPC application source so that it has the general coding
+    knowledge of a leading open model &lt;em&gt;and&lt;/em&gt; the HPC-specific
+    experience learned from examining proprietary code. Of course, this
+    requires that each HPC site also have some expertise in fine-tuning
+    their own coding models and integrating those models into popular
+    agentic coding suites (like Claude Code) running on-prem. At present,
+    these skills are too scarce for every center to hire, but perhaps in the
+    future they become as commonplace as knowing how to run an MPI job is
+    today.&lt;/p&gt;
+&lt;p&gt;What isn&apos;t clear to me is how much HPC centers will be willing to pay
+    for the ability to fine-tune their own coding models. As described
+    earlier, this is all squarely AI for productivity, not AI for science.
+    When an HPC center&apos;s mission is to support science, what is the relative
+    importance of using GPUs to generate scientific insights versus using
+    GPUs to write boilerplate Fortran code faster?&lt;/p&gt;
+&lt;h2 id=&quot;sovereign-is-the-next-big-thing-for-everyone-except-the-us&quot;&gt;Sovereign
+    is the next big thing for everyone (except the US)&lt;/h2&gt;
+&lt;p&gt;This idea of fine-tuning models on proprietary HPC code touches on
+    another theme that seemed very big at ISC this year: sovereign AI
+    infrastructure. And like any good conference buzzword, it wasn&apos;t
+    immediately clear that many attendees really understood what it
+    meant.&lt;/p&gt;
+&lt;p&gt;Andrew Jones posted the following cynical take on sovereign HPC
+    infrastructure at the outset of the conference:&lt;/p&gt;
+&lt;p&gt;And he&apos;s not wrong; of the twenty sessions in the ISC technical
+    program that self-identified as being related to &quot;sovereignty in AI&quot; in
+    any way, 60% were vendor pitches. And as someone who works for a company
+    selling AI technologies, I can confirm: every country buying their own
+    GPU infrastructure instead of sharing it is great for business.&lt;/p&gt;
+&lt;p&gt;However, the single strongest argument for sovereign AI happened a
+    week before ISC started on June 12: the US government declared that &lt;a href=&quot;https://www.anthropic.com/news/fable-mythos-access&quot;&gt;foreign
+        nationals could no longer use Anthropic&apos;s most powerful models&lt;/a&gt;,
+    Fable 5 and Mythos 5. While this was probably a mild annoyance to most
+    of us who had just gotten started using it, one conversation I had
+    during ISC made me realize how broad the implications were: the US
+    government demonstrated that it could cut any nation off from all the AI
+    models being produced by the world&apos;s leading AI companies.&lt;/p&gt;
+&lt;p&gt;Think: what would happen to you or your work if OpenAI, Anthropic,
+    xAI, and every other frontier model lab simply disappeared tomorrow? It
+    may be a mild annoyance to you, but how much time would you lose by
+    having to go back to writing every line of code by hand, writing every
+    e-mail or waste-of-time report by hand, and sifting through every Google
+    search by hand? How many apps and companies would suddenly have nothing
+    to offer?&lt;/p&gt;
+&lt;p&gt;Multiply that by the working population of a country, then imagine
+    how much worse that would be in a year or two as our economies become
+    increasingly dependent on AI to sustain productivity. Cutting off a
+    country (or all countries) from AI would have devastating economic
+    effects at minimum. And if AI ever becomes integral to parts of national
+    security, defense, or public safety, losing it could be a genuine
+    national emergency. It&apos;s not a stretch to say that cutting off an entire
+    country from leading models could be like cutting off an entire country
+    from the Internet.&lt;/p&gt;
+&lt;p&gt;Sovereign AI infrastructure started as a response to this
+    hypothetical threat, and after the June 12 reclassification of
+    Anthropic&apos;s models by the US, the threat and urgency became real for
+    other nations. The sovereign AI infrastructure being funded in the &lt;a href=&quot;https://www.gov.uk/government/news/a-decisive-shift-to-power-british-ai-new-11-billion-plan-to-back-chip-firms-boost-computing-power-and-skills-for-the-ai-revolution&quot;&gt;United
+        Kingdom&lt;/a&gt;, &lt;a href=&quot;https://glennklockwood.com/garden/canadian-sovereign-ai&quot;&gt;Canada&lt;/a&gt;,
+    and &lt;a href=&quot;https://glennklockwood.com/garden/ai-gigafactory&quot;&gt;across
+        Europe&lt;/a&gt; is less about being competitive in developing AI
+    capabilities, and now more about protecting against weaponizing the
+    current US monopoly over frontier AI models.&lt;/p&gt;
+&lt;p&gt;Although &lt;a href=&quot;https://ised-isde.canada.ca/site/ised/en/ai-sovereign-compute-infrastructure-program&quot;&gt;governments&lt;/a&gt;
+&lt;a href=&quot;https://commission.europa.eu/topics/competitiveness/competitiveness-coordination-tool-projects/ai-gigafactories_en&quot;&gt;around&lt;/a&gt;
+&lt;a href=&quot;https://www.gov.uk/government/news/a-decisive-shift-to-power-british-ai-new-11-billion-plan-to-back-chip-firms-boost-computing-power-and-skills-for-the-ai-revolution&quot;&gt;the
+        world&lt;/a&gt; are &lt;a href=&quot;https://www.cnbc.com/2025/08/27/saudi-arabia-wants-to-be-worlds-third-largest-ai-provider-humain.html&quot;&gt;committing&lt;/a&gt;
+&lt;a href=&quot;https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&amp;amp;mId=4&amp;amp;bbsSeqNo=42&amp;amp;nttSeqNo=1074&quot;&gt;billions&lt;/a&gt;
+    to building sovereign AI infrastructure, the consensus I heard at ISC is
+    that these sovereign AI supercomputers are not intended to eliminate
+    nations&apos; dependencies on US AI infrastructure and models completely.
+    Rather, they are being built as an emergency reserve of capability so
+    that, if a country was to lose its access to US-made frontier models,
+    they would have enough sovereign models and sovereign GPUs to support
+    the AI workloads required by critical infrastructure--applications like
+    defense and energy.
+&lt;/p&gt;
+&lt;p&gt;For HPC centers, it seems like &quot;sovereign AI&quot; as a rallying cry is
+    good for everyone. Weicheng Huang from the National Center for
+    High-Performance Computing Taiwan quantified the benefit it&apos;s brought
+    his center:&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;Say what you will about AI&apos;s benefits to society, but its benefits to HPC center budgets are undeniable.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;And of course, since those AI infrastructure dollars flow directly to
+    companies selling AI infrastructure, it&apos;s no wonder that every AI
+    company&apos;s CEO is unabashedly saying that &lt;a href=&quot;https://blogs.nvidia.com/blog/world-governments-summit/&quot;&gt;every
+        country needs its own sovereign AI&lt;/a&gt;. Like I said before, sovereign AI
+    is good for business.&lt;/p&gt;
+&lt;h3 id=&quot;sovereignty-is-forcing-modernization&quot;&gt;Sovereignty is forcing
+    modernization&lt;/h3&gt;
+&lt;p&gt;Less cynically though, this push for sovereign AI is also forcing
+    long-overdue modernization of security, privacy, and governance policies
+    across HPC. Since national HPC centers are often the only places where
+    expertise in operating GPU infrastructure at scale is concentrated,
+    these HPC centers are now being approached by industry asking for AI
+    infrastructure that meets compliance standards far beyond anything open
+    science has ever needed. In a sense, these non-US HPC centers are now
+    being asked to provide the services offered by AI clouds.&lt;/p&gt;
+&lt;p&gt;This has been interesting for me to see, since I spent three years at
+    Microsoft trying to convince HPC centers that they need to pay attention
+    to this exact issue. HPC&apos;s beloved walled gardens (where any user who
+    can log in is implicitly trusted to behave) are dangerously outdated.
+    Now that sovereign AI is becoming critical though, the most progressive
+    centers within the HPC community are going all-in. This was the first
+    ISC where I didn&apos;t have to explain that multitenancy is more than
+    usernames and passwords. Instead, HPC architects came to the table with
+    strong opinions on how user-provided keys should be managed.&lt;/p&gt;
+&lt;p&gt;I think the HPC community is still at least one generation of
+    supercomputers away from being as secure as the AI clouds are today, but
+    everyone I talked to at ISC seemed to be convinced that they need to get
+    there soon.&lt;/p&gt;
+&lt;h3 id=&quot;sovereignty-is-an-opportunity&quot;&gt;Sovereignty is an
+    opportunity&lt;/h3&gt;
+&lt;p&gt;I&apos;ve commented in the past that the HPC community has seemed adrift
+    since passing the exascale milestone, but it felt like there was a clear
+    next big goal emerging at ISC this year. Sovereign AI checks many of the
+    right boxes: it&apos;s a capital-intensive, big-iron problem; it brings
+    plenty of challenges across applications and infrastructure for
+    researchers to work on; it has broad societal impact if successful; and
+    the world all seems to agree that it needs to be done.&lt;/p&gt;
+&lt;p&gt;The funny thing is, this unifying theme and its associated funding
+    exists across the entire HPC community with the exception of one
+    country: the US. The US has no need for sovereign AI, because its
+    willingness to exert export controls over HPC technologies and its
+    mercurial stance towards other nations leading in HPC is the reason
+    other nations see the urgent need for sovereign AI infrastructure.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;Why is the US the only country that isn&apos;t all-in on sovereign AI?&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;This has given rise to a perceptible split in how the HPC community
+    is focusing its efforts towards the future:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Europe, Asia, and the Commonwealth&lt;/strong&gt; are structuring
+    programs to rapidly deploy large-scale ($500M+) AI infrastructure. These
+    are often being tied up with public-private partnerships to either (a)
+    access the money required to build massive supercomputers or (b) to
+    accelerate domestic AI innovation and develop AI talent. Significant HPC
+    research effort is being directed at closing the gaps between the tools
+    that HPC has historically used and the new demands of AI workflows on
+    compute, networking, and storage.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;United States&lt;/strong&gt; is pursuing a largely unfunded
+    mandate to jam AI into scientific discovery and realize dramatic
+    increases in productivity. It has an epic name (&quot;&lt;a href=&quot;https://www.energy.gov/articles/energy-department-launches-genesis-mission-transform-american-science-and-innovation&quot;&gt;The
+        Genesis Mission&lt;/a&gt;&quot;), but there has been less-than-epic clarity,
+    structure, or funding driving the community forward. As a result, the &lt;a href=&quot;https://www.energy.gov/articles/energy-department-announces-293-million-funding-support-genesis-mission-national-science&quot;&gt;first
+        Genesis funding opportunity&lt;/a&gt; for $293M of research funding is alleged
+    to have resulted in 10,000 proposals. That&apos;s enough to buy every
+    research team exactly one GPU.&lt;/p&gt;
+&lt;p&gt;It will be interesting to see how this split evolves. Will SC
+    maintain the high concentration of interest around sovereign AI we saw
+    at ISC? Or will the Genesis Mission narrative of spraying AI all over
+    science win out?&lt;/p&gt;
+&lt;h2 id=&quot;cpus-are-backmaybe&quot;&gt;CPUs are back...maybe?&lt;/h2&gt;
+&lt;p&gt;LineShine&apos;s exascale all-CPU architecture was a surprise to many,
+    especially the conference organizers who opened ISC with a plenary that
+    asserted that &quot;heterogeneity is inevitable.&quot; Less than an hour later,
+    Yutong Lu was on the same stage, explaining that a homogeneous
+    architecture was an explicit design point of the supercomputer at the
+    top of Top500.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;Heterogeneity is inevitable, at least for the next 50 minutes. But jokes aside, Schulz is not wrong; the timing of LineShine&apos;s announcement was just unfortunate.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;Horst Simon called out the deep irony explicitly and posed the
+    question during the &lt;a href=&quot;https://app.swapcard.com/event/isc-high-performance-2026/planning/UGxhbm5pbmdfNDQxMDE2Mg==&quot;&gt;Top500
+        presentation&lt;/a&gt;: &quot;Will the fact that it&apos;s an all-CPU machine mean
+    something for the future of CPU versus GPU computing?&quot;&lt;/p&gt;
+&lt;p&gt;It&apos;s hard to answer this question purely on the basis of LineShine,
+    because whether CPUs or GPUs are the ideal architecture for scientific
+    computing has never been strictly about technology. Rather, it&apos;s an
+    economic question. Is there enough of a market for FP64-optimized chips
+    to justify a company like Intel, AMD, or NVIDIA establishing and
+    sustaining a line of processors or accelerators that are optimized for
+    FP64? The fact that none of them are doing this (except AMD, sort of)
+    tells you the answer is &quot;no.&quot;&lt;/p&gt;
+&lt;p&gt;I think LineShine is a terrible indicator of whether CPUs have an
+    economic future in HPC, because its LX2 CPUs are purpose-built,
+    non-commercial parts designed for a one-off giant system. It&apos;s not clear
+    who paid for LineShine (one anecdote says &lt;a href=&quot;https://www.nytimes.com/2026/06/23/technology/china-supercomputer-crown-us.html&quot;&gt;it
+        was built without government funding&lt;/a&gt;--dubious), but nothing about it
+    indicates LX2 will be commercialized into a product whose profits will
+    fund a follow-on chip. There are signs that LineShine has Huawei DNA
+    (e.g., its user environment provides &lt;a href=&quot;https://www.hikunpeng.com/document/detail/en/kunpengaccel/math-lib/devg-kml/kunpengaccel_kml_16_0001.html&quot;&gt;Huawei&apos;s
+        BLAS implementation&lt;/a&gt;), but Huawei takes no credit for any part of
+    it.&lt;/p&gt;
+&lt;p&gt;But when you take economics and profit out of the picture (as the
+    Chinese government is able to do), the question becomes more
+    interesting: is the LX2 CPU (or any CPU with matrix extensions)
+    architecturally competitive with a GPU?&lt;/p&gt;
+&lt;p&gt;At its surface, LX2 looks an awful lot like a GPU. Each core has a
+    big matrix tile of registers and can execute instructions that perform
+    fused multiply-accumulate ops that fill this matrix, and there are
+    hundreds of these cores. But unlike a GPU, every core is independent;
+    each of the 304 cores can work on an entirely different arithmetic
+    function and work within its own vector and matrix registers, reducing
+    the need to think about coordinating warps or wavefronts. Although I&apos;m
+    no chip expert, I would guess that LX2 and its matrix extensions are
+    less space- and power-efficient than a GPU for GEMMs, trading the
+    absolute power-performance benefit of a GPU for the ability to work on
+    less-coherent and scaled-down problems more efficiently.&lt;/p&gt;
+&lt;p&gt;It&apos;s also hard to do an apples-to-apples comparison of LX2 and a GPU
+    to see where a CPU with matrix extensions could be competitive with a
+    GPU, because China remains a few years behind the state of the art in
+    their semiconductors. At the surface, LX2 is comparable to a Hopper-era
+    GPU (see my &lt;a href=&quot;https://glennklockwood.com/garden/processors/lx2&quot;&gt;LX2&lt;/a&gt; and &lt;a href=&quot;https://glennklockwood.com/garden/processors/h100&quot;&gt;H100&lt;/a&gt; pages
+    for sources):&lt;/p&gt;
+&lt;table style=&quot;border-collapse: collapse; font-family: sans-serif; font-size: 0.9em; width: 100%;&quot;&gt;
+&lt;thead style=&quot;background-color: #f2f2f2;&quot;&gt;
+&lt;tr&gt;
+&lt;th style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px; text-align: left;&quot;&gt;Parameter&lt;/th&gt;
+&lt;th style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px; text-align: left;&quot;&gt;LX2&lt;/th&gt;
+&lt;th style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px; text-align: left;&quot;&gt;H100&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background-color: white;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;64-bit fp matrix&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;&lt;span style=&quot;color: #e69138;&quot;&gt;60.3 TF FP64&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;66.9 TF FP64&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: #f9f9f9;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;32-bit fp matrix&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;&lt;span style=&quot;color: #cc0000;&quot;&gt;120 TF FP32&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;495 TF TF32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: white;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;16-bit fp matrix&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;&lt;span style=&quot;color: #cc0000;&quot;&gt;240 TF BF16/FP16&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;989 TF BF16/FP16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: #f9f9f9;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;8-bit int matrix&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;&lt;span style=&quot;color: #cc0000;&quot;&gt;960 TOPS&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;1989 TOPS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: white;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;Matrix units&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;304 ZA tiles&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;528 tensor cores&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: #f9f9f9;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;HBM&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;&lt;span style=&quot;color: #e69138;&quot;&gt;32 GB, 4 TB/s&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;80 GB, 3.4 TB/s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: white;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;Power&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;&lt;span style=&quot;color: #6aa84f;&quot;&gt;690 W&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;700 W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: #f9f9f9;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;8-bit fp matrix&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;unsupported*&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;1980 TF&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;background-color: white;&quot;&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;Sparsity?&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;no&lt;/td&gt;
+&lt;td style=&quot;border: 1px solid rgb(204, 204, 204); padding: 8px;&quot;&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&quot;color: #666666; font-size: 0.85em; margin-top: 4px;&quot;&gt;*LX2 has no native 8-bit floating point matrix support, but neither does &lt;a href=&quot;https://arxiv.org/abs/2506.12708v2&quot;&gt;Huawei&apos;s Ascend 910C&lt;/a&gt;, China&apos;s leading AI accelerator.&lt;/p&gt;
+&lt;p&gt;But its support for FP64 matrix operations clearly comes at the cost
+    of lower-precision 32/16/8-bit matrix operations, making this a solution
+    that is not very compelling in a world where scientific applications are
+    finding ways to exploit 32-bit (and lower) precision. Similarly, it&apos;s
+    hard to argue that this CPU-based approach is ideal for mixed HPC/AI
+    workloads when its low-precision performance is so far from what GPUs&apos;
+    tensor/matrix cores can deliver in a comparable power envelope. And if
+    you look at the &lt;a href=&quot;https://bsky.app/profile/ogawa-tadashi.bsky.social/post/3mksafljwis2u&quot;&gt;Chinese
+        press surrounding LineShine&lt;/a&gt;, their hero number for AI inferencing
+    (578 tokens per second) is limited to decode-only performance, which is
+    a function of HBM bandwidth and not FLOPS.&lt;/p&gt;
+&lt;p&gt;Finally, Dongarra, Hoefler, and Matsuoka wrote an opinion piece
+    called &quot;&lt;a href=&quot;https://www.nextplatform.com/compute/2026/06/30/three-hpc-gurus-ask-do-we-still-need-gpus/5264552&quot;&gt;Do
+        We Still Need GPUs?&lt;/a&gt;&quot; shortly after ISC that ostensibly adds to the
+    discussion. Their title is misleading though, because the piece is less
+    about answering the question posed by Horst and more a collection of
+    Claude-fueled napkin math that demonstrates how Arm CPUs with matrix
+    extensions &lt;em&gt;could&lt;/em&gt; be competitive with GPUs for sparse models
+    that are already inefficient on GPUs.&lt;/p&gt;
+&lt;p&gt;So, to answer Horst&apos;s question: maybe CPUs (or, CPU matrix
+    extensions) can be relevant for the future, but choosing CPUs over GPUs
+    will limit your opportunity to also run low-precision algorithms with
+    the highest performance-per-watt efficiency.&lt;/p&gt;
+&lt;p&gt;And this is all only examining matrix performance, which itself is
+    not the prevailing motif in scientific applications that still need
+    FP64. Little has been said about LX2&apos;s vector implementation beyond the
+    width being 512 bits, so we&apos;ll have to wait until more papers emerge
+    based on LineShine before we can tell if its CPUs are only useful as
+    FP64 matrix accelerators, or if its vector performance points in a
+    direction that is competitive with the value that FP64-vector-optimized
+    GPUs like MI355X will deliver.&lt;/p&gt;
+&lt;h2 id=&quot;storage-stuff&quot;&gt;Storage stuff&lt;/h2&gt;
+&lt;p&gt;Most of the storage-related discussion at ISC felt incremental as
+    well. Lustre and DAOS are slowly implementing features that have been on
+    their roadmaps for years. Vendors are turning the crank on new Lustre
+    appliances. And HPE seems to be taking DAOS seriously enough to
+    productize it and release the world&apos;s first DAOS appliance. But none of
+    this was terribly surprising.&lt;/p&gt;
+&lt;p&gt;However, there was one surprise in the storage world at ISC: Sugon&apos;s
+    new ParaStor F9000, a Chinese-developed all-flash parallel file system
+    and appliance that unseated DAOS from the top of the IO500 list.&lt;/p&gt;
+&lt;h3 id=&quot;parastor&quot;&gt;ParaStor&lt;/h3&gt;
+&lt;p&gt;China has long submitted weird research file systems to IO500, and
+    some of them were so absurdly gamed that the IO500 committee had to
+    split the list into separate &quot;research&quot; and &quot;production&quot; lists to
+    distinguish real file systems from science experiments. Despite that,
+    IO500 remains &lt;a href=&quot;https://glennklockwood.com/garden/io500#arbitrary-equivalence-of-gibs-and-kiops&quot;&gt;essentially
+        a metadata performance leaderboard&lt;/a&gt; which has allowed the big DAOS
+    system at Argonne to consistently rank 10x higher than any other system
+    on the list.&lt;/p&gt;
+&lt;p&gt;Sugon finally broke the record with its own flashier (ha!)
+    massive-scale all-flash system entry that showed over twice the
+    bandwidth and metadata performance of Argonne&apos;s DAOS. It didn&apos;t do this
+    by just deploying more flash, though; it actually used fewer servers
+    (442 vs. 642) and fewer SSDs (5K vs. 10K) than the DAOS submission it
+    beat. In addition, this ParaStor submission came with a couple of
+    details that surprised me:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;ParaStor is a real POSIX(ish) file system, so had to solve the hard
+        problem of getting high metadata performance while simultaneously
+        adhering to POSIX. DAOS does not do this, and instead used its
+        non-standard file-like API (DFS) to get its IO500 score.&lt;/li&gt;
+&lt;li&gt;ParaStor is a real product, and Sugon had full racks of it on
+        display at their booth to prove it.&lt;/li&gt;
+&lt;li&gt;ParaStor&apos;s implementation reflects a modern, production-minded
+        architecture with a lot of bells and whistles that open-source solutions
+        like DAOS and Lustre lack.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Point 3 was the most interesting to me, and the IO500 submission (and
+    a &lt;a href=&quot;https://www.leiphone.com/category/chips/EAd6eTSPIeOOy4j7.html&quot;&gt;Chinese-language
+        press piece&lt;/a&gt; released during ISC) disclosed a lot of details that I
+    wouldn&apos;t expect of a file system I never heard of a month ago.
+    Specifically, it&apos;s a shared-nothing parallel file system that uses
+    Lustre-like 2U24 dual-controller HA chassis with standard 14+2
+    Reed-Solomon erasure codes for data. Like Lustre, it uses a custom
+    kernel client, and it supports transport over RDMA.&lt;/p&gt;
+&lt;p&gt;It does everything you&apos;d expect from an all-flash file system; it
+    binds together groups of CPU cores, NICs, NUMA nodes, and SSDs to
+    minimize latency and variability, and metadata is triplicated to avoid
+    the synchronous overheads of calculating and updating parity for tiny
+    I/Os. It supports min/max quality of service policies on bandwidth and
+    IOPS, and it also allows full host bypass using &quot;XDS,&quot; Sugon&apos;s
+    equivalent to GPUDirect Storage.&lt;/p&gt;
+&lt;p&gt;Some of the details of the file system sounded very WEKA-like to me,
+    though. Like WEKA, its client supports using client-local SSDs and RAM
+    to prefetch and cache pieces of the file system, improving small-file
+    performance. It also supports &quot;intelligent data tiering&quot; from its flash
+    layer to a hard drive layer, though the IO500 submission only tested
+    against all-flash.&lt;/p&gt;
+&lt;p&gt;Some of the stated capabilities seem a little odd though, so until
+    independent testing of ParaStor emerges from either China or other
+    nations buying Sugon supercomputers, I&apos;m a little skeptical of how fully
+    baked some of these features are.&lt;/p&gt;
+&lt;p&gt;For example, the 14+2 erasure code on data does not map neatly to the
+    12-drive servers they use, leading me to believe that erasure coding is
+    done across servers. That has latency implications, and it also obviates
+    the need for the dual-controller HA enclosures they&apos;re using;
+    implementing HA at both the intra-chassis and inter-chassis levels is
+    costly and complex, telling me their EC might not work as well as it
+    should. In addition, supporting performance minimums in quality of
+    service sounds great on paper, but it is notoriously difficult to
+    implement in practice. I am dubious that they&apos;ve cracked that nut in a
+    reliable way this quickly.&lt;/p&gt;
+&lt;p&gt;That all aside though, Sugon did have three racks of their ParaStor
+    F9000 on the show floor.&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;Sugon&apos;s three ParaStor F9000 racks on display in the exhibit hall.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;I didn&apos;t get a chance to talk to anyone at the booth to ask
+    questions, so all I know is what the booth placard said and what was
+    disclosed in &lt;a href=&quot;https://io500.org/submissions/configuration/803&quot;&gt;ParaStor&apos;s IO500
+        submission&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The 42U rack is HDD-based and intended for capacity-optimized data
+        warehousing and backup.&lt;/li&gt;
+&lt;li&gt;The 36U and 26U are flash appliances. The 36U targets traditional
+        HPC and AI workloads, while the 26U is targeted at &quot;enterprise business
+        systems.&quot;&lt;/li&gt;
+&lt;li&gt;The 2U24 ParaStor F9000 enclosures have two controllers, each with a
+        64-core (&quot;CISC,&quot; so AMD?) CPU, 12x 15.36 TB NVMe drives, and 4x 400G &lt;a href=&quot;https://glennklockwood.com/garden/scalefabric&quot;&gt;Chinese-made
+            InfiniBand NICs&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;It scales up to at least 221 enclosures (442 servers), for a total
+        of 72.3 PiB raw capacity (5,304 15.36 TB NVMes). The formatted capacity
+        of this system was 63 PiB, which is almost exactly the 14+2 EC overhead.
+        It is unclear how they store metadata and internal data structures,
+        since there&apos;s effectively no capacity set aside for it.&lt;/li&gt;
+&lt;li&gt;The ior-easy tests break down to 80 GB/s/server for reads and 73
+        GB/s/server writes. This is uncannily high and represents over 6
+        GB/s/SSD for both reads and writes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The bandwidth-per-enclosure (160 GB/s and 146 GB/s) is extremely
+    competitive with the latest Lustre appliances (190 GB/s and 140 GB/s)
+    that were being touted during the week:&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;HPE Cray&apos;s Lustre appliance, showed at the Lustre BOF by Tiziano Müller of HPE Labs, is not far ahead of Sugon&apos;s ParaStor F9000 appliance.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;But the metadata performance they claimed only seems achievable if
+    they are using advanced data structures to index the namespace and
+    implement redirect-on-write. Since they didn&apos;t disclose anything about
+    how they&apos;re handling metadata though, I suspect they are cutting corners
+    around reliability and durability to achieve the performance they
+    posted. And as anyone who&apos;s supported production parallel storage, going
+    fast on an empty system is the easiest part. Keeping the system running
+    predictably and reliably day after day is much harder.&lt;/p&gt;
+&lt;h3 id=&quot;only-bad-ai-requires-many-iops&quot;&gt;Only bad AI requires many
+    IOPS&lt;/h3&gt;
+&lt;p&gt;There is an oft-repeated assertion that AI workloads generate many
+    small I/Os, and therefore an AI-optimized file system requires an
+    extreme level of IOPS. Yet, given everything I&apos;ve done in the world of
+    large-scale AI, I have never seen this requirement bear out. And on a
+    more fundamental level, I cannot find any step within a model&apos;s
+    training-inferencing lifecycle that should require accessing data in a
+    truly unpredictable way. So this year, I made it a point to ask around:
+    exactly what is the AI workload that is requiring these IOPS?&lt;/p&gt;
+&lt;p&gt;The answer was almost always &quot;well, I don&apos;t actually know&quot; or &quot;you&apos;d
+    have to ask my users.&quot;&lt;/p&gt;
+&lt;p&gt;I only met one person who could back up this assertion, and his
+    reasoning was disappointing: there&apos;s nothing intrinsic to AI that
+    actually requires small I/Os, but most of the people trying to run AI
+    workloads on supercomputers today have no idea what they&apos;re doing. Their
+    applications&apos; I/O patterns are not optimized for parallel storage, so
+    supporting high IOPS for AI is more about coddling a new wave of
+    inexperienced users than supporting a fundamentally new workload. The
+    corollary I took away is that HPC seems to be willing to spend money on
+    hardware (IOPS) to deal with problems that could be fixed in software
+    (bad user code). As with my observations on &lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#misconception-1-ai-is-just-going-to-wait-for-hardware-to-solve-their-problems&quot;&gt;designing new memory
+    architectures to address the needs of today&apos;s transformers&lt;/a&gt;, this is
+    not a tradeoff often made in the commercial world.&lt;/p&gt;
+&lt;p&gt;That said, there was an anecdote repeated at a couple of BOFs that
+    was noteworthy: AI agents are really good at bringing down Lustre file
+    systems. Like inexperienced users in need of coddling, today&apos;s AI agents
+    appear to be treating parallel file systems like laptop file systems,
+    and they do everything a bad user would do like creating bazillions of
+    files or repeatedly walking the namespace. But unlike a bad human, these
+    bad agents are very good at parallelizing work, and they cannot be
+    phoned up by user services and told to stop.&lt;/p&gt;
+&lt;p&gt;So, I remain unconvinced that a supercomputer built for AI really
+    needs a storage subsystem that delivers tons of IOPS. I&apos;ve certainly
+    worked on &lt;a href=&quot;https://blog.glennklockwood.com/2025/02/llm-training-without-parallel-file.html&quot;&gt;productive
+        AI supercomputers that didn&apos;t have them&lt;/a&gt;. But I do think AI is
+    creating software problems faster than traditional HPC file systems can
+    fix them, and a storage system designed for a few well-behaved humans
+    (like Lustre) is probably not a good near-term solution for a compute
+    workload that attracts many poorly behaved robots.&lt;/p&gt;
+&lt;h2 id=&quot;maybe-hpc-and-ai-really-are-different&quot;&gt;Maybe HPC and AI really
+    are different&lt;/h2&gt;
+&lt;p&gt;A big benefit of the HPC community coming to terms with AI&apos;s effect
+    on the industry is that some of the bright minds in HPC are starting to
+    ask really interesting, existential questions about long-held
+    assumptions. Just because HPC has used a certain tool for decades
+    doesn&apos;t mean it&apos;s the right tool, and AI&apos;s disruptive effects might be
+    dislodging these old ideas, creating room for better ideas to
+    develop.&lt;/p&gt;
+&lt;p&gt;The most interesting such example I heard was posed by James Lin at
+    his &lt;a href=&quot;https://app.swapcard.com/event/isc-high-performance-2026/planning/UGxhbm5pbmdfNDQ1ODU2MA==&quot;&gt;HPC
+        Around the World: Asia Pacific&lt;/a&gt; talk. After &lt;a href=&quot;https://blog.glennklockwood.com/feeds/posts/default/-/hpc?alt=rss#the-geopolitical-message&quot;&gt;he was done talking about    how good LineShine is for US supercomputing&lt;/a&gt;, he described this
+    fascinating project happening at Shanghai Jiao Tong University:&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;figure&gt;&lt;figcaption class=&quot;image-caption&quot;&gt;The most interesting slide of the week, by James Lin.&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;What would a supercomputer designed for AI instead of humans look
+    like?&lt;/p&gt;
+&lt;p&gt;As discussed in the previous section, today&apos;s agents are quite
+    supercomputer-ignorant and do the same dumb things that novice human
+    users do. But models also do smart things that humans do not, like read
+    documentation. It wouldn&apos;t be hard for a well-designed agentic system to
+    discover what does and doesn&apos;t work well on a supercomputer, then ensure
+    that the jobs it runs always strive to interact with compute,
+    networking, storage, orchestration, and other services in a superhumanly
+    optimal way.&lt;/p&gt;
+&lt;p&gt;Lin didn&apos;t get into the details of what he envisions such a system to
+    be, but this idea really got me thinking about all of the weird software
+    and interfaces we use to interact with supercomputers that are designed
+    for human convenience rather than efficiency. There&apos;s tons of things
+    that we could strip away, and probably a bunch of things we should
+    add.&lt;/p&gt;
+&lt;p&gt;Parallel file systems and middleware like MPI-IO are probably
+    unnecessary if users can index their own data objects (rather than
+    relying on a file system hierarchy) and choose the optimal concurrency
+    and I/O sizes for a storage subsystem. Conversely, HPC is still reliant
+    on a lot of human-friendly imperative interfaces like the terminal and
+    Slurm scripts rather than robot-friendly APIs and declarative
+    manifests.&lt;/p&gt;
+&lt;p&gt;I admittedly came to ISC with my own opinions on this, since I was
+    invited to speak at the &lt;a href=&quot;https://autonomousscience.org/workshops/a2sd-2026/&quot;&gt;Advancing
+        Autonomous Scientific Discovery (A2SD) Workshop&lt;/a&gt; and presented the
+    case that Slurm is the wrong tool for autonomous and agentic
+    orchestration. I won&apos;t rehash my talk here, but I was pleased to find
+    that other speakers shared similar sentiments: autonomous systems don&apos;t
+    interact with HPC infrastructure in the same way that people do, so a
+    system specifically designed to support agent-driven workflows instead
+    of coddling humans might look very different than today&apos;s
+    supercomputers.&lt;/p&gt;
+&lt;h2 id=&quot;takeaway-themes&quot;&gt;Take-away themes&lt;/h2&gt;
+&lt;p&gt;As is often the case, the week of ISC was over much too soon, and
+    there wasn&apos;t enough time to see everything I wanted to see. From the
+    parts that I did get to attend though, I left the week with a few
+    distinct impressions.&lt;/p&gt;
+&lt;p&gt;Foremost, the HPC community is finding equilibrium with AI. As shown
+    by the first two keynotes, you can still be in HPC if you don&apos;t care
+    about AI. And LineShine&apos;s focus on FP64 at the cost of lower precisions
+    is proof that leadership in HPC can happen independently of leadership
+    in AI. At the same time, AI is accelerating the pace at which the HPC
+    community is willing to revisit long-held dogma about the way things
+    should be, and there are a lot of interesting new non-AI ideas on the
+    horizon that are being effected by AI.&lt;/p&gt;
+&lt;p&gt;At the same time, AI is reshaping the strategic priorities driving
+    national HPC investment. Outside of the US (and China), who are already
+    controlling their own frontier models, countries around the world are
+    pursuing sovereign AI infrastructure and calling on their domestic HPC
+    experts to build the capability to run and fine-tune frontier models
+    domestically. As global productivity increasingly depends on frontier
+    AI, the ability to serve that dependency without relying on other
+    nations is becoming a necessary mitigation to the risk that access to
+    frontier models be restricted through political pressure or export
+    controls.&lt;/p&gt;
+&lt;p&gt;There&apos;s still a lot of uncertainty and unclear direction about the
+    future across the HPC community, and the diversity of topics covered in
+    this year&apos;s ISC program reflected that. But we may have seen the first
+    signs of direction nucleating now that the community is no longer
+    blindly thrashing about with respect to AI, and I&apos;m looking forward to
+    seeing if any of these themes crystallize into concerted, high-impact
+    efforts in the year ahead.&lt;/p&gt;
+&lt;h2 id=&quot;appendix-the-personal-stuff&quot;&gt;Appendix: The personal stuff&lt;/h2&gt;
+&lt;p&gt;I wrote the rest of what follows mostly for me, so you won&apos;t miss
+    anything technical if you stop reading here. Promise.&lt;/p&gt;
+&lt;h3 id=&quot;isc-is-two-conferences&quot;&gt;ISC is two conferences&lt;/h3&gt;
+&lt;p&gt;This was my seventh year attending ISC, and as I&apos;ve written in &lt;a href=&quot;https://blog.glennklockwood.com/2024/12/sc24-recap.html&quot;&gt;past
+        conference retrospectives&lt;/a&gt;, I feel like I see less and less of these
+    conferences the older I get. Part of this is because I spend more time
+    catching up with the growing list of friends and colleagues I&apos;ve made
+    over the years--an enviable position that I can&apos;t complain about. But
+    this year, it felt like I was attending two conferences at the same
+    time: one was the same ISC I&apos;ve always been attending, and the other is
+    the ISC that exhibitors attend.&lt;/p&gt;
+&lt;p&gt;The &quot;ISC for exhibitors&quot; conference that my coworkers were attending,
+    largely in the exhibit hall and off-site, had all the logistical chaos
+    of a big conference: finding last-minute meeting spaces, tracking down
+    missing people, and unwinding once it shut down with the marketing team
+    were all part of that experience. But I also went to the &quot;ISC for
+    practitioners&quot; conference that I&apos;ve always attended, running between the
+    session rooms in the CCH, finding time to look at the research posters,
+    and preparing slides for a presentation the next day.&lt;/p&gt;
+&lt;p&gt;I don&apos;t know how many people straddle both conferences like I do, but
+    I suspect it&apos;s not many. Anecdotally, I think I was also the only person
+    from my company with a technical program badge; the other couple dozen
+    of us were there as exhibitors or to meet with specific customers. This
+    created a bit of tension across the week for me, because it was often
+    assumed (reasonably) that I was exclusively attending the &quot;ISC for
+    exhibitors&quot; conference and didn&apos;t have any other demands on my time. And
+    yet, I paid the staggering €2,270 to attend the technical program as an
+    industry participant, so I felt an obligation to get the most out of
+    that as well.&lt;/p&gt;
+&lt;p&gt;The conclusion I reached is that attending both conferences--ISC for
+    exhibitors and ISC for practitioners--is difficult to make worthwhile.
+    ISC doesn&apos;t leave room for attendees to do both halves of the
+    conference. Either you attend ISC for exhibitors and pay your €440
+    exhibitor registration fee, or you attend ISC for practitioners and pay
+    €2,270 technical program/workshop fee. If you try to do both, you get
+    the worst of both worlds--registration costs 5x more, yet you have half
+    as much time to make use of it. In addition, paying €2,270 for a
+    conference that everyone else at the company paid €440 for raises
+    eyebrows in the finance department.&lt;/p&gt;
+&lt;p&gt;By the numbers, ISC 2026 officially had 4,035 registrants, and over
+    60% self-identified as being from industry. While many industry
+    attendees undoubtedly came as practitioners rather than exhibitors, the
+    fact that all of ISC&apos;s keynotes are held in &lt;a href=&quot;https://www.cch.de/en/venue/hall-z&quot;&gt;a room that could only seat
+        a
+        quarter of the total registrants&lt;/a&gt; suggests the majority of ISC
+    registrants aren&apos;t actually there for the technical program. &quot;ISC for
+    exhibitors&quot; may be the bigger conference, yet it felt like there was a
+    big financial disincentive for exhibitors to dip their toe in the
+    technical program.&lt;/p&gt;
+&lt;p&gt;So as not to be wholly unproductive in my complaining about this,
+    perhaps there is room for a new type of conference pass for those of us
+    who want to do both; acknowledge the fact that exhibitors subsidize the
+    technical program and carve out a rate for them to attend the technical
+    program that sits somewhere between academia and industry. I assume that
+    many of the costs of full registration (like meals) are unnecessary for
+    those of us attending both halves anyway. For example, I didn&apos;t get to
+    each a single conference-provided lunch because I always had off-site
+    obligations with customers at that coveted opening in the schedule.
+    Surely there&apos;s a way to pass those sorts of savings on so that corporate
+    bean counters don&apos;t have quite as big a reason to balk at the cost of
+    attending ISC.&lt;/p&gt;
+&lt;h3 id=&quot;the-makings-of-a-keynote&quot;&gt;The makings of a keynote&lt;/h3&gt;
+&lt;p&gt;I was recently invited to deliver my first conference keynote (a
+    great honor!) which represents a new stage in my career. Having only
+    ever given research talks and educational lectures, I went to ISC with
+    an eye towards scrutinizing all the conference and workshop keynote
+    speakers to determine the essential ingredients for a great keynote.
+    What I came away with was the realization that many keynote speakers
+    don&apos;t seem to think very hard about what they are going to talk about.
+    Instead, they give what I consider the &quot;program manager smorgasbord&quot;
+    talk.&lt;/p&gt;
+&lt;p&gt;In academia, there&apos;s a boilerplate talk whose sole purpose is to
+    impress your program manager--the person responsible for deciding whose
+    research gets funded and whose doesn&apos;t. The point of those talks isn&apos;t
+    to inspire the audience or offer deep insight as much as it is to dazzle
+    the audience with big words and fancy graphics in abundance. In
+    marketing, we call this &lt;em&gt;brand marketing&lt;/em&gt;, and its point is to
+    make someone &lt;em&gt;feel&lt;/em&gt; a certain way about you or your work.&lt;/p&gt;
+&lt;p&gt;In academia, brand marketing manifests in slide decks full of
+    standalone &lt;a href=&quot;https://files.simpler.grants.gov/opportunities/0490c12b-c99f-4faa-b207-a7f530eb7408/attachments/e5e0c1e7-10e4-4588-919c-83d583b1fbb4/FA8650-21-S-2205_-_Attachment_4_Quad_Chart_Template.pdf&quot;&gt;quad
+        charts&lt;/a&gt; that each explain a specific paper you wrote. Turning a stack
+    of quad charts into a presentation is just a matter of finding a story
+    that makes it sound like all your papers are building towards some
+    fantastic outcome. Because they&apos;re really a show-and-tell rather than a
+    concrete problem-hypothesis-results-CTA though, these smorgasbord talks
+    make for bad keynotes. The only take-away is &quot;this person does a lot of
+    work,&quot; and there&apos;s no deeper insight that can be drawn since each piece
+    of work is treated so superficially.&lt;/p&gt;
+&lt;p&gt;Despite this, many (but not all!) of the keynotes I sat in throughout
+    the week turned out to be program manager smorgasbord talks. Some
+    speakers did a nice job of motivating the grand challenge up-front with
+    inspiring videos or graphics, but they invariably shifted into a series
+    of slides with the predictable format of&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Here&apos;s the paper title&lt;/li&gt;
+&lt;li&gt;Here&apos;s a key take-away plot or graphic&lt;/li&gt;
+&lt;li&gt;Here&apos;s the list of students&apos; names who wrote the paper&lt;/li&gt;
+&lt;li&gt;Here is where you can find the PDF online&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some speakers had a story that carried through series of these
+    slides, but some also unabashedly devolved into saying &quot;and in this
+    paper, we ...&quot; or &quot;and this slide shows our work on ...&quot; I found myself
+    wondering if &lt;em&gt;anyone&lt;/em&gt; enjoys sitting through these types of
+    talks, because they&apos;re too superficial for technical audiences yet too
+    jargony for general audiences. Do speakers not reflect on their audience
+    when they are invited to give a keynote?&lt;/p&gt;
+&lt;p&gt;Although I didn&apos;t leave ISC with any new insights on how to craft a
+    great keynote, I did leave with a reinforcement on what to avoid:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Don&apos;t just present a superficial overview of all the papers you&apos;ve
+        written. Nobody but your program manager cares, and the audience is
+        usually too broad to appreciate more than one or two of those papers.
+        The audience as a whole will have a hard time remaining enthusiastic as
+        you essentially talk about yourself for a half hour.&lt;/li&gt;
+&lt;li&gt;At the same time, don&apos;t devote the entire keynote to general
+        knowledge that anyone can find on the Internet. Some of the best
+        presentation advice I ever got was from Eli Dart, who once told me,
+        &quot;tell them something they won&apos;t hear from anyone else.&quot; This mantra is
+        great, because it forces you to think about both your unique perspective
+        and your audience&apos;s experiences.&lt;/li&gt;
+&lt;li&gt;Don&apos;t stroll down memory lane without a meaningful point. I&apos;ve seen
+        greybeards do this, and I suspect it results from their most productive
+        days being history. While war stories are fun in moderation, HPC
+        conferences often have a lot of students and early-career attendees who
+        simply do not care about a computer that existed when they were in
+        diapers. Focus on why a lesson learned from an old computer remains
+        relevant to their current professional lives instead.&lt;/li&gt;
+&lt;li&gt;Don&apos;t stray too far out of your lane. If you find yourself quoting
+        The Information or other rumor mills as the backbone of your thesis, you
+        probably don&apos;t actually know what you&apos;re talking about. Keynote speakers
+        tend to be experts in something, so it follows that the audience wants
+        to hear about your expertise, not whatever theories you&apos;ve found on the
+        Internet. This also avoids the risk that someone in the audience
+        actually knows the truth behind the rumors and can see that you&apos;re not
+        speaking credibly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I write all this being fully aware that I have never given a real
+    keynote to thousands of people before, and I risk bombing my own keynote
+    that&apos;s coming up. But if that happens, you can believe that I&apos;ll add those learnings to the above list.&lt;/p&gt;
+&lt;h3 id=&quot;dumb-things-to-avoid-at-isc&quot;&gt;Dumb things to avoid at ISC&lt;/h3&gt;
+&lt;p&gt;I am not immune from doing dumb things at conferences, and this year
+    was no different. The biggest dumb thing I did was decide to have a
+    renal biopsy six days before I flew to Hamburg. I don&apos;t recommend doing
+    that.&lt;/p&gt;
+&lt;p&gt;Nothing bad happened and I was fully functional by the time I had
+    given my first presentation on Tuesday, but I had not counted on a minor
+    medical procedure largely wiping out my productive work week leading up
+    to ISC. As a result, I landed in Hamburg feeling underprepared for the
+    talks I had to give and the people I needed to meet. However, as my wife
+    often reminds me, I &lt;em&gt;always&lt;/em&gt; feel underprepared going into
+    conferences, and I didn&apos;t get boo&apos;ed off any stages once I got
+    there.&lt;/p&gt;
+&lt;p&gt;This is all to say, I learned not to underestimate the psychological
+    effects of having a medical procedure done in the week before ISC. Even
+    if the doctor says getting on the flight and going to the conference is
+    medically fine, it added a lot of stress and anxiety to the time leading
+    up to an already-stressful week at ISC.&lt;/p&gt;
+&lt;p&gt;The other unwelcome stressor this year was navigating
+    intercontinental travel and a full conference schedule with Invisaligns.
+    I&apos;ve managed to go 18 months without complaining about this in any of my
+    conference recap posts, but seeing as how this will be the last major
+    conference I attend while undergoing orthodontic treatment, I&apos;ll say:
+    conferences are not kind to people with dietary restrictions and who
+    cannot just snack on random food opportunistically.&lt;/p&gt;
+&lt;p&gt;I&apos;ve been documenting my lessons learned about &lt;a href=&quot;https://glennklockwood.com/garden/personal/invisalign#conferences-and-work-travel&quot;&gt;navigating
+        work-related travel with Invisaligns&lt;/a&gt; elsewhere, but for ISC
+    specifically, 60-minute lunch breaks are not long enough to have a
+    social meal and deal with orthodontics. Since I started Invisalign
+    treatment at the end of 2024, I&apos;ve been noticing a lot of
+    conferencegoers with them (or permanent braces) and am incredibly
+    sympathetic. They add another layer of stress and complexity over just
+    about every activity, from presenting to meals to receptions. I will be
+    glad when I am rid of them, and I will be forever cognizant of how much
+    harder conferences can be for people who have to be mindful of what and
+    how they eat.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>OpenSearch Transform Job- The Case of the Silent Failure and the Ghost Key</title>
