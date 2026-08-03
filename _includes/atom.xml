@@ -4,13 +4,129 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2026-07-31T23:39:45-06:00</updated>
+ <updated>2026-08-01T23:40:02-06:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>How I’m thinking about LLMs</title>
+   <link href="https://hpc.social/2026/how-i-m-thinking-about-llms/"/>
+   <updated>2026-08-01T18:19:27-06:00</updated>
+   <id>https://hpc.social/2026/how-i-m-thinking-about-llms</id>
+   <content type="html">&lt;p class=&quot;wp-block-paragraph&quot;&gt;I’ve been running across a lot of people lately who struggle to see where LLMs are useful, whether on social media or in everyday life. Less often, I also run into folks who use them &lt;em&gt;everywhere,&lt;/em&gt; even in cases I think are suspect. So I thought I’d write up my current thinking on where these tools are helpful, at least in mid-2026.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;The important theme here is that I think they’re best for tasks where the work is expensive but the validation is cheap and easy.&lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;more-469&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 class=&quot;wp-block-heading&quot;&gt;Prose writing&lt;/h2&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I &lt;em&gt;don’t&lt;/em&gt; use LLMs to draft any kind of prose writing, whether for work documents like design documents or email, or for the occasional fiction writing I do (i.e., notes for an RPG campaign).&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I generally write for two main purposes:&lt;/p&gt;
+
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Because I’m using the writing to structure my own thoughts on a topic and help evolve them&lt;/li&gt;
+
+
+
+&lt;li&gt;Because I want to then communicate those thoughts to others&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Neither of those purposes are improved by having a machine write for me! As &lt;a href=&quot;https://www.goodreads.com/quotes/11255502-if-you-re-thinking-without-writing-you-only-think-you-re-thinking&quot;&gt;Leslie Lamport&lt;/a&gt; has said:&lt;/p&gt;
+
+&lt;blockquote class=&quot;wp-block-quote is-layout-flow wp-block-quote-is-layout-flow&quot;&gt;
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;If you’re thinking without writing, you only &lt;em&gt;think&lt;/em&gt; you’re thinking.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;The only place where LLMs have been helpful in my writing process is for limited proofreading help. I never use them to directly revise or create new text, but I’ve found them helpful when I ask things like “read this document and identify any inconsistencies or gaps that may need to be addressed”.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Sometimes they flag so-called problems I &lt;em&gt;intended&lt;/em&gt; to put there, but often they find a case where I revised an argument and then forgot to update a paragraph further back. That’s the kind of thing that’s nice to catch before I share with others.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;In any case, it’s worth noting that I never use LLMs for blogging or social media. It would certainly defeat the purpose of “thinking out loud”! If anything here seems half-baked, well, I’m the only baker.&lt;/p&gt;
+
+&lt;h2 class=&quot;wp-block-heading&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I use LLMs for limited code generation purposes, especially for relatively mechanical code. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I generally don’t open a coding harness until I already have some idea of my planned architecture, technology choices, and the implementation steps needed to get there. I get really suspicious of “vibe coding” where someone starts with a really limited prompt like “give me a service that exposes this database over HTTP”, giving the LLM too much discretion over architecture.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;However, once I have a design and implementation plan, I’m perfectly happy letting the LLM write a bunch of mechanical functions calling REST APIs, parsing JSON, or arguing with the database. Mentally I class this as an evolution from past code generation tools like protobuf generators. A matter of degree rather than kind, at least from a workflow perspective.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I will say even for this, LLMs still need close supervision and review. &lt;em&gt;Unlike&lt;/em&gt; a conventional code generator, they try to guess what else you might want and do extra work… which is where they often go wrong.&lt;/p&gt;
+
+&lt;h2 class=&quot;wp-block-heading&quot;&gt;Data visualization &lt;/h2&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;This is sort of a subset of coding, but highest-leverage use I get from LLMs is honestly doing dataviz in Jupyter notebooks. I find writing matplotlib scripts especially tedious, and it’s honestly incredibly helpful to just say “create a histogram of this dataset with x bin increment and annotations at the median and p95 values”.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Importantly, I never delegate the analysis process to the LLM or ask it to fetch datasets from elsewhere. I really only trust it to make graphs.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Current LLMs don’t seem to hallucinate or make wild mistakes at this kind of task, but also it’s a task that is quite easy to check for accuracy.&lt;/p&gt;
+
+&lt;h2 class=&quot;wp-block-heading&quot;&gt;Search&lt;/h2&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I use conventional search engines (DuckDuckGo or Google) for most everyday queries, where I’m confident I can find a single-digit number of helpful results in the first few pages of links. A lot of my everyday queries look like “python datetime documentation” or “babylon 5 streaming service”.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;On the other hand, I use LLMs connected to search tools for “needle in a haystack” queries. Or really, “find and connect 10 different needles”.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;For example, if I would normally expect to spend 30+ minutes fiddling with my search engine keywords and reading lots of results in detail… this is a perfect case for delegating an LLM to go run those searches for me and sift through the results. This has been especially useful for me in a work context searching through large document databases.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;A typical LLM “search” for me might be: “I’m looking for the list of supported OSFP transceivers compatible with network card X. There doesn’t seem to be a clear document that lists these in detail but I’ve seen this kind of data scattered amongst several slide decks from the sales team in the past. These might be stored in either Google Drive or Sharepoint, and you probably need to check both. If you find multiple conflicting sources I want information and links from both.”&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Crucially, this is the kind of search that is expensive to run but cheap to check. If the LLM comes back to me with two slide decks and a spreadsheet, it’s pretty straightforward for me to look at those and check if they have the information I want. And it’s much, much faster than finding and reading 50 different documents myself. Not to mention less tedious.&lt;/p&gt;
+
+&lt;h2 class=&quot;wp-block-heading&quot;&gt;These things are not for everyone!&lt;/h2&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Computing, and especially software development, are really in the sweet spot for applicability for this tech. We construct our work using a tool that looks a lot like language, but is nevertheless machine-checkable and more functional than expressive. There’s a reason so many programmers use this tech — it’s aimed squarely at our work!&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I can’t imagine LLMs being terribly useful for any kind of author or artist, except in some analytical sense. For example, Charlie Stross comments in a post on his non-use of LLMs that:&lt;/p&gt;
+
+&lt;blockquote class=&quot;wp-block-quote is-layout-flow wp-block-quote-is-layout-flow&quot;&gt;
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I&amp;#8217;d quite like a tool (running entirely locally on my own hardware, with no cloud service and no copyright-thieving grifters making bank on it via subscription fees) that digests a manuscript and derives a scene-by-scene timeline, that I could then query interactively and use to plan my next round of edits. Being able to map out where and when each protagonist and minor character shows up, and see a frequency distribution heat map of names in the manuscript, would be useful.&lt;/p&gt;
+
+
+
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;But such a tool would be useful to me in the same way a spelling checker is useful—as a decision-support tool, not as a substitute for doing the hard work (and having a copy of the Oxford English Dictionary on the shelf). The value of such a tool is considerably less than the value of a well-trained brain that can do the entire job the hard way, if necessary.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I’m also skeptical that LLMs will work well in the near future in fields like law, where much of the work is language-based but the work is not machine-checkable to any reliable degree. Especially when there are high consequences for mistakes.&lt;/p&gt;
+
+&lt;h2 class=&quot;wp-block-heading&quot;&gt;Ethics&lt;/h2&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Plenty of folks’ objection to LLMs isn’t  functional at all, of course, but ethical. Even in cases where these tools are useful, they’d argue they &lt;em&gt;shouldn’t&lt;/em&gt; be used.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;(Internet commenters are wont to lump it all together, but eh, I’m not overly bothered by sloppy arguments on social media.)&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I have more sympathy with some of these arguments than others, and I hardly think this is a simple matter. But I do think actual solutions are going to be complex and fact-specific, and I think addressing them is going to be more a matter of policy wonkery than moral imperatives.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;&lt;strong&gt;Resource usage &lt;/strong&gt;is, to my mind, a real concern — but one with so much variation that it’s hard to say anything in a blanket fashion. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I know way too much about datacenters to think they’re all alike, even the ones running GPU clusters. Each facility is different in terms of power, cooling, efficiency, and local impact. A datacenter running off the local grid and paying for infrastructure upgrades is very different from xAI running its cluster using gas-fired peaker plants and ignoring permitting rules.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I’m actually not over-bothered by datacenter moratoriums! I don’t think the industry will be damaged all that much by having to slow down. But I see them as a method to buy time to write real regulations around infrastructure build-outs, cost sharing, local pollution and noise regs, and permitting approvals. Not as a realistic way to limit the growth of the “AI” industry in the long term.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;&lt;strong&gt;Copyright &lt;/strong&gt;is an area where I’m honestly more on the side of the model trainers than not. I remain an old school copyright-minimalist remix-culture techie of the early-2000s school, and I struggle to see any principled argument that model training &lt;em&gt;isn’t&lt;/em&gt; transformative fair use.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I &lt;em&gt;do&lt;/em&gt;, however, think that the big labs should be held accountable for non-transformative distribution-based enforcement. For example, when Anthropic straight-up pirated ebooks for training data, I would have liked to see them pay the statutory damages of $30,000 per work, and not settle for a tenth of that. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;And if LLMs are found to directly distribute copyrighted content — e.g., regurgitating substantial segments of books or news articles — I think they should face similar damages for that. Again, perfectly straightforward infringement.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;&lt;strong&gt;Concentration of&lt;/strong&gt; &lt;strong&gt;wealth and power &lt;/strong&gt;is the area where I have the most genuine concern, and I suspect this is what actually drives a lot of folks’ concern around both copyright and resource usage. It makes me really nervous to see how concentrated the economy is getting in a few companies, and the existence of fascist billionaires with great political power is a travesty to be combated by anyone who believes in democracy.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;That said, I don’t think copyright or zoning laws are going to prove effective tools to combat these folks, though I understand reaching for the tools you’ve got. I’m much more in favor of anti-corruption laws, antitrust, and confiscatory tax regimes. And all of the above seem equally unlikely to make much progress in the near future, to all our detriment.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;In any case, even if all the so-called AI labs went out of business today, the models that exist today are going to continue to do so, and are sufficient for all &lt;em&gt;my&lt;/em&gt; purposes. So I almost exclusively use open-weights models and preferably run on my own hardware that lives in my own spaces. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;This also helps mitigate climate and resource concerns, insofar as I’m not running any gas-fired peaker plants to power my house! Though from a strict per-query power perspective, my local setup is less efficient since I’m not batching queries or sharing infra with anyone else.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>ISC&apos;26 recap</title>
