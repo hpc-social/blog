@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-09-05T01:02:33-06:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">How I’m thinking about LLMs</title><link href="https://hpc.social/personal-blog/2026/how-i-m-thinking-about-llms/" rel="alternate" type="text/html" title="How I’m thinking about LLMs" /><published>2026-08-01T18:19:27-06:00</published><updated>2026-08-01T18:19:27-06:00</updated><id>https://hpc.social/personal-blog/2026/how-i-m-thinking-about-llms</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/how-i-m-thinking-about-llms/"><![CDATA[<p class="wp-block-paragraph">I’ve been running across a lot of people lately who struggle to see where LLMs are useful, whether on social media or in everyday life. Less often, I also run into folks who use them <em>everywhere,</em> even in cases I think are suspect. So I thought I’d write up my current thinking on where these tools are helpful, at least in mid-2026.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-09-07T01:26:56-06:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Self-hosting shenanigans update</title><link href="https://hpc.social/personal-blog/2026/self-hosting-shenanigans-update/" rel="alternate" type="text/html" title="Self-hosting shenanigans update" /><published>2026-09-06T21:45:24-06:00</published><updated>2026-09-06T21:45:24-06:00</updated><id>https://hpc.social/personal-blog/2026/self-hosting-shenanigans-update</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/self-hosting-shenanigans-update/"><![CDATA[<p class="wp-block-paragraph">For a while, I&#8217;ve been hosting a number of personal-use-only services on a few Oracle Cloud Ampere instances. Annoyingly, though, Oracle <a href="https://www.infoq.com/news/2026/07/oracle-cloud-free-tier-limits/">recently halved their &#8220;always free&#8221; limits</a> &#8212; and also got a lot more aggressive about reclaiming instances it thought were sitting idle. Which, you know, my instances mostly were, since I was the only user.</p>
+
+<p class="wp-block-paragraph">Since I had some free time this weekend, I decided to &#8220;repatriate&#8221; my cloud-hosted services back to on-prem &#8212; where &#8220;on-prem&#8221; is the DGX Spark sitting in my office. <img alt="😉" class="wp-smiley" src="https://s.w.org/images/core/emoji/17.0.2/72x72/1f609.png" style="height: 1em;" /> And that seemed to call for an update to my <a href="https://thinking.ajdecon.org/2022/10/30/the-web-services-i-self-host/">old post on self-hosting</a>.</p>
+
+<p><span id="more-490"></span></p>
+
+<p class="wp-block-paragraph">Overall, my self-hosting rationale from the old post is still true. I self-host a service if:</p>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<ul class="wp-block-list">
+<li>Self-hosting is going to add a capability that’s difficult to find in a SaaS alternative. That might be privacy, or extra compute, or just an extra degree of customization that I want.</li>
+
+
+
+<li>I find it interesting or amusing to self-host it! I <em>have been</em> a professional sysadmin, and ran production web services for over a decade. So I enjoy messing around with servers, and can have a fair amount of fun with this.</li>
+</ul>
+</blockquote>
+
+<p class="wp-block-paragraph">From an infrastructure perspective, my current self-hosting platform is an <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">NVIDIA DGX Spark</a> that I use as a development workstation. I mostly treat it as a headless server and access it over SSH or HTTP; while I think there <em>might</em> be a connection between the Spark and my desktop KVM switch, I haven&#8217;t actually used a keyboard or monitor with it directly in many months.</p>
+
+<p class="wp-block-paragraph">(Do I worry about reliability for this? Not terribly. If anything, my local setup has been more reliable than Oracle in recent experience&#8230;)</p>
+
+<p class="wp-block-paragraph">Tailscale <a href="https://thinking.ajdecon.org/2026/01/12/tailscale/">continues to be a load-bearing part of my setup</a>, even more than it was before I started moving things locally. At this point, I don&#8217;t think I actually have <em>any</em> personal-use services with endpoints on the public Internet. Instead, I access them entirely via Tailscale from my own devices or my family&#8217;s.</p>
+
+<p class="wp-block-paragraph">As for what I&#8217;m hosting right now, the major self-hosted open-source services running on the Spark are:</p>
+
+<ul class="wp-block-list">
+<li><a href="https://freshrss.org/index.html"><strong>FreshRSS</strong></a>, a self-hosted RSS feed aggregator
+<ul class="wp-block-list">
+<li>One of the things I like about FreshRSS is that it&#8217;s API-compatible with <a href="https://reederapp.com/">Reeder</a>, which is my feed app of choice on phone and desktop</li>
+</ul>
+</li>
+
+
+
+<li><a href="https://about.gitea.com/"><strong>Gitea</strong></a> is a lightweight Git forge, and my hosted instance is where I keep the &#8220;source of truth&#8221; for most of my hobby projects</li>
+
+
+
+<li><a href="https://openwebui.com/"><strong>Open WebUI</strong></a>, which gives me a chat interface to a few different LLMs that run directly on the DGX Spark&#8217;s GPU. Right now I&#8217;m getting a lot of use out of the <a href="https://deepmind.google/models/gemma/">Gemma models</a>.</li>
+</ul>
+
+<p class="wp-block-paragraph">I also have a few smaller, more personal services running here:</p>
+
+<ul class="wp-block-list">
+<li><a href="https://github.com/ajdecon/daily-news-rss/blob/main/daily_rss.py"><strong>daily-news-rss</strong></a> is a tiny feed generator that gives me an aggregated daily news update. It scans a specified list of sources &#8212; <a href="https://www.weather.gov/">weather.gov</a>, <a href="https://apnews.com/">AP News</a>, the <a href="https://www.denverpost.com/">Denver Post</a>, and others &#8212; and assembles a short news brief. That news brief goes into an RSS feed that I read via the FreshRSS setup described above. The whole thing runs as a daily cron job.
+<ul class="wp-block-list">
+<li>Incidentally, this generator takes advantage of the local GPU on the Spark to extract headlines from the news source web pages and pick the &#8220;top 5&#8221; I might be interested in. Right now this is <a href="https://ai.google.dev/gemma/docs/core/model_card_4">gemma4:12b</a>, running via <a href="https://ollama.com/">ollama</a>.</li>
+</ul>
+</li>
+
+
+
+<li><a href="https://github.com/ajdecon/personal-feed-generator"><strong>personal-feed-generator</strong></a> is similar in spirit, but more geared towards finding research papers and industry news. Instead of a daily report, it scans my list of upstream sources each day and tries to identify anything I find relevant &#8212; again, using a local LLM to score relevance. If it finds an interesting item, it adds it to the RSS feed as a standalone item, including a short explanation for <em>why</em> it&#8217;s relevant.
+<ul class="wp-block-list">
+<li>Right now relevance is decided by gemma4:e4b, as I find the smaller model is less likely to try and find&#8230; speculative&#8230; connections between my list of interests and whatever it&#8217;s reading.</li>
+</ul>
+</li>
+
+
+
+<li><strong><a href="https://github.com/ajdecon/chess-openings-trainer">chess-openings-trainer</a></strong> is a tiny webapp for playing with and visualizing chess openings. At the moment it&#8217;s pretty procedural, though at some point I&#8217;d like to extend it to use <a href="https://stockfishchess.org/">Stockfish</a> for game analysis&#8230;</li>
+</ul>
+
+<p class="wp-block-paragraph">I also frequently run smaller, more &#8220;throw-away&#8221; webapps here to solve short-term problems or curiosities. For example, since I joined a <a href="https://www.ionq.com/">quantum computing company</a>, I have a janky webapp for visualizing the <a href="https://en.wikipedia.org/wiki/Bloch_sphere">Bloch sphere</a> which helped with some early learning. These sorts of apps generally get built in an afternoon, I play with them for a few days or weeks, and then thrown away. One of the handy things about a good self-hosting setup is that the activation energy for these experiments is low!</p>
+
+<p class="wp-block-paragraph">Let&#8217;s see, what&#8217;s left for implementation details?</p>
+
+<ul class="wp-block-list">
+<li>Except when I actually want to share the code for something, everything ends up in a big private monorepo named <code>play</code>, with history stretching back&#8230; Dear Lord, over 15 years at this point.</li>
+
+
+
+<li>Many of these services run in Docker containers, set up with docker-compose with files tracked in the repo.
+<ul class="wp-block-list">
+<li>Kubernetes is a great tool, but it does not entertain me to self-host at single-node scale.</li>
+</ul>
+</li>
+
+
+
+<li>Trivial apps &#8212; especially those that are HTML+JS only &#8212; just run directly from <code>/var/www/html</code> with an nginx webserver.</li>
+
+
+
+<li>The DGX Spark also gets used for general development and playing around, either by hand or using <a href="https://opencode.ai/">OpenCode</a> with <a href="https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct">qwen3-coder-30B</a>.</li>
+
+
+
+<li>The whole thing gets backed up to S3 using <a href="https://restic.net/">restic</a>, so that I have some hope of recovery if the host dies.</li>
+</ul>
+
+<p class="wp-block-paragraph">A few services got dropped in the transition, including a Fediverse instance, an IRC bouncer, and a Matrix server. Some of those may get resurrected at some point (e.g., the IRC bouncer), but none of them were in anything like regular use so I wasn&#8217;t sad to sunset them.</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[For a while, I&#8217;ve been hosting a number of personal-use-only services on a few Oracle Cloud Ampere instances. Annoyingly, though, Oracle recently halved their &#8220;always free&#8221; limits &#8212; and also got a lot more aggressive about reclaiming instances it thought were sitting idle. Which, you know, my instances mostly were, since I was the only user.]]></summary></entry><entry><title type="html">How I’m thinking about LLMs</title><link href="https://hpc.social/personal-blog/2026/how-i-m-thinking-about-llms/" rel="alternate" type="text/html" title="How I’m thinking about LLMs" /><published>2026-08-01T18:19:27-06:00</published><updated>2026-08-01T18:19:27-06:00</updated><id>https://hpc.social/personal-blog/2026/how-i-m-thinking-about-llms</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/how-i-m-thinking-about-llms/"><![CDATA[<p class="wp-block-paragraph">I’ve been running across a lot of people lately who struggle to see where LLMs are useful, whether on social media or in everyday life. Less often, I also run into folks who use them <em>everywhere,</em> even in cases I think are suspect. So I thought I’d write up my current thinking on where these tools are helpful, at least in mid-2026.</p>
 
 <p class="wp-block-paragraph">The important theme here is that I think they’re best for tasks where the work is expensive but the validation is cheap and easy.</p>
 
@@ -1970,8 +2062,4 @@ and visionaries have headed out the door and are never coming back?</p>]]></cont
 <li>SSH to a powerful workstation, hosted at home but without complex configs</li>
 </ul>
 
-<p>And probably a few things I’ve forgotten! It’s really just very neat. Sure I could do it all with manual Wireguard configs. But Tailscale just makes the underlying primitive much more ergonomic.</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Some discussion on bsky of the usefulness of Tailscale, and I’ll just note here how very handy it is for running a personal homelab that includes cloud instances. As well as just having lab connectivity from a laptop or phone on the go!]]></summary></entry><entry><title type="html">Quoting antirez on AI</title><link href="https://hpc.social/personal-blog/2026/quoting-antirez-on-ai/" rel="alternate" type="text/html" title="Quoting antirez on AI" /><published>2026-01-12T03:44:08-07:00</published><updated>2026-01-12T03:44:08-07:00</updated><id>https://hpc.social/personal-blog/2026/quoting-antirez-on-ai</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/quoting-antirez-on-ai/"><![CDATA[<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<pre class="wp-block-preformatted">Anyway, back to programming. I have a single suggestion for you, my friend. Whatever you believe about what the Right Thing should be, you can't control it by refusing what is happening right now. Skipping AI is not going to help you or your career. Think about it. Test these new tools, with care, with weeks of work, not in a five minutes test where you can just reinforce your own beliefs. Find a way to multiply yourself, and if it does not work for you, try again every few months.<br /><br />Yes, maybe you think that you worked so hard to learn coding, and now machines are doing it for you. But what was the fire inside you, when you coded till night to see your project working? It was building. And now you can build more and better, if you find your way to use AI effectively. The fun is still there, untouched</pre>
-</blockquote>
-
-<p>From <em><a href="https://antirez.com/news/158">Don’t fall into the anti-AI hype</a></em></p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Anyway, back to programming. I have a single suggestion for you, my friend. Whatever you believe about what the Right Thing should be, you can't control it by refusing what is happening right now. Skipping AI is not going to help you or your career. Think about it. Test these new tools, with care, with weeks of work, not in a five minutes test where you can just reinforce your own beliefs. Find a way to multiply yourself, and if it does not work for you, try again every few months.Yes, maybe you think that you worked so hard to learn coding, and now machines are doing it for you. But what was the fire inside you, when you coded till night to see your project working? It was building. And now you can build more and better, if you find your way to use AI effectively. The fun is still there, untouched]]></summary></entry></feed>
+<p>And probably a few things I’ve forgotten! It’s really just very neat. Sure I could do it all with manual Wireguard configs. But Tailscale just makes the underlying primitive much more ergonomic.</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Some discussion on bsky of the usefulness of Tailscale, and I’ll just note here how very handy it is for running a personal homelab that includes cloud instances. As well as just having lab connectivity from a laptop or phone on the go!]]></summary></entry></feed>

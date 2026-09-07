@@ -4,13 +4,114 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2026-09-05T01:02:33-06:00</updated>
+ <updated>2026-09-07T01:26:56-06:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>Self-hosting shenanigans update</title>
+   <link href="https://hpc.social/2026/self-hosting-shenanigans-update/"/>
+   <updated>2026-09-06T21:45:24-06:00</updated>
+   <id>https://hpc.social/2026/self-hosting-shenanigans-update</id>
+   <content type="html">&lt;p class=&quot;wp-block-paragraph&quot;&gt;For a while, I&amp;#8217;ve been hosting a number of personal-use-only services on a few Oracle Cloud Ampere instances. Annoyingly, though, Oracle &lt;a href=&quot;https://www.infoq.com/news/2026/07/oracle-cloud-free-tier-limits/&quot;&gt;recently halved their &amp;#8220;always free&amp;#8221; limits&lt;/a&gt; &amp;#8212; and also got a lot more aggressive about reclaiming instances it thought were sitting idle. Which, you know, my instances mostly were, since I was the only user.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Since I had some free time this weekend, I decided to &amp;#8220;repatriate&amp;#8221; my cloud-hosted services back to on-prem &amp;#8212; where &amp;#8220;on-prem&amp;#8221; is the DGX Spark sitting in my office. &lt;img alt=&quot;😉&quot; class=&quot;wp-smiley&quot; src=&quot;https://s.w.org/images/core/emoji/17.0.2/72x72/1f609.png&quot; style=&quot;height: 1em;&quot; /&gt; And that seemed to call for an update to my &lt;a href=&quot;https://thinking.ajdecon.org/2022/10/30/the-web-services-i-self-host/&quot;&gt;old post on self-hosting&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;more-490&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Overall, my self-hosting rationale from the old post is still true. I self-host a service if:&lt;/p&gt;
+
+&lt;blockquote class=&quot;wp-block-quote is-layout-flow wp-block-quote-is-layout-flow&quot;&gt;
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Self-hosting is going to add a capability that’s difficult to find in a SaaS alternative. That might be privacy, or extra compute, or just an extra degree of customization that I want.&lt;/li&gt;
+
+
+
+&lt;li&gt;I find it interesting or amusing to self-host it! I &lt;em&gt;have been&lt;/em&gt; a professional sysadmin, and ran production web services for over a decade. So I enjoy messing around with servers, and can have a fair amount of fun with this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;From an infrastructure perspective, my current self-hosting platform is an &lt;a href=&quot;https://www.nvidia.com/en-us/products/workstations/dgx-spark/&quot;&gt;NVIDIA DGX Spark&lt;/a&gt; that I use as a development workstation. I mostly treat it as a headless server and access it over SSH or HTTP; while I think there &lt;em&gt;might&lt;/em&gt; be a connection between the Spark and my desktop KVM switch, I haven&amp;#8217;t actually used a keyboard or monitor with it directly in many months.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;(Do I worry about reliability for this? Not terribly. If anything, my local setup has been more reliable than Oracle in recent experience&amp;#8230;)&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Tailscale &lt;a href=&quot;https://thinking.ajdecon.org/2026/01/12/tailscale/&quot;&gt;continues to be a load-bearing part of my setup&lt;/a&gt;, even more than it was before I started moving things locally. At this point, I don&amp;#8217;t think I actually have &lt;em&gt;any&lt;/em&gt; personal-use services with endpoints on the public Internet. Instead, I access them entirely via Tailscale from my own devices or my family&amp;#8217;s.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;As for what I&amp;#8217;m hosting right now, the major self-hosted open-source services running on the Spark are:&lt;/p&gt;
+
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://freshrss.org/index.html&quot;&gt;&lt;strong&gt;FreshRSS&lt;/strong&gt;&lt;/a&gt;, a self-hosted RSS feed aggregator
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;One of the things I like about FreshRSS is that it&amp;#8217;s API-compatible with &lt;a href=&quot;https://reederapp.com/&quot;&gt;Reeder&lt;/a&gt;, which is my feed app of choice on phone and desktop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+
+
+&lt;li&gt;&lt;a href=&quot;https://about.gitea.com/&quot;&gt;&lt;strong&gt;Gitea&lt;/strong&gt;&lt;/a&gt; is a lightweight Git forge, and my hosted instance is where I keep the &amp;#8220;source of truth&amp;#8221; for most of my hobby projects&lt;/li&gt;
+
+
+
+&lt;li&gt;&lt;a href=&quot;https://openwebui.com/&quot;&gt;&lt;strong&gt;Open WebUI&lt;/strong&gt;&lt;/a&gt;, which gives me a chat interface to a few different LLMs that run directly on the DGX Spark&amp;#8217;s GPU. Right now I&amp;#8217;m getting a lot of use out of the &lt;a href=&quot;https://deepmind.google/models/gemma/&quot;&gt;Gemma models&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I also have a few smaller, more personal services running here:&lt;/p&gt;
+
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ajdecon/daily-news-rss/blob/main/daily_rss.py&quot;&gt;&lt;strong&gt;daily-news-rss&lt;/strong&gt;&lt;/a&gt; is a tiny feed generator that gives me an aggregated daily news update. It scans a specified list of sources &amp;#8212; &lt;a href=&quot;https://www.weather.gov/&quot;&gt;weather.gov&lt;/a&gt;, &lt;a href=&quot;https://apnews.com/&quot;&gt;AP News&lt;/a&gt;, the &lt;a href=&quot;https://www.denverpost.com/&quot;&gt;Denver Post&lt;/a&gt;, and others &amp;#8212; and assembles a short news brief. That news brief goes into an RSS feed that I read via the FreshRSS setup described above. The whole thing runs as a daily cron job.
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Incidentally, this generator takes advantage of the local GPU on the Spark to extract headlines from the news source web pages and pick the &amp;#8220;top 5&amp;#8221; I might be interested in. Right now this is &lt;a href=&quot;https://ai.google.dev/gemma/docs/core/model_card_4&quot;&gt;gemma4:12b&lt;/a&gt;, running via &lt;a href=&quot;https://ollama.com/&quot;&gt;ollama&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+
+
+&lt;li&gt;&lt;a href=&quot;https://github.com/ajdecon/personal-feed-generator&quot;&gt;&lt;strong&gt;personal-feed-generator&lt;/strong&gt;&lt;/a&gt; is similar in spirit, but more geared towards finding research papers and industry news. Instead of a daily report, it scans my list of upstream sources each day and tries to identify anything I find relevant &amp;#8212; again, using a local LLM to score relevance. If it finds an interesting item, it adds it to the RSS feed as a standalone item, including a short explanation for &lt;em&gt;why&lt;/em&gt; it&amp;#8217;s relevant.
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Right now relevance is decided by gemma4:e4b, as I find the smaller model is less likely to try and find&amp;#8230; speculative&amp;#8230; connections between my list of interests and whatever it&amp;#8217;s reading.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+
+
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ajdecon/chess-openings-trainer&quot;&gt;chess-openings-trainer&lt;/a&gt;&lt;/strong&gt; is a tiny webapp for playing with and visualizing chess openings. At the moment it&amp;#8217;s pretty procedural, though at some point I&amp;#8217;d like to extend it to use &lt;a href=&quot;https://stockfishchess.org/&quot;&gt;Stockfish&lt;/a&gt; for game analysis&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;I also frequently run smaller, more &amp;#8220;throw-away&amp;#8221; webapps here to solve short-term problems or curiosities. For example, since I joined a &lt;a href=&quot;https://www.ionq.com/&quot;&gt;quantum computing company&lt;/a&gt;, I have a janky webapp for visualizing the &lt;a href=&quot;https://en.wikipedia.org/wiki/Bloch_sphere&quot;&gt;Bloch sphere&lt;/a&gt; which helped with some early learning. These sorts of apps generally get built in an afternoon, I play with them for a few days or weeks, and then thrown away. One of the handy things about a good self-hosting setup is that the activation energy for these experiments is low!&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Let&amp;#8217;s see, what&amp;#8217;s left for implementation details?&lt;/p&gt;
+
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Except when I actually want to share the code for something, everything ends up in a big private monorepo named &lt;code&gt;play&lt;/code&gt;, with history stretching back&amp;#8230; Dear Lord, over 15 years at this point.&lt;/li&gt;
+
+
+
+&lt;li&gt;Many of these services run in Docker containers, set up with docker-compose with files tracked in the repo.
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Kubernetes is a great tool, but it does not entertain me to self-host at single-node scale.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+
+
+&lt;li&gt;Trivial apps &amp;#8212; especially those that are HTML+JS only &amp;#8212; just run directly from &lt;code&gt;/var/www/html&lt;/code&gt; with an nginx webserver.&lt;/li&gt;
+
+
+
+&lt;li&gt;The DGX Spark also gets used for general development and playing around, either by hand or using &lt;a href=&quot;https://opencode.ai/&quot;&gt;OpenCode&lt;/a&gt; with &lt;a href=&quot;https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct&quot;&gt;qwen3-coder-30B&lt;/a&gt;.&lt;/li&gt;
+
+
+
+&lt;li&gt;The whole thing gets backed up to S3 using &lt;a href=&quot;https://restic.net/&quot;&gt;restic&lt;/a&gt;, so that I have some hope of recovery if the host dies.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;A few services got dropped in the transition, including a Fediverse instance, an IRC bouncer, and a Matrix server. Some of those may get resurrected at some point (e.g., the IRC bouncer), but none of them were in anything like regular use so I wasn&amp;#8217;t sad to sunset them.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>How I’m thinking about LLMs</title>
