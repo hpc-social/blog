@@ -4,13 +4,62 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2026-09-13T01:34:32-06:00</updated>
+ <updated>2026-09-14T02:01:01-06:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>BlueSky Circuit Breaker</title>
+   <link href="https://hpc.social/2026/bluesky-circuit-breaker/"/>
+   <updated>2026-09-14T00:49:47-06:00</updated>
+   <id>https://hpc.social/2026/bluesky-circuit-breaker</id>
+   <content type="html">&lt;p class=&quot;wp-block-paragraph&quot;&gt;A week or so ago, &lt;a href=&quot;https://bsky.app/profile/safety.bsky.app/post/3mukm26duos2c&quot;&gt;BlueSky posted&lt;/a&gt; about penalizing dogpiling and harassment on the platform. And while I think that’s absolutely a great idea, I don’t love the fact that it seems to be focused on after-the-fact enforcement. The BlueSky/Atmosphere philosophy seems like it should be focused on user control of their experience, managing their use of specific safety mechanisms. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;So, in the spirit of “making things is the best way to complain”, I built a very rough “BlueSky circuit breaker”:  &lt;a href=&quot;https://github.com/ajdecon/bsky-circuit-breaker&quot;&gt;https://github.com/ajdecon/bsky-circuit-breaker&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;span id=&quot;more-494&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;&lt;strong&gt;This is &lt;em&gt;not at all production-ready&lt;/em&gt;&lt;/strong&gt;&lt;em&gt;. &lt;/em&gt;I have a day job and it’s not maintaining mod infrastructure. And I know from colleagues how much work that really is. This is sincerely just a proof-of-concept in the true sense: throw-away code to show a given idea may work.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;This tiny tool demonstrates a &lt;em&gt;proof of concept&lt;/em&gt; for:&lt;/p&gt;
+
+&lt;ul class=&quot;wp-block-list&quot;&gt;
+&lt;li&gt;Locking a post’s interactions when too many people interact with it&lt;/li&gt;
+
+
+
+&lt;li&gt;Locking it when too many people interact at a given rate (interactions/hour)&lt;/li&gt;
+
+
+
+&lt;li&gt;Locking a post when a person with tons of followers quote-post it&lt;/li&gt;
+
+
+
+&lt;li&gt;Locking a post if you’re getting “ratio’d” with too many replies vs likes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Experimentally, the tool also includes an option to call out to a local LLM to do sentiment analysis on replies. Things like “does this contain slurs”, or “is it weirdly hostile to the original post author”, or “is the reply completely off-topic”. This is really r&lt;em&gt;eally &lt;/em&gt;imperfect, but potentially useful to folks like me who are small-ish posters with day jobs who don’t want to be caught in an accidental reply storm. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;The script itself is a one-and-done affair: it runs, analyzes your feed, takes action if you allow it, and exits. On initial development I envisioned running this in a cron-like setup. I will probably run this, or something like it, on a once-an-hour schedule on a personal VM.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;A production-like service should probably be more robust, but like I said: this is a proof-of-concept.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;In any case, this is what I’d like to see social media moderation look like: tools to control interactions from others, including “oh God” circuit breakers for when you get way more attention than you expected. &lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;IMHO, this kind of circuit breaker should be available be default! Most social media accounts are small, after all. While I recognize the challenges of responding instantly to dogpiles — distributed systems are hard — a cron-like function that scans accounts and performs post locks based on user config should not be too onerous.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Anyway, in the spirit of open source: here’s the code! Do what you like.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Disclaimer: the design and much of the initial code of this script was me, directly. I then enlisted the help of qwen3-coder:30b for minor code fixes, in particular atproto API bits. What can I say, I was more interested in the logic than the external APIs.&lt;/p&gt;
+
+&lt;p class=&quot;wp-block-paragraph&quot;&gt;Regardless, the code is MIT-licensed. I’m not sure it actually is good for much &lt;em&gt;directly&lt;/em&gt;, but it might be inspiring for someone who wants to build circuit breakers into real apps. We can only hope.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Self-hosting shenanigans update</title>
