@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-11-25T04:31:44-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">How the National Research Platform Works, in About a Minute</title><link href="https://hpc.social/personal-blog/2026/how-the-national-research-platform-works-in-about-a-minute/" rel="alternate" type="text/html" title="How the National Research Platform Works, in About a Minute" /><published>2026-11-17T06:00:00-07:00</published><updated>2026-11-17T06:00:00-07:00</updated><id>https://hpc.social/personal-blog/2026/how-the-national-research-platform-works-in-about-a-minute</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/how-the-national-research-platform-works-in-about-a-minute/"><![CDATA[<p>When I explain the National Research Platform (NRP), the same three questions come up: how do I get in, where does my job actually run, and what is everyone else running on it? I wanted one thing I could point people to that answers all three, so I built a short animation that follows a job from sign-in to results.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hpc.social/personal-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hpc.social/personal-blog/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2026-11-26T04:14:43-07:00</updated><id>https://hpc.social/personal-blog/feed.xml</id><title type="html">hpc.social - Aggregated Personal Blog</title><subtitle>Shared personal experiences and stories</subtitle><author><name>hpc.social</name><email>info@hpc.social</email></author><entry><title type="html">Building my own RasQberry Two</title><link href="https://hpc.social/personal-blog/2026/building-my-own-rasqberry-two/" rel="alternate" type="text/html" title="Building my own RasQberry Two" /><published>2026-11-25T14:20:58-07:00</published><updated>2026-11-25T14:20:58-07:00</updated><id>https://hpc.social/personal-blog/2026/building-my-own-rasqberry-two</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/building-my-own-rasqberry-two/"><![CDATA[<p>There&rsquo;s a new resident on my desk, and it has been quietly blinking away for a few months now. It&rsquo;s called <a href="https://rasqberry.org/">RasQberry Two</a>, and with <a href="https://sc26.supercomputing.org/">SC26</a> wrapped up, it&rsquo;s high time I wrote about it. What on earth is a RasQberry Two, you might ask? Those who I mentioned it to assumed I mispronounced Raspberry Pi. And although Raspberry Pi is an integral piece of the project, it goes much beyond that.</p>
+
+<p>In simple terms, the RasQberry Two is a functional model of an <a href="https://www.ibm.com/quantum">IBM Quantum System Two</a>. It brings together a very cool 3D printed model with a Raspberry Pi and the <a href="https://www.ibm.com/quantum/qiskit">Qiskit SDK</a> for, in the words of the site, &ldquo;teaching, meetups and demo booths.&rdquo; What they neglect to mention is that it also happens to make an exceedingly cool item for your desk!</p>
+
+<p>And my interest in quantum computing isn&rsquo;t new. Those who have been following me closely will note that a year ago at #SC25 our team showcased #IBM LSF managing a hybrid quantum-classical workflow, which was the result of a collaboration between IBM Research and the LSF team. Since #SC25 that work has evolved. Read the latest on the LSF integration with the Quantum Resource Management Interface (QRMI) <a href="https://community.ibm.com/community/user/blogs/gbor-samu/2026/11/19/how-ibm-lsf-brings-qpus-into-enterprise-hpc">here</a>.</p>
+
+<p>This writeup is not intended to provide detailed information on the bill of materials nor exhaustive steps on assembly, as that is very well covered on the <a href="https://rasqberry.org/">RasQberry Two site</a>, along with photos. Rather, it&rsquo;s meant to highlight my experience with the build.</p>
+
+<p>Building the RasQberry Two required sourcing parts from several companies, including Amazon for the magnets and 90 degree USB-C elbow for power, AliExpress for the LED panels, the local country RPi shop for the Raspberry Pi 5, power supply and cooling fan, and finally there was the model itself, which needed to be 3D printed.</p>
+
+<ul>
+<li>Raspberry Pi 5 16GB</li>
+<li>Raspberry Pi 27W USB-C Power Supply (White US)</li>
+<li>Raspberry Pi Active Cooler</li>
+<li>Duttek Right Angle USB-C Male to USB-C Female</li>
+<li>4 x WS2812IC 4x12 LED matrix 5V</li>
+<li>Requisite magnets</li>
+<li>Nylon nuts and bolts to fasten the floor pieces</li>
+</ul>
+<p>As I don&rsquo;t own a 3D printer at home, I turned to a local maker space called <a href="https://www.newmakeit.com/">NewMakeIt</a>, based in Newmarket, Ontario. A big shout-out to Ryan Dibisch at NewMakeIt for helping to make the process as smooth as possible. Ryan was even able to source the Prusa PLA Galaxy Black translucent filament that was needed for part of the model, and commented that the 3D models themselves were of exceptional quality.</p>
+
+<p>Fresh from becoming an <a href="https://www.credly.com/badges/61bacbe0-2014-42e3-b1ef-a4b44fff1b50">IBM Associate Quantum Ambassador</a> in June 2026, I embarked on assembling all the components to build my very own RasQberry Two. I started by writing the RasQberry Two software image to an SD card and tested the operation of the Raspberry Pi 5. Next, I began the assembly of the model from the 3D printed parts. Overall, I found the instructions to be very straightforward, from building the base and Quantum System Two model to wiring up the LED panels and installing the RPi 5.</p>
+
+<p>After starting with the collection of parts shown in the following X post…</p>
+
+<blockquote class="twitter-tweet"><p dir="ltr" lang="en">This collection of components is the starting point for a RasQberry Two — for exploring <a href="https://x.com/hashtag/quantumcomputing?src=hash&amp;ref_src=twsrc%5Etfw">#quantumcomputing</a> and <a href="https://x.com/hashtag/Qiskit?src=hash&amp;ref_src=twsrc%5Etfw">#Qiskit</a> with a <a href="https://x.com/hashtag/RaspberryPi?src=hash&amp;ref_src=twsrc%5Etfw">#RaspberryPi</a> and 3D printed parts. Looking forward to assembling it over the next week during the evenings. Learn more here <a href="https://t.co/aHbo1x0HKy">https://t.co/aHbo1x0HKy</a> <a href="https://x.com/hashtag/IBM?src=hash&amp;ref_src=twsrc%5Etfw">#IBM</a> <a href="https://t.co/Fk6dDW3kiF">pic.twitter.com/Fk6dDW3kiF</a></p>
+&mdash; Gábor SAMU (@gabor_samu) <a href="https://x.com/gabor_samu/status/2065067567497007113?ref_src=twsrc%5Etfw">June 11, 2026</a></blockquote>
+
+<p>…I ended up with the following deskside companion!</p>
+
+<figure><img alt="My completed RasQberry Two model" src="https://www.gaborsamu.com/images/rasqberry-two.jpg" /><figcaption>
+      <p>My completed RasQberry Two</p>
+
+    </figcaption>
+</figure>
+
+<p>Late in August 2026, I had the opportunity to see the Quantum System Two in person at IBM TJ Watson Research Center in Yorktown Heights, NY.</p>
+
+<blockquote class="twitter-tweet"><p dir="ltr" lang="en">Had the privilege to visit the <a href="https://x.com/hashtag/IBM?src=hash&amp;ref_src=twsrc%5Etfw">#IBM</a> TJ Watson Research Center last week. Seeing IBM Quantum System Two in person was a highlight. Amazing technology and an exciting glimpse into the future of computing ⚛️🚀 <a href="https://x.com/hashtag/QuantumComputing?src=hash&amp;ref_src=twsrc%5Etfw">#QuantumComputing</a> <a href="https://x.com/hashtag/IBMQuantum?src=hash&amp;ref_src=twsrc%5Etfw">#IBMQuantum</a> <a href="https://x.com/hashtag/IBMResearch?src=hash&amp;ref_src=twsrc%5Etfw">#IBMResearch</a> <a href="https://t.co/TwTr8sIoZP">pic.twitter.com/TwTr8sIoZP</a></p>
+&mdash; Gábor SAMU (@gabor_samu) <a href="https://x.com/gabor_samu/status/2092236188081873348?ref_src=twsrc%5Etfw">August 25, 2026</a></blockquote>
+
+<p>So, you may be wondering what I&rsquo;ve been up to on this RPi 5 powered IBM Quantum System Two model? Well, a hint comes in the following blog from the recent SC26 event regarding the integration of QPUs into enterprise HPC using #IBM LSF and QRMI: <a href="https://community.ibm.com/community/user/blogs/gbor-samu/2026/11/19/how-ibm-lsf-brings-qpus-into-enterprise-hpc">How IBM LSF brings QPUs into enterprise HPC</a>.</p>
+
+<p>And with that, stay tuned for another chapter in the story of my own RasQberry Two!</p>]]></content><author><name>Ramblings of a supercomputing enthusiast.</name></author><category term="gaborsamu" /><summary type="html"><![CDATA[There&rsquo;s a new resident on my desk, and it has been quietly blinking away for a few months now. It&rsquo;s called RasQberry Two, and with SC26 wrapped up, it&rsquo;s high time I wrote about it. What on earth is a RasQberry Two, you might ask? Those who I mentioned it to assumed I mispronounced Raspberry Pi. And although Raspberry Pi is an integral piece of the project, it goes much beyond that.]]></summary></entry><entry><title type="html">How the National Research Platform Works, in About a Minute</title><link href="https://hpc.social/personal-blog/2026/how-the-national-research-platform-works-in-about-a-minute/" rel="alternate" type="text/html" title="How the National Research Platform Works, in About a Minute" /><published>2026-11-17T06:00:00-07:00</published><updated>2026-11-17T06:00:00-07:00</updated><id>https://hpc.social/personal-blog/2026/how-the-national-research-platform-works-in-about-a-minute</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/how-the-national-research-platform-works-in-about-a-minute/"><![CDATA[<p>When I explain the National Research Platform (NRP), the same three questions come up: how do I get in, where does my job actually run, and what is everyone else running on it? I wanted one thing I could point people to that answers all three, so I built a short animation that follows a job from sign-in to results.</p>
 <figure class="not-prose my-8">  <figcaption class="mt-3 text-sm text-slate-500 dark:text-slate-400"> Use Back and Next, the step bar, or the arrow keys to move through it. <a class="underline decoration-sky-500/60 underline-offset-2 hover:text-sky-600 dark:hover:text-sky-400" href="https://derekweitzel.com/assets/animations/nrp-how-it-works.html" rel="noopener" target="_blank">Open full screen</a> </figcaption> </figure>
 <p>&amp;&amp;&amp; &lt;h2 id="the-steps-in-words"&gt;The steps, in words&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;<strong>Sign in with your institution.</strong> There is no separate NRP password. You log in with the account you already have at your university or college, and a group admin adds you to your lab’s namespace, which holds your jobs, storage, and quotas.&lt;/li&gt; &lt;li&gt;<strong>Pick a way in.</strong> Batch work goes in as a Kubernetes job, a YAML file that names a container and the GPUs, CPUs, and memory it needs. JupyterHub gives you a notebook server on a shared GPU without touching Kubernetes. Hosted open-weight language models are available in a browser chat or through an OpenAI-compatible API.&lt;/li&gt; &lt;li&gt;<strong>Jupyter.</strong> Sign in, pick a profile, and you have a notebook with a GPU attached. Courses and labs that need more control can run their own hub on the same hardware.&lt;/li&gt; &lt;li&gt;<strong>Language models.</strong> Chat with the hosted models in Open WebUI, or point a coding CLI or your own code at the same endpoint. There is nothing to deploy.&lt;/li&gt; &lt;li&gt;<strong>Scheduling.</strong> NRP is one Kubernetes cluster built from hardware at many campuses. The scheduler places each pod on a node that has the resources it asked for, wherever that node is.&lt;/li&gt; &lt;li&gt;<strong>Running.</strong> The node pulls your container image, assigns a GPU, and mounts storage, including Ceph for S3 buckets and shared filesystems and OSDF caches for large shared datasets.&lt;/li&gt; &lt;li&gt;<strong>Workloads.</strong> AI training, LLM inference, LHC physics, genomics, and classroom notebooks share the same machines, so an idle GPU at one campus becomes capacity for a researcher at another.&lt;/li&gt; &lt;li&gt;<strong>Results and accounting.</strong> Output comes back to you, and each namespace’s GPU and CPU time is recorded so contributing institutions can see what their hardware supported.&lt;/li&gt; &lt;/ol&gt; &lt;h2 id="why-this-model-works"&gt;Why this model works&lt;/h2&gt; &lt;p&gt;The hardware never leaves the campus that bought it. A contributing institution keeps its nodes in its own machine room, and the NRP team operates them remotely as part of the shared cluster. The contributor gets priority on its own nodes whenever it needs them, and when it does not, those nodes run work for everyone else.&lt;/p&gt;</p>
 <p>The other half is that most users never see Kubernetes. JupyterHub and the LLM API cover a large share of what researchers and instructors need, and people who do want full control can still submit their own jobs and services.</p>
@@ -2045,60 +2088,4 @@ and visionaries have headed out the door and are never coming back?</p>]]></cont
 
 </blockquote>
 
-<p>It’s a long read but a good one, go check it out.</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Ian Duncan has written a great post on CI orchestration called No, Really, Bash Is Not Enough: Why Large-Scale CI Needs an Orchestrator. It does a good job of distinguishing between the simple cases where bash and make really are good enough for CI, and when you actually need a full-featured CI system.]]></summary></entry><entry><title type="html">Quoting Charity Majors</title><link href="https://hpc.social/personal-blog/2026/quoting-charity-majors/" rel="alternate" type="text/html" title="Quoting Charity Majors" /><published>2026-01-19T17:47:51-07:00</published><updated>2026-01-19T17:47:51-07:00</updated><id>https://hpc.social/personal-blog/2026/quoting-charity-majors</id><content type="html" xml:base="https://hpc.social/personal-blog/2026/quoting-charity-majors/"><![CDATA[<p>Charity’s latest post, <em><a href="https://charity.wtf/2026/01/19/bring-back-ops-pride-xpost/">Bring back ops pride</a></em>, is an excellent discussion (rant?) on the importance of operations for software systems and why it’s a bad idea to try and pretend it isn’t a real concern, or make conventional application teams do the work in addition to their regular job.</p>
-
-<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<p>“Operations” is not a dirty word, a synonym for toil, or a title for people who can’t write code. May those who shit on ops get the operational outcomes they deserve.</p>
-
-</blockquote>
-
-<p>You should absolutely go read the <a href="https://charity.wtf/2026/01/19/bring-back-ops-pride-xpost/">full piece</a>, as well as Charity’s earlier post on the Honeycomb blog: <em><a href="https://www.honeycomb.io/blog/you-had-one-job-why-twenty-years-of-devops-has-failed-to-do-it">You had one job: Why twenty years of DevOps has failed to do it</a></em>. </p>
-
-<p>Below find several pull quotes from the post itself, because there were just too many to choose from.</p>
-
-<p><span id="more-430"></span></p>
-
-<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<p>The difference between “dev” and “ops” is not about whether or not you can write code. Dude, it’s 2026:&nbsp;<strong>everyone writes software</strong>.</p>
-
-
-
-
-<p>The difference between dev and ops is a separation of concerns.</p>
-
-</blockquote>
-
-<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<p>The hardest technical challenges and the long, stubborn tail of intractable problems have&nbsp;<em>always</em>&nbsp;been on the infrastructure side.&nbsp;<strong>That’s why we work&nbsp;<em>so hard</em>&nbsp;to try not to have them</strong>—to solve them by partnerships, cloud computing, open source, etc.&nbsp;<em>Anything</em>&nbsp;is better than trying to build them again, starting over from scratch. We know the cost of new code in our bones.</p>
-
-
-
-
-<p>As I have said a thousand times: the closer you get to laying bits down on disk, the more conservative (and afraid) you should be.</p>
-
-</blockquote>
-
-<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<p>The difference between dev and ops isn’t about writing code or not. But there&nbsp;<em>are</em>&nbsp;differences. In perspective, priorities, and (often) temperament.</p>
-
-
-
-
-<p>I touched on a number of these in&nbsp;<a href="https://www.honeycomb.io/blog/you-had-one-job-why-twenty-years-of-devops-has-failed-to-do-it">the article I just wrote on feedback loops</a>, so I’m not going to repeat myself here.</p>
-
-
-
-
-<p>The biggest difference I did&nbsp;<em>not</em>&nbsp;mention is that they have different relationships with resources and definitions of success.</p>
-
-
-
-
-<p>Infrastructure is a cost center. You aren’t going to make more money if you give ten laptops to everyone in your company, and you aren’t going to make more money by over-spending on infrastructure, either. Great operations engineers and architects never forget that&nbsp;<strong>cost is a first class citizen</strong>&nbsp;of their engineering decisions.</p>
-
-</blockquote>
-
-<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
-<p>Operational rigor and excellence are not, how shall I say this…not yet something you can take for granted in the tech industry. The most striking thing about the 2025 DORA report was that the&nbsp;<em>majority of companies</em>&nbsp;report that AI is just adding more chaos to a system already defined by chaos. In other words, most companies are bad at ops.</p>
-
-</blockquote>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Charity’s latest post, Bring back ops pride, is an excellent discussion (rant?) on the importance of operations for software systems and why it’s a bad idea to try and pretend it isn’t a real concern, or make conventional application teams do the work in addition to their regular job.]]></summary></entry></feed>
+<p>It’s a long read but a good one, go check it out.</p>]]></content><author><name>Thinking Out Loud</name></author><category term="ajdecon" /><summary type="html"><![CDATA[Ian Duncan has written a great post on CI orchestration called No, Really, Bash Is Not Enough: Why Large-Scale CI Needs an Orchestrator. It does a good job of distinguishing between the simple cases where bash and make really are good enough for CI, and when you actually need a full-featured CI system.]]></summary></entry></feed>

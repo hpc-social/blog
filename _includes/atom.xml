@@ -4,13 +4,65 @@
  <title>hpc.social - Aggregated Personal Blog</title>
  <link href="https://hpc.social/atom.xml" rel="self"/>
  <link href="https://hpc.social/"/>
- <updated>2026-11-25T04:31:44-07:00</updated>
+ <updated>2026-11-26T04:14:43-07:00</updated>
  <id>https://hpc.social</id>
  <author>
    <name>hpc.social</name>
    <email>info@hpc.social</email>
  </author>
 
+ 
+ <entry>
+   <title>Building my own RasQberry Two</title>
+   <link href="https://hpc.social/2026/building-my-own-rasqberry-two/"/>
+   <updated>2026-11-25T14:20:58-07:00</updated>
+   <id>https://hpc.social/2026/building-my-own-rasqberry-two</id>
+   <content type="html">&lt;p&gt;There&amp;rsquo;s a new resident on my desk, and it has been quietly blinking away for a few months now. It&amp;rsquo;s called &lt;a href=&quot;https://rasqberry.org/&quot;&gt;RasQberry Two&lt;/a&gt;, and with &lt;a href=&quot;https://sc26.supercomputing.org/&quot;&gt;SC26&lt;/a&gt; wrapped up, it&amp;rsquo;s high time I wrote about it. What on earth is a RasQberry Two, you might ask? Those who I mentioned it to assumed I mispronounced Raspberry Pi. And although Raspberry Pi is an integral piece of the project, it goes much beyond that.&lt;/p&gt;
+
+&lt;p&gt;In simple terms, the RasQberry Two is a functional model of an &lt;a href=&quot;https://www.ibm.com/quantum&quot;&gt;IBM Quantum System Two&lt;/a&gt;. It brings together a very cool 3D printed model with a Raspberry Pi and the &lt;a href=&quot;https://www.ibm.com/quantum/qiskit&quot;&gt;Qiskit SDK&lt;/a&gt; for, in the words of the site, &amp;ldquo;teaching, meetups and demo booths.&amp;rdquo; What they neglect to mention is that it also happens to make an exceedingly cool item for your desk!&lt;/p&gt;
+
+&lt;p&gt;And my interest in quantum computing isn&amp;rsquo;t new. Those who have been following me closely will note that a year ago at #SC25 our team showcased #IBM LSF managing a hybrid quantum-classical workflow, which was the result of a collaboration between IBM Research and the LSF team. Since #SC25 that work has evolved. Read the latest on the LSF integration with the Quantum Resource Management Interface (QRMI) &lt;a href=&quot;https://community.ibm.com/community/user/blogs/gbor-samu/2026/11/19/how-ibm-lsf-brings-qpus-into-enterprise-hpc&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This writeup is not intended to provide detailed information on the bill of materials nor exhaustive steps on assembly, as that is very well covered on the &lt;a href=&quot;https://rasqberry.org/&quot;&gt;RasQberry Two site&lt;/a&gt;, along with photos. Rather, it&amp;rsquo;s meant to highlight my experience with the build.&lt;/p&gt;
+
+&lt;p&gt;Building the RasQberry Two required sourcing parts from several companies, including Amazon for the magnets and 90 degree USB-C elbow for power, AliExpress for the LED panels, the local country RPi shop for the Raspberry Pi 5, power supply and cooling fan, and finally there was the model itself, which needed to be 3D printed.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi 5 16GB&lt;/li&gt;
+&lt;li&gt;Raspberry Pi 27W USB-C Power Supply (White US)&lt;/li&gt;
+&lt;li&gt;Raspberry Pi Active Cooler&lt;/li&gt;
+&lt;li&gt;Duttek Right Angle USB-C Male to USB-C Female&lt;/li&gt;
+&lt;li&gt;4 x WS2812IC 4x12 LED matrix 5V&lt;/li&gt;
+&lt;li&gt;Requisite magnets&lt;/li&gt;
+&lt;li&gt;Nylon nuts and bolts to fasten the floor pieces&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As I don&amp;rsquo;t own a 3D printer at home, I turned to a local maker space called &lt;a href=&quot;https://www.newmakeit.com/&quot;&gt;NewMakeIt&lt;/a&gt;, based in Newmarket, Ontario. A big shout-out to Ryan Dibisch at NewMakeIt for helping to make the process as smooth as possible. Ryan was even able to source the Prusa PLA Galaxy Black translucent filament that was needed for part of the model, and commented that the 3D models themselves were of exceptional quality.&lt;/p&gt;
+
+&lt;p&gt;Fresh from becoming an &lt;a href=&quot;https://www.credly.com/badges/61bacbe0-2014-42e3-b1ef-a4b44fff1b50&quot;&gt;IBM Associate Quantum Ambassador&lt;/a&gt; in June 2026, I embarked on assembling all the components to build my very own RasQberry Two. I started by writing the RasQberry Two software image to an SD card and tested the operation of the Raspberry Pi 5. Next, I began the assembly of the model from the 3D printed parts. Overall, I found the instructions to be very straightforward, from building the base and Quantum System Two model to wiring up the LED panels and installing the RPi 5.&lt;/p&gt;
+
+&lt;p&gt;After starting with the collection of parts shown in the following X post…&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p dir=&quot;ltr&quot; lang=&quot;en&quot;&gt;This collection of components is the starting point for a RasQberry Two — for exploring &lt;a href=&quot;https://x.com/hashtag/quantumcomputing?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#quantumcomputing&lt;/a&gt; and &lt;a href=&quot;https://x.com/hashtag/Qiskit?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#Qiskit&lt;/a&gt; with a &lt;a href=&quot;https://x.com/hashtag/RaspberryPi?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#RaspberryPi&lt;/a&gt; and 3D printed parts. Looking forward to assembling it over the next week during the evenings. Learn more here &lt;a href=&quot;https://t.co/aHbo1x0HKy&quot;&gt;https://t.co/aHbo1x0HKy&lt;/a&gt; &lt;a href=&quot;https://x.com/hashtag/IBM?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#IBM&lt;/a&gt; &lt;a href=&quot;https://t.co/Fk6dDW3kiF&quot;&gt;pic.twitter.com/Fk6dDW3kiF&lt;/a&gt;&lt;/p&gt;
+&amp;mdash; Gábor SAMU (@gabor_samu) &lt;a href=&quot;https://x.com/gabor_samu/status/2065067567497007113?ref_src=twsrc%5Etfw&quot;&gt;June 11, 2026&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;…I ended up with the following deskside companion!&lt;/p&gt;
+
+&lt;figure&gt;&lt;img alt=&quot;My completed RasQberry Two model&quot; src=&quot;https://www.gaborsamu.com/images/rasqberry-two.jpg&quot; /&gt;&lt;figcaption&gt;
+      &lt;p&gt;My completed RasQberry Two&lt;/p&gt;
+
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Late in August 2026, I had the opportunity to see the Quantum System Two in person at IBM TJ Watson Research Center in Yorktown Heights, NY.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p dir=&quot;ltr&quot; lang=&quot;en&quot;&gt;Had the privilege to visit the &lt;a href=&quot;https://x.com/hashtag/IBM?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#IBM&lt;/a&gt; TJ Watson Research Center last week. Seeing IBM Quantum System Two in person was a highlight. Amazing technology and an exciting glimpse into the future of computing ⚛️🚀 &lt;a href=&quot;https://x.com/hashtag/QuantumComputing?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#QuantumComputing&lt;/a&gt; &lt;a href=&quot;https://x.com/hashtag/IBMQuantum?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#IBMQuantum&lt;/a&gt; &lt;a href=&quot;https://x.com/hashtag/IBMResearch?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#IBMResearch&lt;/a&gt; &lt;a href=&quot;https://t.co/TwTr8sIoZP&quot;&gt;pic.twitter.com/TwTr8sIoZP&lt;/a&gt;&lt;/p&gt;
+&amp;mdash; Gábor SAMU (@gabor_samu) &lt;a href=&quot;https://x.com/gabor_samu/status/2092236188081873348?ref_src=twsrc%5Etfw&quot;&gt;August 25, 2026&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;So, you may be wondering what I&amp;rsquo;ve been up to on this RPi 5 powered IBM Quantum System Two model? Well, a hint comes in the following blog from the recent SC26 event regarding the integration of QPUs into enterprise HPC using #IBM LSF and QRMI: &lt;a href=&quot;https://community.ibm.com/community/user/blogs/gbor-samu/2026/11/19/how-ibm-lsf-brings-qpus-into-enterprise-hpc&quot;&gt;How IBM LSF brings QPUs into enterprise HPC&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And with that, stay tuned for another chapter in the story of my own RasQberry Two!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>How the National Research Platform Works, in About a Minute</title>
